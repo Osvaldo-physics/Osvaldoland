@@ -24,6 +24,8 @@ body{
 #moldura{position:relative; flex:none; border-radius:10px; overflow:hidden; box-shadow:0 0 0 1px rgba(255,255,255,.06)}
 #palco{position:absolute; left:0; top:0; width:1920px; height:1080px; transform-origin:0 0; overflow:hidden; color:var(--tinta); font-family:var(--nunito); background:var(--noite)}
 #tela,#fx,#sobre{position:absolute; inset:0}
+#tela{isolation:isolate; z-index:0} #fx{z-index:1} #sobre{z-index:2}
+#l-tab{z-index:0} #l-frente{z-index:1}
 #fx{pointer-events:none} #fx .clicavel{pointer-events:auto}
 #sobre:empty{display:none}
 .abs{position:absolute}
@@ -1282,7 +1284,10 @@ function telaPausa(){
       <button class="b3d" data-a="pausa" style="height:110px;padding:0 56px;border-radius:28px;background:#22C55E;color:#052E16;font-size:48px;box-shadow:0 0 0 5px #fff,0 12px 0 #15803D">${ico('play_arrow', 56)}Continuar</button>
       <button class="b3d branco" data-a="abrirConfig" style="height:110px;padding:0 44px;border-radius:28px;font-size:44px;box-shadow:0 12px 0 var(--lilas)">${ico('settings', 50)}Configurações</button>
       <button class="b3d branco" data-a="sair" style="height:110px;padding:0 44px;border-radius:28px;font-size:44px;box-shadow:0 12px 0 var(--lilas)">${ico('save', 50)}Salvar e sair</button></div>
-    <div style="color:#C7C4F0;font-weight:700;font-size:26px;text-align:center;line-height:1.5">Atalhos: <b>números</b> escolhem (0 = 10º) · <b>Espaço</b> avança · <b>Enter</b> = Sim · <b>Backspace</b> = Não · <b>Esc</b> pausa · <b>Ctrl+Z</b> desfaz<br>“Salvar e sair” guarda a partida no começo do turno atual.</div>${T.semSalvar ? `<div class="linha" style="gap:12px;padding:14px 24px;border-radius:18px;background:#FEF3C7;color:#78350F;font-weight:800;font-size:28px">${ico('error', 36)}Este navegador não está guardando a partida. Se a página fechar, ela se perde.</div>` : ''}</div>`;
+    ${T.semSalvar ? `<div class="linha" style="gap:12px;padding:14px 24px;border-radius:18px;background:#FEF3C7;color:#78350F;font-weight:800;font-size:28px">${ico('error', 36)}Este navegador não está guardando a partida. Se a página fechar, ela se perde.</div>` : ''}
+    <div class="abs" style="left:0;right:0;bottom:0;padding:26px 60px 34px;background:rgba(0,0,0,.28);border-top:3px solid rgba(255,255,255,.12);display:flex;flex-direction:column;align-items:center;gap:18px">
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:16px 22px">${[['0–9','escolhem (0 = 10º)'],['Espaço','avança'],['Enter','Sim'],['Backspace','Não'],['Esc','pausa'],['Ctrl+Z','desfaz']].map(([k, t]) => `<div class="linha" style="gap:12px;height:58px;padding:0 22px 0 10px;border-radius:16px;background:rgba(255,255,255,.1);color:#E0E7FF;font-weight:800;font-size:26px"><span style="height:40px;min-width:40px;padding:0 12px;box-sizing:border-box;border-radius:10px;background:#fff;color:#312E81;font-weight:900;font-size:24px;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 4px 0 var(--lilas)">${k}</span>${t}</div>`).join('')}</div>
+      <div class="linha" style="gap:10px;color:#C7C4F0;font-weight:700;font-size:26px">${ico('save', 30)}“Salvar e sair” guarda a partida no começo do turno atual.</div></div></div>`;
 }
 
 /* =============================== RENDER =============================== */
