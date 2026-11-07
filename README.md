@@ -20,6 +20,7 @@ Vence quem chegar primeiro ao fim da trilha.
 Atalho (+2), Escorregão (−2), Escudo, Todos contra todos, Congelado e Troca.
 Cada casa especial vale **uma vez por jogador**: cair de novo na mesma casa não faz nada.
 Se o Escudo anulou o efeito, a próxima queda ali vale como a primeira.
+O Escudo anula o próximo efeito negativo: Escorregão, Congelado, a punição por erro ou ser trocado para trás por alguém que caiu na Troca.
 
 ## 8 categorias
 

@@ -474,7 +474,7 @@ function peao(cor, num, h, o = {}){
 const peaoJ = (j, h, o) => peao(j.cor, j.num, h, o);
 /* Casas especiais ganham as animações do design "Casas Animadas" quando anim = true (tabuleiro e cartão). */
 const ANIM_CASA = {livre:0, atalho:0, escorregao:0, escudo:0, todos:6, congelado:5, troca:0, checkpoint:0, chegada:8};
-function casa(tipo, base, dest, anim){
+function casa(tipo, base, dest, anim, espelho){
   const d = TILES[tipo] || TILES.N;
   const s = d.grande ? Math.round(base*1.25) : base, bw = Math.max(3, Math.round(s*.065));
   let bg = `linear-gradient(180deg, color-mix(in oklab, ${d.cor}, #ffffff 30%) 0%, ${d.cor} 58%)`;
@@ -493,7 +493,7 @@ function casa(tipo, base, dest, anim){
     if(tipo === 'escudo' || tipo === 'checkpoint' || tipo === 'chegada') dentro += '<span class="ca__v"><b></b></span>';
   }
   const anel = dest ? anelCasa(tipo, s, dest) : '';
-  return `<span class="casa" style="width:${s}px;height:${s}px">${anel}<span class="casa-f${an ? ' ca ca--' + tipo : ''}" style="${an ? `--s:${base}px;--c:${d.cor};--c-esc:${d.esc};` : ''}border-radius:${rad};background:${d.cor};background:${bg};border:${bw}px solid ${tipo === 'chegada' ? '#FACC15' : '#fff'};box-shadow:0 ${Math.max(2,Math.round(s*.07))}px 0 ${d.esc}, 0 ${Math.round(s*.13)}px ${Math.round(s*.2)}px rgba(10,8,40,.38)${glow}">${dentro}</span></span>`;
+  return `<span class="casa" style="width:${s}px;height:${s}px${espelho ? ';transform:scaleX(-1)' : ''}">${anel}<span class="casa-f${an ? ' ca ca--' + tipo : ''}" style="${an ? `--s:${base}px;--c:${d.cor};--c-esc:${d.esc};` : ''}border-radius:${rad};background:${d.cor};background:${bg};border:${bw}px solid ${tipo === 'chegada' ? '#FACC15' : '#fff'};box-shadow:0 ${Math.max(2,Math.round(s*.07))}px 0 ${d.esc}, 0 ${Math.round(s*.13)}px ${Math.round(s*.2)}px rgba(10,8,40,.38)${glow}">${dentro}</span></span>`;
 }
 function anelCasa(tipo, s, cor){ const esp = (TILES[tipo] || TILES.N).esp; return `<span class="casa-d" style="inset:${-Math.round(s*.17)}px;border-radius:${esp ? '50%' : Math.round(s*.36)+'px'};border:${Math.max(4,Math.round(s*.06))}px solid ${cor};box-shadow:0 0 26px ${cor}, inset 0 0 14px ${cor}"></span>`; }
 function crono(seg, total, estado, T, id){
@@ -618,6 +618,14 @@ function descCasa(i){
 
 /* =============================== TABULEIRO: DESENHO =============================== */
 const ROWS = [620,446,272,98], XA = 163, XB = 997, RAIO = 87, LIN = XB-XA, ARCO = Math.PI*RAIO, TOTAL = 4*LIN + 3*ARCO;
+/* Para que lado da tela o caminho segue a partir da casa i (passo +1 = em frente, −1 = para trás).
+   O tabuleiro é em zigue-zague: nas fileiras pares o "em frente" é para a esquerda. Nas curvas, olha 2 casas adiante. */
+function sentido(i, passo){
+  for(const k of [1, 2]){ const dx = pos(Math.max(0, Math.min(S.N, i + passo*k))).x - pos(i).x; if(Math.abs(dx) > 20) return Math.sign(dx); }
+  return passo;
+}
+/* Os ícones ⏩ (atalho) e ⏪ (escorregão) apontam para a direita/esquerda; espelha quando o caminho vai ao contrário. */
+function espelhaCasa(tipo, i){ return i == null ? false : tipo === 'atalho' ? sentido(i, 1) < 0 : tipo === 'escorregao' ? sentido(i, -1) > 0 : false; }
 function pos(i){
   let d = i*TOTAL/S.N;
   for(let k=0;k<4;k++){
@@ -653,7 +661,7 @@ function htmlCasas(anim = true){
   const cs = tamCasa(); let h = DECOR;
   S.casas.forEach(c => {
     const p = pos(c.i), t = tipoCasa(c.i), box = (t === 'largada' || t === 'chegada') ? Math.round(cs*1.25) : cs;
-    h += `<div class="abs" data-i="${c.i}" style="left:${Math.round(p.x-box/2)}px;top:${Math.round(p.y-box/2)}px" title="Casa ${c.i}">${casa(t, cs, null, anim)}</div>`;
+    h += `<div class="abs" data-i="${c.i}" style="left:${Math.round(p.x-box/2)}px;top:${Math.round(p.y-box/2)}px" title="Casa ${c.i}">${casa(t, cs, null, anim, espelhaCasa(t, c.i))}</div>`;
   });
   return h;
 }
@@ -952,8 +960,7 @@ async function pouso(j, tipo, fx = tipo){
   const el = R.pecas[j.id], wrap = document.querySelector(`#tab-casas [data-i="${j.posicao}"]`);
   if(REDUZ || !el || !wrap) return;
   const p = el.firstElementChild, tile = wrap.querySelector('.casa-f'), d = TILES[tipo] || TILES.N;
-  const aqui = pos(j.posicao), frente = pos(Math.min(S.N, j.posicao + 1)), tras = pos(Math.max(0, j.posicao - 1));
-  const dirF = Math.sign(j.posicao < S.N ? frente.x - aqui.x : aqui.x - tras.x) || 1, dirT = Math.sign(tras.x - aqui.x) || -1;
+  const dirF = j.posicao < S.N ? sentido(j.posicao, 1) : -sentido(j.posicao, -1), dirT = sentido(j.posicao, -1);
   p.style.setProperty('--dir', fx === 'escorregao' ? dirT : dirF);
   limparPouso(j);
   const anel = document.createElement('span'); anel.className = 'anel-impacto';
@@ -1007,6 +1014,7 @@ async function efeitoCasa(r){
       const alvo = ativos().filter(j => j.id !== r.id && j.posicao > r.posicao && j.posicao - r.posicao <= 5).sort((a,b) => a.posicao - b.posicao)[0];
       if(!alvo){ card.texto = 'Ninguém a até 5 casas à frente'; card.fx = null; await mostrarEspecial(card); T.res.extras.push('Troca: ninguém perto o bastante.'); break; }
       if(r.posicao < alvo.checkpoint){ card.texto = `${alvo.nome} está protegido pelo checkpoint`; card.fx = null; await mostrarEspecial(card); break; }
+      if(alvo.escudo){ usaEscudo(alvo, 'a troca'); card.texto = `O escudo de ${alvo.nome} anulou a troca`; card.fx = null; await mostrarEspecial(card); renderTab(); break; }
       marcar(); card.texto = `Trocou de lugar com ${alvo.nome}!`; card.alvo = alvo.id; await mostrarEspecial(card);
       const pr = r.posicao, pa = alvo.posicao; r.posicao = pa; alvo.posicao = pr; atualizarCheckpoint(r); T.mov = null;
       await Promise.all([animar(r.id, pr, pa), animar(alvo.id, pa, pr)]);
@@ -1056,7 +1064,7 @@ function renderFx(){
     const e = T.especial, ef = EFEITOS[e.tipo], tl = TILES[e.tipo], j = jog(e.j), al = e.alvo ? jog(e.alvo) : null;
     h += `<div class="abs clicavel" data-a="pularFx" style="inset:134px 0 210px;background:rgba(15,12,50,.62);display:flex;align-items:center;justify-content:center;cursor:pointer;animation:fade .2s">
       <div style="width:540px;height:660px;box-sizing:border-box;border-radius:36px;background:#fff;border:8px solid ${tl.cor};box-shadow:0 0 0 6px rgba(255,255,255,.3),0 0 80px ${tl.cor}aa,0 16px 0 ${tl.esc};overflow:hidden;display:flex;flex-direction:column;animation:mola .45s cubic-bezier(.3,1.6,.5,1) both">
-        <div style="position:relative;height:300px;flex:none;background:${ef.claro};display:flex;align-items:center;justify-content:center;overflow:hidden"><div class="raios" style="width:900px;height:900px;margin:-450px 0 0 -450px;background:repeating-conic-gradient(${ef.raio} 0deg 9deg, transparent 9deg 18deg)"></div><div style="position:relative;${e.imune ? 'filter:grayscale(.85);opacity:.6' : ''}">${casa(e.tipo, 196, null, !e.imune)}</div>${e.imune ? `<div class="abs" style="left:50%;top:50%;width:240px;height:22px;margin:-11px 0 0 -120px;border-radius:999px;background:#1E1B4B;transform:rotate(-35deg);box-shadow:0 0 0 6px #fff"></div>` : ''}</div>
+        <div style="position:relative;height:300px;flex:none;background:${ef.claro};display:flex;align-items:center;justify-content:center;overflow:hidden"><div class="raios" style="width:900px;height:900px;margin:-450px 0 0 -450px;background:repeating-conic-gradient(${ef.raio} 0deg 9deg, transparent 9deg 18deg)"></div><div style="position:relative;${e.imune ? 'filter:grayscale(.85);opacity:.6' : ''}">${casa(e.tipo, 196, null, !e.imune, espelhaCasa(e.tipo, e.casa))}</div>${e.imune ? `<div class="abs" style="left:50%;top:50%;width:240px;height:22px;margin:-11px 0 0 -120px;border-radius:999px;background:#1E1B4B;transform:rotate(-35deg);box-shadow:0 0 0 6px #fff"></div>` : ''}</div>
         <div style="flex:1;padding:22px 32px 26px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px">
           <div class="rotulo" style="color:${ef.rot}">${e.imune ? 'SEM EFEITO DESTA VEZ' : 'CASA ESPECIAL'}</div>
           <div class="bal" style="font-size:${e.titulo.length > 12 ? 58 : 76}px">${esc(e.titulo)}</div>
