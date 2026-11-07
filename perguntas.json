@@ -5612,6 +5612,6726 @@
     "A Fazenda",
     "Big Brother Brasil"
    ]
+  },
+  {
+   "id": "N-051",
+   "categoria": "N",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o nome do conjunto de ossos que sustenta o corpo humano?",
+   "resposta": "Esqueleto",
+   "alternativas": [
+    "Músculo",
+    "Tendão",
+    "Esqueleto",
+    "Cartilagem"
+   ]
+  },
+  {
+   "id": "N-052",
+   "categoria": "N",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual planeta é o terceiro a partir do Sol?",
+   "resposta": "Terra",
+   "alternativas": [
+    "Terra",
+    "Marte",
+    "Mercúrio",
+    "Vênus"
+   ]
+  },
+  {
+   "id": "N-053",
+   "categoria": "N",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual animal não tem patas e troca de pele de tempos em tempos?",
+   "resposta": "Cobra",
+   "alternativas": [
+    "Cobra",
+    "Sapo",
+    "Lagarto",
+    "Tartaruga"
+   ]
+  },
+  {
+   "id": "N-054",
+   "categoria": "N",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual animal australiano anda aos pulos e carrega o filhote numa bolsa?",
+   "resposta": "Canguru",
+   "alternativas": [
+    "Lêmure",
+    "Canguru",
+    "Emu",
+    "Dingo"
+   ]
+  },
+  {
+   "id": "N-055",
+   "categoria": "N",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual instrumento é usado para ver objetos muito pequenos, como células?",
+   "resposta": "Microscópio",
+   "alternativas": [
+    "Estetoscópio",
+    "Telescópio",
+    "Microscópio",
+    "Periscópio"
+   ]
+  },
+  {
+   "id": "N-056",
+   "categoria": "N",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual instrumento os astrônomos usam para observar estrelas distantes?",
+   "resposta": "Telescópio",
+   "alternativas": [
+    "Barômetro",
+    "Telescópio",
+    "Termômetro",
+    "Microscópio"
+   ]
+  },
+  {
+   "id": "N-057",
+   "categoria": "N",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual animal produz a seda usada em tecidos?",
+   "resposta": "Bicho-da-seda",
+   "alternativas": [
+    "Bicho-da-seda",
+    "Formiga",
+    "Aranha-caranguejeira",
+    "Abelha"
+   ]
+  },
+  {
+   "id": "N-058",
+   "categoria": "N",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual aparelho mede a temperatura do corpo?",
+   "resposta": "Termômetro",
+   "alternativas": [
+    "Termômetro",
+    "Balança",
+    "Estetoscópio",
+    "Barômetro"
+   ]
+  },
+  {
+   "id": "N-059",
+   "categoria": "N",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual animal é famoso por construir barragens nos rios?",
+   "resposta": "Castor",
+   "alternativas": [
+    "Ariranha",
+    "Lontra",
+    "Castor",
+    "Capivara"
+   ]
+  },
+  {
+   "id": "N-060",
+   "categoria": "N",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o maior roedor do mundo?",
+   "resposta": "Capivara",
+   "alternativas": [
+    "Preá",
+    "Paca",
+    "Capivara",
+    "Castor"
+   ]
+  },
+  {
+   "id": "N-061",
+   "categoria": "N",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual força faz os objetos caírem em direção ao chão?",
+   "resposta": "Gravidade",
+   "alternativas": [
+    "Magnetismo",
+    "Atrito",
+    "Gravidade",
+    "Eletricidade"
+   ]
+  },
+  {
+   "id": "N-062",
+   "categoria": "N",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em qual parte do corpo ficam as papilas gustativas?",
+   "resposta": "Na língua",
+   "alternativas": [
+    "No nariz",
+    "Na garganta",
+    "Na língua",
+    "Nos dentes"
+   ]
+  },
+  {
+   "id": "N-063",
+   "categoria": "N",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o maior felino das Américas?",
+   "resposta": "Onça-pintada",
+   "alternativas": [
+    "Gato-do-mato",
+    "Jaguatirica",
+    "Onça-pintada",
+    "Puma"
+   ]
+  },
+  {
+   "id": "N-064",
+   "categoria": "N",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quais órgãos são os principais responsáveis pela respiração?",
+   "resposta": "Os pulmões",
+   "alternativas": [
+    "Os pulmões",
+    "O coração",
+    "O fígado",
+    "O estômago"
+   ]
+  },
+  {
+   "id": "N-065",
+   "categoria": "N",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em que estado físico a água está quando vira gelo?",
+   "resposta": "Sólido",
+   "alternativas": [
+    "Sólido",
+    "Líquido",
+    "Gasoso",
+    "Plasma"
+   ]
+  },
+  {
+   "id": "N-066",
+   "categoria": "N",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quantos planetas tem o Sistema Solar?",
+   "resposta": "8",
+   "alternativas": [
+    "10",
+    "7",
+    "9",
+    "8"
+   ]
+  },
+  {
+   "id": "N-067",
+   "categoria": "N",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quais órgãos filtram o sangue e produzem a urina?",
+   "resposta": "Os rins",
+   "alternativas": [
+    "O baço",
+    "A bexiga",
+    "O fígado",
+    "Os rins"
+   ]
+  },
+  {
+   "id": "N-068",
+   "categoria": "N",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "O que as abelhas produzem a partir do néctar das flores?",
+   "resposta": "Mel",
+   "alternativas": [
+    "Algodão",
+    "Seda",
+    "Mel",
+    "Leite"
+   ]
+  },
+  {
+   "id": "N-069",
+   "categoria": "N",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual inseto passa pela fase de lagarta antes de virar adulto?",
+   "resposta": "Borboleta",
+   "alternativas": [
+    "Borboleta",
+    "Abelha",
+    "Formiga",
+    "Gafanhoto"
+   ]
+  },
+  {
+   "id": "N-070",
+   "categoria": "N",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em qual parte do corpo fica a íris?",
+   "resposta": "No olho",
+   "alternativas": [
+    "Na orelha",
+    "Na boca",
+    "No nariz",
+    "No olho"
+   ]
+  },
+  {
+   "id": "N-071",
+   "categoria": "N",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "De qual gás é formada a maior parte do ar que respiramos?",
+   "resposta": "Nitrogênio",
+   "alternativas": [
+    "Gás carbônico",
+    "Argônio",
+    "Nitrogênio",
+    "Oxigênio"
+   ]
+  },
+  {
+   "id": "N-072",
+   "categoria": "N",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quantas asas tem uma abelha?",
+   "resposta": "4",
+   "alternativas": [
+    "6",
+    "4",
+    "2",
+    "8"
+   ]
+  },
+  {
+   "id": "N-073",
+   "categoria": "N",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o maior réptil do mundo?",
+   "resposta": "Crocodilo-de-água-salgada",
+   "alternativas": [
+    "Jacaré-açu",
+    "Sucuri",
+    "Crocodilo-de-água-salgada",
+    "Dragão-de-komodo"
+   ]
+  },
+  {
+   "id": "N-074",
+   "categoria": "N",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o símbolo químico do ouro?",
+   "resposta": "Au",
+   "alternativas": [
+    "Or",
+    "Au",
+    "Fe",
+    "Ag"
+   ]
+  },
+  {
+   "id": "N-075",
+   "categoria": "N",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quem formulou as três leis do movimento e a lei da gravitação universal?",
+   "resposta": "Isaac Newton",
+   "alternativas": [
+    "Galileu Galilei",
+    "Isaac Newton",
+    "Albert Einstein",
+    "Johannes Kepler"
+   ]
+  },
+  {
+   "id": "N-076",
+   "categoria": "N",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual cientista ganhou dois Prêmios Nobel, em Física e em Química?",
+   "resposta": "Marie Curie",
+   "alternativas": [
+    "Rosalind Franklin",
+    "Lise Meitner",
+    "Marie Curie",
+    "Ada Lovelace"
+   ]
+  },
+  {
+   "id": "N-077",
+   "categoria": "N",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual planeta tem a Grande Mancha Vermelha, uma tempestade gigante?",
+   "resposta": "Júpiter",
+   "alternativas": [
+    "Marte",
+    "Júpiter",
+    "Saturno",
+    "Netuno"
+   ]
+  },
+  {
+   "id": "N-078",
+   "categoria": "N",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual órgão produz a bile, que ajuda a digerir gorduras?",
+   "resposta": "Fígado",
+   "alternativas": [
+    "Pâncreas",
+    "Baço",
+    "Fígado",
+    "Estômago"
+   ]
+  },
+  {
+   "id": "N-079",
+   "categoria": "N",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Como se chamam as células do sangue que transportam oxigênio?",
+   "resposta": "Hemácias (glóbulos vermelhos)",
+   "alternativas": [
+    "Hemácias (glóbulos vermelhos)",
+    "Leucócitos",
+    "Neurônios",
+    "Plaquetas"
+   ]
+  },
+  {
+   "id": "N-080",
+   "categoria": "N",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual cientista propôs a teoria da evolução por seleção natural?",
+   "resposta": "Charles Darwin",
+   "alternativas": [
+    "Louis Pasteur",
+    "Charles Darwin",
+    "Gregor Mendel",
+    "Jean-Baptiste Lamarck"
+   ]
+  },
+  {
+   "id": "N-081",
+   "categoria": "N",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual cientista é considerado o pai da genética, por seus experimentos com ervilhas?",
+   "resposta": "Gregor Mendel",
+   "alternativas": [
+    "Louis Pasteur",
+    "Gregor Mendel",
+    "Charles Darwin",
+    "James Watson"
+   ]
+  },
+  {
+   "id": "N-082",
+   "categoria": "N",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é a velocidade aproximada da luz no vácuo?",
+   "resposta": "300 mil km/s",
+   "alternativas": [
+    "300 mil km/s",
+    "3 milhões de km/s",
+    "30 mil km/s",
+    "300 km/s"
+   ]
+  },
+  {
+   "id": "N-083",
+   "categoria": "N",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual planeta-anão já foi considerado o nono planeta do Sistema Solar?",
+   "resposta": "Plutão",
+   "alternativas": [
+    "Éris",
+    "Plutão",
+    "Ceres",
+    "Makemake"
+   ]
+  },
+  {
+   "id": "N-084",
+   "categoria": "N",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em que ano o ser humano pisou na Lua pela primeira vez?",
+   "resposta": "1969",
+   "alternativas": [
+    "1957",
+    "1972",
+    "1969",
+    "1961"
+   ]
+  },
+  {
+   "id": "N-085",
+   "categoria": "N",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual foi o primeiro satélite artificial da história, lançado em 1957?",
+   "resposta": "Sputnik 1",
+   "alternativas": [
+    "Explorer 1",
+    "Apollo 1",
+    "Vostok 1",
+    "Sputnik 1"
+   ]
+  },
+  {
+   "id": "N-086",
+   "categoria": "N",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o pH da água pura a 25 °C?",
+   "resposta": "7",
+   "alternativas": [
+    "0",
+    "7",
+    "14",
+    "5"
+   ]
+  },
+  {
+   "id": "N-087",
+   "categoria": "N",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual cientista e político americano inventou o para-raios?",
+   "resposta": "Benjamin Franklin",
+   "alternativas": [
+    "Thomas Edison",
+    "Benjamin Franklin",
+    "Nikola Tesla",
+    "Michael Faraday"
+   ]
+  },
+  {
+   "id": "N-088",
+   "categoria": "N",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em qual camada da atmosfera fica a camada de ozônio?",
+   "resposta": "Estratosfera",
+   "alternativas": [
+    "Exosfera",
+    "Estratosfera",
+    "Troposfera",
+    "Mesosfera"
+   ]
+  },
+  {
+   "id": "N-089",
+   "categoria": "N",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual cientista brasileiro liderou a vacinação obrigatória no Rio que gerou a Revolta da Vacina, em 1904?",
+   "resposta": "Oswaldo Cruz",
+   "alternativas": [
+    "Oswaldo Cruz",
+    "Adolfo Lutz",
+    "Vital Brazil",
+    "Carlos Chagas"
+   ]
+  },
+  {
+   "id": "N-090",
+   "categoria": "N",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual metal é líquido à temperatura ambiente?",
+   "resposta": "Mercúrio",
+   "alternativas": [
+    "Estanho",
+    "Alumínio",
+    "Chumbo",
+    "Mercúrio"
+   ]
+  },
+  {
+   "id": "N-091",
+   "categoria": "N",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual mamífero vive mais tempo, podendo passar dos 200 anos?",
+   "resposta": "Baleia-da-groenlândia",
+   "alternativas": [
+    "Elefante-asiático",
+    "Orca",
+    "Baleia-da-groenlândia",
+    "Baleia-azul"
+   ]
+  },
+  {
+   "id": "N-092",
+   "categoria": "N",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o símbolo químico do sódio?",
+   "resposta": "Na",
+   "alternativas": [
+    "S",
+    "So",
+    "Sd",
+    "Na"
+   ]
+  },
+  {
+   "id": "N-093",
+   "categoria": "N",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o símbolo químico da prata?",
+   "resposta": "Ag",
+   "alternativas": [
+    "Pt",
+    "Ag",
+    "Pr",
+    "Au"
+   ]
+  },
+  {
+   "id": "N-094",
+   "categoria": "N",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é a estrela mais brilhante do céu noturno?",
+   "resposta": "Sirius",
+   "alternativas": [
+    "Vega",
+    "Sirius",
+    "Canopus",
+    "Betelgeuse"
+   ]
+  },
+  {
+   "id": "N-095",
+   "categoria": "N",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual sonda espacial é o objeto feito pelo ser humano mais distante da Terra?",
+   "resposta": "Voyager 1",
+   "alternativas": [
+    "New Horizons",
+    "Voyager 1",
+    "Voyager 2",
+    "Pioneer 10"
+   ]
+  },
+  {
+   "id": "N-096",
+   "categoria": "N",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual telescópio espacial, lançado em 2021, observa principalmente no infravermelho?",
+   "resposta": "James Webb",
+   "alternativas": [
+    "Spitzer",
+    "James Webb",
+    "Kepler",
+    "Hubble"
+   ]
+  },
+  {
+   "id": "N-097",
+   "categoria": "N",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual organela da célula é responsável pela respiração celular e pela produção de energia?",
+   "resposta": "Mitocôndria",
+   "alternativas": [
+    "Complexo de Golgi",
+    "Mitocôndria",
+    "Lisossomo",
+    "Ribossomo"
+   ]
+  },
+  {
+   "id": "N-098",
+   "categoria": "N",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quem descreveu a estrutura em dupla hélice do DNA, em 1953, junto com Francis Crick?",
+   "resposta": "James Watson",
+   "alternativas": [
+    "James Watson",
+    "Gregor Mendel",
+    "Linus Pauling",
+    "Louis Pasteur"
+   ]
+  },
+  {
+   "id": "N-099",
+   "categoria": "N",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual cientista britânica obteve a imagem de raio X (\"Foto 51\") essencial para descobrir a estrutura do DNA?",
+   "resposta": "Rosalind Franklin",
+   "alternativas": [
+    "Rosalind Franklin",
+    "Dorothy Hodgkin",
+    "Marie Curie",
+    "Ada Lovelace"
+   ]
+  },
+  {
+   "id": "N-100",
+   "categoria": "N",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Como se chama o supercontinente que reunia quase todas as terras há cerca de 300 milhões de anos?",
+   "resposta": "Pangeia",
+   "alternativas": [
+    "Pangeia",
+    "Gondwana",
+    "Laurásia",
+    "Rodínia"
+   ]
+  },
+  {
+   "id": "N-101",
+   "categoria": "N",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é a unidade de medida de força no Sistema Internacional?",
+   "resposta": "Newton (N)",
+   "alternativas": [
+    "Newton (N)",
+    "Joule (J)",
+    "Pascal (Pa)",
+    "Watt (W)"
+   ]
+  },
+  {
+   "id": "N-102",
+   "categoria": "N",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual cientista dinamarquês propôs, em 1913, um modelo atômico com elétrons em órbitas definidas?",
+   "resposta": "Niels Bohr",
+   "alternativas": [
+    "Ernest Rutherford",
+    "J. J. Thomson",
+    "Niels Bohr",
+    "John Dalton"
+   ]
+  },
+  {
+   "id": "N-103",
+   "categoria": "N",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Como se chama o limite de um buraco negro do qual nem a luz consegue escapar?",
+   "resposta": "Horizonte de eventos",
+   "alternativas": [
+    "Singularidade",
+    "Esfera de fótons",
+    "Horizonte de eventos",
+    "Disco de acreção"
+   ]
+  },
+  {
+   "id": "N-104",
+   "categoria": "N",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual foi a primeira doença humana erradicada no mundo graças à vacinação?",
+   "resposta": "Varíola",
+   "alternativas": [
+    "Varíola",
+    "Poliomielite",
+    "Febre amarela",
+    "Sarampo"
+   ]
+  },
+  {
+   "id": "N-105",
+   "categoria": "N",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o nome científico do ser humano moderno?",
+   "resposta": "Homo sapiens",
+   "alternativas": [
+    "Homo habilis",
+    "Homo neanderthalensis",
+    "Homo sapiens",
+    "Homo erectus"
+   ]
+  },
+  {
+   "id": "N-106",
+   "categoria": "N",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o maior órgão interno do corpo humano?",
+   "resposta": "Fígado",
+   "alternativas": [
+    "Intestino delgado",
+    "Cérebro",
+    "Fígado",
+    "Pulmão"
+   ]
+  },
+  {
+   "id": "N-107",
+   "categoria": "N",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Entre quais planetas fica o cinturão principal de asteroides?",
+   "resposta": "Marte e Júpiter",
+   "alternativas": [
+    "Marte e Júpiter",
+    "Júpiter e Saturno",
+    "Vênus e Terra",
+    "Terra e Marte"
+   ]
+  },
+  {
+   "id": "N-108",
+   "categoria": "N",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual cientista brasileiro desenvolveu o soro antiofídico no Instituto Butantan?",
+   "resposta": "Vital Brazil",
+   "alternativas": [
+    "Vital Brazil",
+    "Carlos Chagas",
+    "Adolfo Lutz",
+    "Oswaldo Cruz"
+   ]
+  },
+  {
+   "id": "N-109",
+   "categoria": "N",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o elemento químico mais abundante na crosta terrestre?",
+   "resposta": "Oxigênio",
+   "alternativas": [
+    "Silício",
+    "Ferro",
+    "Alumínio",
+    "Oxigênio"
+   ]
+  },
+  {
+   "id": "N-110",
+   "categoria": "N",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual inventor, nascido na atual Croácia, é ligado ao desenvolvimento da corrente alternada?",
+   "resposta": "Nikola Tesla",
+   "alternativas": [
+    "Thomas Edison",
+    "Michael Faraday",
+    "Nikola Tesla",
+    "George Westinghouse"
+   ]
+  },
+  {
+   "id": "H-051",
+   "categoria": "H",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual herói da Inconfidência Mineira foi executado em 1792?",
+   "resposta": "Tiradentes",
+   "alternativas": [
+    "Zumbi dos Palmares",
+    "Tiradentes",
+    "Frei Caneca",
+    "Bento Gonçalves"
+   ]
+  },
+  {
+   "id": "H-052",
+   "categoria": "H",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual frase Dom Pedro I teria gritado às margens do Ipiranga?",
+   "resposta": "\"Independência ou morte!\"",
+   "alternativas": [
+    "\"Diga ao povo que fico!\"",
+    "\"Independência ou morte!\"",
+    "\"Ordem e progresso!\"",
+    "\"Liberdade ainda que tardia!\""
+   ]
+  },
+  {
+   "id": "H-053",
+   "categoria": "H",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em qual cidade fica o riacho Ipiranga, onde foi proclamada a Independência?",
+   "resposta": "São Paulo",
+   "alternativas": [
+    "Ouro Preto",
+    "Rio de Janeiro",
+    "São Paulo",
+    "Salvador"
+   ]
+  },
+  {
+   "id": "H-054",
+   "categoria": "H",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual povo antigo construiu o Coliseu?",
+   "resposta": "Romanos",
+   "alternativas": [
+    "Romanos",
+    "Gregos",
+    "Egípcios",
+    "Persas"
+   ]
+  },
+  {
+   "id": "H-055",
+   "categoria": "H",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em que ano começou a Segunda Guerra Mundial?",
+   "resposta": "1939",
+   "alternativas": [
+    "1945",
+    "1914",
+    "1929",
+    "1939"
+   ]
+  },
+  {
+   "id": "H-056",
+   "categoria": "H",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em que ano começou a Primeira Guerra Mundial?",
+   "resposta": "1914",
+   "alternativas": [
+    "1918",
+    "1905",
+    "1914",
+    "1939"
+   ]
+  },
+  {
+   "id": "H-057",
+   "categoria": "H",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quem foi o líder da Alemanha nazista?",
+   "resposta": "Adolf Hitler",
+   "alternativas": [
+    "Francisco Franco",
+    "Benito Mussolini",
+    "Adolf Hitler",
+    "Joseph Stalin"
+   ]
+  },
+  {
+   "id": "H-058",
+   "categoria": "H",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual povo nórdico ficou famoso por navegar e saquear a Europa na Idade Média?",
+   "resposta": "Vikings",
+   "alternativas": [
+    "Mongóis",
+    "Celtas",
+    "Hunos",
+    "Vikings"
+   ]
+  },
+  {
+   "id": "H-059",
+   "categoria": "H",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual cidade grega antiga é considerada o berço da democracia?",
+   "resposta": "Atenas",
+   "alternativas": [
+    "Corinto",
+    "Esparta",
+    "Atenas",
+    "Tebas"
+   ]
+  },
+  {
+   "id": "H-060",
+   "categoria": "H",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual presidente dos EUA aboliu a escravidão durante a Guerra Civil Americana?",
+   "resposta": "Abraham Lincoln",
+   "alternativas": [
+    "John F. Kennedy",
+    "Abraham Lincoln",
+    "Thomas Jefferson",
+    "George Washington"
+   ]
+  },
+  {
+   "id": "H-061",
+   "categoria": "H",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quem foi o primeiro presidente dos Estados Unidos?",
+   "resposta": "George Washington",
+   "alternativas": [
+    "Benjamin Franklin",
+    "Thomas Jefferson",
+    "George Washington",
+    "Abraham Lincoln"
+   ]
+  },
+  {
+   "id": "H-062",
+   "categoria": "H",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual líder sul-africano ficou 27 anos preso e virou presidente em 1994?",
+   "resposta": "Nelson Mandela",
+   "alternativas": [
+    "Steve Biko",
+    "Nelson Mandela",
+    "Desmond Tutu",
+    "Thabo Mbeki"
+   ]
+  },
+  {
+   "id": "H-063",
+   "categoria": "H",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual líder indiano ficou famoso por pregar a resistência sem violência?",
+   "resposta": "Mahatma Gandhi",
+   "alternativas": [
+    "Indira Gandhi",
+    "Jawaharlal Nehru",
+    "Mahatma Gandhi",
+    "Dalai Lama"
+   ]
+  },
+  {
+   "id": "H-064",
+   "categoria": "H",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual país lançou bombas atômicas sobre Hiroshima e Nagasaki, em 1945?",
+   "resposta": "Estados Unidos",
+   "alternativas": [
+    "Estados Unidos",
+    "União Soviética",
+    "Reino Unido",
+    "Alemanha"
+   ]
+  },
+  {
+   "id": "H-065",
+   "categoria": "H",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "De qual país Napoleão Bonaparte foi imperador?",
+   "resposta": "França",
+   "alternativas": [
+    "Itália",
+    "França",
+    "Espanha",
+    "Áustria"
+   ]
+  },
+  {
+   "id": "H-066",
+   "categoria": "H",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual rainha do Egito antigo se aliou a Júlio César e depois a Marco Antônio?",
+   "resposta": "Cleópatra",
+   "alternativas": [
+    "Nefertiti",
+    "Nefertari",
+    "Hatshepsut",
+    "Cleópatra"
+   ]
+  },
+  {
+   "id": "H-067",
+   "categoria": "H",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Como chamamos os povos que já viviam no Brasil antes da chegada dos portugueses?",
+   "resposta": "Povos indígenas (originários)",
+   "alternativas": [
+    "Povos indígenas (originários)",
+    "Quilombolas",
+    "Bandeirantes",
+    "Colonos"
+   ]
+  },
+  {
+   "id": "H-068",
+   "categoria": "H",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual produto movia os engenhos do Nordeste no Brasil colonial?",
+   "resposta": "Açúcar (cana-de-açúcar)",
+   "alternativas": [
+    "Borracha",
+    "Café",
+    "Ouro",
+    "Açúcar (cana-de-açúcar)"
+   ]
+  },
+  {
+   "id": "H-069",
+   "categoria": "H",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Que nome se dá ao período da história humana anterior à invenção da escrita?",
+   "resposta": "Pré-História",
+   "alternativas": [
+    "Pré-História",
+    "Idade Moderna",
+    "Idade Média",
+    "Antiguidade"
+   ]
+  },
+  {
+   "id": "H-070",
+   "categoria": "H",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual era a capital do Império Romano?",
+   "resposta": "Roma",
+   "alternativas": [
+    "Roma",
+    "Milão",
+    "Veneza",
+    "Florença"
+   ]
+  },
+  {
+   "id": "H-071",
+   "categoria": "H",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual era o nome da nau capitânia de Colombo na viagem de 1492?",
+   "resposta": "Santa Maria",
+   "alternativas": [
+    "Pinta",
+    "São Gabriel",
+    "Niña",
+    "Santa Maria"
+   ]
+  },
+  {
+   "id": "H-072",
+   "categoria": "H",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quem foi o primeiro presidente eleito pelo voto direto depois da ditadura militar, em 1989?",
+   "resposta": "Fernando Collor",
+   "alternativas": [
+    "Fernando Henrique Cardoso",
+    "Tancredo Neves",
+    "José Sarney",
+    "Fernando Collor"
+   ]
+  },
+  {
+   "id": "H-073",
+   "categoria": "H",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual movimento de 1983–1984 pediu eleições diretas para presidente?",
+   "resposta": "Diretas Já",
+   "alternativas": [
+    "Marcha da Família",
+    "Diretas Já",
+    "Caras-Pintadas",
+    "Tenentismo"
+   ]
+  },
+  {
+   "id": "H-074",
+   "categoria": "H",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em que ano terminou a ditadura militar no Brasil, com a posse de um presidente civil?",
+   "resposta": "1985",
+   "alternativas": [
+    "1985",
+    "1979",
+    "1989",
+    "1988"
+   ]
+  },
+  {
+   "id": "H-075",
+   "categoria": "H",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual ciclo econômico enriqueceu Manaus e Belém no fim do século XIX?",
+   "resposta": "Ciclo da borracha",
+   "alternativas": [
+    "Ciclo do ouro",
+    "Ciclo do café",
+    "Ciclo do açúcar",
+    "Ciclo da borracha"
+   ]
+  },
+  {
+   "id": "H-076",
+   "categoria": "H",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual produto foi o motor da economia brasileira no Segundo Reinado e na República Velha?",
+   "resposta": "Café",
+   "alternativas": [
+    "Açúcar",
+    "Café",
+    "Algodão",
+    "Borracha"
+   ]
+  },
+  {
+   "id": "H-077",
+   "categoria": "H",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Como ficou conhecida a política da República Velha que alternava presidentes de São Paulo e Minas Gerais?",
+   "resposta": "Política do café com leite",
+   "alternativas": [
+    "Coronelismo",
+    "Política do café com leite",
+    "Política dos governadores",
+    "Encilhamento"
+   ]
+  },
+  {
+   "id": "H-078",
+   "categoria": "H",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual revolução de 1917 levou os bolcheviques ao poder?",
+   "resposta": "Revolução Russa",
+   "alternativas": [
+    "Revolução Russa",
+    "Revolução Chinesa",
+    "Revolução Gloriosa",
+    "Revolução Francesa"
+   ]
+  },
+  {
+   "id": "H-079",
+   "categoria": "H",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual acontecimento de 14 de julho de 1789 é símbolo do início da Revolução Francesa?",
+   "resposta": "Queda da Bastilha",
+   "alternativas": [
+    "Batalha de Waterloo",
+    "Execução de Luís XVI",
+    "Queda da Bastilha",
+    "Coroação de Napoleão"
+   ]
+  },
+  {
+   "id": "H-080",
+   "categoria": "H",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em qual batalha Napoleão foi derrotado de vez, em 1815?",
+   "resposta": "Waterloo",
+   "alternativas": [
+    "Austerlitz",
+    "Trafalgar",
+    "Waterloo",
+    "Leipzig"
+   ]
+  },
+  {
+   "id": "H-081",
+   "categoria": "H",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quem publicou 95 teses em 1517, dando início à Reforma Protestante?",
+   "resposta": "Martinho Lutero",
+   "alternativas": [
+    "Martinho Lutero",
+    "João Calvino",
+    "Erasmo de Roterdã",
+    "Henrique VIII"
+   ]
+  },
+  {
+   "id": "H-082",
+   "categoria": "H",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual cidade foi a capital do Império Bizantino?",
+   "resposta": "Constantinopla",
+   "alternativas": [
+    "Alexandria",
+    "Atenas",
+    "Constantinopla",
+    "Roma"
+   ]
+  },
+  {
+   "id": "H-083",
+   "categoria": "H",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual rei da França foi guilhotinado em 1793?",
+   "resposta": "Luís XVI",
+   "alternativas": [
+    "Carlos X",
+    "Luís XVI",
+    "Luís XIV",
+    "Henrique IV"
+   ]
+  },
+  {
+   "id": "H-084",
+   "categoria": "H",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual guerra (1950–1953) deixou uma península asiática dividida em dois países?",
+   "resposta": "Guerra da Coreia",
+   "alternativas": [
+    "Guerra da Coreia",
+    "Guerra Sino-Japonesa",
+    "Guerra do Vietnã",
+    "Guerra do Pacífico"
+   ]
+  },
+  {
+   "id": "H-085",
+   "categoria": "H",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quem foi a primeira mulher a ir ao espaço, em 1963?",
+   "resposta": "Valentina Tereshkova",
+   "alternativas": [
+    "Svetlana Savitskaya",
+    "Sally Ride",
+    "Valentina Tereshkova",
+    "Mae Jemison"
+   ]
+  },
+  {
+   "id": "H-086",
+   "categoria": "H",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual presidente brasileiro morreu em 1954, no Palácio do Catete, deixando uma carta-testamento?",
+   "resposta": "Getúlio Vargas",
+   "alternativas": [
+    "Café Filho",
+    "Juscelino Kubitschek",
+    "Eurico Gaspar Dutra",
+    "Getúlio Vargas"
+   ]
+  },
+  {
+   "id": "H-087",
+   "categoria": "H",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Como eram chamados os exploradores paulistas que entravam no sertão atrás de ouro e de indígenas para escravizar?",
+   "resposta": "Bandeirantes",
+   "alternativas": [
+    "Cangaceiros",
+    "Tropeiros",
+    "Bandeirantes",
+    "Jesuítas"
+   ]
+  },
+  {
+   "id": "H-088",
+   "categoria": "H",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual cangaceiro ficou conhecido como o \"Rei do Cangaço\"?",
+   "resposta": "Lampião",
+   "alternativas": [
+    "Corisco",
+    "Lampião",
+    "Zé Baiano",
+    "Antônio Silvino"
+   ]
+  },
+  {
+   "id": "H-089",
+   "categoria": "H",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual civilização criou um calendário famoso e cidades como Chichén Itzá e Tikal?",
+   "resposta": "Maias",
+   "alternativas": [
+    "Olmecas",
+    "Incas",
+    "Maias",
+    "Astecas"
+   ]
+  },
+  {
+   "id": "H-090",
+   "categoria": "H",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual tratado encerrou oficialmente a Primeira Guerra Mundial, em 1919?",
+   "resposta": "Tratado de Versalhes",
+   "alternativas": [
+    "Tratado de Paris",
+    "Tratado de Versalhes",
+    "Tratado de Tordesilhas",
+    "Tratado de Viena"
+   ]
+  },
+  {
+   "id": "H-091",
+   "categoria": "H",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em que ano Constantinopla foi tomada pelos turcos otomanos?",
+   "resposta": "1453",
+   "alternativas": [
+    "1066",
+    "1492",
+    "1517",
+    "1453"
+   ]
+  },
+  {
+   "id": "H-092",
+   "categoria": "H",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual navegador inglês mapeou a costa leste da Austrália em 1770?",
+   "resposta": "James Cook",
+   "alternativas": [
+    "Walter Raleigh",
+    "James Cook",
+    "Francis Drake",
+    "Abel Tasman"
+   ]
+  },
+  {
+   "id": "H-093",
+   "categoria": "H",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual ordem religiosa de José de Anchieta e Manuel da Nóbrega catequizou indígenas no Brasil colonial?",
+   "resposta": "Jesuítas (Companhia de Jesus)",
+   "alternativas": [
+    "Jesuítas (Companhia de Jesus)",
+    "Beneditinos",
+    "Dominicanos",
+    "Franciscanos"
+   ]
+  },
+  {
+   "id": "H-094",
+   "categoria": "H",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual corsário foi o primeiro inglês a dar a volta ao mundo (1577–1580)?",
+   "resposta": "Francis Drake",
+   "alternativas": [
+    "James Cook",
+    "Francis Drake",
+    "Walter Raleigh",
+    "Henry Morgan"
+   ]
+  },
+  {
+   "id": "H-095",
+   "categoria": "H",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual almirante chinês comandou grandes frotas pelo Oceano Índico no início do século XV?",
+   "resposta": "Zheng He",
+   "alternativas": [
+    "Sun Tzu",
+    "Kublai Khan",
+    "Marco Polo",
+    "Zheng He"
+   ]
+  },
+  {
+   "id": "H-096",
+   "categoria": "H",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual viajante marroquino do século XIV percorreu boa parte do mundo islâmico e escreveu a \"Rihla\"?",
+   "resposta": "Ibn Battuta",
+   "alternativas": [
+    "Marco Polo",
+    "Ibn Battuta",
+    "Al-Idrisi",
+    "Zheng He"
+   ]
+  },
+  {
+   "id": "H-097",
+   "categoria": "H",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual líder mongol fundou o maior império de terras contínuas da história?",
+   "resposta": "Gengis Khan",
+   "alternativas": [
+    "Kublai Khan",
+    "Átila",
+    "Gengis Khan",
+    "Tamerlão"
+   ]
+  },
+  {
+   "id": "H-098",
+   "categoria": "H",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual ato de 1968 endureceu a ditadura militar brasileira, fechando o Congresso e suspendendo direitos?",
+   "resposta": "AI-5 (Ato Institucional nº 5)",
+   "alternativas": [
+    "AI-1",
+    "Lei da Anistia",
+    "Lei de Segurança Nacional",
+    "AI-5 (Ato Institucional nº 5)"
+   ]
+  },
+  {
+   "id": "H-099",
+   "categoria": "H",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quem foi eleito presidente de forma indireta em 1985, mas morreu antes de tomar posse?",
+   "resposta": "Tancredo Neves",
+   "alternativas": [
+    "Tancredo Neves",
+    "José Sarney",
+    "Franco Montoro",
+    "Ulysses Guimarães"
+   ]
+  },
+  {
+   "id": "H-100",
+   "categoria": "H",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual movimento armado de 1932, em São Paulo, exigia uma nova Constituição?",
+   "resposta": "Revolução Constitucionalista",
+   "alternativas": [
+    "Intentona Comunista",
+    "Revolução Constitucionalista",
+    "Revolta Paulista de 1924",
+    "Revolução de 1930"
+   ]
+  },
+  {
+   "id": "H-101",
+   "categoria": "H",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual revolta popular no Pará (1835–1840) tem esse nome por causa das cabanas dos ribeirinhos?",
+   "resposta": "Cabanagem",
+   "alternativas": [
+    "Farroupilha",
+    "Balaiada",
+    "Cabanagem",
+    "Sabinada"
+   ]
+  },
+  {
+   "id": "H-102",
+   "categoria": "H",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual revolta de africanos escravizados muçulmanos aconteceu em Salvador, em 1835?",
+   "resposta": "Revolta dos Malês",
+   "alternativas": [
+    "Balaiada",
+    "Conjuração Baiana",
+    "Sabinada",
+    "Revolta dos Malês"
+   ]
+  },
+  {
+   "id": "H-103",
+   "categoria": "H",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em que ano é marcada a queda do Império Romano do Ocidente?",
+   "resposta": "476",
+   "alternativas": [
+    "410",
+    "476",
+    "395",
+    "1453"
+   ]
+  },
+  {
+   "id": "H-104",
+   "categoria": "H",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Durante qual dinastia chinesa foi construída a maior parte da Grande Muralha que vemos hoje?",
+   "resposta": "Ming",
+   "alternativas": [
+    "Qin",
+    "Qing",
+    "Han",
+    "Ming"
+   ]
+  },
+  {
+   "id": "H-105",
+   "categoria": "H",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual primeiro imperador da China unificada foi enterrado com o Exército de Terracota?",
+   "resposta": "Qin Shi Huang",
+   "alternativas": [
+    "Puyi",
+    "Qin Shi Huang",
+    "Kublai Khan",
+    "Sun Yat-sen"
+   ]
+  },
+  {
+   "id": "H-106",
+   "categoria": "H",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual primeiro-ministro britânico liderou o país durante a maior parte da Segunda Guerra?",
+   "resposta": "Winston Churchill",
+   "alternativas": [
+    "Clement Attlee",
+    "Winston Churchill",
+    "Margaret Thatcher",
+    "Neville Chamberlain"
+   ]
+  },
+  {
+   "id": "H-107",
+   "categoria": "H",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual operação de 6 de junho de 1944 desembarcou tropas aliadas na Normandia?",
+   "resposta": "Dia D (Operação Overlord)",
+   "alternativas": [
+    "Operação Market Garden",
+    "Operação Barbarossa",
+    "Operação Tocha",
+    "Dia D (Operação Overlord)"
+   ]
+  },
+  {
+   "id": "H-108",
+   "categoria": "H",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em que ano foi criado o estado do Tocantins?",
+   "resposta": "1988",
+   "alternativas": [
+    "1988",
+    "1990",
+    "1985",
+    "1979"
+   ]
+  },
+  {
+   "id": "H-109",
+   "categoria": "H",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual cidade foi a capital provisória do Tocantins antes de Palmas?",
+   "resposta": "Miracema do Tocantins",
+   "alternativas": [
+    "Porto Nacional",
+    "Araguaína",
+    "Miracema do Tocantins",
+    "Gurupi"
+   ]
+  },
+  {
+   "id": "H-110",
+   "categoria": "H",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quem foi o primeiro governador do Tocantins?",
+   "resposta": "Siqueira Campos",
+   "alternativas": [
+    "Mauro Carlesse",
+    "Marcelo Miranda",
+    "Moisés Avelino",
+    "Siqueira Campos"
+   ]
+  },
+  {
+   "id": "G-051",
+   "categoria": "G",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é a capital do Japão?",
+   "resposta": "Tóquio",
+   "alternativas": [
+    "Tóquio",
+    "Osaka",
+    "Hiroshima",
+    "Kyoto"
+   ]
+  },
+  {
+   "id": "G-052",
+   "categoria": "G",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é a capital da Rússia?",
+   "resposta": "Moscou",
+   "alternativas": [
+    "Moscou",
+    "Novosibirsk",
+    "Kiev",
+    "São Petersburgo"
+   ]
+  },
+  {
+   "id": "G-053",
+   "categoria": "G",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é a capital da Espanha?",
+   "resposta": "Madri",
+   "alternativas": [
+    "Sevilha",
+    "Barcelona",
+    "Madri",
+    "Valência"
+   ]
+  },
+  {
+   "id": "G-054",
+   "categoria": "G",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é a capital da Alemanha?",
+   "resposta": "Berlim",
+   "alternativas": [
+    "Berlim",
+    "Frankfurt",
+    "Hamburgo",
+    "Munique"
+   ]
+  },
+  {
+   "id": "G-055",
+   "categoria": "G",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é a capital do Reino Unido?",
+   "resposta": "Londres",
+   "alternativas": [
+    "Londres",
+    "Liverpool",
+    "Manchester",
+    "Edimburgo"
+   ]
+  },
+  {
+   "id": "G-056",
+   "categoria": "G",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é a capital dos Estados Unidos?",
+   "resposta": "Washington, D.C.",
+   "alternativas": [
+    "Washington, D.C.",
+    "Chicago",
+    "Los Angeles",
+    "Nova York"
+   ]
+  },
+  {
+   "id": "G-057",
+   "categoria": "G",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é a capital de Goiás?",
+   "resposta": "Goiânia",
+   "alternativas": [
+    "Goiânia",
+    "Brasília",
+    "Anápolis",
+    "Rio Verde"
+   ]
+  },
+  {
+   "id": "G-058",
+   "categoria": "G",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é a capital do Pará?",
+   "resposta": "Belém",
+   "alternativas": [
+    "Marabá",
+    "Santarém",
+    "Macapá",
+    "Belém"
+   ]
+  },
+  {
+   "id": "G-059",
+   "categoria": "G",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é a capital de Minas Gerais?",
+   "resposta": "Belo Horizonte",
+   "alternativas": [
+    "Uberlândia",
+    "Belo Horizonte",
+    "Ouro Preto",
+    "Juiz de Fora"
+   ]
+  },
+  {
+   "id": "G-060",
+   "categoria": "G",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é a capital do Maranhão?",
+   "resposta": "São Luís",
+   "alternativas": [
+    "Teresina",
+    "Caxias",
+    "São Luís",
+    "Imperatriz"
+   ]
+  },
+  {
+   "id": "G-061",
+   "categoria": "G",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é a capital do Ceará?",
+   "resposta": "Fortaleza",
+   "alternativas": [
+    "Fortaleza",
+    "Sobral",
+    "Natal",
+    "Juazeiro do Norte"
+   ]
+  },
+  {
+   "id": "G-062",
+   "categoria": "G",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em qual continente fica o Brasil?",
+   "resposta": "América do Sul",
+   "alternativas": [
+    "África",
+    "Ásia",
+    "América do Sul",
+    "Europa"
+   ]
+  },
+  {
+   "id": "G-063",
+   "categoria": "G",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o maior continente do mundo?",
+   "resposta": "Ásia",
+   "alternativas": [
+    "Ásia",
+    "América",
+    "Europa",
+    "África"
+   ]
+  },
+  {
+   "id": "G-064",
+   "categoria": "G",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual oceano banha todo o litoral brasileiro?",
+   "resposta": "Oceano Atlântico",
+   "alternativas": [
+    "Oceano Índico",
+    "Oceano Atlântico",
+    "Oceano Ártico",
+    "Oceano Pacífico"
+   ]
+  },
+  {
+   "id": "G-065",
+   "categoria": "G",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual país tem a bandeira com listras vermelhas e brancas e 50 estrelas?",
+   "resposta": "Estados Unidos",
+   "alternativas": [
+    "Libéria",
+    "Estados Unidos",
+    "Cuba",
+    "Malásia"
+   ]
+  },
+  {
+   "id": "G-066",
+   "categoria": "G",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quais cores formam a bandeira da Itália?",
+   "resposta": "Verde, branco e vermelho",
+   "alternativas": [
+    "Azul, branco e vermelho",
+    "Verde, amarelo e azul",
+    "Preto, vermelho e amarelo",
+    "Verde, branco e vermelho"
+   ]
+  },
+  {
+   "id": "G-067",
+   "categoria": "G",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual país vizinho do Brasil tem Montevidéu como capital?",
+   "resposta": "Uruguai",
+   "alternativas": [
+    "Argentina",
+    "Uruguai",
+    "Paraguai",
+    "Chile"
+   ]
+  },
+  {
+   "id": "G-068",
+   "categoria": "G",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em qual região do Brasil fica o Tocantins?",
+   "resposta": "Norte",
+   "alternativas": [
+    "Centro-Oeste",
+    "Norte",
+    "Nordeste",
+    "Sudeste"
+   ]
+  },
+  {
+   "id": "G-069",
+   "categoria": "G",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em quantas regiões o IBGE divide o Brasil?",
+   "resposta": "5",
+   "alternativas": [
+    "6",
+    "4",
+    "5",
+    "7"
+   ]
+  },
+  {
+   "id": "G-070",
+   "categoria": "G",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em qual cidade fica o Cristo Redentor?",
+   "resposta": "Rio de Janeiro",
+   "alternativas": [
+    "Salvador",
+    "Belo Horizonte",
+    "Rio de Janeiro",
+    "São Paulo"
+   ]
+  },
+  {
+   "id": "G-071",
+   "categoria": "G",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o maior estado do Nordeste em área?",
+   "resposta": "Bahia",
+   "alternativas": [
+    "Piauí",
+    "Maranhão",
+    "Pernambuco",
+    "Bahia"
+   ]
+  },
+  {
+   "id": "G-072",
+   "categoria": "G",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é a capital do Chile?",
+   "resposta": "Santiago",
+   "alternativas": [
+    "Valparaíso",
+    "La Paz",
+    "Santiago",
+    "Lima"
+   ]
+  },
+  {
+   "id": "G-073",
+   "categoria": "G",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é a capital do Peru?",
+   "resposta": "Lima",
+   "alternativas": [
+    "Quito",
+    "Cusco",
+    "Lima",
+    "Bogotá"
+   ]
+  },
+  {
+   "id": "G-074",
+   "categoria": "G",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é a capital da Colômbia?",
+   "resposta": "Bogotá",
+   "alternativas": [
+    "Medellín",
+    "Caracas",
+    "Bogotá",
+    "Cali"
+   ]
+  },
+  {
+   "id": "G-075",
+   "categoria": "G",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é a capital da Venezuela?",
+   "resposta": "Caracas",
+   "alternativas": [
+    "Valencia",
+    "Caracas",
+    "Bogotá",
+    "Maracaibo"
+   ]
+  },
+  {
+   "id": "G-076",
+   "categoria": "G",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é a capital da Índia?",
+   "resposta": "Nova Délhi",
+   "alternativas": [
+    "Bangalore",
+    "Mumbai",
+    "Nova Délhi",
+    "Calcutá"
+   ]
+  },
+  {
+   "id": "G-077",
+   "categoria": "G",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é a capital da China?",
+   "resposta": "Pequim",
+   "alternativas": [
+    "Hong Kong",
+    "Pequim",
+    "Xangai",
+    "Cantão"
+   ]
+  },
+  {
+   "id": "G-078",
+   "categoria": "G",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é a capital da Suíça?",
+   "resposta": "Berna",
+   "alternativas": [
+    "Berna",
+    "Genebra",
+    "Zurique",
+    "Basileia"
+   ]
+  },
+  {
+   "id": "G-079",
+   "categoria": "G",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é a capital do Paraná?",
+   "resposta": "Curitiba",
+   "alternativas": [
+    "Londrina",
+    "Curitiba",
+    "Foz do Iguaçu",
+    "Maringá"
+   ]
+  },
+  {
+   "id": "G-080",
+   "categoria": "G",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é a capital de Mato Grosso?",
+   "resposta": "Cuiabá",
+   "alternativas": [
+    "Rondonópolis",
+    "Cuiabá",
+    "Sinop",
+    "Campo Grande"
+   ]
+  },
+  {
+   "id": "G-081",
+   "categoria": "G",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é a capital do Amapá?",
+   "resposta": "Macapá",
+   "alternativas": [
+    "Santana",
+    "Belém",
+    "Oiapoque",
+    "Macapá"
+   ]
+  },
+  {
+   "id": "G-082",
+   "categoria": "G",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é a capital de Roraima?",
+   "resposta": "Boa Vista",
+   "alternativas": [
+    "Porto Velho",
+    "Boa Vista",
+    "Macapá",
+    "Rio Branco"
+   ]
+  },
+  {
+   "id": "G-083",
+   "categoria": "G",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é a capital de Sergipe?",
+   "resposta": "Aracaju",
+   "alternativas": [
+    "Aracaju",
+    "Maceió",
+    "São Cristóvão",
+    "Itabaiana"
+   ]
+  },
+  {
+   "id": "G-084",
+   "categoria": "G",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Entre quais dois países ficam as Cataratas do Iguaçu?",
+   "resposta": "Brasil e Argentina",
+   "alternativas": [
+    "Brasil e Uruguai",
+    "Brasil e Argentina",
+    "Argentina e Paraguai",
+    "Brasil e Paraguai"
+   ]
+  },
+  {
+   "id": "G-085",
+   "categoria": "G",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual rio se junta ao Rio Negro no famoso \"Encontro das Águas\", perto de Manaus?",
+   "resposta": "Rio Solimões",
+   "alternativas": [
+    "Rio Solimões",
+    "Rio Madeira",
+    "Rio Tapajós",
+    "Rio Xingu"
+   ]
+  },
+  {
+   "id": "G-086",
+   "categoria": "G",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual bioma brasileiro do litoral é o mais devastado, com pouco restando da área original?",
+   "resposta": "Mata Atlântica",
+   "alternativas": [
+    "Cerrado",
+    "Mata Atlântica",
+    "Pampa",
+    "Caatinga"
+   ]
+  },
+  {
+   "id": "G-087",
+   "categoria": "G",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual linha imaginária divide a Terra em hemisfério Norte e hemisfério Sul?",
+   "resposta": "Linha do Equador",
+   "alternativas": [
+    "Trópico de Capricórnio",
+    "Meridiano de Greenwich",
+    "Trópico de Câncer",
+    "Linha do Equador"
+   ]
+  },
+  {
+   "id": "G-088",
+   "categoria": "G",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual meridiano é a referência para os fusos horários do mundo?",
+   "resposta": "Meridiano de Greenwich",
+   "alternativas": [
+    "Meridiano de Greenwich",
+    "Trópico de Câncer",
+    "Linha do Equador",
+    "Linha Internacional de Data"
+   ]
+  },
+  {
+   "id": "G-089",
+   "categoria": "G",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual rio disputa com o Amazonas o título de mais longo do mundo?",
+   "resposta": "Rio Nilo",
+   "alternativas": [
+    "Rio Congo",
+    "Rio Yangtzé",
+    "Rio Nilo",
+    "Rio Mississippi"
+   ]
+  },
+  {
+   "id": "G-090",
+   "categoria": "G",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual país tem um cedro verde na bandeira?",
+   "resposta": "Líbano",
+   "alternativas": [
+    "Canadá",
+    "Chipre",
+    "Israel",
+    "Líbano"
+   ]
+  },
+  {
+   "id": "G-091",
+   "categoria": "G",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o deserto não polar mais seco do mundo?",
+   "resposta": "Atacama",
+   "alternativas": [
+    "Kalahari",
+    "Saara",
+    "Atacama",
+    "Gobi"
+   ]
+  },
+  {
+   "id": "G-092",
+   "categoria": "G",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é a capital do Cazaquistão?",
+   "resposta": "Astana",
+   "alternativas": [
+    "Almaty",
+    "Astana",
+    "Tashkent",
+    "Bishkek"
+   ]
+  },
+  {
+   "id": "G-093",
+   "categoria": "G",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é a capital da Nigéria?",
+   "resposta": "Abuja",
+   "alternativas": [
+    "Kano",
+    "Abuja",
+    "Lagos",
+    "Ibadan"
+   ]
+  },
+  {
+   "id": "G-094",
+   "categoria": "G",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é a capital do Paquistão?",
+   "resposta": "Islamabad",
+   "alternativas": [
+    "Karachi",
+    "Lahore",
+    "Cabul",
+    "Islamabad"
+   ]
+  },
+  {
+   "id": "G-095",
+   "categoria": "G",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é a capital do Vietnã?",
+   "resposta": "Hanói",
+   "alternativas": [
+    "Phnom Penh",
+    "Da Nang",
+    "Hanói",
+    "Ho Chi Minh"
+   ]
+  },
+  {
+   "id": "G-096",
+   "categoria": "G",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual cidade é a sede do governo da Bolívia?",
+   "resposta": "La Paz",
+   "alternativas": [
+    "Cochabamba",
+    "Santa Cruz de la Sierra",
+    "Sucre",
+    "La Paz"
+   ]
+  },
+  {
+   "id": "G-097",
+   "categoria": "G",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é a capital de Rondônia?",
+   "resposta": "Porto Velho",
+   "alternativas": [
+    "Vilhena",
+    "Rio Branco",
+    "Porto Velho",
+    "Ji-Paraná"
+   ]
+  },
+  {
+   "id": "G-098",
+   "categoria": "G",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é a capital do Piauí?",
+   "resposta": "Teresina",
+   "alternativas": [
+    "Picos",
+    "São Luís",
+    "Parnaíba",
+    "Teresina"
+   ]
+  },
+  {
+   "id": "G-099",
+   "categoria": "G",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual país tem mais fusos horários, contando seus territórios ultramarinos?",
+   "resposta": "França",
+   "alternativas": [
+    "Reino Unido",
+    "Rússia",
+    "Estados Unidos",
+    "França"
+   ]
+  },
+  {
+   "id": "G-100",
+   "categoria": "G",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual país tem um fuzil AK-47 desenhado na bandeira?",
+   "resposta": "Moçambique",
+   "alternativas": [
+    "Moçambique",
+    "Zimbábue",
+    "Angola",
+    "Guiné-Bissau"
+   ]
+  },
+  {
+   "id": "G-101",
+   "categoria": "G",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual país tem o mapa do próprio território desenhado na bandeira?",
+   "resposta": "Chipre",
+   "alternativas": [
+    "Islândia",
+    "Sri Lanka",
+    "Chipre",
+    "Malta"
+   ]
+  },
+  {
+   "id": "G-102",
+   "categoria": "G",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o lago navegável mais alto do mundo, na fronteira entre Peru e Bolívia?",
+   "resposta": "Lago Titicaca",
+   "alternativas": [
+    "Lago Vitória",
+    "Lago Titicaca",
+    "Lago Poopó",
+    "Lago Baikal"
+   ]
+  },
+  {
+   "id": "G-103",
+   "categoria": "G",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o maior lago da África?",
+   "resposta": "Lago Vitória",
+   "alternativas": [
+    "Lago Tanganica",
+    "Lago Vitória",
+    "Lago Chade",
+    "Lago Malawi"
+   ]
+  },
+  {
+   "id": "G-104",
+   "categoria": "G",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o ponto mais baixo da superfície terrestre em terra firme?",
+   "resposta": "Margens do Mar Morto",
+   "alternativas": [
+    "Depressão de Danakil",
+    "Vale da Morte",
+    "Margens do Mar Cáspio",
+    "Margens do Mar Morto"
+   ]
+  },
+  {
+   "id": "G-105",
+   "categoria": "G",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o maior lago do mundo em área, apesar de ser chamado de mar?",
+   "resposta": "Mar Cáspio",
+   "alternativas": [
+    "Mar Negro",
+    "Mar Morto",
+    "Mar de Aral",
+    "Mar Cáspio"
+   ]
+  },
+  {
+   "id": "G-106",
+   "categoria": "G",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é a maior ilha do mundo?",
+   "resposta": "Groenlândia",
+   "alternativas": [
+    "Bornéu",
+    "Nova Guiné",
+    "Austrália",
+    "Groenlândia"
+   ]
+  },
+  {
+   "id": "G-107",
+   "categoria": "G",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual rio atravessa a cidade de Paris?",
+   "resposta": "Rio Sena",
+   "alternativas": [
+    "Rio Reno",
+    "Rio Sena",
+    "Rio Loire",
+    "Rio Tâmisa"
+   ]
+  },
+  {
+   "id": "G-108",
+   "categoria": "G",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual região do Tocantins é famosa por dunas, capim-dourado e fervedouros?",
+   "resposta": "Jalapão",
+   "alternativas": [
+    "Jalapão",
+    "Chapada dos Veadeiros",
+    "Chapada Diamantina",
+    "Lençóis Maranhenses"
+   ]
+  },
+  {
+   "id": "G-109",
+   "categoria": "G",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quais oceanos o Canal do Panamá liga?",
+   "resposta": "Atlântico e Pacífico",
+   "alternativas": [
+    "Atlântico e Pacífico",
+    "Ártico e Atlântico",
+    "Atlântico e Índico",
+    "Pacífico e Índico"
+   ]
+  },
+  {
+   "id": "G-110",
+   "categoria": "G",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual canal liga o Mar Mediterrâneo ao Mar Vermelho?",
+   "resposta": "Canal de Suez",
+   "alternativas": [
+    "Canal de Corinto",
+    "Canal de Suez",
+    "Canal do Panamá",
+    "Canal de Kiel"
+   ]
+  },
+  {
+   "id": "A-051",
+   "categoria": "A",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual ser do folclore brasileiro é uma cobra de fogo que protege as matas?",
+   "resposta": "Boitatá",
+   "alternativas": [
+    "Cuca",
+    "Curupira",
+    "Mapinguari",
+    "Boitatá"
+   ]
+  },
+  {
+   "id": "A-052",
+   "categoria": "A",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual personagem do Sítio do Picapau Amarelo é uma boneca de pano falante?",
+   "resposta": "Emília",
+   "alternativas": [
+    "Tia Nastácia",
+    "Narizinho",
+    "Dona Benta",
+    "Emília"
+   ]
+  },
+  {
+   "id": "A-053",
+   "categoria": "A",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual personagem do folclore é uma bruxa com cabeça de jacaré que assusta as crianças?",
+   "resposta": "Cuca",
+   "alternativas": [
+    "Cuca",
+    "Mula sem cabeça",
+    "Iara",
+    "Comadre Fulozinha"
+   ]
+  },
+  {
+   "id": "A-054",
+   "categoria": "A",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quantas cordas tem um violão comum?",
+   "resposta": "6",
+   "alternativas": [
+    "4",
+    "5",
+    "6",
+    "12"
+   ]
+  },
+  {
+   "id": "A-055",
+   "categoria": "A",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual instrumento de som grave marca o ritmo da bateria de escola de samba?",
+   "resposta": "Surdo",
+   "alternativas": [
+    "Agogô",
+    "Surdo",
+    "Tamborim",
+    "Cuíca"
+   ]
+  },
+  {
+   "id": "A-056",
+   "categoria": "A",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual instrumento de uma corda só, com cabaça, comanda o ritmo da capoeira?",
+   "resposta": "Berimbau",
+   "alternativas": [
+    "Viola caipira",
+    "Berimbau",
+    "Cavaquinho",
+    "Rabeca"
+   ]
+  },
+  {
+   "id": "A-057",
+   "categoria": "A",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual expressão cultural afro-brasileira mistura luta, dança e música?",
+   "resposta": "Capoeira",
+   "alternativas": [
+    "Forró",
+    "Capoeira",
+    "Ciranda",
+    "Frevo"
+   ]
+  },
+  {
+   "id": "A-058",
+   "categoria": "A",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual escritor criou o Menino Maluquinho?",
+   "resposta": "Ziraldo",
+   "alternativas": [
+    "Mauricio de Sousa",
+    "Ruth Rocha",
+    "Monteiro Lobato",
+    "Ziraldo"
+   ]
+  },
+  {
+   "id": "A-059",
+   "categoria": "A",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em qual conto de fadas uma menina de capa vermelha encontra um lobo na floresta?",
+   "resposta": "Chapeuzinho Vermelho",
+   "alternativas": [
+    "João e Maria",
+    "Branca de Neve",
+    "Cinderela",
+    "Chapeuzinho Vermelho"
+   ]
+  },
+  {
+   "id": "A-060",
+   "categoria": "A",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em qual conto de fadas uma moça perde um sapatinho de cristal no baile?",
+   "resposta": "Cinderela",
+   "alternativas": [
+    "A Bela Adormecida",
+    "Cinderela",
+    "Branca de Neve",
+    "Rapunzel"
+   ]
+  },
+  {
+   "id": "A-061",
+   "categoria": "A",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual festa religiosa de Belém (PA) reúne milhões de pessoas todo mês de outubro?",
+   "resposta": "Círio de Nazaré",
+   "alternativas": [
+    "Festa do Divino",
+    "Círio de Nazaré",
+    "Lavagem do Bonfim",
+    "Romaria de Juazeiro"
+   ]
+  },
+  {
+   "id": "A-062",
+   "categoria": "A",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual instrumento de sopro, feito de metal, tem três pistões?",
+   "resposta": "Trompete",
+   "alternativas": [
+    "Flauta",
+    "Clarinete",
+    "Saxofone",
+    "Trompete"
+   ]
+  },
+  {
+   "id": "A-063",
+   "categoria": "A",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual escritor criou o detetive Sherlock Holmes?",
+   "resposta": "Arthur Conan Doyle",
+   "alternativas": [
+    "Charles Dickens",
+    "Agatha Christie",
+    "Arthur Conan Doyle",
+    "Edgar Allan Poe"
+   ]
+  },
+  {
+   "id": "A-064",
+   "categoria": "A",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual escritora inglesa criou o detetive Hercule Poirot?",
+   "resposta": "Agatha Christie",
+   "alternativas": [
+    "Jane Austen",
+    "Virginia Woolf",
+    "Mary Shelley",
+    "Agatha Christie"
+   ]
+  },
+  {
+   "id": "A-065",
+   "categoria": "A",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quais são as cores primárias na pintura tradicional?",
+   "resposta": "Vermelho, amarelo e azul",
+   "alternativas": [
+    "Preto, branco e cinza",
+    "Vermelho, amarelo e azul",
+    "Verde, laranja e roxo",
+    "Vermelho, verde e roxo"
+   ]
+  },
+  {
+   "id": "A-066",
+   "categoria": "A",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual cantora ficou conhecida como a \"Rainha do Rock brasileiro\"?",
+   "resposta": "Rita Lee",
+   "alternativas": [
+    "Rita Lee",
+    "Cássia Eller",
+    "Pitty",
+    "Elis Regina"
+   ]
+  },
+  {
+   "id": "A-067",
+   "categoria": "A",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual dança das festas juninas tem comandos como \"anarriê\" e \"olha a cobra!\"?",
+   "resposta": "Quadrilha",
+   "alternativas": [
+    "Ciranda",
+    "Xaxado",
+    "Quadrilha",
+    "Catira"
+   ]
+  },
+  {
+   "id": "A-068",
+   "categoria": "A",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em qual museu de Paris fica a \"Mona Lisa\"?",
+   "resposta": "Museu do Louvre",
+   "alternativas": [
+    "Museu d'Orsay",
+    "Museu do Louvre",
+    "Museu Britânico",
+    "Museu do Prado"
+   ]
+  },
+  {
+   "id": "A-069",
+   "categoria": "A",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual personagem do folclore é um homem que vira lobo nas noites de lua cheia?",
+   "resposta": "Lobisomem",
+   "alternativas": [
+    "Curupira",
+    "Boto",
+    "Lobisomem",
+    "Saci-Pererê"
+   ]
+  },
+  {
+   "id": "A-070",
+   "categoria": "A",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual pequeno instrumento de 4 cordas é muito usado no samba e no choro?",
+   "resposta": "Cavaquinho",
+   "alternativas": [
+    "Cavaquinho",
+    "Viola caipira",
+    "Violão",
+    "Contrabaixo"
+   ]
+  },
+  {
+   "id": "A-071",
+   "categoria": "A",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quem compôs a música do Hino Nacional Brasileiro?",
+   "resposta": "Francisco Manuel da Silva",
+   "alternativas": [
+    "Chiquinha Gonzaga",
+    "Carlos Gomes",
+    "Heitor Villa-Lobos",
+    "Francisco Manuel da Silva"
+   ]
+  },
+  {
+   "id": "A-072",
+   "categoria": "A",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quem escreveu \"O Cortiço\"?",
+   "resposta": "Aluísio Azevedo",
+   "alternativas": [
+    "José de Alencar",
+    "Lima Barreto",
+    "Machado de Assis",
+    "Aluísio Azevedo"
+   ]
+  },
+  {
+   "id": "A-073",
+   "categoria": "A",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quem escreveu \"Os Sertões\", sobre a Guerra de Canudos?",
+   "resposta": "Euclides da Cunha",
+   "alternativas": [
+    "Graciliano Ramos",
+    "Guimarães Rosa",
+    "Jorge Amado",
+    "Euclides da Cunha"
+   ]
+  },
+  {
+   "id": "A-074",
+   "categoria": "A",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual poeta mineiro escreveu os livros \"Alguma Poesia\" e \"A Rosa do Povo\"?",
+   "resposta": "Carlos Drummond de Andrade",
+   "alternativas": [
+    "Manuel Bandeira",
+    "Mário Quintana",
+    "Carlos Drummond de Andrade",
+    "Vinicius de Moraes"
+   ]
+  },
+  {
+   "id": "A-075",
+   "categoria": "A",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual poeta e compositor carioca era chamado de \"Poetinha\"?",
+   "resposta": "Vinicius de Moraes",
+   "alternativas": [
+    "Cartola",
+    "Manuel Bandeira",
+    "Vinicius de Moraes",
+    "Carlos Drummond de Andrade"
+   ]
+  },
+  {
+   "id": "A-076",
+   "categoria": "A",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quem pintou \"O Grito\"?",
+   "resposta": "Edvard Munch",
+   "alternativas": [
+    "Gustav Klimt",
+    "Edvard Munch",
+    "Paul Gauguin",
+    "Vincent van Gogh"
+   ]
+  },
+  {
+   "id": "A-077",
+   "categoria": "A",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual pintor austríaco pintou \"O Beijo\", cheio de dourado?",
+   "resposta": "Gustav Klimt",
+   "alternativas": [
+    "Edvard Munch",
+    "Egon Schiele",
+    "Henri Matisse",
+    "Gustav Klimt"
+   ]
+  },
+  {
+   "id": "A-078",
+   "categoria": "A",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual pintora mexicana ficou famosa pelos autorretratos e pelas sobrancelhas marcantes?",
+   "resposta": "Frida Kahlo",
+   "alternativas": [
+    "Georgia O'Keeffe",
+    "Remedios Varo",
+    "Frida Kahlo",
+    "Tarsila do Amaral"
+   ]
+  },
+  {
+   "id": "A-079",
+   "categoria": "A",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quem pintou \"A Última Ceia\"?",
+   "resposta": "Leonardo da Vinci",
+   "alternativas": [
+    "Ticiano",
+    "Leonardo da Vinci",
+    "Rafael",
+    "Michelangelo"
+   ]
+  },
+  {
+   "id": "A-080",
+   "categoria": "A",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual compositor austríaco foi menino prodígio e compôs a ópera \"A Flauta Mágica\"?",
+   "resposta": "Wolfgang Amadeus Mozart",
+   "alternativas": [
+    "Joseph Haydn",
+    "Franz Schubert",
+    "Johann Strauss",
+    "Wolfgang Amadeus Mozart"
+   ]
+  },
+  {
+   "id": "A-081",
+   "categoria": "A",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual cantora gaúcha, apelidada de \"Pimentinha\", foi uma das maiores vozes da MPB?",
+   "resposta": "Elis Regina",
+   "alternativas": [
+    "Maria Bethânia",
+    "Gal Costa",
+    "Elis Regina",
+    "Nara Leão"
+   ]
+  },
+  {
+   "id": "A-082",
+   "categoria": "A",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual gênero musical brasileiro, quase sempre instrumental, tem \"Carinhoso\" e \"Brasileirinho\" como clássicos?",
+   "resposta": "Choro (chorinho)",
+   "alternativas": [
+    "Frevo",
+    "Choro (chorinho)",
+    "Baião",
+    "Bossa Nova"
+   ]
+  },
+  {
+   "id": "A-083",
+   "categoria": "A",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual escritor colombiano escreveu \"Cem Anos de Solidão\"?",
+   "resposta": "Gabriel García Márquez",
+   "alternativas": [
+    "Gabriel García Márquez",
+    "Mario Vargas Llosa",
+    "Pablo Neruda",
+    "Jorge Luis Borges"
+   ]
+  },
+  {
+   "id": "A-084",
+   "categoria": "A",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual escritor brasileiro escreveu \"O Alquimista\"?",
+   "resposta": "Paulo Coelho",
+   "alternativas": [
+    "Paulo Coelho",
+    "Jorge Amado",
+    "Rubem Alves",
+    "Fernando Sabino"
+   ]
+  },
+  {
+   "id": "A-085",
+   "categoria": "A",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual poeta italiano escreveu \"A Divina Comédia\"?",
+   "resposta": "Dante Alighieri",
+   "alternativas": [
+    "Boccaccio",
+    "Petrarca",
+    "Virgílio",
+    "Dante Alighieri"
+   ]
+  },
+  {
+   "id": "A-086",
+   "categoria": "A",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual obra de Homero narra a longa viagem de volta de Ulisses para casa?",
+   "resposta": "Odisseia",
+   "alternativas": [
+    "Ilíada",
+    "Odisseia",
+    "Teogonia",
+    "Eneida"
+   ]
+  },
+  {
+   "id": "A-087",
+   "categoria": "A",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual autor escreveu \"Vinte Mil Léguas Submarinas\" e \"A Volta ao Mundo em 80 Dias\"?",
+   "resposta": "Júlio Verne",
+   "alternativas": [
+    "Júlio Verne",
+    "Victor Hugo",
+    "Alexandre Dumas",
+    "H. G. Wells"
+   ]
+  },
+  {
+   "id": "A-088",
+   "categoria": "A",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual festa de Pirenópolis (GO) tem as Cavalhadas e os mascarados?",
+   "resposta": "Festa do Divino Espírito Santo",
+   "alternativas": [
+    "Festa Junina",
+    "Folia de Reis",
+    "Festa do Divino Espírito Santo",
+    "Congada"
+   ]
+  },
+  {
+   "id": "A-089",
+   "categoria": "A",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quem escreveu \"Os Miseráveis\"?",
+   "resposta": "Victor Hugo",
+   "alternativas": [
+    "Alexandre Dumas",
+    "Victor Hugo",
+    "Émile Zola",
+    "Gustave Flaubert"
+   ]
+  },
+  {
+   "id": "A-090",
+   "categoria": "A",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual ritmo baiano dos anos 1980 e 1990 lançou nomes como Daniela Mercury e Ivete Sangalo?",
+   "resposta": "Axé",
+   "alternativas": [
+    "Axé",
+    "Pagode",
+    "Lambada",
+    "Arrocha"
+   ]
+  },
+  {
+   "id": "A-091",
+   "categoria": "A",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quem escreveu a letra do Hino Nacional Brasileiro?",
+   "resposta": "Joaquim Osório Duque-Estrada",
+   "alternativas": [
+    "Joaquim Osório Duque-Estrada",
+    "Castro Alves",
+    "Machado de Assis",
+    "Olavo Bilac"
+   ]
+  },
+  {
+   "id": "A-092",
+   "categoria": "A",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quem escreveu \"Triste Fim de Policarpo Quaresma\"?",
+   "resposta": "Lima Barreto",
+   "alternativas": [
+    "Raul Pompeia",
+    "Aluísio Azevedo",
+    "Euclides da Cunha",
+    "Lima Barreto"
+   ]
+  },
+  {
+   "id": "A-093",
+   "categoria": "A",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quem compôs \"Carinhoso\", um dos maiores clássicos do choro?",
+   "resposta": "Pixinguinha",
+   "alternativas": [
+    "Waldir Azevedo",
+    "Jacob do Bandolim",
+    "Pixinguinha",
+    "Ernesto Nazareth"
+   ]
+  },
+  {
+   "id": "A-094",
+   "categoria": "A",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual escultor fez o \"Monumento às Bandeiras\", em São Paulo?",
+   "resposta": "Victor Brecheret",
+   "alternativas": [
+    "Mestre Valentim",
+    "Aleijadinho",
+    "Bruno Giorgi",
+    "Victor Brecheret"
+   ]
+  },
+  {
+   "id": "A-095",
+   "categoria": "A",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual pintor holandês pintou \"Moça com Brinco de Pérola\"?",
+   "resposta": "Johannes Vermeer",
+   "alternativas": [
+    "Frans Hals",
+    "Johannes Vermeer",
+    "Rembrandt",
+    "Jan Steen"
+   ]
+  },
+  {
+   "id": "A-096",
+   "categoria": "A",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual pintor espanhol pintou \"As Meninas\", em 1656?",
+   "resposta": "Diego Velázquez",
+   "alternativas": [
+    "Francisco de Goya",
+    "El Greco",
+    "Diego Velázquez",
+    "Bartolomé Murillo"
+   ]
+  },
+  {
+   "id": "A-097",
+   "categoria": "A",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual pintor renascentista pintou \"O Nascimento de Vênus\"?",
+   "resposta": "Sandro Botticelli",
+   "alternativas": [
+    "Michelangelo",
+    "Sandro Botticelli",
+    "Ticiano",
+    "Rafael"
+   ]
+  },
+  {
+   "id": "A-098",
+   "categoria": "A",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual arquiteto projetou os principais prédios de Brasília, como o Congresso Nacional?",
+   "resposta": "Oscar Niemeyer",
+   "alternativas": [
+    "Oscar Niemeyer",
+    "Burle Marx",
+    "Lina Bo Bardi",
+    "Lúcio Costa"
+   ]
+  },
+  {
+   "id": "A-099",
+   "categoria": "A",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quem criou o Plano Piloto, o projeto urbanístico de Brasília?",
+   "resposta": "Lúcio Costa",
+   "alternativas": [
+    "Oscar Niemeyer",
+    "Lúcio Costa",
+    "Burle Marx",
+    "Affonso Reidy"
+   ]
+  },
+  {
+   "id": "A-100",
+   "categoria": "A",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual arquiteta ítalo-brasileira projetou o MASP, em São Paulo?",
+   "resposta": "Lina Bo Bardi",
+   "alternativas": [
+    "Tomie Ohtake",
+    "Lina Bo Bardi",
+    "Lúcio Costa",
+    "Burle Marx"
+   ]
+  },
+  {
+   "id": "A-101",
+   "categoria": "A",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual dança caipira usa palmas e batidas de pé ao som da viola?",
+   "resposta": "Catira",
+   "alternativas": [
+    "Ciranda",
+    "Xaxado",
+    "Carimbó",
+    "Catira"
+   ]
+  },
+  {
+   "id": "A-102",
+   "categoria": "A",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual ritmo paraense, com saias rodadas, tem o nome de um tambor de origem indígena?",
+   "resposta": "Carimbó",
+   "alternativas": [
+    "Lundu",
+    "Maxixe",
+    "Carimbó",
+    "Xote"
+   ]
+  },
+  {
+   "id": "A-103",
+   "categoria": "A",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual dança dos cangaceiros tem o nome inspirado no som das sandálias arrastadas no chão?",
+   "resposta": "Xaxado",
+   "alternativas": [
+    "Coco",
+    "Xote",
+    "Xaxado",
+    "Baião"
+   ]
+  },
+  {
+   "id": "A-104",
+   "categoria": "A",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual escritor português ganhou o Nobel de Literatura em 1998?",
+   "resposta": "José Saramago",
+   "alternativas": [
+    "Eça de Queirós",
+    "José Saramago",
+    "Miguel Torga",
+    "Fernando Pessoa"
+   ]
+  },
+  {
+   "id": "A-105",
+   "categoria": "A",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual poeta português criou heterônimos como Alberto Caeiro e Ricardo Reis?",
+   "resposta": "Fernando Pessoa",
+   "alternativas": [
+    "Eça de Queirós",
+    "Luís de Camões",
+    "Fernando Pessoa",
+    "Florbela Espanca"
+   ]
+  },
+  {
+   "id": "A-106",
+   "categoria": "A",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual escritor russo escreveu \"Crime e Castigo\"?",
+   "resposta": "Fiódor Dostoiévski",
+   "alternativas": [
+    "Fiódor Dostoiévski",
+    "Anton Tchekhov",
+    "Liev Tolstói",
+    "Nikolai Gógol"
+   ]
+  },
+  {
+   "id": "A-107",
+   "categoria": "A",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual escritor escreveu \"A Metamorfose\", em que Gregor Samsa acorda transformado num inseto?",
+   "resposta": "Franz Kafka",
+   "alternativas": [
+    "Franz Kafka",
+    "Thomas Mann",
+    "Hermann Hesse",
+    "Albert Camus"
+   ]
+  },
+  {
+   "id": "A-108",
+   "categoria": "A",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual compositor alemão criou o ciclo de óperas \"O Anel do Nibelungo\"?",
+   "resposta": "Richard Wagner",
+   "alternativas": [
+    "Johannes Brahms",
+    "Richard Wagner",
+    "Johann Sebastian Bach",
+    "Ludwig van Beethoven"
+   ]
+  },
+  {
+   "id": "A-109",
+   "categoria": "A",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual pintor brasileiro ficou famoso pelas bandeirinhas de festa junina?",
+   "resposta": "Alfredo Volpi",
+   "alternativas": [
+    "Candido Portinari",
+    "Alfredo Volpi",
+    "Ivan Serpa",
+    "Di Cavalcanti"
+   ]
+  },
+  {
+   "id": "A-110",
+   "categoria": "A",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual escritora publicou \"Quarto de Despejo\", diário de sua vida numa favela de São Paulo?",
+   "resposta": "Carolina Maria de Jesus",
+   "alternativas": [
+    "Clarice Lispector",
+    "Conceição Evaristo",
+    "Carolina Maria de Jesus",
+    "Rachel de Queiroz"
+   ]
+  },
+  {
+   "id": "E-051",
+   "categoria": "E",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quantos jogadores um time de futsal tem em quadra?",
+   "resposta": "5",
+   "alternativas": [
+    "7",
+    "5",
+    "6",
+    "11"
+   ]
+  },
+  {
+   "id": "E-052",
+   "categoria": "E",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quantas Copas do Mundo de futebol o Brasil conquistou entre 1958 e 2002?",
+   "resposta": "5",
+   "alternativas": [
+    "6",
+    "5",
+    "3",
+    "4"
+   ]
+  },
+  {
+   "id": "E-053",
+   "categoria": "E",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual esporte é jogado com tacos e bolas numa mesa com caçapas?",
+   "resposta": "Sinuca",
+   "alternativas": [
+    "Boliche",
+    "Críquete",
+    "Sinuca",
+    "Golfe"
+   ]
+  },
+  {
+   "id": "E-054",
+   "categoria": "E",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em qual esporte os atletas usam quimono e faixas coloridas que indicam a graduação?",
+   "resposta": "Judô",
+   "alternativas": [
+    "Natação",
+    "Vôlei",
+    "Judô",
+    "Esgrima"
+   ]
+  },
+  {
+   "id": "E-055",
+   "categoria": "E",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Com quantas peças cada jogador começa uma partida de xadrez?",
+   "resposta": "16",
+   "alternativas": [
+    "12",
+    "16",
+    "8",
+    "20"
+   ]
+  },
+  {
+   "id": "E-056",
+   "categoria": "E",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Com quantas peças cada jogador começa uma partida de damas no tabuleiro 8x8?",
+   "resposta": "12",
+   "alternativas": [
+    "10",
+    "12",
+    "8",
+    "16"
+   ]
+  },
+  {
+   "id": "E-057",
+   "categoria": "E",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em qual jogo de cartas os jogadores gritam \"seis!\" e \"nove!\" para aumentar a aposta?",
+   "resposta": "Truco",
+   "alternativas": [
+    "Buraco",
+    "Pôquer",
+    "Uno",
+    "Truco"
+   ]
+  },
+  {
+   "id": "E-058",
+   "categoria": "E",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em qual jogo de cartas coloridas é preciso avisar quando sobra só uma carta na mão?",
+   "resposta": "Uno",
+   "alternativas": [
+    "Buraco",
+    "Pife",
+    "Uno",
+    "Truco"
+   ]
+  },
+  {
+   "id": "E-059",
+   "categoria": "E",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quantas cartas tem um baralho comum, sem os curingas?",
+   "resposta": "52",
+   "alternativas": [
+    "52",
+    "54",
+    "40",
+    "48"
+   ]
+  },
+  {
+   "id": "E-060",
+   "categoria": "E",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual brincadeira consiste em pular casas numeradas desenhadas no chão até chegar ao \"céu\"?",
+   "resposta": "Amarelinha",
+   "alternativas": [
+    "Pula-corda",
+    "Esconde-esconde",
+    "Amarelinha",
+    "Queimada"
+   ]
+  },
+  {
+   "id": "E-061",
+   "categoria": "E",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em qual esporte se faz um \"ace\" quando o adversário não consegue tocar na bola do saque?",
+   "resposta": "Tênis",
+   "alternativas": [
+    "Tênis",
+    "Futebol",
+    "Natação",
+    "Atletismo"
+   ]
+  },
+  {
+   "id": "E-062",
+   "categoria": "E",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o torneio de clubes de futebol mais famoso da América do Sul?",
+   "resposta": "Copa Libertadores",
+   "alternativas": [
+    "Copa Libertadores",
+    "Copa do Brasil",
+    "Champions League",
+    "Copa Sul-Americana"
+   ]
+  },
+  {
+   "id": "E-063",
+   "categoria": "E",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em qual esporte os atletas usam uma prancha para deslizar sobre as ondas?",
+   "resposta": "Surfe",
+   "alternativas": [
+    "Remo",
+    "Skate",
+    "Surfe",
+    "Vela"
+   ]
+  },
+  {
+   "id": "E-064",
+   "categoria": "E",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual jogador brasileiro tem o apelido de \"Fenômeno\"?",
+   "resposta": "Ronaldo",
+   "alternativas": [
+    "Ronaldo",
+    "Rivaldo",
+    "Ronaldinho",
+    "Romário"
+   ]
+  },
+  {
+   "id": "E-065",
+   "categoria": "E",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual jogador argentino levantou a taça da Copa do Mundo de 2022 como capitão?",
+   "resposta": "Lionel Messi",
+   "alternativas": [
+    "Sergio Agüero",
+    "Diego Maradona",
+    "Ángel Di María",
+    "Lionel Messi"
+   ]
+  },
+  {
+   "id": "E-066",
+   "categoria": "E",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual país sediou a Copa do Mundo de 2014?",
+   "resposta": "Brasil",
+   "alternativas": [
+    "Alemanha",
+    "África do Sul",
+    "Rússia",
+    "Brasil"
+   ]
+  },
+  {
+   "id": "E-067",
+   "categoria": "E",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em qual esporte o rebatedor tenta fazer um \"home run\"?",
+   "resposta": "Beisebol",
+   "alternativas": [
+    "Hóquei",
+    "Críquete",
+    "Beisebol",
+    "Golfe"
+   ]
+  },
+  {
+   "id": "E-068",
+   "categoria": "E",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual brincadeira consiste em um contar até certo número enquanto os outros se escondem?",
+   "resposta": "Esconde-esconde",
+   "alternativas": [
+    "Queimada",
+    "Amarelinha",
+    "Pega-pega",
+    "Esconde-esconde"
+   ]
+  },
+  {
+   "id": "E-069",
+   "categoria": "E",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em qual jogo de tabuleiro os peões coloridos só saem da casa inicial quando o dado mostra 6?",
+   "resposta": "Ludo",
+   "alternativas": [
+    "Damas",
+    "Gamão",
+    "Ludo",
+    "War"
+   ]
+  },
+  {
+   "id": "E-070",
+   "categoria": "E",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em qual esporte o atleta usa um arco para lançar flechas num alvo?",
+   "resposta": "Tiro com arco",
+   "alternativas": [
+    "Dardo",
+    "Esgrima",
+    "Tiro esportivo",
+    "Tiro com arco"
+   ]
+  },
+  {
+   "id": "E-071",
+   "categoria": "E",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quantos jogadores um time de handebol tem em quadra, contando o goleiro?",
+   "resposta": "7",
+   "alternativas": [
+    "7",
+    "11",
+    "6",
+    "5"
+   ]
+  },
+  {
+   "id": "E-072",
+   "categoria": "E",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual jogo de dados tem combinações como \"general\", \"full hand\" e \"quadra\"?",
+   "resposta": "General (Yahtzee)",
+   "alternativas": [
+    "Banco Imobiliário",
+    "Ludo",
+    "Gamão",
+    "General (Yahtzee)"
+   ]
+  },
+  {
+   "id": "E-073",
+   "categoria": "E",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual surfista brasileiro foi o primeiro campeão olímpico do surfe, em Tóquio 2020?",
+   "resposta": "Ítalo Ferreira",
+   "alternativas": [
+    "Filipe Toledo",
+    "Ítalo Ferreira",
+    "Gabriel Medina",
+    "Adriano de Souza"
+   ]
+  },
+  {
+   "id": "E-074",
+   "categoria": "E",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual surfista foi o primeiro brasileiro campeão mundial de surfe, em 2014?",
+   "resposta": "Gabriel Medina",
+   "alternativas": [
+    "Filipe Toledo",
+    "Ítalo Ferreira",
+    "Gabriel Medina",
+    "Adriano de Souza"
+   ]
+  },
+  {
+   "id": "E-075",
+   "categoria": "E",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quantos jogadores um time de rugby union tem em campo?",
+   "resposta": "15",
+   "alternativas": [
+    "11",
+    "7",
+    "13",
+    "15"
+   ]
+  },
+  {
+   "id": "E-076",
+   "categoria": "E",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em qual país é disputado o torneio de tênis de Wimbledon?",
+   "resposta": "Reino Unido (Inglaterra)",
+   "alternativas": [
+    "Austrália",
+    "Estados Unidos",
+    "França",
+    "Reino Unido (Inglaterra)"
+   ]
+  },
+  {
+   "id": "E-077",
+   "categoria": "E",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual torneio de tênis é jogado em quadra de saibro, em Paris?",
+   "resposta": "Roland Garros",
+   "alternativas": [
+    "Roland Garros",
+    "Wimbledon",
+    "US Open",
+    "Australian Open"
+   ]
+  },
+  {
+   "id": "E-078",
+   "categoria": "E",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual tenista espanhol venceu Roland Garros 14 vezes?",
+   "resposta": "Rafael Nadal",
+   "alternativas": [
+    "Rafael Nadal",
+    "Novak Djokovic",
+    "Roger Federer",
+    "Carlos Alcaraz"
+   ]
+  },
+  {
+   "id": "E-079",
+   "categoria": "E",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em qual esporte se disputa o Super Bowl?",
+   "resposta": "Futebol americano",
+   "alternativas": [
+    "Beisebol",
+    "Futebol americano",
+    "Basquete",
+    "Hóquei no gelo"
+   ]
+  },
+  {
+   "id": "E-080",
+   "categoria": "E",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual jogador foi campeão da NBA com o Chicago Bulls e eleito 6 vezes o melhor jogador das finais?",
+   "resposta": "Michael Jordan",
+   "alternativas": [
+    "Scottie Pippen",
+    "Michael Jordan",
+    "Kobe Bryant",
+    "LeBron James"
+   ]
+  },
+  {
+   "id": "E-081",
+   "categoria": "E",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quantos jogadores um time de beisebol tem em campo quando está na defesa?",
+   "resposta": "9",
+   "alternativas": [
+    "9",
+    "10",
+    "11",
+    "8"
+   ]
+  },
+  {
+   "id": "E-082",
+   "categoria": "E",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em que ano o Brasil conquistou o pentacampeonato mundial de futebol?",
+   "resposta": "2002",
+   "alternativas": [
+    "1998",
+    "2002",
+    "2006",
+    "1994"
+   ]
+  },
+  {
+   "id": "E-083",
+   "categoria": "E",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual brasileiro foi o artilheiro da Copa de 2002, com 8 gols?",
+   "resposta": "Ronaldo",
+   "alternativas": [
+    "Romário",
+    "Ronaldinho",
+    "Rivaldo",
+    "Ronaldo"
+   ]
+  },
+  {
+   "id": "E-084",
+   "categoria": "E",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em qual esporte brilhou Oscar Schmidt, o \"Mão Santa\"?",
+   "resposta": "Basquete",
+   "alternativas": [
+    "Futebol",
+    "Handebol",
+    "Vôlei",
+    "Basquete"
+   ]
+  },
+  {
+   "id": "E-085",
+   "categoria": "E",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual esporte criado no Brasil é jogado com os pés, na areia, por cima de uma rede?",
+   "resposta": "Futevôlei",
+   "alternativas": [
+    "Beach tennis",
+    "Vôlei de praia",
+    "Futevôlei",
+    "Peteca"
+   ]
+  },
+  {
+   "id": "E-086",
+   "categoria": "E",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em qual jogo de cartas o objetivo é chegar o mais perto possível de 21 pontos sem estourar?",
+   "resposta": "Vinte e um (blackjack)",
+   "alternativas": [
+    "Pôquer",
+    "Buraco",
+    "Truco",
+    "Vinte e um (blackjack)"
+   ]
+  },
+  {
+   "id": "E-087",
+   "categoria": "E",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "No pôquer, qual é a mão mais forte possível?",
+   "resposta": "Royal straight flush",
+   "alternativas": [
+    "Royal straight flush",
+    "Flush",
+    "Quadra",
+    "Full house"
+   ]
+  },
+  {
+   "id": "E-088",
+   "categoria": "E",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quanto dura cada quarto de uma partida de basquete da NBA?",
+   "resposta": "12 minutos",
+   "alternativas": [
+    "15 minutos",
+    "10 minutos",
+    "20 minutos",
+    "12 minutos"
+   ]
+  },
+  {
+   "id": "E-089",
+   "categoria": "E",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual piloto brasileiro foi campeão de Fórmula 1 em 1981, 1983 e 1987?",
+   "resposta": "Nelson Piquet",
+   "alternativas": [
+    "Emerson Fittipaldi",
+    "Nelson Piquet",
+    "Ayrton Senna",
+    "Rubens Barrichello"
+   ]
+  },
+  {
+   "id": "E-090",
+   "categoria": "E",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é a sigla da principal liga de basquete dos Estados Unidos?",
+   "resposta": "NBA",
+   "alternativas": [
+    "NHL",
+    "NBA",
+    "NFL",
+    "MLB"
+   ]
+  },
+  {
+   "id": "E-091",
+   "categoria": "E",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual nadador brasileiro foi campeão olímpico dos 50 m livre em Pequim 2008?",
+   "resposta": "César Cielo",
+   "alternativas": [
+    "César Cielo",
+    "Bruno Fratus",
+    "Thiago Pereira",
+    "Gustavo Borges"
+   ]
+  },
+  {
+   "id": "E-092",
+   "categoria": "E",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual judoca conquistou o primeiro ouro olímpico do judô brasileiro, em Seul 1988?",
+   "resposta": "Aurélio Miguel",
+   "alternativas": [
+    "Rogério Sampaio",
+    "Leandro Guilheiro",
+    "Tiago Camilo",
+    "Aurélio Miguel"
+   ]
+  },
+  {
+   "id": "E-093",
+   "categoria": "E",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual cidade sediou os primeiros Jogos Olímpicos da era moderna, em 1896?",
+   "resposta": "Atenas",
+   "alternativas": [
+    "Roma",
+    "Londres",
+    "Paris",
+    "Atenas"
+   ]
+  },
+  {
+   "id": "E-094",
+   "categoria": "E",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quem é considerado o criador dos Jogos Olímpicos modernos?",
+   "resposta": "Pierre de Coubertin",
+   "alternativas": [
+    "Jacques Rogge",
+    "Avery Brundage",
+    "Juan Antonio Samaranch",
+    "Pierre de Coubertin"
+   ]
+  },
+  {
+   "id": "E-095",
+   "categoria": "E",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual país venceu a primeira Copa do Mundo de futebol feminino, em 1991?",
+   "resposta": "Estados Unidos",
+   "alternativas": [
+    "China",
+    "Alemanha",
+    "Noruega",
+    "Estados Unidos"
+   ]
+  },
+  {
+   "id": "E-096",
+   "categoria": "E",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual jogadora brasileira foi eleita 6 vezes a melhor do mundo pela FIFA?",
+   "resposta": "Marta",
+   "alternativas": [
+    "Debinha",
+    "Cristiane",
+    "Formiga",
+    "Marta"
+   ]
+  },
+  {
+   "id": "E-097",
+   "categoria": "E",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "No xadrez, como se chama a situação em que o rei não está em xeque, mas o jogador não tem nenhum lance válido?",
+   "resposta": "Afogamento (empate)",
+   "alternativas": [
+    "Afogamento (empate)",
+    "Xeque-mate",
+    "Xeque perpétuo",
+    "Zugzwang"
+   ]
+  },
+  {
+   "id": "E-098",
+   "categoria": "E",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual enxadrista norueguês se tornou campeão mundial em 2013 e dominou o xadrez por anos?",
+   "resposta": "Magnus Carlsen",
+   "alternativas": [
+    "Viswanathan Anand",
+    "Magnus Carlsen",
+    "Hikaru Nakamura",
+    "Garry Kasparov"
+   ]
+  },
+  {
+   "id": "E-099",
+   "categoria": "E",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual computador da IBM venceu o campeão mundial de xadrez Garry Kasparov em 1997?",
+   "resposta": "Deep Blue",
+   "alternativas": [
+    "Stockfish",
+    "Watson",
+    "AlphaZero",
+    "Deep Blue"
+   ]
+  },
+  {
+   "id": "E-100",
+   "categoria": "E",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o comprimento oficial de uma piscina olímpica?",
+   "resposta": "50 metros",
+   "alternativas": [
+    "25 metros",
+    "40 metros",
+    "100 metros",
+    "50 metros"
+   ]
+  },
+  {
+   "id": "E-101",
+   "categoria": "E",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em qual país surgiram as primeiras peças de dominó?",
+   "resposta": "China",
+   "alternativas": [
+    "China",
+    "Itália",
+    "Egito",
+    "Índia"
+   ]
+  },
+  {
+   "id": "E-102",
+   "categoria": "E",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quantas peças tem um jogo de dominó tradicional (duplo-seis)?",
+   "resposta": "28",
+   "alternativas": [
+    "32",
+    "36",
+    "28",
+    "24"
+   ]
+  },
+  {
+   "id": "E-103",
+   "categoria": "E",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual jogo de estratégia japonês, parecido com o xadrez, permite reutilizar as peças capturadas?",
+   "resposta": "Shogi",
+   "alternativas": [
+    "Go",
+    "Xiangqi",
+    "Mahjong",
+    "Shogi"
+   ]
+  },
+  {
+   "id": "E-104",
+   "categoria": "E",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual prêmio da revista France Football é dado ao melhor jogador de futebol do ano?",
+   "resposta": "Bola de Ouro",
+   "alternativas": [
+    "Bola de Ouro",
+    "Chuteira de Ouro",
+    "Luva de Ouro",
+    "FIFA The Best"
+   ]
+  },
+  {
+   "id": "E-105",
+   "categoria": "E",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual jogador brasileiro ganhou a Bola de Ouro em 2007?",
+   "resposta": "Kaká",
+   "alternativas": [
+    "Ronaldo",
+    "Ronaldinho",
+    "Kaká",
+    "Rivaldo"
+   ]
+  },
+  {
+   "id": "E-106",
+   "categoria": "E",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual piloto brasileiro morreu num acidente no GP de San Marino, em Ímola, em 1994?",
+   "resposta": "Ayrton Senna",
+   "alternativas": [
+    "Rubens Barrichello",
+    "Ayrton Senna",
+    "Emerson Fittipaldi",
+    "Nelson Piquet"
+   ]
+  },
+  {
+   "id": "E-107",
+   "categoria": "E",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quanto dura uma partida oficial de handebol, somando os dois tempos?",
+   "resposta": "60 minutos",
+   "alternativas": [
+    "60 minutos",
+    "40 minutos",
+    "70 minutos",
+    "90 minutos"
+   ]
+  },
+  {
+   "id": "E-108",
+   "categoria": "E",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual dupla brasileira foi campeã olímpica da vela, classe 49erFX, no Rio 2016 e em Tóquio 2020?",
+   "resposta": "Martine Grael e Kahena Kunze",
+   "alternativas": [
+    "Torben Grael e Marcelo Ferreira",
+    "Isabel Swan e Fernanda Oliveira",
+    "Martine Grael e Kahena Kunze",
+    "Robert Scheidt e Bruno Prada"
+   ]
+  },
+  {
+   "id": "E-109",
+   "categoria": "E",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em qual estádio o Uruguai venceu o Brasil na final da Copa de 1950, o \"Maracanazo\"?",
+   "resposta": "Maracanã",
+   "alternativas": [
+    "Maracanã",
+    "Mineirão",
+    "São Januário",
+    "Pacaembu"
+   ]
+  },
+  {
+   "id": "E-110",
+   "categoria": "E",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual seleção venceu a Copa do Mundo de futebol de 2018?",
+   "resposta": "França",
+   "alternativas": [
+    "Alemanha",
+    "França",
+    "Croácia",
+    "Bélgica"
+   ]
+  },
+  {
+   "id": "C-051",
+   "categoria": "C",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quantos meses do ano têm 31 dias?",
+   "resposta": "7",
+   "alternativas": [
+    "7",
+    "5",
+    "8",
+    "6"
+   ]
+  },
+  {
+   "id": "C-052",
+   "categoria": "C",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual mês tem 28 dias nos anos comuns?",
+   "resposta": "Fevereiro",
+   "alternativas": [
+    "Junho",
+    "Fevereiro",
+    "Abril",
+    "Novembro"
+   ]
+  },
+  {
+   "id": "C-053",
+   "categoria": "C",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quantas cores tem o arco-íris, na divisão tradicional?",
+   "resposta": "7",
+   "alternativas": [
+    "7",
+    "6",
+    "8",
+    "5"
+   ]
+  },
+  {
+   "id": "C-054",
+   "categoria": "C",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quantos lados tem um hexágono?",
+   "resposta": "6",
+   "alternativas": [
+    "8",
+    "7",
+    "6",
+    "5"
+   ]
+  },
+  {
+   "id": "C-055",
+   "categoria": "C",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quantos lados tem um octógono, o formato da placa de \"PARE\"?",
+   "resposta": "8",
+   "alternativas": [
+    "6",
+    "8",
+    "10",
+    "7"
+   ]
+  },
+  {
+   "id": "C-056",
+   "categoria": "C",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Que cor se obtém misturando tinta vermelha com tinta amarela?",
+   "resposta": "Laranja",
+   "alternativas": [
+    "Marrom",
+    "Verde",
+    "Roxo",
+    "Laranja"
+   ]
+  },
+  {
+   "id": "C-057",
+   "categoria": "C",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual cor do semáforo indica \"atenção\"?",
+   "resposta": "Amarelo",
+   "alternativas": [
+    "Vermelho",
+    "Azul",
+    "Verde",
+    "Amarelo"
+   ]
+  },
+  {
+   "id": "C-058",
+   "categoria": "C",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quantos centímetros tem um metro?",
+   "resposta": "100",
+   "alternativas": [
+    "1.000",
+    "50",
+    "10",
+    "100"
+   ]
+  },
+  {
+   "id": "C-059",
+   "categoria": "C",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quantos gramas tem um quilograma?",
+   "resposta": "1.000",
+   "alternativas": [
+    "100",
+    "1.000",
+    "500",
+    "10.000"
+   ]
+  },
+  {
+   "id": "C-060",
+   "categoria": "C",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o número de telefone dos Bombeiros no Brasil?",
+   "resposta": "193",
+   "alternativas": [
+    "192",
+    "193",
+    "190",
+    "199"
+   ]
+  },
+  {
+   "id": "C-061",
+   "categoria": "C",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o número de telefone do SAMU no Brasil?",
+   "resposta": "192",
+   "alternativas": [
+    "180",
+    "190",
+    "192",
+    "193"
+   ]
+  },
+  {
+   "id": "C-062",
+   "categoria": "C",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quantas semanas tem um ano, aproximadamente?",
+   "resposta": "52",
+   "alternativas": [
+    "48",
+    "56",
+    "52",
+    "50"
+   ]
+  },
+  {
+   "id": "C-063",
+   "categoria": "C",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é a moeda oficial do Brasil?",
+   "resposta": "Real",
+   "alternativas": [
+    "Escudo",
+    "Real",
+    "Peso",
+    "Cruzeiro"
+   ]
+  },
+  {
+   "id": "C-064",
+   "categoria": "C",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual fruta é a base do guacamole?",
+   "resposta": "Abacate",
+   "alternativas": [
+    "Manga",
+    "Limão",
+    "Kiwi",
+    "Abacate"
+   ]
+  },
+  {
+   "id": "C-065",
+   "categoria": "C",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "De qual país é originária a pizza?",
+   "resposta": "Itália",
+   "alternativas": [
+    "Itália",
+    "Estados Unidos",
+    "Grécia",
+    "França"
+   ]
+  },
+  {
+   "id": "C-066",
+   "categoria": "C",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual bebida quente do Sul do Brasil é feita com erva-mate numa cuia?",
+   "resposta": "Chimarrão",
+   "alternativas": [
+    "Chimarrão",
+    "Chá-mate gelado",
+    "Tereré",
+    "Café"
+   ]
+  },
+  {
+   "id": "C-067",
+   "categoria": "C",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual doce brasileiro é feito com leite condensado e chocolate e enrolado no granulado?",
+   "resposta": "Brigadeiro",
+   "alternativas": [
+    "Brigadeiro",
+    "Quindim",
+    "Beijinho",
+    "Cajuzinho"
+   ]
+  },
+  {
+   "id": "C-068",
+   "categoria": "C",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Como se chama o símbolo \"&\"?",
+   "resposta": "E comercial",
+   "alternativas": [
+    "Cifrão",
+    "Arroba",
+    "Cerquilha",
+    "E comercial"
+   ]
+  },
+  {
+   "id": "C-069",
+   "categoria": "C",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Como se chama o símbolo \"$\"?",
+   "resposta": "Cifrão",
+   "alternativas": [
+    "Cerquilha",
+    "Cifrão",
+    "Asterisco",
+    "Porcentagem"
+   ]
+  },
+  {
+   "id": "C-070",
+   "categoria": "C",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Como se chama quem nasce no estado do Tocantins?",
+   "resposta": "Tocantinense",
+   "alternativas": [
+    "Tocantinense",
+    "Palmense",
+    "Tocantino",
+    "Tocantinista"
+   ]
+  },
+  {
+   "id": "C-071",
+   "categoria": "C",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual animal aparece na nota de 100 reais?",
+   "resposta": "Garoupa",
+   "alternativas": [
+    "Mico-leão-dourado",
+    "Onça-pintada",
+    "Arara",
+    "Garoupa"
+   ]
+  },
+  {
+   "id": "C-072",
+   "categoria": "C",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual animal aparece na nota de 200 reais, lançada em 2020?",
+   "resposta": "Lobo-guará",
+   "alternativas": [
+    "Lobo-guará",
+    "Capivara",
+    "Tamanduá-bandeira",
+    "Onça-pintada"
+   ]
+  },
+  {
+   "id": "C-073",
+   "categoria": "C",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "De qual língua vem a palavra \"jacaré\"?",
+   "resposta": "Tupi",
+   "alternativas": [
+    "Tupi",
+    "Árabe",
+    "Espanhol",
+    "Iorubá"
+   ]
+  },
+  {
+   "id": "C-074",
+   "categoria": "C",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "De qual língua africana vêm palavras como \"samba\", \"moleque\" e \"cochilar\"?",
+   "resposta": "Quimbundo",
+   "alternativas": [
+    "Árabe",
+    "Quimbundo",
+    "Iorubá",
+    "Suaíli"
+   ]
+  },
+  {
+   "id": "C-075",
+   "categoria": "C",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "De qual língua vem a palavra \"chá\"?",
+   "resposta": "Chinês",
+   "alternativas": [
+    "Hindi",
+    "Japonês",
+    "Árabe",
+    "Chinês"
+   ]
+  },
+  {
+   "id": "C-076",
+   "categoria": "C",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "De qual língua vem a palavra \"xampu\"?",
+   "resposta": "Do hindi (passando pelo inglês)",
+   "alternativas": [
+    "Do árabe",
+    "Do hindi (passando pelo inglês)",
+    "Do japonês",
+    "Do francês"
+   ]
+  },
+  {
+   "id": "C-077",
+   "categoria": "C",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "De qual língua vem a palavra \"café\"?",
+   "resposta": "Do árabe \"qahwa\" (passando pelo turco)",
+   "alternativas": [
+    "Do tupi",
+    "Do francês",
+    "Do árabe \"qahwa\" (passando pelo turco)",
+    "Do latim"
+   ]
+  },
+  {
+   "id": "C-078",
+   "categoria": "C",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "O que significa \"kamikaze\" em japonês?",
+   "resposta": "Vento divino",
+   "alternativas": [
+    "Guerreiro suicida",
+    "Vento divino",
+    "Espada voadora",
+    "Fogo do céu"
+   ]
+  },
+  {
+   "id": "C-079",
+   "categoria": "C",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "O que significa \"tsunami\" em japonês?",
+   "resposta": "Onda do porto",
+   "alternativas": [
+    "Onda gigante",
+    "Onda do porto",
+    "Mar furioso",
+    "Terremoto do mar"
+   ]
+  },
+  {
+   "id": "C-080",
+   "categoria": "C",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "O que significa a palavra \"dinossauro\", de origem grega?",
+   "resposta": "Lagarto terrível",
+   "alternativas": [
+    "Lagarto terrível",
+    "Réptil gigante",
+    "Dente afiado",
+    "Animal antigo"
+   ]
+  },
+  {
+   "id": "C-081",
+   "categoria": "C",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "O que significa \"hipopótamo\" em grego?",
+   "resposta": "Cavalo do rio",
+   "alternativas": [
+    "Boi d'água",
+    "Cavalo do rio",
+    "Animal pesado",
+    "Porco gigante"
+   ]
+  },
+  {
+   "id": "C-082",
+   "categoria": "C",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Segundo a explicação mais aceita, o que significa o nome \"Tocantins\", de origem tupi?",
+   "resposta": "Bico de tucano",
+   "alternativas": [
+    "Água que canta",
+    "Bico de tucano",
+    "Terra vermelha",
+    "Rio das pedras"
+   ]
+  },
+  {
+   "id": "C-083",
+   "categoria": "C",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quantos milímetros há em um centímetro?",
+   "resposta": "10",
+   "alternativas": [
+    "100",
+    "10",
+    "1.000",
+    "5"
+   ]
+  },
+  {
+   "id": "C-084",
+   "categoria": "C",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quantos graus tem um ângulo reto?",
+   "resposta": "90",
+   "alternativas": [
+    "360",
+    "45",
+    "180",
+    "90"
+   ]
+  },
+  {
+   "id": "C-085",
+   "categoria": "C",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Por que existe o ano bissexto?",
+   "resposta": "Porque a Terra leva cerca de 365 dias e 6 horas para dar a volta no Sol",
+   "alternativas": [
+    "Para compensar o movimento da Lua",
+    "Porque a Terra leva cerca de 365 dias e 6 horas para dar a volta no Sol",
+    "Porque fevereiro é o mês mais curto",
+    "Por decreto de um papa, sem motivo astronômico"
+   ]
+  },
+  {
+   "id": "C-086",
+   "categoria": "C",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Segundo a história mais conhecida, de onde vem a palavra \"sanduíche\"?",
+   "resposta": "Do Conde de Sandwich, nobre inglês",
+   "alternativas": [
+    "De uma cidade da Alemanha",
+    "Do francês \"sans viande\"",
+    "Do Conde de Sandwich, nobre inglês",
+    "De um padeiro italiano"
+   ]
+  },
+  {
+   "id": "C-087",
+   "categoria": "C",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quantas letras tem o alfabeto da língua portuguesa desde o Acordo Ortográfico?",
+   "resposta": "26",
+   "alternativas": [
+    "24",
+    "26",
+    "23",
+    "25"
+   ]
+  },
+  {
+   "id": "C-088",
+   "categoria": "C",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o plural de \"cidadão\"?",
+   "resposta": "Cidadãos",
+   "alternativas": [
+    "Cidadãos",
+    "Cidadões",
+    "Cidadães",
+    "Cidadans"
+   ]
+  },
+  {
+   "id": "C-089",
+   "categoria": "C",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o coletivo de lobos?",
+   "resposta": "Alcateia",
+   "alternativas": [
+    "Manada",
+    "Vara",
+    "Alcateia",
+    "Cardume"
+   ]
+  },
+  {
+   "id": "C-090",
+   "categoria": "C",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o coletivo de peixes?",
+   "resposta": "Cardume",
+   "alternativas": [
+    "Enxame",
+    "Alcateia",
+    "Cardume",
+    "Rebanho"
+   ]
+  },
+  {
+   "id": "C-091",
+   "categoria": "C",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "O que significa \"Paraná\", em tupi-guarani?",
+   "resposta": "Rio semelhante ao mar",
+   "alternativas": [
+    "Rio semelhante ao mar",
+    "Água que corre",
+    "Lugar de pinheiros",
+    "Terra vermelha"
+   ]
+  },
+  {
+   "id": "C-092",
+   "categoria": "C",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "De onde vêm os nomes dos dias da semana em português, como \"segunda-feira\"?",
+   "resposta": "Do latim da Igreja, \"feria secunda\", segundo dia de festa",
+   "alternativas": [
+    "De um rei português que numerou os dias",
+    "Do árabe, \"sagunda\"",
+    "Dos nomes dos planetas, em latim",
+    "Do latim da Igreja, \"feria secunda\", segundo dia de festa"
+   ]
+  },
+  {
+   "id": "C-093",
+   "categoria": "C",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "O que significa \"Ipiranga\", nome do riacho da Independência, em tupi?",
+   "resposta": "Rio vermelho",
+   "alternativas": [
+    "Rio vermelho",
+    "Terra alta",
+    "Água limpa",
+    "Rio das pedras"
+   ]
+  },
+  {
+   "id": "C-094",
+   "categoria": "C",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "O que significa \"maracanã\", nome do famoso estádio?",
+   "resposta": "Um tipo de ave, parente das araras",
+   "alternativas": [
+    "Rio barulhento",
+    "Grande arena",
+    "Um tipo de ave, parente das araras",
+    "Pedra grande"
+   ]
+  },
+  {
+   "id": "C-095",
+   "categoria": "C",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "De qual língua vem a palavra \"bife\"?",
+   "resposta": "Inglês (\"beef\")",
+   "alternativas": [
+    "Inglês (\"beef\")",
+    "Francês",
+    "Alemão",
+    "Italiano"
+   ]
+  },
+  {
+   "id": "C-096",
+   "categoria": "C",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "De qual língua vem a palavra \"piquenique\"?",
+   "resposta": "Francês (\"pique-nique\")",
+   "alternativas": [
+    "Inglês",
+    "Italiano",
+    "Alemão",
+    "Francês (\"pique-nique\")"
+   ]
+  },
+  {
+   "id": "C-097",
+   "categoria": "C",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é a origem da palavra \"vândalo\"?",
+   "resposta": "O nome de um povo germânico que saqueou Roma em 455",
+   "alternativas": [
+    "O nome de um povo germânico que saqueou Roma em 455",
+    "Um pirata viking",
+    "Um deus romano da destruição",
+    "Um ladrão francês da Idade Média"
+   ]
+  },
+  {
+   "id": "C-098",
+   "categoria": "C",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "De onde vem a palavra \"bússola\"?",
+   "resposta": "Do italiano \"bussola\", caixinha",
+   "alternativas": [
+    "Do árabe \"busul\", norte",
+    "Do latim \"bussus\", ferro",
+    "Do chinês \"bu-sol\", agulha",
+    "Do italiano \"bussola\", caixinha"
+   ]
+  },
+  {
+   "id": "C-099",
+   "categoria": "C",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "De onde vem a palavra \"candidato\"?",
+   "resposta": "Do latim \"candidatus\", vestido de branco",
+   "alternativas": [
+    "Do latim \"candidatus\", vestido de branco",
+    "Do grego \"kandis\", líder",
+    "Do árabe \"qandi\", doce",
+    "Do latim \"candela\", vela"
+   ]
+  },
+  {
+   "id": "C-100",
+   "categoria": "C",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "O que significa \"Abaporu\", nome do quadro de Tarsila do Amaral, em tupi?",
+   "resposta": "Homem que come gente",
+   "alternativas": [
+    "Sol do sertão",
+    "Pé grande",
+    "Gigante da terra",
+    "Homem que come gente"
+   ]
+  },
+  {
+   "id": "C-101",
+   "categoria": "C",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "De onde vem a palavra \"orangotango\"?",
+   "resposta": "Do malaio, \"homem da floresta\"",
+   "alternativas": [
+    "De uma língua africana, \"macaco ruivo\"",
+    "Do malaio, \"homem da floresta\"",
+    "Do latim, \"laranja peluda\"",
+    "Do hindi, \"rei das árvores\""
+   ]
+  },
+  {
+   "id": "C-102",
+   "categoria": "C",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quantos segundos tem um dia?",
+   "resposta": "86.400",
+   "alternativas": [
+    "864.000",
+    "8.640",
+    "36.000",
+    "86.400"
+   ]
+  },
+  {
+   "id": "C-103",
+   "categoria": "C",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Como se chama a pontinha de plástico ou metal na ponta do cadarço?",
+   "resposta": "Agulheta",
+   "alternativas": [
+    "Presilha",
+    "Agulheta",
+    "Pesponto",
+    "Ilhós"
+   ]
+  },
+  {
+   "id": "C-104",
+   "categoria": "C",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Como se chama a região entre as sobrancelhas?",
+   "resposta": "Glabela",
+   "alternativas": [
+    "Têmpora",
+    "Glabela",
+    "Nuca",
+    "Filtro"
+   ]
+  },
+  {
+   "id": "C-105",
+   "categoria": "C",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Como se chama o sulco entre o nariz e o lábio superior?",
+   "resposta": "Filtro labial",
+   "alternativas": [
+    "Filtro labial",
+    "Septo",
+    "Glabela",
+    "Comissura"
+   ]
+  },
+  {
+   "id": "C-106",
+   "categoria": "C",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o nome popular do símbolo \"¶\", que marca parágrafos?",
+   "resposta": "Pé de mosca",
+   "alternativas": [
+    "Cifrão",
+    "Cerquilha",
+    "Til",
+    "Pé de mosca"
+   ]
+  },
+  {
+   "id": "C-107",
+   "categoria": "C",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Como se chama o medo de ficar sem o celular?",
+   "resposta": "Nomofobia",
+   "alternativas": [
+    "Nomofobia",
+    "Cronofobia",
+    "Tecnofobia",
+    "Fonofobia"
+   ]
+  },
+  {
+   "id": "C-108",
+   "categoria": "C",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Como se chama a palavra que se lê igual de trás para frente, como \"arara\"?",
+   "resposta": "Palíndromo",
+   "alternativas": [
+    "Pleonasmo",
+    "Palíndromo",
+    "Homônimo",
+    "Anagrama"
+   ]
+  },
+  {
+   "id": "C-109",
+   "categoria": "C",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Como se chama a palavra formada pelas mesmas letras de outra, embaralhadas, como \"amor\" e \"Roma\"?",
+   "resposta": "Anagrama",
+   "alternativas": [
+    "Anagrama",
+    "Acróstico",
+    "Sinônimo",
+    "Palíndromo"
+   ]
+  },
+  {
+   "id": "C-110",
+   "categoria": "C",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quantos dias, aproximadamente, a Lua leva para passar por todas as suas fases?",
+   "resposta": "29,5 dias",
+   "alternativas": [
+    "29,5 dias",
+    "7 dias",
+    "24 dias",
+    "35 dias"
+   ]
+  },
+  {
+   "id": "P-051",
+   "categoria": "P",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o nome do irmão de Mario, que usa roupa verde?",
+   "resposta": "Luigi",
+   "alternativas": [
+    "Waluigi",
+    "Wario",
+    "Toad",
+    "Luigi"
+   ]
+  },
+  {
+   "id": "P-052",
+   "categoria": "P",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual super-herói da DC é conhecido como o \"Homem-Morcego\"?",
+   "resposta": "Batman",
+   "alternativas": [
+    "Lanterna Verde",
+    "Super-Homem",
+    "Batman",
+    "Flash"
+   ]
+  },
+  {
+   "id": "P-053",
+   "categoria": "P",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual heroína da DC é uma princesa amazona com laço da verdade?",
+   "resposta": "Mulher-Maravilha",
+   "alternativas": [
+    "Supergirl",
+    "Mulher-Maravilha",
+    "Arlequina",
+    "Mulher-Gato"
+   ]
+  },
+  {
+   "id": "P-054",
+   "categoria": "P",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual herói da Marvel é um cientista que vira um gigante verde quando fica com raiva?",
+   "resposta": "Hulk",
+   "alternativas": [
+    "Coisa",
+    "Abominável",
+    "Thanos",
+    "Hulk"
+   ]
+  },
+  {
+   "id": "P-055",
+   "categoria": "P",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual vilão palhaço é o maior inimigo do Batman?",
+   "resposta": "Coringa",
+   "alternativas": [
+    "Coringa",
+    "Charada",
+    "Duas-Caras",
+    "Pinguim"
+   ]
+  },
+  {
+   "id": "P-056",
+   "categoria": "P",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o planeta natal do Super-Homem, que foi destruído?",
+   "resposta": "Krypton",
+   "alternativas": [
+    "Krypton",
+    "Thanagar",
+    "Apokolips",
+    "Oa"
+   ]
+  },
+  {
+   "id": "P-057",
+   "categoria": "P",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "De qual tipo é o Pokémon Squirtle?",
+   "resposta": "Água",
+   "alternativas": [
+    "Planta",
+    "Elétrico",
+    "Água",
+    "Fogo"
+   ]
+  },
+  {
+   "id": "P-058",
+   "categoria": "P",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual battle royale da Garena, para celular, é muito popular no Brasil?",
+   "resposta": "Free Fire",
+   "alternativas": [
+    "PUBG Mobile",
+    "Free Fire",
+    "Fortnite",
+    "Call of Duty Mobile"
+   ]
+  },
+  {
+   "id": "P-059",
+   "categoria": "P",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em qual jogo peças de quatro blocos caem e é preciso completar linhas?",
+   "resposta": "Tetris",
+   "alternativas": [
+    "Tetris",
+    "Candy Crush",
+    "Bejeweled",
+    "Pac-Man"
+   ]
+  },
+  {
+   "id": "P-060",
+   "categoria": "P",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o nome da raposa de duas caudas, amiga do Sonic?",
+   "resposta": "Tails",
+   "alternativas": [
+    "Tails",
+    "Amy",
+    "Shadow",
+    "Knuckles"
+   ]
+  },
+  {
+   "id": "P-061",
+   "categoria": "P",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual herói de anime derrota qualquer inimigo com um único soco?",
+   "resposta": "Saitama",
+   "alternativas": [
+    "Goku",
+    "Saitama",
+    "Mob",
+    "Genos"
+   ]
+  },
+  {
+   "id": "P-062",
+   "categoria": "P",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em \"Dragon Ball\", quantas esferas do dragão é preciso reunir para chamar Shenlong?",
+   "resposta": "7",
+   "alternativas": [
+    "5",
+    "6",
+    "8",
+    "7"
+   ]
+  },
+  {
+   "id": "P-063",
+   "categoria": "P",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em \"Naruto\", qual membro do clã Uchiha é o grande rival e amigo de Naruto?",
+   "resposta": "Sasuke",
+   "alternativas": [
+    "Kakashi",
+    "Sasuke",
+    "Neji",
+    "Itachi"
+   ]
+  },
+  {
+   "id": "P-064",
+   "categoria": "P",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual jogo da Nintendo reúne personagens de várias franquias lutando entre si?",
+   "resposta": "Super Smash Bros.",
+   "alternativas": [
+    "Mario Party",
+    "Super Smash Bros.",
+    "Mario Kart",
+    "Street Fighter"
+   ]
+  },
+  {
+   "id": "P-065",
+   "categoria": "P",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual jogo de corrida da Nintendo tem Mario, cascos de tartaruga e cascas de banana?",
+   "resposta": "Mario Kart",
+   "alternativas": [
+    "Mario Party",
+    "Mario Kart",
+    "Super Smash Bros.",
+    "Crash Team Racing"
+   ]
+  },
+  {
+   "id": "P-066",
+   "categoria": "P",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual personagem da Nintendo é uma bolinha rosa que engole os inimigos e copia seus poderes?",
+   "resposta": "Kirby",
+   "alternativas": [
+    "Yoshi",
+    "Toad",
+    "Jigglypuff",
+    "Kirby"
+   ]
+  },
+  {
+   "id": "P-067",
+   "categoria": "P",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual personagem da Turma da Mônica troca o \"r\" pelo \"l\" quando fala?",
+   "resposta": "Cebolinha",
+   "alternativas": [
+    "Cebolinha",
+    "Cascão",
+    "Chico Bento",
+    "Magali"
+   ]
+  },
+  {
+   "id": "P-068",
+   "categoria": "P",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual personagem da Turma da Mônica tem pavor de tomar banho?",
+   "resposta": "Cascão",
+   "alternativas": [
+    "Franjinha",
+    "Cebolinha",
+    "Magali",
+    "Cascão"
+   ]
+  },
+  {
+   "id": "P-069",
+   "categoria": "P",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual personagem da Turma da Mônica é comilona e adora melancia?",
+   "resposta": "Magali",
+   "alternativas": [
+    "Magali",
+    "Marina",
+    "Cascão",
+    "Mônica"
+   ]
+  },
+  {
+   "id": "P-070",
+   "categoria": "P",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual personagem da Marvel é o \"Deus da Trapaça\", irmão adotivo de Thor?",
+   "resposta": "Loki",
+   "alternativas": [
+    "Loki",
+    "Heimdall",
+    "Odin",
+    "Hela"
+   ]
+  },
+  {
+   "id": "P-071",
+   "categoria": "P",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em qual país foi criado o Tetris, em 1984?",
+   "resposta": "União Soviética",
+   "alternativas": [
+    "Japão",
+    "União Soviética",
+    "Coreia do Sul",
+    "Estados Unidos"
+   ]
+  },
+  {
+   "id": "P-072",
+   "categoria": "P",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o rei dos Gerudo, grande vilão da série \"The Legend of Zelda\"?",
+   "resposta": "Ganondorf",
+   "alternativas": [
+    "Ganondorf",
+    "Vaati",
+    "Skull Kid",
+    "Bowser"
+   ]
+  },
+  {
+   "id": "P-073",
+   "categoria": "P",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "A série de futebol \"FIFA\", da EA, passou a se chamar como a partir de 2023?",
+   "resposta": "EA Sports FC",
+   "alternativas": [
+    "eFootball",
+    "FIFA Ultimate",
+    "EA Sports FC",
+    "Pro Evolution Soccer"
+   ]
+  },
+  {
+   "id": "P-074",
+   "categoria": "P",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em \"Minecraft\", qual é o nome da dimensão cheia de fogo e lava?",
+   "resposta": "Nether",
+   "alternativas": [
+    "Nether",
+    "End",
+    "Aether",
+    "Overworld"
+   ]
+  },
+  {
+   "id": "P-075",
+   "categoria": "P",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual dragão é o chefão final de \"Minecraft\"?",
+   "resposta": "Ender Dragon",
+   "alternativas": [
+    "Ender Dragon",
+    "Wither",
+    "Elder Guardian",
+    "Warden"
+   ]
+  },
+  {
+   "id": "P-076",
+   "categoria": "P",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o nome do mordomo do Batman?",
+   "resposta": "Alfred Pennyworth",
+   "alternativas": [
+    "James Gordon",
+    "Dick Grayson",
+    "Lucius Fox",
+    "Alfred Pennyworth"
+   ]
+  },
+  {
+   "id": "P-077",
+   "categoria": "P",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Quem foi o primeiro Robin, parceiro do Batman?",
+   "resposta": "Dick Grayson",
+   "alternativas": [
+    "Dick Grayson",
+    "Jason Todd",
+    "Tim Drake",
+    "Damian Wayne"
+   ]
+  },
+  {
+   "id": "P-078",
+   "categoria": "P",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual equipe de heróis mutantes da Marvel é liderada pelo Professor Xavier?",
+   "resposta": "X-Men",
+   "alternativas": [
+    "Vingadores",
+    "Quarteto Fantástico",
+    "X-Men",
+    "Guardiões da Galáxia"
+   ]
+  },
+  {
+   "id": "P-079",
+   "categoria": "P",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual equipe da DC reúne Batman, Super-Homem e Mulher-Maravilha?",
+   "resposta": "Liga da Justiça",
+   "alternativas": [
+    "Liga da Justiça",
+    "Patrulha do Destino",
+    "Tropa dos Lanternas Verdes",
+    "Vingadores"
+   ]
+  },
+  {
+   "id": "P-080",
+   "categoria": "P",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual empresa criou \"League of Legends\"?",
+   "resposta": "Riot Games",
+   "alternativas": [
+    "Blizzard",
+    "Epic Games",
+    "Valve",
+    "Riot Games"
+   ]
+  },
+  {
+   "id": "P-081",
+   "categoria": "P",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual jogo da Rockstar se passa na cidade fictícia de Los Santos, inspirada em Los Angeles?",
+   "resposta": "GTA V",
+   "alternativas": [
+    "GTA V",
+    "Watch Dogs",
+    "Saints Row",
+    "Red Dead Redemption 2"
+   ]
+  },
+  {
+   "id": "P-082",
+   "categoria": "P",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o nome do protagonista espartano de \"God of War\"?",
+   "resposta": "Kratos",
+   "alternativas": [
+    "Zeus",
+    "Ares",
+    "Kratos",
+    "Atreus"
+   ]
+  },
+  {
+   "id": "P-083",
+   "categoria": "P",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual Pokémon gigante passa o tempo dormindo e bloqueia caminhos nos jogos?",
+   "resposta": "Snorlax",
+   "alternativas": [
+    "Snorlax",
+    "Psyduck",
+    "Slowpoke",
+    "Jigglypuff"
+   ]
+  },
+  {
+   "id": "P-084",
+   "categoria": "P",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual jogo de luta da Capcom tem Ryu, Ken e Chun-Li?",
+   "resposta": "Street Fighter",
+   "alternativas": [
+    "Mortal Kombat",
+    "Street Fighter",
+    "The King of Fighters",
+    "Tekken"
+   ]
+  },
+  {
+   "id": "P-085",
+   "categoria": "P",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual lutador de \"Street Fighter\" é brasileiro?",
+   "resposta": "Blanka",
+   "alternativas": [
+    "Guile",
+    "Zangief",
+    "Dhalsim",
+    "Blanka"
+   ]
+  },
+  {
+   "id": "P-086",
+   "categoria": "P",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual anime de esporte acompanha Hinata e o time de vôlei do colégio Karasuno?",
+   "resposta": "Haikyuu!!",
+   "alternativas": [
+    "Captain Tsubasa",
+    "Blue Lock",
+    "Haikyuu!!",
+    "Kuroko no Basket"
+   ]
+  },
+  {
+   "id": "P-087",
+   "categoria": "P",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em \"Jujutsu Kaisen\", qual protagonista engole um dedo de Sukuna?",
+   "resposta": "Yuji Itadori",
+   "alternativas": [
+    "Satoru Gojo",
+    "Megumi Fushiguro",
+    "Nobara Kugisaki",
+    "Yuji Itadori"
+   ]
+  },
+  {
+   "id": "P-088",
+   "categoria": "P",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em \"My Hero Academia\", como se chamam os superpoderes das pessoas?",
+   "resposta": "Individualidades (Quirks)",
+   "alternativas": [
+    "Nen",
+    "Individualidades (Quirks)",
+    "Chakra",
+    "Akuma no Mi"
+   ]
+  },
+  {
+   "id": "P-089",
+   "categoria": "P",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o mapa principal do modo clássico de \"League of Legends\"?",
+   "resposta": "Summoner's Rift (Rift dos Invocadores)",
+   "alternativas": [
+    "Crystal Scar",
+    "Summoner's Rift (Rift dos Invocadores)",
+    "Howling Abyss",
+    "Twisted Treeline"
+   ]
+  },
+  {
+   "id": "P-090",
+   "categoria": "P",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual jogo da Supercell mistura cartas, torres e batalhas em arenas?",
+   "resposta": "Clash Royale",
+   "alternativas": [
+    "Brawl Stars",
+    "Clash of Clans",
+    "Clash Royale",
+    "Hearthstone"
+   ]
+  },
+  {
+   "id": "P-091",
+   "categoria": "P",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual quadrinista brasileiro criou a \"Turma do Pererê\"?",
+   "resposta": "Ziraldo",
+   "alternativas": [
+    "Ziraldo",
+    "Laerte",
+    "Henfil",
+    "Mauricio de Sousa"
+   ]
+  },
+  {
+   "id": "P-092",
+   "categoria": "P",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual jogador brasileiro de CS:GO foi eleito o melhor do mundo pela HLTV em 2016 e 2017?",
+   "resposta": "coldzera (Marcelo David)",
+   "alternativas": [
+    "FalleN",
+    "TACO",
+    "fer",
+    "coldzera (Marcelo David)"
+   ]
+  },
+  {
+   "id": "P-093",
+   "categoria": "P",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual jogo de eSports tem como principal torneio o \"The International\"?",
+   "resposta": "Dota 2",
+   "alternativas": [
+    "League of Legends",
+    "StarCraft II",
+    "Dota 2",
+    "Counter-Strike"
+   ]
+  },
+  {
+   "id": "P-094",
+   "categoria": "P",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual série de RPG da Square Enix tem chocobos e moogles?",
+   "resposta": "Final Fantasy",
+   "alternativas": [
+    "Kingdom Hearts",
+    "Final Fantasy",
+    "Dragon Quest",
+    "Chrono Trigger"
+   ]
+  },
+  {
+   "id": "P-095",
+   "categoria": "P",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Na série \"The Legend of Zelda\", quais são as três partes da Triforce?",
+   "resposta": "Poder, Sabedoria e Coragem",
+   "alternativas": [
+    "Luz, Sombra e Tempo",
+    "Poder, Sabedoria e Coragem",
+    "Força, Magia e Tempo",
+    "Fogo, Água e Vento"
+   ]
+  },
+  {
+   "id": "P-096",
+   "categoria": "P",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual empresa japonesa lançou \"Metal Gear\", de Hideo Kojima?",
+   "resposta": "Konami",
+   "alternativas": [
+    "Konami",
+    "Capcom",
+    "Square Enix",
+    "Sega"
+   ]
+  },
+  {
+   "id": "P-097",
+   "categoria": "P",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual foi o último console da Sega, lançado em 1998?",
+   "resposta": "Dreamcast",
+   "alternativas": [
+    "Saturn",
+    "Mega Drive",
+    "Dreamcast",
+    "Master System"
+   ]
+  },
+  {
+   "id": "P-098",
+   "categoria": "P",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual console portátil da Nintendo foi lançado em 1989?",
+   "resposta": "Game Boy",
+   "alternativas": [
+    "Virtual Boy",
+    "Game Gear",
+    "Game Boy",
+    "Nintendo DS"
+   ]
+  },
+  {
+   "id": "P-099",
+   "categoria": "P",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o videogame mais vendido de todos os tempos?",
+   "resposta": "Minecraft",
+   "alternativas": [
+    "GTA V",
+    "Wii Sports",
+    "Mario Kart 8",
+    "Minecraft"
+   ]
+  },
+  {
+   "id": "P-100",
+   "categoria": "P",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual mangaká criou \"Naruto\"?",
+   "resposta": "Masashi Kishimoto",
+   "alternativas": [
+    "Akira Toriyama",
+    "Eiichiro Oda",
+    "Masashi Kishimoto",
+    "Tite Kubo"
+   ]
+  },
+  {
+   "id": "P-101",
+   "categoria": "P",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual mangaká criou \"One Piece\"?",
+   "resposta": "Eiichiro Oda",
+   "alternativas": [
+    "Masashi Kishimoto",
+    "Hirohiko Araki",
+    "Eiichiro Oda",
+    "Yoshihiro Togashi"
+   ]
+  },
+  {
+   "id": "P-102",
+   "categoria": "P",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual mangaká criou \"Hunter x Hunter\"?",
+   "resposta": "Yoshihiro Togashi",
+   "alternativas": [
+    "Hajime Isayama",
+    "Tite Kubo",
+    "Yoshihiro Togashi",
+    "Eiichiro Oda"
+   ]
+  },
+  {
+   "id": "P-103",
+   "categoria": "P",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em \"Neon Genesis Evangelion\", qual protagonista pilota o EVA-01?",
+   "resposta": "Shinji Ikari",
+   "alternativas": [
+    "Gendo Ikari",
+    "Shinji Ikari",
+    "Rei Ayanami",
+    "Asuka Langley"
+   ]
+  },
+  {
+   "id": "P-104",
+   "categoria": "P",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em \"Os Cavaleiros do Zodíaco\", qual é a constelação de Seiya?",
+   "resposta": "Pégaso",
+   "alternativas": [
+    "Cisne",
+    "Dragão",
+    "Pégaso",
+    "Andrômeda"
+   ]
+  },
+  {
+   "id": "P-105",
+   "categoria": "P",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o nome do protagonista de \"Yu Yu Hakusho\"?",
+   "resposta": "Yusuke Urameshi",
+   "alternativas": [
+    "Hiei",
+    "Kurama",
+    "Kazuma Kuwabara",
+    "Yusuke Urameshi"
+   ]
+  },
+  {
+   "id": "P-106",
+   "categoria": "P",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual cientista foi o primeiro Homem-Formiga da Marvel?",
+   "resposta": "Hank Pym",
+   "alternativas": [
+    "Hank Pym",
+    "Bruce Banner",
+    "Reed Richards",
+    "Scott Lang"
+   ]
+  },
+  {
+   "id": "P-107",
+   "categoria": "P",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual metal fictício forma o escudo clássico do Capitão América?",
+   "resposta": "Vibranium",
+   "alternativas": [
+    "Vibranium",
+    "Adamantium",
+    "Kryptonita",
+    "Uru"
+   ]
+  },
+  {
+   "id": "P-108",
+   "categoria": "P",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual metal fictício reveste o esqueleto do Wolverine?",
+   "resposta": "Adamantium",
+   "alternativas": [
+    "Carbonadium",
+    "Vibranium",
+    "Uru",
+    "Adamantium"
+   ]
+  },
+  {
+   "id": "P-109",
+   "categoria": "P",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "No anime \"Pokémon\", qual é a cidade natal de Ash?",
+   "resposta": "Pallet",
+   "alternativas": [
+    "Pewter",
+    "Cerulean",
+    "Pallet",
+    "Viridian"
+   ]
+  },
+  {
+   "id": "P-110",
+   "categoria": "P",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em qual jogo de luta o vencedor pode finalizar o adversário com um \"Fatality\"?",
+   "resposta": "Mortal Kombat",
+   "alternativas": [
+    "Tekken",
+    "Mortal Kombat",
+    "Street Fighter",
+    "Killer Instinct"
+   ]
+  },
+  {
+   "id": "POP-051",
+   "categoria": "★",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o nome do boneco caubói de \"Toy Story\"?",
+   "resposta": "Woody",
+   "alternativas": [
+    "Buzz Lightyear",
+    "Woody",
+    "Andy",
+    "Jessie"
+   ]
+  },
+  {
+   "id": "POP-052",
+   "categoria": "★",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o nome da peixinha azul e esquecida de \"Procurando Nemo\"?",
+   "resposta": "Dory",
+   "alternativas": [
+    "Nemo",
+    "Dory",
+    "Marlin",
+    "Bruce"
+   ]
+  },
+  {
+   "id": "POP-053",
+   "categoria": "★",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em qual filme da Pixar as emoções Alegria e Tristeza vivem na cabeça de uma menina?",
+   "resposta": "Divertida Mente",
+   "alternativas": [
+    "Soul",
+    "Divertida Mente",
+    "Elementos",
+    "Red: Crescer é uma Fera"
+   ]
+  },
+  {
+   "id": "POP-054",
+   "categoria": "★",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual ratinho é o mascote da Disney?",
+   "resposta": "Mickey Mouse",
+   "alternativas": [
+    "Ligeirinho",
+    "Pinky",
+    "Mickey Mouse",
+    "Jerry"
+   ]
+  },
+  {
+   "id": "POP-055",
+   "categoria": "★",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual personagem é uma esponja amarela que mora na Fenda do Biquíni?",
+   "resposta": "Bob Esponja",
+   "alternativas": [
+    "Patrick Estrela",
+    "Sr. Siriguejo",
+    "Lula Molusco",
+    "Bob Esponja"
+   ]
+  },
+  {
+   "id": "POP-056",
+   "categoria": "★",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o nome da família amarela que mora em Springfield?",
+   "resposta": "Os Simpsons",
+   "alternativas": [
+    "Os Jetsons",
+    "Os Simpsons",
+    "Os Flintstones",
+    "Os Griffin"
+   ]
+  },
+  {
+   "id": "POP-057",
+   "categoria": "★",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o nome do mago cinzento de \"O Senhor dos Anéis\"?",
+   "resposta": "Gandalf",
+   "alternativas": [
+    "Saruman",
+    "Merlin",
+    "Gandalf",
+    "Dumbledore"
+   ]
+  },
+  {
+   "id": "POP-058",
+   "categoria": "★",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o nome da escola de magia de Harry Potter?",
+   "resposta": "Hogwarts",
+   "alternativas": [
+    "Beauxbatons",
+    "Ilvermorny",
+    "Hogwarts",
+    "Durmstrang"
+   ]
+  },
+  {
+   "id": "POP-059",
+   "categoria": "★",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual dupla de desenho animado é formada por um gato e um rato que vivem brigando?",
+   "resposta": "Tom e Jerry",
+   "alternativas": [
+    "Tom e Jerry",
+    "Mickey e Pluto",
+    "Pinky e Cérebro",
+    "Piu-Piu e Frajola"
+   ]
+  },
+  {
+   "id": "POP-060",
+   "categoria": "★",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual cantora é chamada de \"Rainha do Pop\"?",
+   "resposta": "Madonna",
+   "alternativas": [
+    "Britney Spears",
+    "Beyoncé",
+    "Lady Gaga",
+    "Madonna"
+   ]
+  },
+  {
+   "id": "POP-061",
+   "categoria": "★",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Em qual reality musical da Globo os jurados viram a cadeira quando gostam da voz?",
+   "resposta": "The Voice Brasil",
+   "alternativas": [
+    "The Voice Brasil",
+    "Ídolos",
+    "Fama",
+    "Popstar"
+   ]
+  },
+  {
+   "id": "POP-062",
+   "categoria": "★",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual super-herói foi vivido no cinema por Tobey Maguire, Andrew Garfield e Tom Holland?",
+   "resposta": "Homem-Aranha",
+   "alternativas": [
+    "Homem-Aranha",
+    "Super-Homem",
+    "Batman",
+    "Flash"
+   ]
+  },
+  {
+   "id": "POP-063",
+   "categoria": "★",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual princesa da Disney tem cabelos longuíssimos e vivia presa numa torre?",
+   "resposta": "Rapunzel",
+   "alternativas": [
+    "Bela",
+    "Ariel",
+    "Rapunzel",
+    "Aurora"
+   ]
+  },
+  {
+   "id": "POP-064",
+   "categoria": "★",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual cantor canadense estourou com \"Baby\" quando ainda era adolescente?",
+   "resposta": "Justin Bieber",
+   "alternativas": [
+    "The Weeknd",
+    "Justin Bieber",
+    "Shawn Mendes",
+    "Drake"
+   ]
+  },
+  {
+   "id": "POP-065",
+   "categoria": "★",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual personagem de \"Shrek\" é um gato que usa botas e espada?",
+   "resposta": "Gato de Botas",
+   "alternativas": [
+    "Burro",
+    "Gato de Botas",
+    "Pinóquio",
+    "Biscoito"
+   ]
+  },
+  {
+   "id": "POP-066",
+   "categoria": "★",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual série de filmes tem Vin Diesel e corridas de carros envenenados?",
+   "resposta": "Velozes e Furiosos",
+   "alternativas": [
+    "Velozes e Furiosos",
+    "Need for Speed",
+    "Carros",
+    "Transformers"
+   ]
+  },
+  {
+   "id": "POP-067",
+   "categoria": "★",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual é o nome do boneco de neve falante de \"Frozen\"?",
+   "resposta": "Olaf",
+   "alternativas": [
+    "Olaf",
+    "Sven",
+    "Hans",
+    "Kristoff"
+   ]
+  },
+  {
+   "id": "POP-068",
+   "categoria": "★",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual animação da Disney se passa no Havaí, com a menina Lilo e um alienígena azul?",
+   "resposta": "Lilo & Stitch",
+   "alternativas": [
+    "Planeta do Tesouro",
+    "Moana",
+    "Encanto",
+    "Lilo & Stitch"
+   ]
+  },
+  {
+   "id": "POP-069",
+   "categoria": "★",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual dupla sertaneja gravou o clássico \"Evidências\"?",
+   "resposta": "Chitãozinho & Xororó",
+   "alternativas": [
+    "Chitãozinho & Xororó",
+    "Zezé Di Camargo & Luciano",
+    "Leandro & Leonardo",
+    "Bruno & Marrone"
+   ]
+  },
+  {
+   "id": "POP-070",
+   "categoria": "★",
+   "dificuldade": 1,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual cantora sertaneja ficou conhecida como a \"Rainha da Sofrência\"?",
+   "resposta": "Marília Mendonça",
+   "alternativas": [
+    "Paula Fernandes",
+    "Maiara",
+    "Naiara Azevedo",
+    "Marília Mendonça"
+   ]
+  },
+  {
+   "id": "POP-071",
+   "categoria": "★",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual atriz interpreta Wandinha na série da Netflix?",
+   "resposta": "Jenna Ortega",
+   "alternativas": [
+    "Millie Bobby Brown",
+    "Florence Pugh",
+    "Jenna Ortega",
+    "Zendaya"
+   ]
+  },
+  {
+   "id": "POP-072",
+   "categoria": "★",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual atriz interpreta Eleven em \"Stranger Things\"?",
+   "resposta": "Millie Bobby Brown",
+   "alternativas": [
+    "Natalia Dyer",
+    "Jenna Ortega",
+    "Sadie Sink",
+    "Millie Bobby Brown"
+   ]
+  },
+  {
+   "id": "POP-073",
+   "categoria": "★",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual ator interpretou Jack em \"Titanic\"?",
+   "resposta": "Leonardo DiCaprio",
+   "alternativas": [
+    "Brad Pitt",
+    "Leonardo DiCaprio",
+    "Johnny Depp",
+    "Matt Damon"
+   ]
+  },
+  {
+   "id": "POP-074",
+   "categoria": "★",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual ator interpretou Harry Potter nos filmes?",
+   "resposta": "Daniel Radcliffe",
+   "alternativas": [
+    "Tom Felton",
+    "Elijah Wood",
+    "Rupert Grint",
+    "Daniel Radcliffe"
+   ]
+  },
+  {
+   "id": "POP-075",
+   "categoria": "★",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual ator interpretou o hobbit Frodo em \"O Senhor dos Anéis\"?",
+   "resposta": "Elijah Wood",
+   "alternativas": [
+    "Sean Astin",
+    "Orlando Bloom",
+    "Elijah Wood",
+    "Daniel Radcliffe"
+   ]
+  },
+  {
+   "id": "POP-076",
+   "categoria": "★",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "De qual boy band britânica Harry Styles fez parte?",
+   "resposta": "One Direction",
+   "alternativas": [
+    "The Wanted",
+    "Coldplay",
+    "Arctic Monkeys",
+    "One Direction"
+   ]
+  },
+  {
+   "id": "POP-077",
+   "categoria": "★",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual cantor lançou \"Blinding Lights\"?",
+   "resposta": "The Weeknd",
+   "alternativas": [
+    "Ed Sheeran",
+    "Bruno Mars",
+    "The Weeknd",
+    "Drake"
+   ]
+  },
+  {
+   "id": "POP-078",
+   "categoria": "★",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual cantor britânico lançou \"Shape of You\"?",
+   "resposta": "Ed Sheeran",
+   "alternativas": [
+    "Lewis Capaldi",
+    "Harry Styles",
+    "Sam Smith",
+    "Ed Sheeran"
+   ]
+  },
+  {
+   "id": "POP-079",
+   "categoria": "★",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual série de comédia acompanha os funcionários do escritório da Dunder Mifflin?",
+   "resposta": "The Office",
+   "alternativas": [
+    "Brooklyn Nine-Nine",
+    "The Office",
+    "Parks and Recreation",
+    "Community"
+   ]
+  },
+  {
+   "id": "POP-080",
+   "categoria": "★",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual série acompanha o xerife Rick Grimes num apocalipse zumbi?",
+   "resposta": "The Walking Dead",
+   "alternativas": [
+    "The Last of Us",
+    "Black Summer",
+    "The Walking Dead",
+    "Z Nation"
+   ]
+  },
+  {
+   "id": "POP-081",
+   "categoria": "★",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual série da HBO, baseada num videogame, acompanha Joel e Ellie?",
+   "resposta": "The Last of Us",
+   "alternativas": [
+    "The Walking Dead",
+    "Arcane",
+    "Fallout",
+    "The Last of Us"
+   ]
+  },
+  {
+   "id": "POP-082",
+   "categoria": "★",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual série animada da Netflix se passa no universo de \"League of Legends\"?",
+   "resposta": "Arcane",
+   "alternativas": [
+    "Love, Death & Robots",
+    "Cyberpunk: Mercenários",
+    "Castlevania",
+    "Arcane"
+   ]
+  },
+  {
+   "id": "POP-083",
+   "categoria": "★",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual reality da Record confina celebridades numa fazenda?",
+   "resposta": "A Fazenda",
+   "alternativas": [
+    "A Fazenda",
+    "Big Brother Brasil",
+    "No Limite",
+    "Power Couple"
+   ]
+  },
+  {
+   "id": "POP-084",
+   "categoria": "★",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual apresentador comandou o \"Domingão\" da Globo por mais de 30 anos, até 2021?",
+   "resposta": "Fausto Silva (Faustão)",
+   "alternativas": [
+    "Gugu Liberato",
+    "Fausto Silva (Faustão)",
+    "Luciano Huck",
+    "Silvio Santos"
+   ]
+  },
+  {
+   "id": "POP-085",
+   "categoria": "★",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual apresentador do SBT ficou famoso pelo \"aviãozinho de dinheiro\"?",
+   "resposta": "Silvio Santos",
+   "alternativas": [
+    "Raul Gil",
+    "Chacrinha",
+    "Gugu Liberato",
+    "Silvio Santos"
+   ]
+  },
+  {
+   "id": "POP-086",
+   "categoria": "★",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Por qual filme de 2019 Joaquin Phoenix ganhou o Oscar de melhor ator?",
+   "resposta": "Coringa",
+   "alternativas": [
+    "1917",
+    "História de um Casamento",
+    "Coringa",
+    "Era Uma Vez em Hollywood"
+   ]
+  },
+  {
+   "id": "POP-087",
+   "categoria": "★",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual saga de filmes tem Katniss Everdeen e Peeta?",
+   "resposta": "Jogos Vorazes",
+   "alternativas": [
+    "Divergente",
+    "Jogos Vorazes",
+    "Crepúsculo",
+    "Maze Runner"
+   ]
+  },
+  {
+   "id": "POP-088",
+   "categoria": "★",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual saga de filmes tem o vampiro Edward Cullen?",
+   "resposta": "Crepúsculo",
+   "alternativas": [
+    "Crepúsculo",
+    "Diários de um Vampiro",
+    "Jogos Vorazes",
+    "Divergente"
+   ]
+  },
+  {
+   "id": "POP-089",
+   "categoria": "★",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual filme da Marvel de 2019 encerrou a saga de Thanos?",
+   "resposta": "Vingadores: Ultimato",
+   "alternativas": [
+    "Vingadores: Ultimato",
+    "Homem-Aranha: Longe de Casa",
+    "Capitã Marvel",
+    "Vingadores: Guerra Infinita"
+   ]
+  },
+  {
+   "id": "POP-090",
+   "categoria": "★",
+   "dificuldade": 2,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual cantor sertanejo é chamado de \"Embaixador\"?",
+   "resposta": "Gusttavo Lima",
+   "alternativas": [
+    "Luan Santana",
+    "Wesley Safadão",
+    "Gusttavo Lima",
+    "Leonardo"
+   ]
+  },
+  {
+   "id": "POP-091",
+   "categoria": "★",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual filme ganhou o primeiro Oscar de Melhor Filme, na cerimônia de 1929?",
+   "resposta": "Asas",
+   "alternativas": [
+    "Nada de Novo no Front",
+    "Aurora",
+    "Asas",
+    "Melodia da Broadway"
+   ]
+  },
+  {
+   "id": "POP-092",
+   "categoria": "★",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual filme tem a maior bilheteria da história do cinema, sem corrigir a inflação?",
+   "resposta": "Avatar (2009)",
+   "alternativas": [
+    "Vingadores: Ultimato",
+    "Titanic",
+    "Avatar (2009)",
+    "Star Wars: O Despertar da Força"
+   ]
+  },
+  {
+   "id": "POP-093",
+   "categoria": "★",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual diretor fez \"Titanic\" e \"Avatar\"?",
+   "resposta": "James Cameron",
+   "alternativas": [
+    "Steven Spielberg",
+    "Ridley Scott",
+    "James Cameron",
+    "Peter Jackson"
+   ]
+  },
+  {
+   "id": "POP-094",
+   "categoria": "★",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual diretor neozelandês fez a trilogia \"O Senhor dos Anéis\"?",
+   "resposta": "Peter Jackson",
+   "alternativas": [
+    "Peter Jackson",
+    "James Cameron",
+    "Guillermo del Toro",
+    "Taika Waititi"
+   ]
+  },
+  {
+   "id": "POP-095",
+   "categoria": "★",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual atriz detém o recorde de 4 Oscars de melhor atriz?",
+   "resposta": "Katharine Hepburn",
+   "alternativas": [
+    "Bette Davis",
+    "Meryl Streep",
+    "Frances McDormand",
+    "Katharine Hepburn"
+   ]
+  },
+  {
+   "id": "POP-096",
+   "categoria": "★",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual atriz tem o recorde de indicações ao Oscar de atuação?",
+   "resposta": "Meryl Streep",
+   "alternativas": [
+    "Judi Dench",
+    "Meryl Streep",
+    "Katharine Hepburn",
+    "Cate Blanchett"
+   ]
+  },
+  {
+   "id": "POP-097",
+   "categoria": "★",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual foi o primeiro longa-metragem de animação da Disney, lançado em 1937?",
+   "resposta": "Branca de Neve e os Sete Anões",
+   "alternativas": [
+    "Bambi",
+    "Pinóquio",
+    "Fantasia",
+    "Branca de Neve e os Sete Anões"
+   ]
+  },
+  {
+   "id": "POP-098",
+   "categoria": "★",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual banda de rock de Brasília tinha Renato Russo como vocalista?",
+   "resposta": "Legião Urbana",
+   "alternativas": [
+    "Barão Vermelho",
+    "Legião Urbana",
+    "Paralamas do Sucesso",
+    "Titãs"
+   ]
+  },
+  {
+   "id": "POP-099",
+   "categoria": "★",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual cantor foi o primeiro vocalista do Barão Vermelho e depois fez sucesso solo com \"Exagerado\"?",
+   "resposta": "Cazuza",
+   "alternativas": [
+    "Lobão",
+    "Renato Russo",
+    "Cazuza",
+    "Dinho Ouro Preto"
+   ]
+  },
+  {
+   "id": "POP-100",
+   "categoria": "★",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual banda dos anos 1990 fez sucesso com \"Pelados em Santos\" e \"Vira-Vira\"?",
+   "resposta": "Mamonas Assassinas",
+   "alternativas": [
+    "Ultraje a Rigor",
+    "Mamonas Assassinas",
+    "Os Paralamas do Sucesso",
+    "Raimundos"
+   ]
+  },
+  {
+   "id": "POP-101",
+   "categoria": "★",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual quarteto humorístico era formado por Didi, Dedé, Mussum e Zacarias?",
+   "resposta": "Os Trapalhões",
+   "alternativas": [
+    "Mamonas Assassinas",
+    "Casseta & Planeta",
+    "Os Normais",
+    "Os Trapalhões"
+   ]
+  },
+  {
+   "id": "POP-102",
+   "categoria": "★",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual novela da Globo de 1988 tinha a vilã Odete Roitman?",
+   "resposta": "Vale Tudo",
+   "alternativas": [
+    "Roque Santeiro",
+    "Vale Tudo",
+    "Avenida Brasil",
+    "Tieta"
+   ]
+  },
+  {
+   "id": "POP-103",
+   "categoria": "★",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual novela da Globo de 2012 tinha a vilã Carminha e a protagonista Nina?",
+   "resposta": "Avenida Brasil",
+   "alternativas": [
+    "Amor à Vida",
+    "Avenida Brasil",
+    "Fina Estampa",
+    "Cheias de Charme"
+   ]
+  },
+  {
+   "id": "POP-104",
+   "categoria": "★",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual prêmio americano é dedicado ao teatro da Broadway?",
+   "resposta": "Tony",
+   "alternativas": [
+    "Grammy",
+    "Emmy",
+    "Tony",
+    "Obie"
+   ]
+  },
+  {
+   "id": "POP-105",
+   "categoria": "★",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual festival de cinema entrega a Palma de Ouro?",
+   "resposta": "Festival de Cannes",
+   "alternativas": [
+    "Festival de Berlim",
+    "Festival de Cannes",
+    "Festival de Toronto",
+    "Festival de Veneza"
+   ]
+  },
+  {
+   "id": "POP-106",
+   "categoria": "★",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual filme brasileiro ganhou a Palma de Ouro em Cannes, em 1962?",
+   "resposta": "O Pagador de Promessas",
+   "alternativas": [
+    "Central do Brasil",
+    "Deus e o Diabo na Terra do Sol",
+    "Vidas Secas",
+    "O Pagador de Promessas"
+   ]
+  },
+  {
+   "id": "POP-107",
+   "categoria": "★",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual festival de cinema entrega o Urso de Ouro, vencido por \"Central do Brasil\" em 1998?",
+   "resposta": "Festival de Berlim (Berlinale)",
+   "alternativas": [
+    "Festival de Berlim (Berlinale)",
+    "Festival de Veneza",
+    "Festival de Sundance",
+    "Festival de Cannes"
+   ]
+  },
+  {
+   "id": "POP-108",
+   "categoria": "★",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual série de comédia tem o físico Sheldon Cooper e seus amigos cientistas?",
+   "resposta": "The Big Bang Theory",
+   "alternativas": [
+    "Two and a Half Men",
+    "The Big Bang Theory",
+    "How I Met Your Mother",
+    "Modern Family"
+   ]
+  },
+  {
+   "id": "POP-109",
+   "categoria": "★",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual cantora, apelidada de \"Mother Monster\", lançou \"Poker Face\"?",
+   "resposta": "Lady Gaga",
+   "alternativas": [
+    "Sia",
+    "Katy Perry",
+    "Madonna",
+    "Lady Gaga"
+   ]
+  },
+  {
+   "id": "POP-110",
+   "categoria": "★",
+   "dificuldade": 3,
+   "tipo": "multipla_escolha",
+   "enunciado": "Qual rapper brasileiro lançou o álbum \"AmarElo\", em 2019?",
+   "resposta": "Emicida",
+   "alternativas": [
+    "Djonga",
+    "Emicida",
+    "Mano Brown",
+    "Criolo"
+   ]
   }
  ]
 }

@@ -46,7 +46,7 @@ Se o Escudo anulou o efeito, a próxima queda ali vale como a primeira.
 
 ## Perguntas
 
-O banco oficial tem 400 perguntas (50 por categoria) e está em `perguntas.json`.
+O banco oficial tem 880 perguntas (110 por categoria: 37 fáceis, 37 médias e 36 difíceis) e está em `perguntas.json`.
 Dá para trocar o banco pela tela **Banco de perguntas**, importando outro arquivo no mesmo formato.
 
 Para mudar o banco que já vem no jogo, edite `perguntas.json` e gere o `index.html` de novo:
