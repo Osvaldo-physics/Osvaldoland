@@ -870,8 +870,8 @@ function escolherDificuldade(d){
   if(S.fase !== 'dificuldade' || !DIFS[d]) return;
   S.duelo.dificuldade = d; registrarDesafio(atual(), S.duelo.desafiado); lancarPergunta();
 }
-function lancarPergunta(){
-  const d = S.duelo; d.pergunta = sortearPergunta(d.categoria, d.dificuldade);
+function lancarPergunta(mesma){
+  const d = S.duelo; if(!mesma || !d.pergunta) d.pergunta = sortearPergunta(d.categoria, d.dificuldade);
   d.respondeuId = null; d.ativo = true; T.alerta = d.restante <= 10000; T.ultSeg = null; S.fase = 'pergunta'; render();
 }
 function marcar(id){
@@ -916,9 +916,12 @@ async function validar(certo){
     S.fase = podeRebote ? 'erro_rebote' : 'resultado'; render();
   }
 }
-function fazerRebote(){ if(S.fase !== 'erro_rebote') return; S.duelo.emRebote = true; T.res = null; T.mov = null; lancarPergunta(); }
+/* Rebote: o outro jogador responde a MESMA pergunta (na conferência os jogadores não olham para a tela). */
+function fazerRebote(){ if(S.fase !== 'erro_rebote') return; S.duelo.emRebote = true; T.res = null; T.mov = null; lancarPergunta(true); }
 function pularRebote(){ if(S.fase !== 'erro_rebote') return; T.res.semRebote = true; S.fase = 'resultado'; render(); }
-function tempoEsgotado(){ const d = S.duelo; d.ativo = false; T.alerta = false; S.fase = 'tempo_esgotado'; agendarAuto(3500, proximoTurno); render(); }
+function tempoEsgotado(){ const d = S.duelo; d.ativo = false; T.alerta = false; T.desistiu = false; S.fase = 'tempo_esgotado'; agendarAuto(3500, proximoTurno); render(); }
+/* Ninguém sabe: pula o resto do tempo. Vale como tempo esgotado (ninguém anda, ninguém é punido). */
+function desistir(){ if(S.fase !== 'pergunta' || !S.duelo) return; tempoEsgotado(); T.desistiu = true; render(); }
 function ehUltimo(r){ const ps = ativos().map(j => j.posicao); const min = Math.min(...ps); return r.posicao === min && min < Math.max(...ps); }
 function atualizarCheckpoint(j){ S.checkpoints.forEach(cp => { if(j.posicao >= cp) j.checkpoint = Math.max(j.checkpoint, cp); }); }
 async function esperar(ms){
@@ -1380,15 +1383,15 @@ function overlayLivre(j){
 }
 function overlayFim(tipo){
   const p = tipo === 'congelado' ? atual() : proximoJogador(), [hex, escu, tinta] = PC[p.cor];
-  const tempo = tipo === 'tempo';
+  const tempo = tipo === 'tempo', pulou = tempo && T.desistiu;
   const vez = tempo ? p : proximoJogador();
   const [vh, ve, vt] = PC[vez.cor];
   return `<div class="veu" style="cursor:pointer" data-a="proximo">
     <div style="position:relative;width:320px;height:300px">
       <div class="abs" style="left:30px;bottom:-14px;width:260px;height:40px;border-radius:50%;background:radial-gradient(ellipse, rgba(0,0,0,.55), rgba(0,0,0,0) 70%)"></div>
-      ${tempo ? `<div class="abs" style="left:20px;top:0;width:280px;height:280px;box-sizing:border-box;border-radius:50%;background:radial-gradient(circle at 35% 30%, #FEF08A, #FACC15 70%);border:10px solid #fff;box-shadow:0 14px 0 #CA8A04,0 0 80px rgba(250,204,21,.45);display:flex;align-items:center;justify-content:center;animation:ampulheta .8s cubic-bezier(.3,1.2,.5,1) both">${ico('hourglass_bottom', 200, 'color:#422006;transform:rotate(100deg)')}</div>`
+      ${tempo ? `<div class="abs" style="left:20px;top:0;width:280px;height:280px;box-sizing:border-box;border-radius:50%;background:radial-gradient(circle at 35% 30%, #FEF08A, #FACC15 70%);border:10px solid #fff;box-shadow:0 14px 0 #CA8A04,0 0 80px rgba(250,204,21,.45);display:flex;align-items:center;justify-content:center;animation:${pulou ? 'mola .5s' : 'ampulheta .8s cubic-bezier(.3,1.2,.5,1)'} both">${pulou ? ico('fast_forward', 190, 'color:#422006') : ico('hourglass_bottom', 200, 'color:#422006;transform:rotate(100deg)')}</div>`
         : `<div class="abs" style="left:20px;top:0;animation:mola .5s both">${casa('congelado', 280)}</div>`}</div>
-    <div class="bal" style="font-size:${tempo ? 150 : 120}px;color:#fff;text-shadow:0 10px 0 ${tempo ? '#B91C1C' : '#0E7490'},0 20px 40px rgba(0,0,0,.4);text-align:center">${tempo ? 'Tempo esgotado!' : `${esc(atual().nome)} congelou!`}</div>
+    <div class="bal" style="font-size:${tempo ? 150 : 120}px;color:#fff;text-shadow:0 10px 0 ${tempo ? '#B91C1C' : '#0E7490'},0 20px 40px rgba(0,0,0,.4);text-align:center">${pulou ? 'Ninguém sabia!' : tempo ? 'Tempo esgotado!' : `${esc(atual().nome)} congelou!`}</div>
     ${tempo ? `<div style="font-weight:800;font-size:34px;color:#E0E7FF">Ninguém anda · resposta: <b style="color:#fff">${esc(S.duelo.pergunta.resposta)}</b></div>` : `<div style="font-weight:800;font-size:34px;color:#E0E7FF">Perde esta vez. O gelo derrete agora.</div>`}
     <div class="linha" style="gap:18px;height:116px;padding:0 48px 0 22px;box-sizing:border-box;border-radius:999px;background:${vh};border:6px solid #fff;box-shadow:0 10px 0 ${ve},0 0 60px ${vh}99">
       <div style="margin-top:-26px">${peaoJ(vez, 104)}</div><span class="bal" style="font-size:64px;color:${vt};padding-top:6px">Vez de ${esc(vez.nome)}</span></div>
@@ -1430,7 +1433,7 @@ function telaDuelo(){
   let corpo = '';
   if(!val){
     corpo += `<div class="linha" style="gap:56px;min-height:${reg ? 300 : todos ? 340 : 380}px;flex:none">
-      <div class="flex1" style="display:flex;flex-direction:column;gap:18px;min-width:0"><div class="rotulo" style="color:var(--tinta-2)">${todos ? `PERGUNTA ABERTA A TODOS · ${k.nome.toUpperCase()}` : d.emRebote ? 'REBOTE · NOVA PERGUNTA' : 'PERGUNTA'}</div>
+      <div class="flex1" style="display:flex;flex-direction:column;gap:18px;min-width:0"><div class="rotulo" style="color:var(--tinta-2)">${todos ? `PERGUNTA ABERTA A TODOS · ${k.nome.toUpperCase()}` : d.emRebote ? 'REBOTE · MESMA PERGUNTA' : 'PERGUNTA'}</div>
         <div class="bal" style="font-weight:700;font-size:${fsP}px;line-height:1.12;text-wrap:pretty">${esc(enun)}</div></div>
       ${crono(s, S.config.tempo, reg ? 'parado' : alerta ? 'alerta' : 'normal', reg ? 240 : 300, reg ? '' : 'cr')}</div>`;
     corpo += `<div class="flex1"></div>`;
@@ -1471,6 +1474,7 @@ function telaDuelo(){
       <div class="bal" style="font-size:60px;color:${tF};padding-top:6px">${todos ? 'Todos contra todos!' : `${SIGLA[d.categoria]} · ${k.nome}`}</div><div class="flex1"></div>
       ${todos ? `<div class="bal" style="height:72px;padding:0 26px;box-sizing:border-box;border-radius:999px;background:var(--tinta);border:5px solid #fff;display:flex;align-items:center;color:#FDE047;font-size:36px;padding-top:4px">Vale +1 casa</div>`
         : `<div class="linha" style="height:72px;padding:0 26px;box-sizing:border-box;border-radius:999px;background:#FACC15;border:5px solid #fff;box-shadow:0 6px 0 #A16207;gap:12px;color:#422006"><span class="bal" style="font-size:36px;padding-top:4px">${D.nome} +${d.dificuldade}</span>${estrelas(d.dificuldade, 34)}</div>`}
+      ${S.fase === 'pergunta' ? `<button class="b3d" data-a="desistir" title="Ninguém sabe: encerra a pergunta agora (tecla P)" style="height:76px;padding:0 26px;border-radius:22px;background:#fff;color:#312E81;font-size:32px;box-shadow:0 6px 0 rgba(0,0,0,.25)">${ico('fast_forward', 40)}Ninguém sabe</button>` : ''}
       <button class="b3d" data-a="pausa" style="height:76px;padding:0 26px;border-radius:22px;background:#fff;color:#312E81;font-size:32px;box-shadow:0 6px 0 rgba(0,0,0,.25)">${ico('pause', 40)}Pausar</button></div>
     <div style="flex:1;min-height:0;display:flex;flex-direction:column;padding:40px 56px 44px">${corpo}</div></div>
   ${alerta ? `<div class="alerta-borda"></div><div class="abs linha bal" style="left:50%;top:16px;transform:translateX(-50%);height:62px;padding:0 30px;box-sizing:border-box;border-radius:999px;background:#DC2626;border:5px solid #fff;gap:10px;color:#fff;font-size:34px;box-shadow:0 6px 0 #7F1D1D">${ico('alarm', 38)}Últimos 10 segundos!</div>` : ''}`;
@@ -1550,7 +1554,7 @@ function telaPausa(){
       <button class="b3d branco" data-a="sair" style="height:110px;padding:0 44px;border-radius:28px;font-size:44px;box-shadow:0 12px 0 var(--lilas)">${ico('save', 50)}Salvar e sair</button></div>
     ${T.semSalvar ? `<div class="linha" style="gap:12px;padding:14px 24px;border-radius:18px;background:#FEF3C7;color:#78350F;font-weight:800;font-size:28px">${ico('error', 36)}Este navegador não está guardando a partida. Se a página fechar, ela se perde.</div>` : ''}
     <div class="abs" style="left:0;right:0;bottom:0;padding:26px 60px 34px;background:rgba(0,0,0,.28);border-top:3px solid rgba(255,255,255,.12);display:flex;flex-direction:column;align-items:center;gap:18px">
-      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:16px 22px">${[['0–9','escolhem (0 = 10º)'],['Espaço','avança'],['Enter','Sim'],['Backspace','Não'],['Esc','pausa'],['Ctrl+Z','desfaz']].map(([k, t]) => `<div class="linha" style="gap:12px;height:58px;padding:0 22px 0 10px;border-radius:16px;background:rgba(255,255,255,.1);color:#E0E7FF;font-weight:800;font-size:26px"><span style="height:40px;min-width:40px;padding:0 12px;box-sizing:border-box;border-radius:10px;background:#fff;color:#312E81;font-weight:900;font-size:24px;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 4px 0 var(--lilas)">${k}</span>${t}</div>`).join('')}</div>
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:16px 22px">${[['0–9','escolhem (0 = 10º)'],['Espaço','avança'],['Enter','Sim'],['Backspace','Não'],['P','ninguém sabe'],['Esc','pausa'],['Ctrl+Z','desfaz']].map(([k, t]) => `<div class="linha" style="gap:12px;height:58px;padding:0 22px 0 10px;border-radius:16px;background:rgba(255,255,255,.1);color:#E0E7FF;font-weight:800;font-size:26px"><span style="height:40px;min-width:40px;padding:0 12px;box-sizing:border-box;border-radius:10px;background:#fff;color:#312E81;font-weight:900;font-size:24px;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 4px 0 var(--lilas)">${k}</span>${t}</div>`).join('')}</div>
       <div class="linha" style="gap:10px;color:#C7C4F0;font-weight:700;font-size:26px">${ico('save', 30)}“Salvar e sair” guarda a partida no começo do turno atual.</div></div></div>`;
 }
 
@@ -1634,6 +1638,7 @@ const acoes = {
   proximo(){ if(['resultado','tempo_esgotado','congelado'].includes(S.fase) && !T.ocupado) proximoTurno(); },
   desfazer(){ desfazer(); },
   pausa(){ togglePausa(); },
+  desistir(){ desistir(); },
   pularFx(){ if(T.pular) T.pular(); },
   sair(){ T.pausado = false; acoes.irInicio(); }
 };
@@ -1682,7 +1687,7 @@ document.addEventListener('keydown', e => {
     case 'categoria': if(n && CAT_IDS[n-1]) escolherCategoria(CAT_IDS[n-1]); else usou = false; break;
     case 'categoria_imposta': if(ok) confirmarCategoria(); else usou = false; break;
     case 'dificuldade': if(n >= 1 && n <= 3) escolherDificuldade(n); else usou = false; break;
-    case 'pergunta': { const q = d.tipo === 'todos' ? ativos() : [jog(d.desafiante), jog(d.desafiado)]; if(n && q[n-1]) marcar(q[n-1].id); else usou = false; break; }
+    case 'pergunta': { const q = d.tipo === 'todos' ? ativos() : [jog(d.desafiante), jog(d.desafiado)]; if(n && q[n-1]) marcar(q[n-1].id); else if(k === 'p' || k === 'P') desistir(); else usou = false; break; }
     case 'resposta': if(ok) revelar(); else if(k === 'Backspace') voltarMarcacao(); else usou = false; break;
     case 'validacao': if(k === 'Enter') validar(true); else if(k === 'Backspace') validar(false); else usou = false; break;
     case 'erro_rebote': if(ok) fazerRebote(); else if(k === 'Backspace') pularRebote(); else usou = false; break;
