@@ -76,8 +76,8 @@ button[disabled]{cursor:not-allowed}
 .tab{position:relative; width:1160px; height:716px; border-radius:36px; overflow:hidden; background:linear-gradient(180deg,#25AED6 0%,#1583B5 100%); box-shadow:0 0 0 6px rgba(255,255,255,.9),0 24px 60px rgba(8,6,35,.55)}
 .pc{position:absolute; left:0; top:0; transition:transform .2s ease; will-change:transform}
 #l-tab.desfocado{filter:blur(10px); opacity:.7}
-#tab-casas,#tab-mov,#tab-pecas{position:absolute; inset:0}
-#tab-mov,#tab-pecas{pointer-events:none}
+#tab-casas,#tab-marcas,#tab-mov,#tab-pecas{position:absolute; inset:0}
+#tab-marcas,#tab-mov,#tab-pecas{pointer-events:none}
 
 /* Mesa */
 .topo{position:absolute; left:28px; top:24px; width:1864px; height:100px; display:grid; grid-template-columns:1fr auto 1fr; align-items:center}
@@ -175,6 +175,199 @@ input[type=range].faixa::-moz-range-thumb{width:48px; height:48px; border-radius
 @keyframes estoura{from{transform:translate(0,0) rotate(0); opacity:1}to{transform:translate(var(--dx),var(--dy)) rotate(var(--r)); opacity:0}}
 @keyframes brilha{50%{transform:scale(1.25); opacity:.55}}
 @keyframes rodaRolo{from{transform:translateY(-40px)}to{transform:translateY(40px)}}
+/* ===== Casas especiais animadas (design "Casas Animadas"). A classe .ca vai no rosto da casa (.casa-f).
+   Ciclos 1.2–3.6 s; estrobo ≤ 3 flashes/s. Regra de desempenho: só transform e opacity nos keyframes, sem var()
+   dentro deles (halos = brilho pintado num ::before que só muda de opacidade; reflexos = faixa que desliza dentro
+   de .ca__v). Assim tudo roda no compositor e o tabuleiro parado não custa nada à página. ===== */
+:root{--ease-pop:cubic-bezier(.34,1.56,.64,1); --ease-snap:cubic-bezier(.7,0,.3,1)}
+.casa-f.ca{overflow:visible; isolation:isolate}
+.ca::before,.ca::after{content:""; position:absolute; pointer-events:none}
+.ca .ca__i{position:relative; z-index:2; overflow:visible}
+.ca__p{position:absolute; pointer-events:none; z-index:3}
+.ca__v{position:absolute; inset:0; border-radius:inherit; overflow:hidden; pointer-events:none; z-index:3}
+.ca__v b{position:absolute; left:0; top:0; bottom:0; width:60%; background:linear-gradient(105deg, transparent 15%, rgba(255,255,255,.75) 50%, transparent 85%); transform:translateX(-100%)}
+@keyframes ca-reflexo{0%{transform:translateX(-100%)}100%{transform:translateX(170%)}}
+@keyframes ca-halo{0%,100%{opacity:.3}50%{opacity:1}}
+/* no duelo o tabuleiro fica desfocado e parado: sem animação nenhuma lá dentro (nem pausada) */
+#l-tab.desfocado *,#l-tab.desfocado *::before,#l-tab.desfocado *::after{animation:none!important}
+#palco.parado #tela *,#palco.parado #tela *::before,#palco.parado #tela *::after,
+#palco.parado #fx *,#palco.parado #fx *::before,#palco.parado #fx *::after{animation-play-state:paused!important}
+
+/* 1. Livre: dado quica, halo dourado */
+.ca--livre::before{inset:0; border-radius:50%; z-index:-1; box-shadow:0 0 calc(var(--s)*.5) rgba(253,224,71,.95); animation:ca-halo 1.6s ease-in-out infinite}
+.ca--livre .ca__i{animation:livre-dado 1.6s ease-in-out infinite}
+@keyframes livre-dado{0%,100%{transform:scale(1) rotate(-6deg)}25%{transform:scale(1.1) rotate(4deg) translateY(-6%)}50%{transform:scale(1.02) rotate(6deg)}75%{transform:scale(1.08) rotate(-3deg) translateY(-3%)}}
+
+/* 2. Atalho: seta dispara com rastro */
+.casa-f.ca--atalho{overflow:hidden}
+.ca--atalho .ca__i{animation:atalho-dash 1.2s var(--ease-snap) infinite}
+.ca--atalho .ca__i::after{content:attr(data-icone); position:absolute; left:-38%; top:0; opacity:.35; animation:atalho-rastro 1.2s var(--ease-snap) infinite}
+@keyframes atalho-dash{0%{transform:translateX(-70%); opacity:0}20%{transform:translateX(-8%); opacity:1}60%{transform:translateX(4%); opacity:1}85%,100%{transform:translateX(80%); opacity:0}}
+@keyframes atalho-rastro{0%,50%{opacity:0}65%{opacity:.4}85%,100%{opacity:0}}
+
+/* 3. Escorregão: parado, depois rajada de tremor e anel de alerta */
+.ca--escorregao{animation:escorregao-tremor 2.4s linear infinite}
+.ca--escorregao .ca__i{animation:escorregao-recuo 2.4s var(--ease-snap) infinite}
+.ca--escorregao::after{inset:calc(var(--s)*-.14); border-radius:50%; border:calc(var(--s)*.05) solid #EF4444; opacity:0; animation:escorregao-alerta 2.4s steps(1) infinite}
+@keyframes escorregao-tremor{0%,64%,100%{transform:translateX(0) rotate(0)}67%{transform:translateX(-7%) rotate(-4deg)}70%{transform:translateX(6%) rotate(3deg)}73%{transform:translateX(-5%) rotate(-3deg)}76%{transform:translateX(4%) rotate(2deg)}79%{transform:translateX(-2%) rotate(-1deg)}82%{transform:translateX(0)}}
+@keyframes escorregao-recuo{0%,64%{transform:translateX(0)}70%{transform:translateX(-22%)}90%,100%{transform:translateX(0)}}
+@keyframes escorregao-alerta{0%,64%{opacity:0}66%{opacity:1}74%{opacity:0}78%{opacity:.8}84%,100%{opacity:0}}
+
+/* 4. Escudo: onda de choque + reflexo de vidro */
+.ca--escudo::before{inset:0; border-radius:50%; z-index:-1; border:calc(var(--s)*.04) solid #7DD3FC; background:radial-gradient(circle, rgba(186,230,253,0) 55%, rgba(186,230,253,.45) 100%); animation:escudo-onda 2.2s cubic-bezier(.2,.6,.3,1) infinite}
+.ca--escudo .ca__v b{animation:escudo-vidro 3.3s ease-in-out infinite}
+.ca--escudo .ca__i{animation:escudo-firme 2.2s ease-out infinite}
+@keyframes escudo-onda{0%{transform:scale(1); opacity:.9}100%{transform:scale(1.75); opacity:0}}
+@keyframes escudo-vidro{0%,40%{transform:translateX(-100%)}75%,100%{transform:translateX(170%)}}
+@keyframes escudo-firme{0%,100%{transform:scale(1)}8%{transform:scale(1.1)}22%{transform:scale(1)}}
+
+/* 5. Todos contra todos: dois flashes por ciclo + faíscas radiais.
+   Nada de var() dentro dos keyframes: assim o navegador anima no compositor, sem recalcular estilo a cada quadro. */
+.ca--todos::before{inset:0; border-radius:50%; z-index:1; background:radial-gradient(circle, rgba(255,255,255,.55), rgba(255,255,255,.12) 70%); box-shadow:0 0 calc(var(--s)*.6) #FDE047; opacity:0; animation:todos-flash 1.2s steps(1) infinite}
+.ca--todos .ca__i{animation:todos-raio 1.2s steps(1) infinite}
+.ca--todos .ca__p{left:50%; top:50%; width:calc(var(--s)*.09); height:calc(var(--s)*.26); margin:calc(var(--s)*-.13) 0 0 calc(var(--s)*-.045); transform:rotate(calc(var(--i)*60deg))}
+.ca--todos .ca__p b{position:absolute; inset:0; background:linear-gradient(#fff,#FDE047); border-radius:99px; box-shadow:0 0 10px #FDE047; opacity:0; transform:translateY(-192%) scaleY(0); animation:todos-faisca 1.2s ease-out infinite; animation-delay:calc(var(--i)*-.07s)}
+@keyframes todos-flash{0%{opacity:1}8%{opacity:0}16%{opacity:.75}24%,100%{opacity:0}}
+@keyframes todos-raio{0%{transform:scale(1.18) rotate(-8deg)}8%{transform:scale(1) rotate(0)}16%{transform:scale(1.12) rotate(6deg)}24%,100%{transform:scale(1) rotate(0)}}
+@keyframes todos-faisca{0%{transform:translateY(-192%) scaleY(0); opacity:0}6%{transform:translateY(-238%) scaleY(1); opacity:1}28%{transform:translateY(-327%) scaleY(.2); opacity:0}100%{transform:translateY(-327%) scaleY(.2); opacity:0}}
+
+/* 6. Congelado: respiração lenta, geada girando, cristais subindo */
+/* (a "respiração" de escala do design saiu: escala no rosto + geada girando no ::after tirava a animação do compositor) */
+.ca--congelado::before{inset:0; border-radius:50%; z-index:-1; box-shadow:0 0 calc(var(--s)*.4) rgba(165,243,252,.9); animation:ca-halo 3.6s ease-in-out infinite}
+.ca--congelado::after{inset:0; border-radius:50%; z-index:1; background:radial-gradient(circle at 30% 25%, rgba(255,255,255,.7), transparent 40%), conic-gradient(from 0deg, rgba(255,255,255,0), rgba(255,255,255,.35), rgba(255,255,255,0) 30%); mix-blend-mode:screen; animation:gira 7.2s linear infinite}
+.ca--congelado .ca__i{animation:gira 10.8s linear infinite}
+.ca--congelado .ca__p{width:calc(var(--s)*.1); height:calc(var(--s)*.1); left:calc(15% + var(--i)*17%); top:70%; background:linear-gradient(#fff,#fff) center/26% 100% no-repeat, linear-gradient(#fff,#fff) center/100% 26% no-repeat; border-radius:30%; filter:drop-shadow(0 0 4px #A5F3FC); opacity:0; animation:congelado-cristal 3.6s ease-in-out infinite; animation-delay:calc(var(--i)*-.72s)}
+@keyframes congelado-cristal{0%{transform:translateY(0) scale(.3) rotate(0); opacity:0}30%{opacity:1}70%{opacity:.9}100%{transform:translateY(-900%) scale(1) rotate(90deg); opacity:0}}
+
+/* 7. Troca: gira 180° e segura, com glitch ciano/rosa */
+.ca--troca .ca__i{animation:troca-gira 2.8s var(--ease-snap) infinite}
+.ca--troca .ca__i::before,.ca--troca .ca__i::after{content:attr(data-icone); position:absolute; inset:0; opacity:0; mix-blend-mode:screen}
+.ca--troca .ca__i::before{color:#22D3EE; clip-path:inset(0 0 50% 0); animation:troca-glitch-a 2.8s steps(1) infinite}
+.ca--troca .ca__i::after{color:#F472B6; clip-path:inset(50% 0 0 0); animation:troca-glitch-b 2.8s steps(1) infinite}
+@keyframes troca-gira{0%,30%{transform:rotate(0)}45%,80%{transform:rotate(180deg)}95%,100%{transform:rotate(360deg)}}
+@keyframes troca-glitch-a{0%,30%,48%,80%,98%,100%{opacity:0; transform:none}33%{opacity:.9; transform:translate(-9%,3%)}39%{opacity:.9; transform:translate(7%,-2%)}83%{opacity:.9; transform:translate(8%,2%)}90%{opacity:.9; transform:translate(-6%,-3%)}}
+@keyframes troca-glitch-b{0%,30%,48%,80%,98%,100%{opacity:0; transform:none}35%{opacity:.9; transform:translate(9%,-3%)}42%{opacity:.9; transform:translate(-7%,2%)}86%{opacity:.9; transform:translate(-8%,2%)}93%{opacity:.9; transform:translate(6%,-2%)}}
+
+/* 8. Checkpoint: bandeira ao vento + brilho de "salvo" */
+.casa-f.ca--checkpoint{overflow:hidden}
+.ca--checkpoint .ca__i{transform-origin:22% 92%; animation:checkpoint-vento 2.4s ease-in-out infinite}
+.ca--checkpoint .ca__v b{opacity:.8; animation:checkpoint-salvo 3.6s ease-in-out infinite}
+@keyframes checkpoint-vento{0%,100%{transform:rotate(-5deg) skewY(0)}25%{transform:rotate(3deg) skewY(-5deg) scaleX(.96)}50%{transform:rotate(6deg) skewY(2deg)}75%{transform:rotate(-2deg) skewY(5deg) scaleX(1.03)}}
+@keyframes checkpoint-salvo{0%,55%{transform:translateX(-100%)}85%,100%{transform:translateX(170%)}}
+
+/* 9. Chegada: aura dourada, reflexo cruzando, troféu pulsa, 8 partículas em órbita */
+.ca--chegada::before{inset:0; border-radius:inherit; z-index:-1; box-shadow:0 0 calc(var(--s)*.75) rgba(253,224,71,1), 0 0 calc(var(--s)*1.2) rgba(244,114,182,.45); animation:ca-halo 2.6s ease-in-out infinite}
+.ca--chegada .ca__v{z-index:1}
+.ca--chegada .ca__v b{background:linear-gradient(110deg, transparent 15%, rgba(255,251,235,.95) 50%, transparent 85%); animation:chegada-shimmer 2.6s cubic-bezier(.45,0,.2,1) infinite}
+.ca--chegada .ca-trofeu{position:relative; z-index:2; animation:chegada-trofeu 2.6s var(--ease-pop) infinite}
+.ca--chegada .ca__p{left:50%; top:50%; width:calc(var(--s)*.11); height:calc(var(--s)*.11); margin:calc(var(--s)*-.055); animation:chegada-orbita 6.5s linear infinite; animation-delay:calc(var(--i)*-.8125s)}
+.ca--chegada .ca__p b{position:absolute; inset:0; border-radius:50%; background:hsl(calc(var(--i)*45 + 20) 95% 62%); box-shadow:0 0 8px #FDE047; animation:chegada-brilho 1.3s ease-in-out infinite; animation-delay:calc(var(--i)*-.18s)}
+.ca--chegada .ca__p:nth-of-type(odd) b{background:#FDE047}
+@keyframes chegada-shimmer{0%{transform:translateX(-100%)}60%,100%{transform:translateX(170%)}}
+@keyframes chegada-trofeu{0%,55%,100%{transform:scale(1)}65%{transform:scale(1.14) rotate(-6deg)}78%{transform:scale(1) rotate(0)}}
+@keyframes chegada-orbita{from{transform:rotate(0deg) translateX(818%) rotate(0deg)}to{transform:rotate(360deg) translateX(818%) rotate(-360deg)}}
+@keyframes chegada-brilho{0%,100%{opacity:.35; transform:scale(.6)}50%{opacity:1; transform:scale(1.15)}}
+
+/* ===== Pouso: impacto (260 ms) → reação do peão por tipo de casa (900 ms) ===== */
+.pc .peao{transform-origin:50% 100%}
+.peao.is-impacto{animation:peao-squash .26s var(--ease-pop) both}
+@keyframes peao-squash{0%{transform:scale(1.25,.72)}55%{transform:scale(.92,1.1)}100%{transform:scale(1)}}
+.casa-f.is-pouso{animation:casa-afunda .32s var(--ease-pop) both!important}
+@keyframes casa-afunda{0%{transform:translateY(0) scale(1)}35%{transform:translateY(6%) scale(1.08,.9)}100%{transform:none}}
+.anel-impacto{position:absolute; inset:0; pointer-events:none; z-index:4; border:calc(var(--s,96px)*.07) solid var(--c,#fff); animation:anel-impacto .6s cubic-bezier(.2,.7,.3,1) both}
+@keyframes anel-impacto{0%{transform:scale(.9); opacity:1}100%{transform:scale(2.1); opacity:0; border-width:2px}}
+.peao.fx-livre{animation:fx-livre .9s var(--ease-pop) both}
+.peao.fx-atalho{animation:fx-atalho .9s var(--ease-snap) both}
+.peao.fx-escorregao{animation:fx-escorregao .9s linear both}
+.peao.fx-escudo{animation:fx-escudo .9s ease-out both}
+.peao.fx-todos{animation:fx-todos .9s steps(1) both}
+.peao.fx-congelado{animation:fx-congelado .9s ease-out both}
+.peao.fx-troca{animation:fx-troca .9s var(--ease-snap) both}
+.peao.fx-checkpoint{animation:fx-checkpoint .9s var(--ease-pop) both}
+.peao.fx-chegada{animation:fx-chegada .9s var(--ease-pop) both}
+@keyframes fx-livre{0%{transform:none}30%{transform:translateY(-45%) rotate(-8deg)}55%{transform:none}75%{transform:translateY(-20%) rotate(6deg)}100%{transform:none; filter:drop-shadow(0 0 18px #FDE047)}}
+/* --dir: +1/−1 = para que lado da tela fica o caminho (o tabuleiro é em zigue-zague) */
+@keyframes fx-atalho{0%{transform:none}25%{transform:translateX(calc(-12% * var(--dir,1))) scale(1.08,.92)}100%{transform:translateX(calc(140% * var(--dir,1))) skewX(calc(-12deg * var(--dir,1))); opacity:0}}
+@keyframes fx-escorregao{0%{transform:none}8%{transform:translateX(-6%) rotate(-6deg)}16%{transform:translateX(6%) rotate(6deg)}24%{transform:translateX(-5%) rotate(-5deg)}32%{transform:translateX(4%) rotate(4deg)}45%{transform:rotate(calc(14deg * var(--dir,-1))); filter:drop-shadow(0 0 14px #EF4444)}100%{transform:translateX(calc(150% * var(--dir,-1))) rotate(calc(24deg * var(--dir,-1))); opacity:0}}
+@keyframes fx-escudo{0%{filter:none}30%{filter:drop-shadow(0 0 22px #38BDF8) brightness(1.2)}100%{filter:drop-shadow(0 0 10px #38BDF8)}}
+@keyframes fx-todos{0%{transform:translate(-3%,0); filter:brightness(1.6)}12%{transform:translate(3%,-2%); filter:none}24%{transform:translate(-2%,1%); filter:brightness(1.5)}36%{transform:none; filter:none}48%{filter:brightness(1.4)}60%,100%{transform:none; filter:drop-shadow(0 0 14px #FACC15)}}
+@keyframes fx-congelado{0%{filter:none}100%{filter:saturate(.25) brightness(1.15) hue-rotate(160deg) drop-shadow(0 0 12px #A5F3FC)}}
+@keyframes fx-troca{0%{transform:none}50%{transform:rotateY(540deg) scale(.7); opacity:.4}100%{transform:rotateY(720deg); opacity:1; filter:drop-shadow(0 0 14px #A855F7)}}
+@keyframes fx-checkpoint{0%{transform:none}35%{transform:translateY(-25%) scale(1.08)}100%{transform:none; filter:drop-shadow(0 0 16px #F97316)}}
+@keyframes fx-chegada{0%{transform:none}25%{transform:translateY(-60%) rotate(-10deg) scale(1.15)}50%{transform:translateY(-60%) rotate(10deg) scale(1.15)}100%{transform:none; filter:drop-shadow(0 0 22px #FDE047)}}
+/* bolha de escudo e bloco de gelo: ficam sobre o peão enquanto durar o estado */
+.bolha-escudo{position:absolute; left:50%; bottom:-6%; width:140%; aspect-ratio:1; translate:-50% 0; border-radius:50%; z-index:6; pointer-events:none; box-sizing:border-box; background:radial-gradient(circle at 35% 30%, rgba(255,255,255,.65), rgba(186,230,253,.18) 45%, rgba(56,189,248,.35) 100%); border:4px solid rgba(186,230,253,.9); animation:bolha .6s var(--ease-pop) both, bolha-respira 2.2s ease-in-out .6s infinite}
+@keyframes bolha{from{transform:scale(0); opacity:0}to{transform:scale(1); opacity:1}}
+@keyframes bolha-respira{50%{transform:scale(1.05)}}
+.bloco-gelo{position:absolute; left:50%; bottom:-3%; width:118%; height:106%; translate:-50% 0; z-index:6; pointer-events:none; box-sizing:border-box; border-radius:22%; background:linear-gradient(160deg, rgba(255,255,255,.55), rgba(165,243,252,.25) 40%, rgba(34,211,238,.35)); border:3px solid rgba(255,255,255,.8); box-shadow:inset 0 0 20px rgba(255,255,255,.6); animation:gelo .5s cubic-bezier(.2,.9,.3,1.2) .35s both}
+@keyframes gelo{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0 0 0 0)}}
+/* ===== Tela de vitória (design "Vitória Animada"). Sequência em ms:
+   0 tabuleiro escurece · 200 holofotes · 300 confete ∞ · 400 fogos ∞ · 900 pódio sobe · 1300 peão salta
+   2000 impacto (flash, tremor, anel, explosão, aura) · 2200 título · 2600 nome · 3000 placar · 4000 botões ===== */
+.vit{position:absolute; inset:0; overflow:hidden; color:#fff; background:linear-gradient(160deg,#1E1B4B 0%,#312E81 100%)}
+.vit *{box-sizing:border-box}
+.vit .camera{position:absolute; inset:0; animation:camera 320ms linear 2000ms both}
+@keyframes camera{0%,100%{transform:none}20%{transform:translate(-8px,6px)}40%{transform:translate(7px,-5px)}60%{transform:translate(-5px,3px)}80%{transform:translate(3px,-2px)}}
+.vit .mesa-fundo{position:absolute; left:148px; top:40px; transform-origin:0 0; scale:1.4; animation:mesa-dim 700ms ease-out both}
+@keyframes mesa-dim{from{opacity:1; filter:blur(0) saturate(1)}to{opacity:.22; filter:blur(6px) saturate(.6)}}
+.vit .holofote{position:absolute; bottom:-40px; width:420px; height:1500px; margin-left:-210px; transform-origin:50% 100%; background:linear-gradient(to top, var(--c) 0%, transparent 85%); clip-path:polygon(46% 100%,54% 100%,100% 0,0 0); mix-blend-mode:screen; opacity:0; filter:blur(4px); animation:holofote-liga 600ms ease-out 200ms both, holofote-varre 5.5s ease-in-out 200ms infinite alternate}
+@keyframes holofote-liga{from{opacity:0}to{opacity:.55}}
+@keyframes holofote-varre{from{transform:rotate(var(--de))}to{transform:rotate(var(--ate))}}
+.vit .cf{position:absolute; top:-60px; left:var(--x); width:var(--w); height:var(--h); border-radius:var(--r); background:var(--c); opacity:0; animation:cf-cai var(--dur) linear calc(300ms + var(--del)) infinite}
+@keyframes cf-cai{0%{opacity:1; transform:translate(0,0) rotate(0) rotateY(0)}25%{transform:translate(var(--sway),300px) rotate(calc(var(--rot)*.25)) rotateY(180deg)}50%{transform:translate(0,600px) rotate(calc(var(--rot)*.5)) rotateY(360deg)}75%{transform:translate(calc(var(--sway)*-1),900px) rotate(calc(var(--rot)*.75)) rotateY(540deg)}100%{opacity:1; transform:translate(0,1200px) rotate(var(--rot)) rotateY(720deg)}}
+.vit .fw{position:absolute; width:0; height:0}
+.vit .fw-raio{position:absolute; left:-4px; top:0; width:8px; height:70px; border-radius:99px; transform-origin:50% 0; background:linear-gradient(to bottom, transparent, var(--c) 40%, #fff); opacity:0; animation:fw-raio 2.4s cubic-bezier(.15,.8,.3,1) calc(400ms + var(--del)) infinite}
+@keyframes fw-raio{0%{opacity:0; transform:rotate(var(--a)) translateY(0) scaleY(.2)}4%{opacity:1}30%{opacity:1; transform:rotate(var(--a)) translateY(130px) scaleY(1)}50%,100%{opacity:0; transform:rotate(var(--a)) translateY(190px) scaleY(.3)}}
+.vit .fw-nucleo{position:absolute; width:60px; height:60px; margin:-30px; border-radius:50%; background:radial-gradient(circle, #fff, var(--c) 45%, transparent 70%); opacity:0; animation:fw-nucleo 2.4s ease-out calc(400ms + var(--del)) infinite}
+@keyframes fw-nucleo{0%{opacity:1; transform:scale(.2)}18%{opacity:.9; transform:scale(1.6)}40%,100%{opacity:0; transform:scale(2)}}
+.vit .podio-bloco{position:absolute; bottom:0; display:flex; justify-content:center; animation:podio-sobe 600ms cubic-bezier(.34,1.56,.64,1) var(--del) both}
+@keyframes podio-sobe{from{transform:translateY(105%)}to{transform:translateY(0)}}
+.vit .peao-vencedor{position:absolute; transform-origin:50% 100%; animation:peao-vence 1000ms cubic-bezier(.3,0,.4,1) 1300ms both}
+@keyframes peao-vence{0%{opacity:0; transform:translate(-520px,420px) rotate(-20deg) scale(.8)}6%{opacity:1}38%{transform:translate(-220px,-300px) rotate(-10deg) scale(1.05,1.08)}70%{transform:translate(0,0) rotate(0) scale(1.32,.68)}80%{transform:translate(0,-40px) scale(.88,1.15)}90%{transform:translate(0,0) scale(1.06,.95)}100%{opacity:1; transform:none}}
+.vit .peoes-coadj{position:absolute; transform-origin:50% 100%; animation:coadj 500ms cubic-bezier(.34,1.56,.64,1) var(--del) both}
+@keyframes coadj{from{opacity:0; transform:translateY(-120px) scale(.9)}to{opacity:1; transform:none}}
+.vit .aura{position:absolute; border-radius:50%; opacity:0; background:radial-gradient(circle, rgba(253,224,71,.95) 0%, rgba(250,204,21,.45) 32%, transparent 66%); animation:aura-acende 400ms cubic-bezier(.34,1.56,.64,1) 2000ms both, aura-pulsa 1.8s ease-in-out 2400ms infinite}
+.vit .aura-raios{position:absolute; border-radius:50%; opacity:0; background:repeating-conic-gradient(rgba(253,224,71,.32) 0deg 9deg, transparent 9deg 20deg); -webkit-mask-image:radial-gradient(circle, #000 20%, transparent 68%); mask-image:radial-gradient(circle, #000 20%, transparent 68%); animation:aura-acende 500ms ease-out 2000ms both, gira 14s linear 2000ms infinite}
+@keyframes aura-acende{from{opacity:0; transform:scale(.2)}to{opacity:1; transform:scale(1)}}
+@keyframes aura-pulsa{0%,100%{transform:scale(1); opacity:1}50%{transform:scale(1.1); opacity:.8}}
+.vit .anel-podio{position:absolute; border-radius:50%; border:14px solid #FDE047; opacity:0; animation:anel-podio 700ms cubic-bezier(.2,.7,.3,1) 2000ms both}
+@keyframes anel-podio{0%{opacity:1; transform:scale(.3)}100%{opacity:0; transform:scale(2.4); border-width:2px}}
+.vit .flash{position:absolute; inset:0; pointer-events:none; background:radial-gradient(circle at 25% 70%, #FFF7D6, rgba(255,255,255,0) 60%); opacity:0; animation:flash 450ms ease-out 2000ms both}
+@keyframes flash{0%{opacity:.85}100%{opacity:0}}
+.vit .bp{position:absolute; left:0; top:0; width:18px; height:28px; margin:-14px -9px; border-radius:3px; background:var(--c); opacity:0; animation:bp-estoura 1300ms cubic-bezier(.1,.75,.35,1) calc(2000ms + var(--del)) both}
+.vit .bp--estrela{width:auto; height:auto; margin:-28px; background:none; color:var(--c); text-shadow:0 0 14px var(--c)}
+@keyframes bp-estoura{0%{opacity:1; transform:translate(0,0) scale(.3) rotate(0)}55%{opacity:1; transform:translate(var(--dx),var(--dy)) scale(1) rotate(calc(var(--rot)*.6))}100%{opacity:0; transform:translate(calc(var(--dx)*1.1),calc(var(--dy) + 260px)) scale(.8) rotate(var(--rot))}}
+.vit .titulo{display:grid; justify-items:center; animation:titulo-bate 650ms cubic-bezier(.2,1.4,.4,1) 2200ms both}
+.vit .titulo > span,.vit .nome > span{position:relative; grid-area:1/1; font-family:var(--baloo); font-weight:800; white-space:nowrap}
+.vit .titulo > span{line-height:.9}
+.vit .titulo .t-sombra{color:#451A03; -webkit-text-stroke:20px #451A03; transform:translateY(14px)}
+.vit .titulo .t-contorno{color:#fff; -webkit-text-stroke:14px #fff}
+.vit .titulo .t-face{color:#FACC15}
+.vit .shimmer-txt{background:linear-gradient(105deg, transparent 42%, rgba(255,255,255,.9) 50%, transparent 58%); background-size:300% 100%; background-position:100% 0; -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent}
+.vit .titulo .shimmer-txt{animation:shimmer 2.4s ease-in-out 2900ms infinite}
+@keyframes titulo-bate{0%{opacity:0; transform:scale(2.8) rotate(-8deg); filter:blur(10px)}55%{opacity:1; transform:scale(.9) rotate(2deg); filter:blur(0)}78%{transform:scale(1.06) rotate(-1deg)}100%{opacity:1; transform:scale(1) rotate(-3deg)}}
+@keyframes shimmer{0%{background-position:100% 0}55%,100%{background-position:0% 0}}
+.vit .nome-entra{display:flex; flex-direction:column; align-items:center; gap:6px; animation:nome-zoom 550ms cubic-bezier(.34,1.7,.5,1) 2600ms both}
+.vit .nome{display:grid; justify-items:center}
+.vit .nome > span{line-height:1}
+.vit .nome-entra .shimmer-txt{animation:shimmer 2.4s ease-in-out 3300ms infinite}
+@keyframes nome-zoom{from{opacity:0; transform:scale(.3)}to{opacity:1; transform:scale(1)}}
+.vit .reflexo{overflow:hidden}
+.vit .reflexo::after{content:""; position:absolute; inset:0; pointer-events:none; background:linear-gradient(105deg, transparent 38%, rgba(255,255,255,.85) 50%, transparent 62%) no-repeat; background-size:300% 100%; background-position:130% 0; animation:reflexo 2.4s ease-in-out 3100ms infinite}
+@keyframes reflexo{0%{background-position:130% 0}55%,100%{background-position:-30% 0}}
+.vit .chip-entra{animation:chip 450ms cubic-bezier(.34,1.56,.64,1) calc(3000ms + var(--del)) both}
+@keyframes chip{from{opacity:0; transform:translateY(40px) scale(.9)}to{opacity:1; transform:none}}
+.vit .botoes-entra{animation:botoes 600ms ease-out 4000ms both}
+.vit .rank-entra{animation:botoes 600ms ease-out 4300ms both}
+@keyframes botoes{from{opacity:0; transform:translateY(24px)}to{opacity:1; transform:none}}
+.vit .btn-pulso{animation:btn-pulso 1.4s ease-in-out 4600ms infinite}
+@keyframes btn-pulso{0%,100%{transform:scale(1); box-shadow:0 10px 0 #C99A00, 0 0 0 0 rgba(253,224,71,.7)}50%{transform:scale(1.05); box-shadow:0 10px 0 #C99A00, 0 0 0 18px rgba(253,224,71,0)}}
+.vit .btn-pulso:hover{animation-play-state:paused}
+.vit .btn-pulso:active{animation:none; transform:translateY(8px); box-shadow:0 2px 0 #C99A00}
+@media (prefers-reduced-motion: reduce){
+  .vit *,.vit *::after{animation-duration:1ms!important; animation-iteration-count:1!important; animation-delay:0ms!important}
+  .vit .cf,.vit .fw-raio,.vit .fw-nucleo,.vit .bp,.vit .holofote,.vit .flash{display:none}
+}
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.01ms!important; animation-iteration-count:1!important; transition:none!important}}
 </style>
 
@@ -213,14 +406,14 @@ const TILES = {
   G:{cor:'#3B82F6',esc:'#1D4ED8',tinta:'#FFFFFF',sim:'G'}, A:{cor:'#8B5CF6',esc:'#6D28D9',tinta:'#FFFFFF',sim:'A'},
   E:{cor:'#F97316',esc:'#C2410C',tinta:'#431407',sim:'E'}, C:{cor:'#EF4444',esc:'#B91C1C',tinta:'#FFFFFF',sim:'C'},
   P:{cor:'#F9A8D4',esc:'#DB2777',tinta:'#500724',sim:'P'}, S:{cor:'#C026D3',esc:'#86198F',tinta:'#FFFFFF',ico:'star'},
-  livre:{cor:'#F5B700',esc:'#B45309',tinta:'#3B2300',ico:'casino',esp:true},
-  atalho:{cor:'#A3E635',esc:'#4D7C0F',tinta:'#1A2E05',ico:'fast_forward',esp:true},
-  escorregao:{cor:'#DC2626',esc:'#7F1D1D',tinta:'#FFFFFF',ico:'fast_rewind',esp:true},
+  livre:{cor:'#F59E0B',esc:'#B45309',tinta:'#3B2300',ico:'casino',esp:true},
+  atalho:{cor:'#84CC16',esc:'#3F6212',tinta:'#1A2E05',ico:'fast_forward',esp:true},
+  escorregao:{cor:'#EF4444',esc:'#7F1D1D',tinta:'#FFFFFF',ico:'fast_rewind',esp:true},
   escudo:{cor:'#38BDF8',esc:'#0369A1',tinta:'#082F49',ico:'shield',esp:true},
-  todos:{cor:'#FDE047',esc:'#CA8A04',tinta:'#1E1B4B',ico:'bolt',esp:true},
+  todos:{cor:'#FACC15',esc:'#A16207',tinta:'#1E1B4B',ico:'bolt',esp:true},
   congelado:{cor:'#22D3EE',esc:'#0E7490',tinta:'#083344',ico:'ac_unit',esp:true},
   troca:{cor:'#A855F7',esc:'#6B21A8',tinta:'#FFFFFF',ico:'swap_horiz',esp:true},
-  checkpoint:{cor:'#F1F0FF',esc:'#818CF8',tinta:'#4338CA',ico:'flag',esp:true},
+  checkpoint:{cor:'#F97316',esc:'#9A3412',tinta:'#FFFFFF',ico:'flag',esp:true},
   largada:{cor:'#6366F1',esc:'#3730A3',tinta:'#FFFFFF',ico:'play_arrow',grande:true},
   chegada:{cor:'#FFFFFF',esc:'#A16207',tinta:'#422006',grande:true}
 };
@@ -273,7 +466,9 @@ function peao(cor, num, h, o = {}){
     <text x="50" y="48.5" text-anchor="middle" fill="#1E1B4B" style="font-family:var(--baloo);font-weight:800;font-size:33px">${num}</text></svg></span>`;
 }
 const peaoJ = (j, h, o) => peao(j.cor, j.num, h, o);
-function casa(tipo, base, dest){
+/* Casas especiais ganham as animações do design "Casas Animadas" quando anim = true (tabuleiro e cartão). */
+const ANIM_CASA = {livre:0, atalho:0, escorregao:0, escudo:0, todos:6, congelado:5, troca:0, checkpoint:0, chegada:8};
+function casa(tipo, base, dest, anim){
   const d = TILES[tipo] || TILES.N;
   const s = d.grande ? Math.round(base*1.25) : base, bw = Math.max(3, Math.round(s*.065));
   let bg = `linear-gradient(180deg, color-mix(in oklab, ${d.cor}, #ffffff 30%) 0%, ${d.cor} 58%)`;
@@ -282,13 +477,19 @@ function casa(tipo, base, dest){
   const claro = d.tinta === '#FFFFFF';
   const tsh = claro ? `0 ${Math.max(1,Math.round(s*.03))}px 0 rgba(0,0,0,.28)` : `0 ${Math.max(1,Math.round(s*.02))}px 0 rgba(255,255,255,.45)`;
   const rad = d.esp ? '50%' : Math.round(s*.24) + 'px';
+  const an = anim && !REDUZ && tipo in ANIM_CASA;
   let dentro = '';
   if(d.sim) dentro = `<span class="bal" style="font-size:${Math.round(s*.64)}px;color:${d.tinta};text-shadow:${tsh};margin-top:${Math.round(s*.07)}px">${d.sim}</span>`;
-  else if(d.ico) dentro = ico(d.ico, Math.round(s*(d.esp ? .56 : .62)), `color:${d.tinta};text-shadow:${tsh};font-variation-settings:'FILL' 1,'wght' 700,'opsz' 48`);
-  else if(tipo === 'chegada'){ const dc = Math.round(s*.54); dentro = `<span style="width:${dc}px;height:${dc}px;box-sizing:border-box;border-radius:50%;background:#FACC15;border:4px solid #fff;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 0 #A16207">${ico('emoji_events', Math.round(s*.36), 'color:#422006')}</span>`; }
-  const anel = dest ? `<span class="casa-d" style="inset:${-Math.round(s*.17)}px;border-radius:${d.esp ? '50%' : Math.round(s*.36)+'px'};border:${Math.max(4,Math.round(s*.06))}px solid ${dest};box-shadow:0 0 26px ${dest}, inset 0 0 14px ${dest}"></span>` : '';
-  return `<span class="casa" style="width:${s}px;height:${s}px">${anel}<span class="casa-f" style="border-radius:${rad};background:${d.cor};background:${bg};border:${bw}px solid ${tipo === 'chegada' ? '#FACC15' : '#fff'};box-shadow:0 ${Math.max(2,Math.round(s*.07))}px 0 ${d.esc}, 0 ${Math.round(s*.13)}px ${Math.round(s*.2)}px rgba(10,8,40,.38)${glow}">${dentro}</span></span>`;
+  else if(d.ico){ const fs = Math.round(s*(d.esp ? .56 : .62)); dentro = `<span class="ms${an ? ' ca__i' : ''}" aria-hidden="true" ${an ? `data-icone="${d.ico}"` : ''} style="font-size:${fs}px;width:${fs}px;height:${fs}px;color:${d.tinta};text-shadow:${tsh};font-variation-settings:'FILL' 1,'wght' 700,'opsz' 48">${d.ico}</span>`; }
+  else if(tipo === 'chegada'){ const dc = Math.round(s*.54); dentro = `<span class="${an ? 'ca-trofeu' : ''}" style="width:${dc}px;height:${dc}px;box-sizing:border-box;border-radius:50%;background:#FACC15;border:4px solid #fff;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 0 #A16207">${ico('emoji_events', Math.round(s*.36), 'color:#422006')}</span>`; }
+  if(an){
+    for(let i = 0; i < ANIM_CASA[tipo]; i++) dentro += `<i class="ca__p" style="--i:${i}">${tipo === 'congelado' ? '' : '<b></b>'}</i>`;
+    if(tipo === 'escudo' || tipo === 'checkpoint' || tipo === 'chegada') dentro += '<span class="ca__v"><b></b></span>';
+  }
+  const anel = dest ? anelCasa(tipo, s, dest) : '';
+  return `<span class="casa" style="width:${s}px;height:${s}px">${anel}<span class="casa-f${an ? ' ca ca--' + tipo : ''}" style="${an ? `--s:${base}px;--c:${d.cor};--c-esc:${d.esc};` : ''}border-radius:${rad};background:${d.cor};background:${bg};border:${bw}px solid ${tipo === 'chegada' ? '#FACC15' : '#fff'};box-shadow:0 ${Math.max(2,Math.round(s*.07))}px 0 ${d.esc}, 0 ${Math.round(s*.13)}px ${Math.round(s*.2)}px rgba(10,8,40,.38)${glow}">${dentro}</span></span>`;
 }
+function anelCasa(tipo, s, cor){ const esp = (TILES[tipo] || TILES.N).esp; return `<span class="casa-d" style="inset:${-Math.round(s*.17)}px;border-radius:${esp ? '50%' : Math.round(s*.36)+'px'};border:${Math.max(4,Math.round(s*.06))}px solid ${cor};box-shadow:0 0 26px ${cor}, inset 0 0 14px ${cor}"></span>`; }
 function crono(seg, total, estado, T, id){
   const C = 251.33, frac = Math.max(0, Math.min(1, seg/total));
   const alerta = estado === 'alerta', parado = estado === 'parado';
@@ -441,11 +642,20 @@ function marcasTab(){
   return marcas;
 }
 function movValido(){ const mv = T.mov; if(!mv) return null; const cur = T.vis[mv.id] ?? mv.de; return (cur - mv.de)*mv.dir < 0 ? null : mv; }
-function htmlCasas(marcas){
+/* Casas desenhadas uma vez por partida (as animações não reiniciam); os anéis de destaque ficam numa camada própria. */
+function htmlCasas(anim = true){
   const cs = tamCasa(); let h = DECOR;
   S.casas.forEach(c => {
     const p = pos(c.i), t = tipoCasa(c.i), box = (t === 'largada' || t === 'chegada') ? Math.round(cs*1.25) : cs;
-    h += `<div class="abs" style="left:${Math.round(p.x-box/2)}px;top:${Math.round(p.y-box/2)}px" title="Casa ${c.i}">${casa(t, cs, marcas[c.i] || null)}</div>`;
+    h += `<div class="abs" data-i="${c.i}" style="left:${Math.round(p.x-box/2)}px;top:${Math.round(p.y-box/2)}px" title="Casa ${c.i}">${casa(t, cs, null, anim)}</div>`;
+  });
+  return h;
+}
+function htmlMarcas(marcas){
+  const cs = tamCasa(); let h = '';
+  Object.entries(marcas).forEach(([i, cor]) => {
+    const p = pos(+i), t = tipoCasa(+i), box = (t === 'largada' || t === 'chegada') ? Math.round(cs*1.25) : cs;
+    h += `<div class="abs" style="left:${Math.round(p.x-box/2)}px;top:${Math.round(p.y-box/2)}px;width:${box}px;height:${box}px">${anelCasa(t, box, cor)}</div>`;
   });
   return h;
 }
@@ -468,14 +678,15 @@ function htmlMov(){
 /* Estado do que já está desenhado no tabuleiro: só o que mudou é refeito. */
 const R = {fundo:null, casas:null, marcas:null, mov:null, pecas:{}};
 function montarTab(){
-  $('#l-tab').innerHTML = '<div class="tab" id="tab"><div id="tab-casas"></div><div id="tab-mov"></div><div id="tab-pecas"></div></div>';
+  $('#l-tab').innerHTML = '<div class="tab" id="tab"><div id="tab-casas"></div><div id="tab-marcas"></div><div id="tab-mov"></div><div id="tab-pecas"></div></div>';
   R.casas = S.casas; R.marcas = null; R.mov = null; R.pecas = {};
+  $('#tab-casas').innerHTML = htmlCasas();
 }
 
 function renderTab(){
   if(!document.getElementById('tab')) return;
   const marcas = marcasTab(), mk = JSON.stringify(marcas);
-  if(mk !== R.marcas){ R.marcas = mk; $('#tab-casas').innerHTML = htmlCasas(marcas); }
+  if(mk !== R.marcas){ R.marcas = mk; $('#tab-marcas').innerHTML = htmlMarcas(marcas); }
   const mov = htmlMov();
   if(mov !== R.mov){ R.mov = mov; $('#tab-mov').innerHTML = mov; }
   const cs = tamCasa(), k = Math.min(1.15, TOTAL/S.N/130), PH = cs, PW = Math.round(PH*100/130);
@@ -492,6 +703,11 @@ function renderTab(){
       el.style.zIndex = Math.round(y)*20 + idx;
       const pul = T.pulando.has(j.id), alvo = el.firstElementChild;
       alvo.style.filter = pul ? `drop-shadow(0 0 ${Math.round(PH*.14)}px ${PC[j.cor][0]})` : 'none';
+      const gelo = j.congelado || (S.fase === 'congelado' && atual().id === j.id), est = (j.escudo ? 'e' : '') + (gelo ? 'g' : '');
+      if(el.dataset.est !== est){
+        el.dataset.est = est; alvo.querySelectorAll('.bolha-escudo,.bloco-gelo').forEach(x => x.remove());
+        alvo.insertAdjacentHTML('beforeend', (j.escudo ? '<span class="bolha-escudo"></span>' : '') + (gelo ? '<span class="bloco-gelo"></span>' : ''));
+      }
       vivos.add(j.id);
     });
   });
@@ -715,14 +931,36 @@ async function mover(j, delta){
   const piso = delta < 0 ? j.checkpoint : 0;
   const de = j.posicao, ate = Math.max(piso, Math.min(S.N, de + delta));
   j.posicao = ate; atualizarCheckpoint(j);
+  if(ate > de) j.st.andou = (j.st.andou || 0) + ate - de;
   if(ate !== de){
     const [c] = PC[j.cor];
     T.mov = ate > de ? {id:j.id, de, dir:1, cor:j.cor, num:j.num, trilha:c, anel:c} : {id:j.id, de, dir:-1, cor:j.cor, num:j.num, trilha:'#B91C1C', anel:'#EF4444'};
     await animar(j.id, de, ate);
   }
-  if(ate >= S.N) vencer(j);
+  if(ate >= S.N && !S.vencedor){ await pouso(j, 'chegada'); vencer(j); }
   return ate - de;
 }
+/* Pouso numa casa especial (design "Casas Animadas"): impacto (peão achata, casa afunda, anel) → reação do peão.
+   A classe fx-* fica no peão até limparPouso(), chamado depois do cartão. */
+async function pouso(j, tipo, fx = tipo){
+  const el = R.pecas[j.id], wrap = document.querySelector(`#tab-casas [data-i="${j.posicao}"]`);
+  if(REDUZ || !el || !wrap) return;
+  const p = el.firstElementChild, tile = wrap.querySelector('.casa-f'), d = TILES[tipo] || TILES.N;
+  const aqui = pos(j.posicao), frente = pos(Math.min(S.N, j.posicao + 1)), tras = pos(Math.max(0, j.posicao - 1));
+  const dirF = Math.sign(j.posicao < S.N ? frente.x - aqui.x : aqui.x - tras.x) || 1, dirT = Math.sign(tras.x - aqui.x) || -1;
+  p.style.setProperty('--dir', fx === 'escorregao' ? dirT : dirF);
+  limparPouso(j);
+  const anel = document.createElement('span'); anel.className = 'anel-impacto';
+  anel.style.cssText = `--s:${tile.offsetWidth}px;--c:${d.cor};border-radius:${getComputedStyle(tile).borderRadius}`;
+  wrap.firstElementChild.appendChild(anel);
+  tile.classList.add('is-pouso'); p.classList.add('is-impacto');
+  await esperar(260);
+  p.classList.remove('is-impacto');
+  if(fx){ p.classList.add('fx-' + fx); el.dataset.fx = fx; renderTab(); await esperar(900); }
+  else await esperar(120);
+  tile.classList.remove('is-pouso'); anel.remove();
+}
+function limparPouso(j){ const el = R.pecas[j.id]; if(el && el.dataset.fx){ el.firstElementChild.classList.remove('fx-' + el.dataset.fx); delete el.dataset.fx; } }
 function usaEscudo(j, oque){ if(!j.escudo) return false; j.escudo = false; T.res && T.res.extras.push(`O escudo de ${j.nome} anulou ${oque}.`); return true; }
 async function aplicarPunicao(r, dif){
   const p = S.config.punicao;
@@ -735,32 +973,34 @@ async function aplicarPunicao(r, dif){
   if(!a) T.res.penal = `${r.nome} está no piso (largada ou checkpoint) e não volta.`;
 }
 async function efeitoCasa(r){
-  const c = S.casas[r.posicao]; if(!c || !c.efeito) return;
+  const c = S.casas[r.posicao]; if(!c) return;
+  if(!c.efeito){ const t = tipoCasa(r.posicao); if((t === 'livre' || t === 'checkpoint') && T.res && T.res.de !== r.posicao){ await pouso(r, t); limparPouso(r); } return; }
   const e = c.efeito, card = {tipo:e, j:r.id, casa:r.posicao, titulo:EFEITOS[e].nome + '!', texto:''};
+  const mostrarEspecial = async cd => { await pouso(r, e, cd.fx === undefined ? e : cd.fx); await mostrarEspecialCard(cd); limparPouso(r); };
   const marcas = r.marcas = r.marcas || [], aqui = r.posicao, marcar = () => { if(!marcas.includes(aqui)) marcas.push(aqui); };
   if(marcas.includes(aqui)){
-    card.texto = 'Você já usou esta casa: o efeito não vale de novo'; card.imune = true;
+    card.texto = 'Você já usou esta casa: o efeito não vale de novo'; card.imune = true; card.fx = null;
     T.res.extras.push(`${EFEITOS[e].nome}: ${r.nome} já usou esta casa, nada acontece.`);
     await mostrarEspecial(card); return;
   }
   switch(e){
     case 'atalho': marcar(); card.texto = 'Avance 2 casas!'; await mostrarEspecial(card); { const a = await mover(r, 2); T.res.extras.push(`Atalho: +${a} ${plural(a,'casa','casas')}.`); } break;
     case 'escorregao':
-      if(r.escudo){ usaEscudo(r, 'o escorregão'); card.texto = 'O escudo te protegeu!'; await mostrarEspecial(card); break; }
+      if(r.escudo){ usaEscudo(r, 'o escorregão'); card.texto = 'O escudo te protegeu!'; card.fx = 'escudo'; await mostrarEspecial(card); break; }
       marcar(); card.texto = 'Volte 2 casas'; await mostrarEspecial(card);
       { const a = await mover(r, -2); T.res.extras.push(a ? `Escorregão: voltou ${-a} ${plural(a,'casa','casas')}.` : 'Escorregão: protegido pelo checkpoint.'); } break;
     case 'escudo':
-      if(r.escudo){ card.texto = 'Você já tem um escudo'; T.res.extras.push('Escudo: já tinha um (não acumula).'); }
+      if(r.escudo){ card.texto = 'Você já tem um escudo'; card.fx = null; T.res.extras.push('Escudo: já tinha um (não acumula).'); }
       else { marcar(); r.escudo = true; card.texto = 'Anula o próximo efeito negativo'; T.res.extras.push(`${r.nome} ganhou um escudo.`); }
       await mostrarEspecial(card); break;
     case 'congelado':
-      if(r.escudo){ usaEscudo(r, 'o congelamento'); card.texto = 'O escudo te protegeu!'; }
+      if(r.escudo){ usaEscudo(r, 'o congelamento'); card.texto = 'O escudo te protegeu!'; card.fx = 'escudo'; }
       else { marcar(); r.congelado = true; card.texto = 'Você perde o próximo turno'; T.res.extras.push(`${r.nome} perde a próxima vez.`); }
       await mostrarEspecial(card); break;
     case 'troca': {
       const alvo = ativos().filter(j => j.id !== r.id && j.posicao > r.posicao && j.posicao - r.posicao <= 5).sort((a,b) => a.posicao - b.posicao)[0];
-      if(!alvo){ card.texto = 'Ninguém a até 5 casas à frente'; await mostrarEspecial(card); T.res.extras.push('Troca: ninguém perto o bastante.'); break; }
-      if(r.posicao < alvo.checkpoint){ card.texto = `${alvo.nome} está protegido pelo checkpoint`; await mostrarEspecial(card); break; }
+      if(!alvo){ card.texto = 'Ninguém a até 5 casas à frente'; card.fx = null; await mostrarEspecial(card); T.res.extras.push('Troca: ninguém perto o bastante.'); break; }
+      if(r.posicao < alvo.checkpoint){ card.texto = `${alvo.nome} está protegido pelo checkpoint`; card.fx = null; await mostrarEspecial(card); break; }
       marcar(); card.texto = `Trocou de lugar com ${alvo.nome}!`; card.alvo = alvo.id; await mostrarEspecial(card);
       const pr = r.posicao, pa = alvo.posicao; r.posicao = pa; alvo.posicao = pr; atualizarCheckpoint(r); T.mov = null;
       await Promise.all([animar(r.id, pr, pa), animar(alvo.id, pa, pr)]);
@@ -775,7 +1015,7 @@ function iniciarTodos(origem){
   S.duelo = {tipo:'todos', origem:origem.id, desafiante:null, desafiado:null, elegiveis:ativos().map(j => j.id), categoria:CAT_IDS[Math.floor(Math.random()*CAT_IDS.length)], dificuldade:2, pergunta:null, respondeuId:null, restante:S.config.tempo*1000, ativo:false, emRebote:false};
   T.mov = null; T.res = null; lancarPergunta();
 }
-function vencer(j){ if(S.vencedor) return; S.vencedor = j.id; S.tela = 'vitoria'; S.fase = null; T.auto = null; T.big = null; T.especial = null; apagar(K_SAVE); setTimeout(render, REDUZ ? 0 : 700); }
+function vencer(j){ if(S.vencedor) return; S.vencedor = j.id; S.tela = 'vitoria'; S.fase = null; T.auto = null; T.big = null; T.especial = null; apagar(K_SAVE); setTimeout(render, REDUZ ? 0 : 150); }
 function desfazer(){
   if(!T.snapshot || T.ocupado || !['resultado','erro_rebote'].includes(S.fase)) return;
   const {cad, banco} = S; S = {...clone(T.snapshot.S), cad, banco};
@@ -790,7 +1030,7 @@ function juiz(){
 
 /* =============================== EFEITOS VISUAIS =============================== */
 function mostrarBig(txt, tipo){ T.big = {txt, tipo, k:Date.now()}; renderFx(); const k = T.big.k; setTimeout(() => { if(T.big && T.big.k === k){ T.big = null; renderFx(); } }, REDUZ ? 900 : 2000); }
-function mostrarEspecial(card){
+function mostrarEspecialCard(card){
   T.especial = card; renderFx();
   return new Promise(res => { const fim = () => { if(T.pular === fim) T.pular = null; T.especial = null; renderFx(); res(); }; T.pular = fim; esperar(REDUZ ? 1800 : 2600).then(() => { if(T.pular === fim) fim(); }); });
 }
@@ -810,7 +1050,7 @@ function renderFx(){
     const e = T.especial, ef = EFEITOS[e.tipo], tl = TILES[e.tipo], j = jog(e.j), al = e.alvo ? jog(e.alvo) : null;
     h += `<div class="abs clicavel" data-a="pularFx" style="inset:134px 0 210px;background:rgba(15,12,50,.62);display:flex;align-items:center;justify-content:center;cursor:pointer;animation:fade .2s">
       <div style="width:540px;height:660px;box-sizing:border-box;border-radius:36px;background:#fff;border:8px solid ${tl.cor};box-shadow:0 0 0 6px rgba(255,255,255,.3),0 0 80px ${tl.cor}aa,0 16px 0 ${tl.esc};overflow:hidden;display:flex;flex-direction:column;animation:mola .45s cubic-bezier(.3,1.6,.5,1) both">
-        <div style="position:relative;height:300px;flex:none;background:${ef.claro};display:flex;align-items:center;justify-content:center;overflow:hidden"><div class="raios" style="width:900px;height:900px;margin:-450px 0 0 -450px;background:repeating-conic-gradient(${ef.raio} 0deg 9deg, transparent 9deg 18deg)"></div><div style="position:relative;${e.imune ? 'filter:grayscale(.85);opacity:.6' : ''}">${casa(e.tipo, 196)}</div>${e.imune ? `<div class="abs" style="left:50%;top:50%;width:240px;height:22px;margin:-11px 0 0 -120px;border-radius:999px;background:#1E1B4B;transform:rotate(-35deg);box-shadow:0 0 0 6px #fff"></div>` : ''}</div>
+        <div style="position:relative;height:300px;flex:none;background:${ef.claro};display:flex;align-items:center;justify-content:center;overflow:hidden"><div class="raios" style="width:900px;height:900px;margin:-450px 0 0 -450px;background:repeating-conic-gradient(${ef.raio} 0deg 9deg, transparent 9deg 18deg)"></div><div style="position:relative;${e.imune ? 'filter:grayscale(.85);opacity:.6' : ''}">${casa(e.tipo, 196, null, !e.imune)}</div>${e.imune ? `<div class="abs" style="left:50%;top:50%;width:240px;height:22px;margin:-11px 0 0 -120px;border-radius:999px;background:#1E1B4B;transform:rotate(-35deg);box-shadow:0 0 0 6px #fff"></div>` : ''}</div>
         <div style="flex:1;padding:22px 32px 26px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px">
           <div class="rotulo" style="color:${ef.rot}">${e.imune ? 'SEM EFEITO DESTA VEZ' : 'CASA ESPECIAL'}</div>
           <div class="bal" style="font-size:${e.titulo.length > 12 ? 58 : 76}px">${esc(e.titulo)}</div>
@@ -824,10 +1064,14 @@ function renderFx(){
 
 /* =============================== PAUSA, CRONÔMETRO, AUTOAVANÇO =============================== */
 function togglePausa(){ if(S.tela !== 'jogo') return; T.pausado = !T.pausado; render(); }
-function agendarAuto(ms, fn){ T.auto = {restante:ms, total:ms, fn}; }
-let ultimo = performance.now();
+function agendarAuto(ms, fn){ T.auto = {restante:ms, total:ms, fn}; acordar(); }
+/* O laço só roda quando há cronômetro ou autoavanço contando. Um requestAnimationFrame permanente forçaria um
+   quadro no thread principal a cada 16 ms, e a cada quadro o navegador recalcula o estilo de todas as casas animadas. */
+let ultimo = performance.now(), rodando = false;
+function precisaLoop(){ return S.tela === 'jogo' && !T.pausado && !T.modal && !!(T.auto || (S.duelo && S.duelo.ativo && S.fase === 'pergunta')); }
+function acordar(){ if(!rodando && precisaLoop()){ rodando = true; ultimo = performance.now(); requestAnimationFrame(loop); } }
 function loop(t){
-  const dt = t - ultimo; ultimo = t;
+  const dt = Math.max(0, t - ultimo); ultimo = t;
   if(S.tela === 'jogo' && !T.pausado && !T.modal){
     const d = S.duelo;
     if(d && d.ativo && S.fase === 'pergunta'){
@@ -848,9 +1092,8 @@ function loop(t){
       if(T.auto.restante <= 0){ const fn = T.auto.fn; T.auto = null; fn(); }
     }
   }
-  requestAnimationFrame(loop);
+  if(precisaLoop()) requestAnimationFrame(loop); else rodando = false;
 }
-requestAnimationFrame(loop);
 
 /* =============================== TELAS: ABERTURA, CADASTRO, CONFIG, BANCO =============================== */
 function telaAbertura(){
@@ -1238,39 +1481,52 @@ function podio(id, papel, direita, tecla){
 }
 
 /* =============================== TELA: VITÓRIA =============================== */
+/* Partículas fixas da vitória (semente fixa: o mesmo HTML a cada render, e nada se sorteia de novo). */
+const VIT_FX = (() => {
+  const r = mulberry32(11), cores = ['#22C55E','#FACC15','#3B82F6','#8B5CF6','#F97316','#EF4444','#F9A8D4','#C026D3','#FFFFFF','#22D3EE'], cor = () => cores[Math.floor(r()*cores.length)];
+  const confete = Array.from({length:70}, () => { const fita = r() < .35, circ = !fita && r() < .3;
+    return `<i class="cf" style="--x:${Math.round(r()*1900)}px;--c:${cor()};--dur:${(3 + r()*2.2).toFixed(2)}s;--del:${(r()*3).toFixed(2)}s;--rot:${Math.round(360 + r()*720)*(r() < .5 ? -1 : 1)}deg;--w:${fita ? 10 : circ ? 18 : 16 + Math.round(r()*6)}px;--h:${fita ? 38 : circ ? 18 : 22 + Math.round(r()*8)}px;--r:${circ ? '50%' : '3px'};--sway:${Math.round(30 + r()*70)}px"></i>`; }).join('');
+  const estouro = Array.from({length:36}, (_, i) => { const est = i % 4 === 0, ang = (-160 + r()*140)*Math.PI/180, d = 220 + r()*300, c = est ? (r() < .5 ? '#FDE047' : '#FFFFFF') : cor();
+    return `<i class="bp${est ? ' bp--estrela' : ''}" style="--dx:${Math.round(Math.cos(ang)*d)}px;--dy:${Math.round(Math.sin(ang)*d)}px;--c:${c};--rot:${Math.round(r()*720 - 360)}deg;--del:${Math.round(r()*80)}ms${est ? ";font-family:'Material Symbols Rounded';font-size:56px;line-height:1;font-style:normal;font-feature-settings:'liga'" : ''}">${est ? 'star' : ''}</i>`; }).join('');
+  const holofotes = [[160,'rgba(253,224,71,.6)','-28deg','10deg'],[760,'rgba(244,114,182,.55)','-12deg','24deg'],[1300,'rgba(34,211,238,.5)','20deg','-22deg'],[1800,'rgba(255,255,255,.5)','26deg','-10deg']]
+    .map(([x, c, de, ate]) => `<div class="holofote" style="left:${x}px;--c:${c};--de:${de};--ate:${ate}"></div>`).join('');
+  const raios = Array.from({length:14}, (_, i) => `<i class="fw-raio" style="--a:${Math.round(i*360/14)}deg"></i>`).join('');
+  const fogos = [[1080,170,'#F472B6','0s'],[1780,300,'#22D3EE','.8s'],[220,210,'#FDE047','1.6s']].map(([x, y, c, d]) => `<div class="fw" style="left:${x}px;top:${y}px;--c:${c};--del:${d}"><i class="fw-nucleo"></i>${raios}</div>`).join('');
+  return {confete, estouro, holofotes, fogos};
+})();
 function telaVitoria(){
-  const v = jog(S.vencedor), lista = S.jogadores.slice().sort((a,b) => b.posicao - a.posicao || b.st.acertos - a.st.acertos), n = lista.length, comp = n > 4;
-  const [hx, ex] = PC[v.cor];
-  const forte = j => { const e = Object.entries(j.st.porCat).sort((a,b) => b[1] - a[1])[0]; return e ? e[0] : null; };
-  const nomeFs = Math.min(200, Math.floor(1040/((v.nome.length + 8)*.52)));
-  return `
-  <div class="abs" style="left:470px;top:330px;width:1300px;height:1300px;margin:-650px 0 0 -650px;border-radius:50%;background:repeating-conic-gradient(rgba(253,224,71,.16) 0deg 8deg, rgba(253,224,71,0) 8deg 16deg);-webkit-mask-image:radial-gradient(circle, #000 15%, transparent 60%);mask-image:radial-gradient(circle, #000 15%, transparent 60%);animation:gira 60s linear infinite"></div>
-  <div class="abs" style="left:220px;top:30px;width:500px;height:560px;display:flex;flex-direction:column;align-items:center">
-    <svg width="190" height="120" viewBox="0 0 190 120" style="margin-bottom:-14px;filter:drop-shadow(0 6px 0 #A16207);animation:coroa .8s .3s cubic-bezier(.3,1.4,.5,1) both"><path d="M15 100 L5 25 L55 60 L95 8 L135 60 L185 25 L175 100 Z" fill="#FACC15" stroke="#fff" stroke-width="9" stroke-linejoin="round"/><rect x="15" y="92" width="160" height="22" rx="8" fill="#EAB308" stroke="#fff" stroke-width="7"/><circle cx="95" cy="62" r="11" fill="#EF4444"/><circle cx="50" cy="75" r="8" fill="#3B82F6"/><circle cx="140" cy="75" r="8" fill="#22C55E"/></svg>
-    <div style="animation:entra .6s both">${peaoJ(v, 320, {brilho:true})}</div>
-    <div class="linha" style="width:420px;height:110px;margin-top:-6px;box-sizing:border-box;border-radius:24px 24px 10px 10px;background:linear-gradient(180deg,#FDE047,#FACC15);border:7px solid #fff;box-shadow:0 12px 0 #A16207,0 0 60px rgba(250,204,21,.5);justify-content:center;gap:8px;color:#422006">${ico('emoji_events', 56)}<span class="bal" style="font-size:72px;padding-top:8px">1º</span></div></div>
-  <div class="abs" style="left:820px;top:120px;width:1040px;display:flex;flex-direction:column;gap:18px">
-    ${textoContorno(`${v.nome} venceu!`, nomeFs, hx, ex, 1040, 220, 0, 'start')}
-    <div style="font-weight:800;font-size:36px;color:#fff">Chegou à casa ${S.N} em ${S.rodada} ${plural(S.rodada,'rodada','rodadas')}</div>
-    <div class="linha" style="gap:22px;margin-top:22px"><button class="b3d amarelo" data-a="jogarDeNovo" style="height:104px;padding:0 48px;border:6px solid #fff;border-radius:30px;background:linear-gradient(180deg,#FFE066,#FFD23F 60%);font-size:48px;box-shadow:0 10px 0 #C99A00">${ico('replay', 54)}Jogar de novo</button>
-      <button class="b3d branco" data-a="irInicio" style="height:104px;padding:0 44px;border-radius:30px;font-size:42px;box-shadow:0 10px 0 var(--lilas)">${ico('home', 50)}Voltar ao início</button></div></div>
-  <div class="abs" style="left:60px;top:${n > 6 ? 630 : 648}px;width:1800px;display:grid;grid-template-columns:repeat(${n > 6 ? Math.ceil(n/2) : n},minmax(0,1fr));gap:${n > 6 ? 12 : comp ? 16 : 24}px">
-    ${lista.map((j, i) => { const [h1, e1] = PC[j.cor], f = forte(j), tot = j.st.acertos + j.st.erros, fs = comp ? 26 : 28;
-      if(n > 6) return statMini(j, i, f, tot);
-      return `<div style="box-sizing:border-box;border-radius:28px;background:rgba(255,255,255,.97);border:6px solid ${h1};box-shadow:0 10px 0 ${e1};padding:${comp ? '16px 16px 18px' : '20px 24px 24px'};display:flex;flex-direction:column;gap:14px;min-width:0;animation:entra .4s ${.4 + i*.1}s both">
-        <div class="linha" style="gap:12px">${peaoJ(j, comp ? 64 : 78)}<span class="bal flex1" style="font-size:${comp ? 34 : 46}px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-top:4px">${esc(j.nome)}</span><span class="bal" style="font-size:${comp ? 32 : 40}px;color:var(--tinta-2)">${i+1}º</span></div>
-        <div style="display:flex;justify-content:space-between;align-items:baseline;border-top:3px solid var(--suave-2);padding-top:12px"><span style="font-weight:800;font-size:${fs}px;color:var(--tinta-2)">Acertos</span><span class="bal" style="font-size:44px">${j.st.acertos}/${tot}</span></div>
-        <div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><span style="font-weight:800;font-size:${fs}px;color:var(--tinta-2)">${comp ? 'Forte' : 'Mais forte'}</span>${f ? `<span class="linha" style="gap:8px;min-width:0">${casa(f, comp ? 36 : 44)}<span style="font-weight:900;font-size:${fs}px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${CATS[f].curto}</span></span>` : '<span style="font-weight:900;font-size:28px">—</span>'}</div>
-        <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-weight:800;font-size:${fs}px;color:var(--tinta-2)">${comp ? 'Sequência' : 'Maior sequência'}</span><span class="linha bal" style="gap:4px;font-size:44px">${ico('local_fire_department', 36, 'color:#F97316')}${j.st.maxSeq}</span></div></div>`; }).join('')}</div>`;
-}
-
-function statMini(j, i, f, tot){
-  const [h1, e1] = PC[j.cor];
-  return `<div style="box-sizing:border-box;border-radius:20px;background:rgba(255,255,255,.97);border:5px solid ${h1};box-shadow:0 7px 0 ${e1};padding:10px 12px 12px;display:flex;flex-direction:column;gap:6px;min-width:0;animation:entra .4s ${.3 + i*.05}s both">
-    <div class="linha" style="gap:8px">${peaoJ(j, 44)}<span class="bal flex1" style="font-size:26px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-top:4px">${esc(j.nome)}</span><span class="bal" style="font-size:26px;color:var(--tinta-2)">${i+1}º</span></div>
-    <div style="display:flex;justify-content:space-between;align-items:center;font-weight:800;font-size:20px;color:var(--tinta-2);border-top:3px solid var(--suave-2);padding-top:6px"><span>Acertos</span><span class="bal" style="font-size:28px;color:var(--tinta)">${j.st.acertos}/${tot}</span></div>
-    <div style="display:flex;justify-content:space-between;align-items:center;font-weight:800;font-size:20px;color:var(--tinta-2)"><span>Forte</span>${f ? `<span class="linha" style="gap:6px;min-width:0">${casa(f, 26)}<span style="font-weight:900;color:var(--tinta);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${CATS[f].curto}</span></span>` : '<span>—</span>'}</div>
-    <div style="display:flex;justify-content:space-between;align-items:center;font-weight:800;font-size:20px;color:var(--tinta-2)"><span>Sequência</span><span class="linha bal" style="gap:2px;font-size:28px;color:var(--tinta)">${ico('local_fire_department', 24, 'color:#F97316')}${j.st.maxSeq}</span></div></div>`;
+  const v = jog(S.vencedor), lista = S.jogadores.slice().sort((a,b) => (b.id === v.id) - (a.id === v.id) || b.posicao - a.posicao || b.st.acertos - a.st.acertos), n = lista.length;
+  const [c1, c2, , ct] = PC[v.cor], [j2, j3] = [lista[1], lista[2]];
+  const nomeFs = Math.max(64, Math.min(136, Math.floor(960/(Math.max(3, v.nome.length)*.56))));
+  const tit = 'VITÓRIA!', nomeSpan = (st, cls = '') => `<span class="${cls}" style="font-size:${nomeFs}px;${st}">${esc(v.nome)}</span>`;
+  const tot = v.st.acertos + v.st.erros;
+  const placar = [['sports_score', v.st.andou ?? '—', plural(v.st.andou ?? 0, 'casa percorrida', 'casas percorridas')], ['check_circle', `${v.st.acertos}/${tot}`, plural(v.st.acertos, 'acerto', 'acertos')], ['local_fire_department', v.st.maxSeq, 'maior sequência']];
+  const bloco = (j, lugar, x, w, h, fs, del) => `<div class="podio-bloco" style="left:${x}px;width:${w}px;height:${h}px;--del:${del}ms;border-radius:24px 24px 0 0;background:linear-gradient(180deg,#FFFFFF,#E4E2F3);border:6px solid ${PC[j.cor][0]};border-bottom:none;padding-top:14px"><span class="bal" style="font-size:${fs}px;color:#1E1B4B">${lugar}º</span></div>`;
+  const colunas = Math.min(4, n), linhas = Math.ceil(n/4), hR = [96, 82, 66][linhas - 1], estreito = colunas > 3;
+  return `<div class="vit"><div class="camera">
+    <div class="mesa-fundo"><div class="tab" style="box-shadow:0 0 0 6px rgba(255,255,255,.9)">${htmlCasas(false)}</div></div>
+    ${VIT_FX.holofotes}${VIT_FX.fogos}${VIT_FX.confete}
+    <div class="aura-raios" style="left:150px;top:380px;width:640px;height:640px"></div>
+    <div class="aura" style="left:190px;top:420px;width:560px;height:560px"></div>
+    <div class="anel-podio" style="left:330px;top:740px;width:280px;height:280px"></div>
+    ${j2 ? bloco(j2, 2, 90, 240, 150, 76, 1050) : ''}${j3 ? bloco(j3, 3, 610, 240, 110, 64, 1150) : ''}
+    <div class="podio-bloco reflexo" style="left:330px;width:280px;height:240px;--del:900ms;border-radius:26px 26px 0 0;background:linear-gradient(180deg,#FDE047,#FACC15);border:7px solid #fff;border-bottom:none;box-shadow:0 0 60px rgba(250,204,21,.5);flex-direction:column;align-items:center;padding-top:18px;gap:2px;color:#422006">${ico('emoji_events', 64)}<span class="bal" style="font-size:96px">1º</span></div>
+    ${j2 ? `<div class="peoes-coadj" style="left:${210 - Math.round(170*50/130)}px;top:766px;--del:1250ms">${peaoJ(j2, 170)}</div>` : ''}
+    ${j3 ? `<div class="peoes-coadj" style="left:${730 - Math.round(170*50/130)}px;top:806px;--del:1350ms">${peaoJ(j3, 170)}</div>` : ''}
+    <div class="peao-vencedor" style="left:${470 - Math.round(280*50/130)}px;top:566px">${peaoJ(v, 280)}</div>
+    <div class="abs" style="left:470px;top:700px">${VIT_FX.estouro}</div>
+    <div class="abs" style="left:880px;top:64px;width:1020px;display:flex;flex-direction:column;align-items:center;gap:26px">
+      <div class="titulo" style="font-size:200px" aria-hidden="true"><span class="t-sombra">${tit}</span><span class="t-contorno">${tit}</span><span class="t-face">${tit}</span><span class="shimmer-txt">${tit}</span></div>
+      <div class="nome-entra"><div class="nome" role="heading" aria-level="1" aria-label="${esc(v.nome)} venceu a partida">${nomeSpan('color:#fff;-webkit-text-stroke:14px #fff;filter:drop-shadow(0 10px 0 #0F0C3A)')}${nomeSpan('color:' + c1)}${nomeSpan('', 'shimmer-txt')}</div>
+        <span style="font-weight:900;font-size:44px;white-space:nowrap;color:#fff;text-shadow:0 4px 0 #0F0C3A">venceu a partida em ${S.rodada} ${plural(S.rodada, 'rodada', 'rodadas')}!</span></div>
+      <div style="display:flex;gap:20px">${placar.map(([ic, val, rot], i) => `<div class="chip-entra" style="--del:${i*120}ms;background:rgba(255,255,255,.95);border:5px solid ${c1};border-radius:24px;box-shadow:0 8px 0 ${c2};padding:14px 26px;display:flex;align-items:center;gap:14px;color:#1E1B4B">${ico(ic, 48, 'color:' + ct)}<div style="display:flex;flex-direction:column"><span class="bal" style="font-size:52px">${val}</span><span style="font-weight:800;font-size:24px;line-height:1.2;white-space:nowrap;color:#4A477A">${rot}</span></div></div>`).join('')}</div>
+      <div class="botoes-entra" style="display:flex;gap:18px;margin-top:10px">
+        <button class="b3d btn-pulso" data-a="jogarDeNovo" style="height:100px;padding:0 34px;border:6px solid #fff;border-radius:30px;background:linear-gradient(180deg,#FFE066,#FFD23F 60%);color:#1E1B4B;font-size:42px;box-shadow:0 10px 0 #C99A00">${ico('replay', 48)}Jogar novamente</button>
+        <button class="b3d branco" data-a="irInicio" style="height:100px;padding:0 30px;border-radius:30px;font-size:36px;box-shadow:0 10px 0 var(--lilas)">${ico('home', 48)}Voltar ao início</button></div>
+      <div class="rank-entra" style="width:100%;margin-top:4px;display:grid;grid-template-columns:repeat(${colunas},minmax(0,1fr));gap:${linhas > 2 ? 8 : 12}px" aria-label="Classificação">
+        ${lista.map((j, i) => `<div class="linha" style="gap:${estreito ? 8 : 12}px;height:${hR}px;padding:0 ${estreito ? 12 : 16}px;border-radius:${linhas > 2 ? 16 : 20}px;background:rgba(255,255,255,${i ? .94 : .99});border:4px solid ${i ? 'rgba(255,255,255,.4)' : '#FACC15'};min-width:0">
+          ${peaoJ(j, hR - (linhas > 2 ? 16 : 30))}<div style="display:flex;flex-direction:column;min-width:0;gap:${linhas > 2 ? 0 : 2}px"><span class="bal" style="font-size:${linhas > 2 ? 26 : estreito ? 28 : 32}px;color:#1E1B4B;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-top:4px">${esc(j.nome)}</span><span style="font-weight:800;font-size:${linhas > 2 ? 18 : 20}px;color:#4A477A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${i+1}º · ${j.st.acertos}/${j.st.acertos + j.st.erros} ${plural(j.st.acertos, 'acerto', 'acertos')}</span></div></div>`).join('')}</div>
+    </div></div><div class="flash"></div></div>`;
 }
 
 /* =============================== PAUSA =============================== */
@@ -1298,20 +1554,22 @@ function render(){
   else if(S.tela === 'cadastro') h = telaCadastro();
   else if(S.tela === 'ordem'){ h = telaOrdem(); if(T.sort && T.sort.pronto) fk = 'festa|7'; }
   else if(S.tela === 'jogo'){ tab = true; desf = FASES_DUELO.includes(S.fase); if(desf) T.big = null; h = desf ? telaDuelo() : telaMesa(); }
-  else if(S.tela === 'vitoria'){ h = telaVitoria(); fk = 'festa|11'; }
+  else if(S.tela === 'vitoria') h = R.vit === S.vencedor ? null : telaVitoria();
   if(fk !== R.fundo){ R.fundo = fk; const [m, sm] = fk.split('|'); $('#l-fundo').innerHTML = fundo(m, +sm); }
   const lt = $('#l-tab');
   if(!tab){ if(R.casas){ lt.innerHTML = ''; R.casas = null; R.pecas = {}; } }
   else { if(R.casas !== S.casas) montarTab(); renderTab(); }
   lt.classList.toggle('desfocado', desf);
   const foco = document.activeElement && document.activeElement.id;
-  $('#l-frente').innerHTML = h;
+  if(h !== null) $('#l-frente').innerHTML = h;
+  R.vit = S.tela === 'vitoria' ? S.vencedor : null;
+  $('#palco').classList.toggle('parado', S.tela === 'jogo' && (T.pausado || !!T.modal));
   let sobre = '';
   if(S.tela === 'jogo' && T.pausado) sobre += telaPausa();
   if(T.modal === 'config') sobre += modalConfig();
   if(T.modal === 'banco') sobre += modalBanco();
   $('#sobre').innerHTML = sobre;
-  renderFx();
+  renderFx(); acordar();
   if(foco){ const el = document.getElementById(foco); if(el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA')) el.focus(); }
 }
 function ajustar(){
