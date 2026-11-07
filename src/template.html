@@ -525,9 +525,26 @@ function indiceBanco(){
   return IDX;
 }
 function usadasSet(){ if(!T.us || T.us.arr !== S.usadas){ T.us = {arr:S.usadas, set:new Set(S.usadas)}; } return T.us.set; }
-function usar(q){ S.usadas.push(q.id); usadasSet().add(q.id); return q; }
+/* Histórico entre partidas: cada pergunta guarda a ordem em que foi vista pela última vez neste navegador.
+   O sorteio prefere perguntas nunca vistas; se todas já saíram, sorteia entre o quarto mais antigo. */
+const K_HIST = 'osvaldoland-vistas';
+let HIST = null;
+function historico(){ if(!HIST){ const h = ler(K_HIST, null); HIST = h && h.v ? h : {seq:0, v:{}}; } return HIST; }
+function escolherMenosVista(lista){
+  const h = historico().v, nunca = lista.filter(q => !(q.id in h));
+  if(nunca.length) return nunca[Math.floor(Math.random()*nunca.length)];
+  const ord = lista.slice().sort((a,b) => h[a.id] - h[b.id]), k = Math.max(1, Math.ceil(ord.length/4));
+  return ord[Math.floor(Math.random()*k)];
+}
+function marcarVista(id){
+  const H = historico(); H.v[id] = ++H.seq;
+  const ids = Object.keys(H.v);
+  if(ids.length > 3000) ids.sort((a,b) => H.v[a] - H.v[b]).slice(0, ids.length - 2000).forEach(x => delete H.v[x]);
+  gravar(K_HIST, H);
+}
+function usar(q){ S.usadas.push(q.id); usadasSet().add(q.id); if(q.id !== 'vazio') marcarVista(q.id); return q; }
 function sortearPergunta(cat, dif){
-  const ix = indiceBanco(), us = usadasSet(), pega = l => l[Math.floor(Math.random()*l.length)];
+  const ix = indiceBanco(), us = usadasSet(), pega = escolherMenosVista;
   const ordem = [dif, ...[1,2,3].filter(x => x !== dif).sort((a,b) => Math.abs(a-dif) - Math.abs(b-dif))];
   for(const df of ordem){
     const livres = (ix.grupo.get(cat + df) || []).filter(q => !us.has(q.id));
