@@ -244,7 +244,7 @@ const clone = o => JSON.parse(JSON.stringify(o));
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const REDUZ = (() => { try { return matchMedia('(prefers-reduced-motion: reduce)').matches; } catch(e){ return false; } })();
 const ler = (k, p) => { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : p; } catch(e){ return p; } };
-const gravar = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} };
+const gravar = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch(e){ return false; } };
 const apagar = k => { try { localStorage.removeItem(k); } catch(e){} };
 const K_SAVE = 'osvaldoland3-partida', K_BANCO = 'osvaldoland2-banco', K_CAD = 'osvaldoland3-cadastro';
 function embaralhar(a, rnd = Math.random){ a = a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(rnd()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
@@ -602,7 +602,7 @@ function comecarJogo(){
   S.tela = 'jogo'; T.vis = Object.fromEntries(S.jogadores.map(j => [j.id, j.posicao]));
   iniciarTurno();
 }
-function salvarPartida(){ const {cad, banco, ...resto} = S; gravar(K_SAVE, {v:3, salvoEm:Date.now(), S:resto}); }
+function salvarPartida(){ const {cad, banco, ...resto} = S; T.semSalvar = !gravar(K_SAVE, {v:3, salvoEm:Date.now(), S:resto}); }
 function carregarPartida(){
   const d = ler(K_SAVE, null); if(!d || !d.S) return;
   S = {...d.S, cad:lerCad(), banco:bancoAtual()}; T = novoT();
@@ -695,10 +695,18 @@ function pularRebote(){ if(S.fase !== 'erro_rebote') return; T.res.semRebote = t
 function tempoEsgotado(){ const d = S.duelo; d.ativo = false; T.alerta = false; S.fase = 'tempo_esgotado'; agendarAuto(3500, proximoTurno); render(); }
 function ehUltimo(r){ const ps = ativos().map(j => j.posicao); const min = Math.min(...ps); return r.posicao === min && min < Math.max(...ps); }
 function atualizarCheckpoint(j){ S.checkpoints.forEach(cp => { if(j.posicao >= cp) j.checkpoint = Math.max(j.checkpoint, cp); }); }
+async function esperar(ms){
+  let resta = ms;
+  while(resta > 0){
+    const t0 = performance.now();
+    await sleep(Math.min(resta, 50));
+    if(!T.pausado && !T.modal) resta -= performance.now() - t0;
+  }
+}
 async function animar(id, de, ate){
   if(de === ate) return;
   const p = ate > de ? 1 : -1;
-  for(let x = de; x !== ate; x += p){ T.vis[id] = x + p; T.pulando.add(id); renderTab(); pularPeca(id); await sleep(REDUZ ? 60 : 230); }
+  for(let x = de; x !== ate; x += p){ T.vis[id] = x + p; T.pulando.add(id); renderTab(); pularPeca(id); await esperar(REDUZ ? 60 : 230); }
   T.pulando.delete(id); renderTab();
 }
 async function mover(j, delta){
@@ -782,7 +790,7 @@ function juiz(){
 function mostrarBig(txt, tipo){ T.big = {txt, tipo, k:Date.now()}; renderFx(); const k = T.big.k; setTimeout(() => { if(T.big && T.big.k === k){ T.big = null; renderFx(); } }, REDUZ ? 900 : 2000); }
 function mostrarEspecial(card){
   T.especial = card; renderFx();
-  return new Promise(res => { const fim = () => { if(T.pular === fim) T.pular = null; T.especial = null; renderFx(); res(); }; T.pular = fim; setTimeout(() => { if(T.pular === fim) fim(); }, REDUZ ? 1800 : 2600); });
+  return new Promise(res => { const fim = () => { if(T.pular === fim) T.pular = null; T.especial = null; renderFx(); res(); }; T.pular = fim; esperar(REDUZ ? 1800 : 2600).then(() => { if(T.pular === fim) fim(); }); });
 }
 function renderFx(){
   const fx = $('#fx'); let h = '';
@@ -817,7 +825,7 @@ function togglePausa(){ if(S.tela !== 'jogo') return; T.pausado = !T.pausado; re
 function agendarAuto(ms, fn){ T.auto = {restante:ms, total:ms, fn}; }
 let ultimo = performance.now();
 function loop(t){
-  const dt = Math.min(250, t - ultimo); ultimo = t;
+  const dt = t - ultimo; ultimo = t;
   if(S.tela === 'jogo' && !T.pausado && !T.modal){
     const d = S.duelo;
     if(d && d.ativo && S.fase === 'pergunta'){
@@ -1274,7 +1282,7 @@ function telaPausa(){
       <button class="b3d" data-a="pausa" style="height:110px;padding:0 56px;border-radius:28px;background:#22C55E;color:#052E16;font-size:48px;box-shadow:0 0 0 5px #fff,0 12px 0 #15803D">${ico('play_arrow', 56)}Continuar</button>
       <button class="b3d branco" data-a="abrirConfig" style="height:110px;padding:0 44px;border-radius:28px;font-size:44px;box-shadow:0 12px 0 var(--lilas)">${ico('settings', 50)}Configurações</button>
       <button class="b3d branco" data-a="sair" style="height:110px;padding:0 44px;border-radius:28px;font-size:44px;box-shadow:0 12px 0 var(--lilas)">${ico('save', 50)}Salvar e sair</button></div>
-    <div style="color:#C7C4F0;font-weight:700;font-size:26px;text-align:center;line-height:1.5">Atalhos: <b>números</b> escolhem (0 = 10º) · <b>Espaço</b> avança · <b>Enter</b> = Sim · <b>Backspace</b> = Não · <b>Esc</b> pausa · <b>Ctrl+Z</b> desfaz<br>“Salvar e sair” guarda a partida no começo do turno atual.</div></div>`;
+    <div style="color:#C7C4F0;font-weight:700;font-size:26px;text-align:center;line-height:1.5">Atalhos: <b>números</b> escolhem (0 = 10º) · <b>Espaço</b> avança · <b>Enter</b> = Sim · <b>Backspace</b> = Não · <b>Esc</b> pausa · <b>Ctrl+Z</b> desfaz<br>“Salvar e sair” guarda a partida no começo do turno atual.</div>${T.semSalvar ? `<div class="linha" style="gap:12px;padding:14px 24px;border-radius:18px;background:#FEF3C7;color:#78350F;font-weight:800;font-size:28px">${ico('error', 36)}Este navegador não está guardando a partida. Se a página fechar, ela se perde.</div>` : ''}</div>`;
 }
 
 /* =============================== RENDER =============================== */
@@ -1359,7 +1367,9 @@ const acoes = {
   sair(){ T.pausado = false; acoes.irInicio(); }
 };
 function importarBanco(txt){
-  try { const {ok, rej} = normalizarBanco(JSON.parse(txt)); gravar(K_BANCO, ok); T.colar = false; T.msgBanco = {tipo:'ok', txt:`${ok.length} perguntas carregadas${rej ? `; ${rej} ignoradas por estarem incompletas` : ''}.`}; }
+  try { const {ok, rej} = normalizarBanco(JSON.parse(txt));
+    if(!gravar(K_BANCO, ok)) throw new Error('O navegador não deixou guardar este banco (sem espaço ou modo anônimo). O banco anterior continua em uso.');
+    T.colar = false; T.msgBanco = {tipo:'ok', txt:`${ok.length} perguntas carregadas${rej ? `; ${rej} ignoradas por estarem incompletas` : ''}.`}; }
   catch(e){ T.msgBanco = {tipo:'erro', txt: e instanceof SyntaxError ? 'O texto não é um JSON válido. Confira vírgulas, aspas e colchetes.' : e.message}; }
   render();
 }
