@@ -80,9 +80,30 @@ button[disabled]{cursor:not-allowed}
 /* Tabuleiro */
 .tab{position:relative; width:1160px; height:716px; border-radius:36px; overflow:hidden; background:linear-gradient(180deg,#25AED6 0%,#1583B5 100%); box-shadow:0 0 0 6px rgba(255,255,255,.9),0 24px 60px rgba(8,6,35,.55)}
 .pc{position:absolute; left:0; top:0; transition:transform .2s ease; will-change:transform}
+/* 4+ peões na mesma casa: o da vez (ou o que está se movendo) fica inteiro; os outros viram bolinhas numeradas ao lado */
+.pc-bola{display:none; position:absolute; left:0; top:0; width:var(--b,38px); height:var(--b,38px); font-size:calc(var(--b,38px)*.56); box-sizing:border-box; border-radius:50%; border:3px solid #fff; align-items:center; justify-content:center; font-family:var(--baloo); font-weight:800; line-height:1; padding-top:.12em}
+.pc.bola .peao{display:none}
+.pc.bola .pc-bola{display:flex}
+/* seta sobre o peão do jogador da vez */
+.seta-vez{position:absolute; left:0; top:0; width:0; height:0; pointer-events:none; z-index:99999; transition:transform .2s ease}
+.seta-vez b{position:absolute; left:-26px; top:-50px; width:52px; height:46px; animation:seta-vez .9s ease-in-out infinite}
+.seta-vez b::before,.seta-vez b::after{content:""; position:absolute; clip-path:polygon(0 0,100% 0,50% 100%)}
+.seta-vez b::before{inset:0; background:#fff}
+.seta-vez b::after{inset:6px 8px 11px; background:var(--c)}
+@keyframes seta-vez{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+/* casas especiais que o jogador da vez já usou */
+.usada{position:absolute; pointer-events:none}
+.usada i{position:absolute; inset:0; border-radius:50%; background:rgba(30,27,75,.55)}
+.usada b{position:absolute; right:-10px; top:-10px; width:36px; height:36px; box-sizing:border-box; border-radius:50%; border:3px solid #fff; display:flex; align-items:center; justify-content:center; box-shadow:0 3px 0 rgba(10,8,40,.4)}
+/* faixa "Vez de…" no começo de cada turno */
+.anuncio{position:absolute; left:0; right:0; top:400px; height:280px; display:flex; align-items:center; pointer-events:none; animation:anuncio 1.8s cubic-bezier(.3,1.2,.5,1) both}
+.anuncio > div{width:100%; height:240px; box-sizing:border-box; border-top:8px solid #fff; border-bottom:8px solid #fff; display:flex; align-items:center; justify-content:center; gap:34px}
+.anuncio > div > *{animation:anuncio-txt 1.8s ease-out both}
+@keyframes anuncio{0%{opacity:0; transform:scaleY(0)}12%{opacity:1; transform:scaleY(1)}80%{opacity:1; transform:scaleY(1)}100%{opacity:0; transform:scaleY(.7)}}
+@keyframes anuncio-txt{0%{transform:translateX(-140px); opacity:0}16%{transform:none; opacity:1}100%{transform:translateX(50px)}}
 #l-tab.desfocado{filter:blur(10px); opacity:.7}
-#tab-casas,#tab-marcas,#tab-mov,#tab-pecas{position:absolute; inset:0}
-#tab-marcas,#tab-mov,#tab-pecas{pointer-events:none}
+#tab-casas,#tab-marcas,#tab-usadas,#tab-mov,#tab-pecas{position:absolute; inset:0}
+#tab-marcas,#tab-usadas,#tab-mov,#tab-pecas{pointer-events:none}
 
 /* Mesa */
 .topo{position:absolute; left:28px; top:24px; width:1864px; height:100px; display:grid; grid-template-columns:1fr auto 1fr; align-items:center}
@@ -692,8 +713,8 @@ function htmlMov(){
 /* Estado do que já está desenhado no tabuleiro: só o que mudou é refeito. */
 const R = {fundo:null, casas:null, marcas:null, mov:null, pecas:{}};
 function montarTab(){
-  $('#l-tab').innerHTML = '<div class="tab" id="tab"><div id="tab-casas"></div><div id="tab-marcas"></div><div id="tab-mov"></div><div id="tab-pecas"></div></div>';
-  R.casas = S.casas; R.marcas = null; R.mov = null; R.pecas = {};
+  $('#l-tab').innerHTML = '<div class="tab" id="tab"><div id="tab-casas"></div><div id="tab-marcas"></div><div id="tab-usadas"></div><div id="tab-mov"></div><div id="tab-pecas"></div></div>';
+  R.casas = S.casas; R.marcas = null; R.mov = null; R.pecas = {}; R.usadas = null; R.seta = null;
   $('#tab-casas').innerHTML = htmlCasas();
 }
 
@@ -703,18 +724,49 @@ function renderTab(){
   if(mk !== R.marcas){ R.marcas = mk; $('#tab-marcas').innerHTML = htmlMarcas(marcas); }
   const mov = htmlMov();
   if(mov !== R.mov){ R.mov = mov; $('#tab-mov').innerHTML = mov; }
-  const cs = tamCasa(), k = Math.min(1.15, TOTAL/S.N/130), PH = cs, PW = Math.round(PH*100/130);
+  const cs = tamCasa(), k = Math.min(1.15, TOTAL/S.N/130), PH = cs, PW = Math.round(PH*100/130), B = Math.round(cs*.4), GB = 4;
+  const vez = S.tela === 'jogo' && S.ordem ? atual() : null;
+  /* casas especiais que o jogador da vez já gastou: véu escuro + selo ✓ na cor dele */
+  const us = vez ? vez.id + ':' + (vez.marcas || []).join(',') : '';
+  if(us !== R.usadas){
+    R.usadas = us;
+    $('#tab-usadas').innerHTML = vez ? (vez.marcas || []).map(i => { const q = pos(i), [hx, , tn] = PC[vez.cor];
+      return `<div class="usada" style="left:${Math.round(q.x - cs/2)}px;top:${Math.round(q.y - cs/2)}px;width:${cs}px;height:${cs}px"><i></i><b style="background:${hx}">${ico('check', 22, `color:${tn};font-variation-settings:'FILL' 1,'wght' 800`)}</b></div>`; }).join('') : '';
+  }
   const grupos = {}, camada = $('#tab-pecas'), vivos = new Set();
   ativos().forEach(j => { const p = T.vis[j.id] ?? j.posicao; (grupos[p] = grupos[p] || []).push(j); });
+  const fundo = pos(0).y;
   Object.entries(grupos).forEach(([p, js]) => {
-    const q = pos(+p), n = js.length, porLinha = n > 6 ? Math.ceil(n/2) : n, sp = Math.min(26, 70/Math.max(1, porLinha-1));
+    const q = pos(+p), n = js.length, bolas = n >= 4;
+    /* até 3 na casa: lado a lado. 4 ou mais: um peão inteiro (o que está agindo, senão o da vez) e os outros em bolinhas numeradas fora da casa */
+    const dest = bolas ? (js.find(j => j.id === T.foco) || js.find(j => vez && j.id === vez.id) || js[0]) : null;
+    /* bolinhas numa faixa logo abaixo da casa (no espaço entre as fileiras); na fileira de baixo, numa linha só */
+    const resto = bolas ? js.filter(j => j !== dest) : [], m = resto.length, cols = Math.min(q.y > fundo - 60 ? m : 8, Math.max(1, m)), lins = Math.ceil(m/cols);
+    const Bg = lins > 1 ? Math.round(cs*.34) : B, larg = cols*(Bg + GB) - GB, cx = Math.min(Math.max(q.x, larg/2 + 10), 1160 - larg/2 - 10), topo = q.y + cs*.5 + 4;
     js.forEach((j, idx) => {
-      const lin = n > 6 ? Math.floor(idx/porLinha) : 0, col = idx - lin*porLinha, nl = lin ? n - porLinha : porLinha;
-      const x = q.x + (col - (nl-1)/2)*sp, y = q.y + (n > 6 ? (lin ? 12 : -12) : 0);
       let el = R.pecas[j.id];
-      if(!el){ el = document.createElement('div'); el.className = 'pc'; el.innerHTML = peaoJ(j, PH); camada.appendChild(el); R.pecas[j.id] = el; }
-      el.style.transform = `translate(${Math.round(x-PW/2)}px,${Math.round(y+24*k-PH)}px)`;
-      el.style.zIndex = Math.round(y)*20 + idx;
+      if(!el){
+        const [hx, ex, tn] = PC[j.cor];
+        el = document.createElement('div'); el.className = 'pc';
+        el.innerHTML = peaoJ(j, PH) + `<span class="pc-bola" style="background:${hx};color:${tn};box-shadow:0 3px 0 ${ex},0 4px 10px rgba(10,8,40,.45)">${j.num}</span>`;
+        camada.appendChild(el); R.pecas[j.id] = el;
+      }
+      const ri = resto.indexOf(j), bola = ri >= 0;
+      el.classList.toggle('bola', bola);
+      let x, y;
+      if(bola){
+        const lin = Math.floor(ri/cols), naLinha = lin === lins - 1 ? m - lin*cols : cols, col = ri - lin*cols;
+        x = cx + (col - (naLinha - 1)/2)*(Bg + GB); y = topo + lin*(Bg + GB) + Bg/2;
+        el.style.setProperty('--b', Bg + 'px');
+        el.style.transform = `translate(${Math.round(x - Bg/2)}px,${Math.round(y - Bg/2)}px)`;
+        el.style.zIndex = 15000 + idx;
+      } else {
+        const sp = n > 1 && !bolas ? Math.round(PW*.62) : 0, ord = bolas ? 0 : idx - (n - 1)/2;
+        x = q.x + ord*sp; y = q.y;
+        el.style.transform = `translate(${Math.round(x-PW/2)}px,${Math.round(y+24*k-PH)}px)`;
+        el.style.zIndex = Math.round(y)*20 + idx + (j === dest ? 10 : 0);
+      }
+      if(vez && j.id === vez.id) R.setaXY = [x, bola ? y - Bg/2 : y + 24*k - PH];
       const pul = T.pulando.has(j.id), alvo = el.firstElementChild;
       alvo.style.filter = pul ? `drop-shadow(0 0 ${Math.round(PH*.14)}px ${PC[j.cor][0]})` : 'none';
       const gelo = j.congelado || (S.fase === 'congelado' && atual().id === j.id), est = (j.escudo ? 'e' : '') + (gelo ? 'g' : '');
@@ -725,6 +777,13 @@ function renderTab(){
       vivos.add(j.id);
     });
   });
+  /* seta da vez sobre o peão do jogador da vez */
+  if(vez && R.setaXY){
+    if(!R.seta){ R.seta = document.createElement('div'); R.seta.className = 'seta-vez'; R.seta.innerHTML = '<b></b>'; camada.appendChild(R.seta); }
+    R.seta.style.setProperty('--c', PC[vez.cor][0]);
+    R.seta.style.transform = `translate(${Math.round(R.setaXY[0])}px,${Math.round(R.setaXY[1] - 6)}px)`;
+  } else if(R.seta){ R.seta.remove(); R.seta = null; }
+  R.setaXY = null;
   Object.keys(R.pecas).forEach(id => { if(!vivos.has(id)){ R.pecas[id].remove(); delete R.pecas[id]; } });
 }
 function pularPeca(id){
@@ -842,11 +901,12 @@ function carregarPartida(){
   S.tela = 'jogo'; iniciarTurno();
 }
 function iniciarTurno(){
-  T.snapshot = null; T.auto = null; T.mov = null; T.res = null; T.big = null; T.especial = null; T.alerta = false;
+  T.snapshot = null; T.auto = null; T.mov = null; T.res = null; T.resA = null; T.foco = null; T.big = null; T.especial = null; T.alerta = false;
   S.duelo = null; salvarPartida();
   const j = atual();
+  som('vez');
   if(j.congelado){ j.congelado = false; S.fase = 'congelado'; agendarAuto(3500, proximoTurno); render(); return; }
-  S.fase = 'inicio'; render();
+  S.fase = 'inicio'; anunciarVez(j); render();
 }
 function proximoTurno(){
   if(T.ocupado) return;
@@ -890,14 +950,26 @@ function voltarMarcacao(){
 }
 function revelar(){
   if(S.fase !== 'resposta') return;
-  S.fase = 'validacao'; const {cad, banco, ...resto} = S; T.snapshot = {S:clone(resto), vis:clone(T.vis)}; render();
+  S.fase = 'validacao'; const {cad, banco, ...resto} = S; T.snapshot = {S:clone(resto), vis:clone(T.vis), resA:T.resA ? clone(T.resA) : null}; render();
 }
 async function validar(certo){
   if(S.fase !== 'validacao' || T.ocupado) return;
-  T.ocupado = true;
   const d = S.duelo, r = jog(d.respondeuId);
+  som(certo ? 'acerto' : 'erro');
+  if(!certo){
+    /* Errou e ainda cabe rebote: a tela do duelo continua e o tabuleiro só volta no fim da rodada.
+       A punição de quem errou fica guardada (T.resA) e é aplicada quando a rodada termina. */
+    const elig = d.elegiveis.filter(x => x !== r.id);
+    if(elig.length > 0 && d.restante > 1000 && (d.tipo === 'todos' || S.config.rebote)){
+      r.st.erros++; r.st.seq = 0; d.elegiveis = elig; d.errouId = r.id;
+      if(!T.resA) T.resA = {certo:false, id:r.id, de:r.posicao, ate:r.posicao, extras:[], resposta:d.pergunta.resposta, categoria:d.categoria, tipo:d.tipo, emRebote:d.emRebote, punir:d.tipo === 'normal' && !d.emRebote, dif:d.dificuldade};
+      S.fase = 'erro_rebote'; render(); return;
+    }
+  }
+  T.ocupado = true;
   T.res = {certo, id:r.id, de:r.posicao, ate:r.posicao, extras:[], resposta:d.pergunta.resposta, categoria:d.categoria, tipo:d.tipo, emRebote:d.emRebote};
   S.fase = 'movendo'; render();
+  await aplicarPendente();
   if(certo){
     r.st.acertos++; r.st.seq++; r.st.maxSeq = Math.max(r.st.maxSeq, r.st.seq); r.st.porCat[d.categoria] = (r.st.porCat[d.categoria] || 0) + 1;
     let casas = d.tipo === 'todos' ? 1 : d.dificuldade;
@@ -917,17 +989,41 @@ async function validar(certo){
     if(d.tipo === 'normal' && !d.emRebote) await aplicarPunicao(r, d.dificuldade);
     T.res.ate = r.posicao;
     d.elegiveis = d.elegiveis.filter(x => x !== r.id);
-    const podeRebote = d.elegiveis.length > 0 && d.restante > 1000 && (d.tipo === 'todos' || S.config.rebote);
-    T.ocupado = false;
-    S.fase = podeRebote ? 'erro_rebote' : 'resultado'; render();
+    T.ocupado = false; S.fase = 'resultado'; render();
   }
+}
+/* Aplica a punição guardada de quem errou antes do rebote e registra no resultado da rodada. */
+async function aplicarPendente(){
+  const a = T.resA; if(!a) return; T.resA = null;
+  const j = jog(a.id), atualRes = T.res;
+  if(a.punir){ T.res = a; await aplicarPunicao(j, a.dif); a.ate = j.posicao; T.res = atualRes; }
+  const n = a.de - a.ate;
+  atualRes.extras.unshift(n > 0 ? `${j.nome} errou antes e voltou ${n} ${plural(n, 'casa', 'casas')}.` : a.penal && a.punir ? `${j.nome} errou antes. ${a.penal}` : `${j.nome} errou antes.`);
 }
 /* Rebote: o outro jogador responde a MESMA pergunta (na conferência os jogadores não olham para a tela). */
 function fazerRebote(){ if(S.fase !== 'erro_rebote') return; S.duelo.emRebote = true; T.res = null; T.mov = null; lancarPergunta(true); }
-function pularRebote(){ if(S.fase !== 'erro_rebote') return; T.res.semRebote = true; S.fase = 'resultado'; render(); }
-function tempoEsgotado(){ const d = S.duelo; d.ativo = false; T.alerta = false; T.desistiu = false; S.fase = 'tempo_esgotado'; agendarAuto(3500, proximoTurno); render(); }
+/* Rodada termina sem acerto no rebote (pulado, tempo esgotado ou "Ninguém sabe"): agora sim volta ao tabuleiro e aplica a punição guardada. */
+async function encerrarRebote(motivo){
+  const a = T.resA; if(!a || T.ocupado) return;
+  T.resA = null; T.ocupado = true; T.auto = null; T.alerta = false;
+  if(S.duelo) S.duelo.ativo = false;
+  T.res = a; a.semRebote = true; if(motivo) a.extras.push(motivo);
+  S.fase = 'movendo'; render();
+  if(a.punir) await aplicarPunicao(jog(a.id), a.dif);
+  a.ate = jog(a.id).posicao; T.ocupado = false; S.fase = 'resultado'; render();
+}
+function pularRebote(){ if(S.fase !== 'erro_rebote') return; encerrarRebote(''); }
+function tempoEsgotado(){
+  const d = S.duelo; d.ativo = false; T.alerta = false; T.desistiu = false; som('tempo');
+  if(T.resA){ encerrarRebote('O tempo do rebote acabou.'); return; }
+  S.fase = 'tempo_esgotado'; agendarAuto(3500, proximoTurno); render();
+}
 /* Ninguém sabe: pula o resto do tempo. Vale como tempo esgotado (ninguém anda, ninguém é punido). */
-function desistir(){ if(S.fase !== 'pergunta' || !S.duelo) return; tempoEsgotado(); T.desistiu = true; render(); }
+function desistir(){
+  if(S.fase !== 'pergunta' || !S.duelo) return;
+  if(T.resA){ S.duelo.ativo = false; encerrarRebote('Ninguém soube no rebote.'); return; }
+  tempoEsgotado(); T.desistiu = true; render();
+}
 function ehUltimo(r){ const ps = ativos().map(j => j.posicao); const min = Math.min(...ps); return r.posicao === min && min < Math.max(...ps); }
 function atualizarCheckpoint(j){ S.checkpoints.forEach(cp => { if(j.posicao >= cp) j.checkpoint = Math.max(j.checkpoint, cp); }); }
 async function esperar(ms){
@@ -945,6 +1041,7 @@ async function animar(id, de, ate){
   T.pulando.delete(id); renderTab();
 }
 async function mover(j, delta){
+  T.foco = j.id;
   const piso = delta < 0 ? j.checkpoint : 0;
   const de = j.posicao, ate = Math.max(piso, Math.min(S.N, de + delta));
   j.posicao = ate; atualizarCheckpoint(j);
@@ -1032,11 +1129,11 @@ function iniciarTodos(origem){
   S.duelo = {tipo:'todos', origem:origem.id, desafiante:null, desafiado:null, elegiveis:ativos().map(j => j.id), categoria:CAT_IDS[Math.floor(Math.random()*CAT_IDS.length)], dificuldade:2, pergunta:null, respondeuId:null, restante:S.config.tempo*1000, ativo:false, emRebote:false};
   T.mov = null; T.res = null; lancarPergunta();
 }
-function vencer(j){ if(S.vencedor) return; S.vencedor = j.id; S.tela = 'vitoria'; S.fase = null; T.auto = null; T.big = null; T.especial = null; apagar(K_SAVE); setTimeout(render, REDUZ ? 0 : 150); }
+function vencer(j){ if(S.vencedor) return; setTimeout(() => som('vitoria'), REDUZ ? 0 : 1900); S.vencedor = j.id; S.tela = 'vitoria'; S.fase = null; T.auto = null; T.big = null; T.especial = null; apagar(K_SAVE); setTimeout(render, REDUZ ? 0 : 150); }
 function desfazer(){
   if(!T.snapshot || T.ocupado || !['resultado','erro_rebote'].includes(S.fase)) return;
   const {cad, banco} = S; S = {...clone(T.snapshot.S), cad, banco};
-  T.vis = clone(T.snapshot.vis); T.mov = null; T.res = null; T.auto = null; T.big = null; render();
+  T.vis = clone(T.snapshot.vis); T.resA = T.snapshot.resA ? clone(T.snapshot.resA) : null; T.mov = null; T.res = null; T.auto = null; T.big = null; render();
 }
 function juiz(){
   const d = S.duelo; if(ativos().length <= 2) return null;
@@ -1076,7 +1173,51 @@ function renderFx(){
           <div class="linha" style="gap:10px;font-weight:800;font-size:28px;color:var(--tinta-2)">${peaoJ(j, 60)}${al ? ico('swap_horiz', 36, 'color:#7E22CE') + peaoJ(al, 60) : ''}${esc(j.nome)} · casa ${e.casa}</div>
         </div></div></div>`;
   }
+  if(T.anuncio && S.tela === 'jogo' && S.fase === 'inicio'){
+    const j = jog(T.anuncio.id), [hex, escu, tinta] = PC[j.cor];
+    h += `<div class="anuncio" aria-hidden="true"><div style="background:linear-gradient(180deg, ${hex}, color-mix(in oklab, ${hex}, ${escu} 35%));box-shadow:0 0 0 6px ${escu}, 0 0 120px ${hex}"><div style="margin-top:-30px">${peaoJ(j, 190, {brilho:true})}</div><span class="bal" style="font-size:150px;color:${tinta};text-shadow:0 8px 0 rgba(0,0,0,.22);padding-top:16px;white-space:nowrap;max-width:1400px;overflow:hidden;text-overflow:ellipsis">Vez de ${esc(j.nome)}!</span></div></div>`;
+  }
   fx.innerHTML = h;
+}
+
+/* =============================== SOM =============================== */
+/* Sons sintetizados pelo navegador (Web Audio): nenhum arquivo. O mudo fica guardado neste navegador (tecla M). */
+const K_SOM = 'osvaldoland-som', SOM = {ctx:null, mudo:false};
+try { SOM.mudo = localStorage.getItem(K_SOM) === 'mudo'; } catch(e){}
+function audio(){
+  if(SOM.mudo) return null;
+  try {
+    if(!SOM.ctx){ const AC = window.AudioContext || window.webkitAudioContext; if(!AC) return null; SOM.ctx = new AC(); }
+    if(SOM.ctx.state === 'suspended') SOM.ctx.resume();
+    return SOM.ctx;
+  } catch(e){ return null; }
+}
+function nota(c, t0, freq, dur, {tipo = 'sine', vol = .18, ate = null} = {}){
+  const o = c.createOscillator(), g = c.createGain();
+  o.type = tipo; o.frequency.setValueAtTime(freq, t0); if(ate) o.frequency.exponentialRampToValueAtTime(ate, t0 + dur);
+  g.gain.setValueAtTime(.0001, t0); g.gain.exponentialRampToValueAtTime(vol, t0 + .012); g.gain.exponentialRampToValueAtTime(.0001, t0 + dur);
+  o.connect(g); g.connect(c.destination); o.start(t0); o.stop(t0 + dur + .03);
+}
+const SONS = {
+  tic: (c, t) => nota(c, t, 880, .08, {tipo:'square', vol:.05}),
+  ticFinal: (c, t) => nota(c, t, 1320, .12, {tipo:'square', vol:.08}),
+  tempo: (c, t) => { nota(c, t, 520, .75, {tipo:'sawtooth', vol:.11, ate:110}); nota(c, t + .05, 260, .7, {tipo:'square', vol:.05, ate:70}); },
+  acerto: (c, t) => [523.25, 659.25, 783.99, 1046.5].forEach((f, i) => nota(c, t + i*.085, f, i === 3 ? .5 : .16, {tipo:'triangle', vol:.22})),
+  erro: (c, t) => { nota(c, t, 311.13, .2, {tipo:'square', vol:.08}); nota(c, t + .2, 207.65, .42, {tipo:'square', vol:.08}); },
+  vez: (c, t) => { nota(c, t, 783.99, .25, {vol:.18}); nota(c, t + .13, 1174.66, .6, {vol:.16}); },
+  vitoria: (c, t) => [523.25, 659.25, 783.99, 659.25, 783.99, 1046.5].forEach((f, i) => nota(c, t + [0, .12, .24, .42, .54, .66][i], f, i === 5 ? 1 : .15, {tipo:'triangle', vol:.22})),
+};
+function som(nome){ const c = audio(); if(c && SONS[nome]) try { SONS[nome](c, c.currentTime + .01); } catch(e){} }
+document.addEventListener('pointerdown', () => { if(!SOM.ctx) audio(); }, {passive:true});
+function btnSom(h, vidro){
+  const t = Math.round(h*.5), svg = `<svg width="${t}" height="${t}" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3z" fill="currentColor"/>${SOM.mudo ? '<path d="M16 9.5l5 5M21 9.5l-5 5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>' : '<path d="M15.5 8.8a4.6 4.6 0 0 1 0 6.4M18.3 6a8.6 8.6 0 0 1 0 12" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round"/>'}</svg>`;
+  return `<button class="b3d${vidro ? '' : ' branco'}" data-a="som" aria-label="${SOM.mudo ? 'Ligar o som' : 'Desligar o som'} (tecla M)" title="${SOM.mudo ? 'Som desligado' : 'Som ligado'} (tecla M)" style="width:${h}px;height:${h}px;padding:0;flex:none;border-radius:22px;${vidro ? 'background:#fff;color:#312E81;box-shadow:0 6px 0 rgba(0,0,0,.25)' : 'box-shadow:0 7px 0 var(--lilas),0 12px 20px rgba(10,8,40,.3)'};${SOM.mudo ? 'opacity:.75' : ''}">${svg}</button>`;
+}
+/* Faixa "Vez de…" que cruza a tela no começo de cada turno (não bloqueia cliques). */
+function anunciarVez(j){
+  if(REDUZ) return;
+  const k = Date.now(); T.anuncio = {id:j.id, k}; renderFx();
+  setTimeout(() => { if(T.anuncio && T.anuncio.k === k){ T.anuncio = null; renderFx(); } }, 1850);
 }
 
 /* =============================== PAUSA, CRONÔMETRO, AUTOAVANÇO =============================== */
@@ -1095,6 +1236,7 @@ function loop(t){
       d.restante -= dt;
       const s = segs(d.restante);
       if(s !== T.ultSeg){
+        if(T.ultSeg != null && s <= 10 && s > 0) som(s <= 3 ? 'ticFinal' : 'tic');
         T.ultSeg = s;
         const n = document.getElementById('cr-n'), a = document.getElementById('cr-a');
         if(n) n.textContent = s;
@@ -1134,6 +1276,14 @@ function telaAbertura(){
   <div class="abs linha" style="left:60px;bottom:44px;gap:14px">${CAT_IDS.map(c => casa(c, 56)).join('')}</div>
   <div class="abs" style="right:60px;bottom:52px;font-weight:800;font-size:30px;color:#E0E7FF">2 a 12 jogadores · um só computador</div>`;
 }
+/* Mesa grande (6+): trilha 24, Vento a favor e Reta final ligados, para a partida não se arrastar.
+   Vale enquanto ninguém ajustou as configurações à mão nesta tela (aí a escolha da pessoa manda). */
+const MESA_GRANDE = 6;
+function sugerirMesa(){
+  const c = S.cad.config; if(c.manual) return;
+  const g = S.cad.jogadores.length >= MESA_GRANDE;
+  Object.assign(c, g ? {trilha:24, vento:true, retaFinal:true} : {trilha:32, vento:false, retaFinal:false});
+}
 function resumoConfig(cfg){
   return [['Trilha', `${cfg.trilha} casas`], ['Tempo', `${cfg.tempo} s`], ['Punição', PUNICOES[cfg.punicao]], ['Rebote', cfg.rebote ? 'Ligado' : 'Desligado'], ['Vento a favor', cfg.vento ? 'Ligado' : 'Desligado'], ['Reta final', cfg.retaFinal ? 'Ligada' : 'Desligada']];
 }
@@ -1163,6 +1313,7 @@ function telaCadastro(){
   <div class="abs" style="left:${cfgX}px;top:190px;width:${cfgW}px;box-sizing:border-box;border-radius:28px;background:rgba(255,255,255,.96);border:5px solid #FACC15;box-shadow:0 10px 0 rgba(10,8,40,.35);padding:${duas ? '24px 26px 28px' : '30px 34px 34px'};display:flex;flex-direction:column;gap:${duas ? 12 : 16}px">
     <div class="linha" style="gap:12px">${ico('tune', duas ? 40 : 48, 'color:var(--indigo)')}<span class="bal" style="font-size:${duas ? 40 : 48}px;padding-top:4px">Configurações</span></div>
     ${resumoConfig(S.cad.config).map(([k,v]) => `<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding-bottom:${duas ? 10 : 12}px;border-bottom:3px solid var(--suave-2);font-size:${cfgFs}px"><span style="font-weight:700;color:var(--tinta-2);white-space:nowrap">${k}</span><span style="font-weight:900;text-align:right">${v}</span></div>`).join('')}
+    ${n >= MESA_GRANDE && !S.cad.config.manual ? `<div class="linha" style="gap:10px;align-items:flex-start;padding:10px 14px;border-radius:16px;background:#EEF2FF;color:#3730A3;font-weight:800;font-size:${duas ? 21 : 24}px;line-height:1.25">${ico('info', 28)}<span>Mesa grande: trilha menor, Vento a favor e Reta final ligados para a partida andar.</span></div>` : ''}
     <button class="b3d roxo" data-a="abrirConfig" style="height:${duas ? 72 : 80}px;font-size:${duas ? 34 : 38}px;margin-top:6px">${ico('edit', 42)}Ajustar</button></div>
   <div class="abs" style="left:0;right:0;bottom:44px;display:flex;justify-content:center">
     <button class="b3d verde" id="btnComecar" data-a="novaPartida" ${pode ? '' : 'disabled'} style="width:760px;height:124px;border:6px solid #fff;border-radius:34px;font-size:60px">Começar partida${ico('arrow_forward', 66)}</button></div>`;
@@ -1278,6 +1429,7 @@ function painelInicio(j){
       ${peaoJ(j, 210, {brilho:true})}</div>
     <div class="bal" style="font-size:${fs}px;color:${txt};max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-top:8px">Vez de ${esc(j.nome)}</div>
     <div class="linha" style="gap:12px;font-weight:800;font-size:30px;color:var(--tinta-2)">${casa(tipoCasa(j.posicao), 52)}<span>${descCasa(j.posicao)}</span></div>
+    ${(j.marcas || []).length ? `<div class="linha" style="gap:10px;font-weight:800;font-size:24px;color:var(--tinta-2)"><span style="width:34px;height:34px;flex:none;box-sizing:border-box;border-radius:50%;background:${hex};border:3px solid #fff;box-shadow:0 0 0 2px ${hex};display:inline-flex;align-items:center;justify-content:center">${ico('check', 22, `color:${PC[j.cor][2]}`)}</span><span>Casas marcadas: você já usou, não valem de novo</span></div>` : ''}
     <div class="flex1"></div>
     <div class="bal" style="font-size:46px;line-height:1.1">${so1 ? `Desafie ${esc(jog(outrosAtivos(j)[0]).nome)}` : 'Escolha quem desafiar'}</div>
     ${btnAmarelo('irOponente', so1 ? 'Começar duelo' : 'Escolher oponente')}</div>`;
@@ -1418,7 +1570,7 @@ function telaMesa(){
   }
   return `
   <div class="topo"><div class="linha" style="gap:22px">${logoMini()}<div class="pill-vidro">${ico('replay', 32)}Rodada ${S.rodada}</div></div>
-    ${vezPill(j)}<div style="display:flex;justify-content:flex-end"><button class="b3d branco" data-a="pausa" style="height:76px;padding:0 30px;border-radius:22px;font-size:34px;box-shadow:0 7px 0 var(--lilas),0 12px 20px rgba(10,8,40,.3)">${ico('pause', 42)}Pausar</button></div></div>
+    ${vezPill(j)}<div style="display:flex;justify-content:flex-end;gap:16px">${btnSom(76)}<button class="b3d branco" data-a="pausa" style="height:76px;padding:0 30px;border-radius:22px;font-size:34px;box-shadow:0 7px 0 var(--lilas),0 12px 20px rgba(10,8,40,.3)">${ico('pause', 42)}Pausar</button></div></div>
   ${painel}
   <div class="cartoes" style="grid-template-columns:repeat(${n > 6 ? Math.ceil(n/2) : n},minmax(0,1fr));${n > 6 ? 'gap:12px 14px;align-content:space-between' : ''}">${ativos().map((x, i) => cartao(x, S.ordem.indexOf(x.id), n)).join('')}</div>
   ${S.fase === 'categoria' ? overlayLivre(j) : ''}
@@ -1426,6 +1578,29 @@ function telaMesa(){
 }
 
 /* =============================== TELA: DUELO =============================== */
+/* Errou com rebote disponível: continua na tela do duelo (o tabuleiro só volta quando a rodada acaba). */
+function corpoRebote(d, enun){
+  const a = jog(d.errouId) || jog(d.respondeuId), el = d.elegiveis.map(jog), um = el.length === 1;
+  const s = segs(d.restante), pct = Math.round(100*d.restante/(S.config.tempo*1000));
+  const pen = T.resA && T.resA.punir && S.config.punicao !== 'nenhuma';
+  return `<div class="linha" style="gap:28px"><div class="flex1 bal" style="font-weight:700;font-size:36px;line-height:1.15;color:var(--tinta-2)">${esc(enun)}</div>${linkDesfazer()}</div>
+    <div class="linha" style="margin-top:26px;gap:26px;border-radius:30px;background:#FEF2F2;border:8px solid #EF4444;box-shadow:0 10px 0 #B91C1C;padding:20px 36px;animation:mola .35s both">
+      <div style="width:96px;height:96px;flex:none;box-sizing:border-box;border-radius:50%;background:#EF4444;border:6px solid #fff;box-shadow:0 0 0 4px #EF4444;display:flex;align-items:center;justify-content:center">${ico('close', 64, "color:#fff;font-variation-settings:'FILL' 1,'wght' 800")}</div>
+      ${peaoJ(a, 104)}
+      <div style="display:flex;flex-direction:column;gap:4px;min-width:0"><div class="bal" style="font-size:66px;color:#B91C1C;line-height:1;padding-top:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(a.nome)} errou</div>
+        <div style="font-weight:800;font-size:30px;color:#7F1D1D">${pen ? `A punição de ${esc(a.nome)} vale no fim da rodada.` : d.tipo === 'todos' ? 'Na pergunta para todos, errar não tem punição.' : 'Sem punição nesta partida.'}</div></div></div>
+    <div style="margin-top:30px;border-radius:30px;background:#EFF6FF;border:8px solid #3B82F6;box-shadow:0 10px 0 #1D4ED8;padding:22px 36px 26px;display:flex;flex-direction:column;gap:18px">
+      <div class="linha" style="gap:22px"><div class="linha" style="gap:0">${el.slice(0, 4).map((x, i) => `<div style="margin-left:${i ? -34 : 0}px">${peaoJ(x, um ? 104 : 84, {brilho:um})}</div>`).join('')}</div>
+        <div style="display:flex;flex-direction:column;gap:4px;min-width:0"><div class="rotulo" style="font-size:26px;color:#1D4ED8">REBOTE · MESMA PERGUNTA</div>
+        <div class="bal" style="font-size:${um ? 60 : 50}px;line-height:1.05">${um ? `${esc(el[0].nome)} pode responder` : 'Os outros podem responder'}</div></div>
+        <div class="flex1"></div><div class="bal" style="font-size:54px;color:#1D4ED8;flex:none">${s} s</div></div>
+      <div style="height:18px;border-radius:999px;background:#BFDBFE;overflow:hidden"><div style="width:${pct}%;height:100%;border-radius:999px;background:#2563EB"></div></div></div>
+    <div class="flex1"></div>
+    <div style="display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:26px">
+      <button class="b3d amarelo" data-a="rebote" style="height:120px;border-radius:30px;font-size:48px">${ico('play_arrow', 58)}${um ? `${esc(el[0].nome)} responde` : 'Valendo!'}</button>
+      <button class="b3d branco" data-a="pularRebote" style="height:120px;border-radius:30px;font-size:42px;box-shadow:0 0 0 3px var(--linha),0 10px 0 var(--lilas)">Pular rebote</button></div>
+    <div style="text-align:center;font-weight:800;font-size:24px;color:var(--tinta-3);margin-top:14px">Espaço = responder · Backspace = pular</div>`;
+}
 function telaDuelo(){
   const d = S.duelo, k = CATS[d.categoria], todos = d.tipo === 'todos', reg = S.fase === 'resposta', val = S.fase === 'validacao';
   const alerta = S.fase === 'pergunta' && d.restante <= 10000, s = segs(d.restante);
@@ -1437,7 +1612,8 @@ function telaDuelo(){
   const enun = d.pergunta.enunciado, L = enun.length;
   const fsP = reg ? (L > 80 ? 44 : 52) : (L > 90 ? 52 : L > 60 ? 58 : 62);
   let corpo = '';
-  if(!val){
+  if(S.fase === 'erro_rebote') corpo = corpoRebote(d, enun);
+  else if(!val){
     corpo += `<div class="linha" style="gap:56px;min-height:${reg ? 300 : todos ? 340 : 380}px;flex:none">
       <div class="flex1" style="display:flex;flex-direction:column;gap:18px;min-width:0"><div class="rotulo" style="color:var(--tinta-2)">${todos ? `PERGUNTA ABERTA A TODOS · ${k.nome.toUpperCase()}` : d.emRebote ? 'REBOTE · MESMA PERGUNTA' : 'PERGUNTA'}</div>
         <div class="bal" style="font-weight:700;font-size:${fsP}px;line-height:1.12;text-wrap:pretty">${esc(enun)}</div></div>
@@ -1467,7 +1643,8 @@ function telaDuelo(){
       <div style="display:flex;flex-direction:column;gap:6px;min-width:0"><div class="rotulo" style="font-size:30px;color:#1D4ED8">RESPOSTA ESPERADA</div><div class="bal" style="font-size:${resp.length > 50 ? 56 : resp.length > 28 ? 76 : 110}px;line-height:.98">${esc(resp)}</div></div></div>
     <div class="flex1"></div>
     <div class="bal" style="font-size:64px;text-align:center;margin-bottom:10px">A resposta está correta?</div>
-    <div style="text-align:center;font-weight:800;font-size:28px;color:var(--tinta-2);margin-bottom:24px">Quem confere: ${jz ? `<b style="color:${PC[jz.cor][3]}">${esc(jz.nome)}</b>` : 'os jogadores, em consenso'}</div>
+    <div style="text-align:center;font-weight:800;font-size:28px;color:var(--tinta-2);margin-bottom:10px">Quem confere: ${jz ? `<b style="color:${PC[jz.cor][3]}">${esc(jz.nome)}</b>` : 'os jogadores, em consenso'}</div>
+    <div class="linha" style="justify-content:center;gap:10px;font-weight:700;font-size:25px;color:var(--tinta-2);margin-bottom:22px">${ico('info', 30, 'color:var(--indigo)')}<span>Vale sem o nome completo ou com erro de grafia, se identificar a resposta sem ambiguidade. Na dúvida, quem confere decide.</span></div>
     <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px">
       <button class="simnao" data-a="validar" data-v="1" style="background:linear-gradient(180deg,#4ADE80,#22C55E 60%);box-shadow:0 0 0 4px #22C55E,0 12px 0 #15803D,0 22px 36px rgba(10,8,40,.25);color:#052E16">${ico('check', 110, "font-variation-settings:'FILL' 1,'wght' 800")}SIM</button>
       <button class="simnao" data-a="validar" data-v="0" style="background:linear-gradient(180deg,#F87171,#DC2626 60%);box-shadow:0 0 0 4px #DC2626,0 12px 0 #991B1B,0 22px 36px rgba(10,8,40,.25);color:#fff">${ico('close', 110, "font-variation-settings:'FILL' 1,'wght' 800")}NÃO</button></div>`;
@@ -1481,7 +1658,7 @@ function telaDuelo(){
       ${todos ? `<div class="bal" style="height:72px;padding:0 26px;box-sizing:border-box;border-radius:999px;background:var(--tinta);border:5px solid #fff;display:flex;align-items:center;color:#FDE047;font-size:36px;padding-top:4px">Vale +1 casa</div>`
         : `<div class="linha" style="height:72px;padding:0 26px;box-sizing:border-box;border-radius:999px;background:#FACC15;border:5px solid #fff;box-shadow:0 6px 0 #A16207;gap:12px;color:#422006"><span class="bal" style="font-size:36px;padding-top:4px">${D.nome} +${d.dificuldade}</span>${estrelas(d.dificuldade, 34)}</div>`}
       ${S.fase === 'pergunta' ? `<button class="b3d" data-a="desistir" title="Ninguém sabe: encerra a pergunta agora (tecla P)" style="height:76px;padding:0 26px;border-radius:22px;background:#fff;color:#312E81;font-size:32px;box-shadow:0 6px 0 rgba(0,0,0,.25)">${ico('fast_forward', 40)}Ninguém sabe</button>` : ''}
-      <button class="b3d" data-a="pausa" style="height:76px;padding:0 26px;border-radius:22px;background:#fff;color:#312E81;font-size:32px;box-shadow:0 6px 0 rgba(0,0,0,.25)">${ico('pause', 40)}Pausar</button></div>
+      ${btnSom(76, true)}<button class="b3d" data-a="pausa" style="height:76px;padding:0 26px;border-radius:22px;background:#fff;color:#312E81;font-size:32px;box-shadow:0 6px 0 rgba(0,0,0,.25)">${ico('pause', 40)}Pausar</button></div>
     <div style="flex:1;min-height:0;display:flex;flex-direction:column;padding:40px 56px 44px">${corpo}</div></div>
   ${alerta ? `<div class="alerta-borda"></div><div class="abs linha bal" style="left:50%;top:16px;transform:translateX(-50%);height:62px;padding:0 30px;box-sizing:border-box;border-radius:999px;background:#DC2626;border:5px solid #fff;gap:10px;color:#fff;font-size:34px;box-shadow:0 6px 0 #7F1D1D">${ico('alarm', 38)}Últimos 10 segundos!</div>` : ''}`;
 }
@@ -1560,12 +1737,12 @@ function telaPausa(){
       <button class="b3d branco" data-a="sair" style="height:110px;padding:0 44px;border-radius:28px;font-size:44px;box-shadow:0 12px 0 var(--lilas)">${ico('save', 50)}Salvar e sair</button></div>
     ${T.semSalvar ? `<div class="linha" style="gap:12px;padding:14px 24px;border-radius:18px;background:#FEF3C7;color:#78350F;font-weight:800;font-size:28px">${ico('error', 36)}Este navegador não está guardando a partida. Se a página fechar, ela se perde.</div>` : ''}
     <div class="abs" style="left:0;right:0;bottom:0;padding:26px 60px 34px;background:rgba(0,0,0,.28);border-top:3px solid rgba(255,255,255,.12);display:flex;flex-direction:column;align-items:center;gap:18px">
-      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:16px 22px">${[['0–9','escolhem (0 = 10º)'],['Espaço','avança'],['Enter','Sim'],['Backspace','Não'],['P','ninguém sabe'],['Esc','pausa'],['Ctrl+Z','desfaz']].map(([k, t]) => `<div class="linha" style="gap:12px;height:58px;padding:0 22px 0 10px;border-radius:16px;background:rgba(255,255,255,.1);color:#E0E7FF;font-weight:800;font-size:26px"><span style="height:40px;min-width:40px;padding:0 12px;box-sizing:border-box;border-radius:10px;background:#fff;color:#312E81;font-weight:900;font-size:24px;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 4px 0 var(--lilas)">${k}</span>${t}</div>`).join('')}</div>
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:16px 22px">${[['0–9','escolhem (0 = 10º)'],['Espaço','avança'],['Enter','Sim'],['Backspace','Não'],['P','ninguém sabe'],['M','som'],['Esc','pausa'],['Ctrl+Z','desfaz']].map(([k, t]) => `<div class="linha" style="gap:12px;height:58px;padding:0 22px 0 10px;border-radius:16px;background:rgba(255,255,255,.1);color:#E0E7FF;font-weight:800;font-size:26px"><span style="height:40px;min-width:40px;padding:0 12px;box-sizing:border-box;border-radius:10px;background:#fff;color:#312E81;font-weight:900;font-size:24px;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 4px 0 var(--lilas)">${k}</span>${t}</div>`).join('')}</div>
       <div class="linha" style="gap:10px;color:#C7C4F0;font-weight:700;font-size:26px">${ico('save', 30)}“Salvar e sair” guarda a partida no começo do turno atual.</div></div></div>`;
 }
 
 /* =============================== RENDER =============================== */
-const FASES_DUELO = ['pergunta','resposta','validacao'];
+const FASES_DUELO = ['pergunta','resposta','validacao','erro_rebote'];
 function render(){
   let h = '', fk = 'discreto|7', tab = false, desf = false;
   if(S.tela === 'inicio') h = telaAbertura();
@@ -1609,8 +1786,8 @@ const acoes = {
   resortear(){ iniciarSorteio(); },
   comecar(){ comecarJogo(); },
   cor(v){ const [i, c] = v.split('|'), js = S.cad.jogadores; if(js.some((p,k) => k != i && p.cor === c)) return; js[i].cor = c; gravar(K_CAD, S.cad); render(); const pv = document.getElementById('pv-' + i); if(pv) pv.firstElementChild.style.animation = 'pulo .35s'; },
-  remover(v){ if(S.cad.jogadores.length <= 2) return; S.cad.jogadores.splice(+v, 1); gravar(K_CAD, S.cad); render(); },
-  addJog(){ const js = S.cad.jogadores; if(js.length >= MAX_JOG) return; js.push({nome:'Jogador ' + (js.length+1), cor:COR_IDS.find(c => !js.some(p => p.cor === c))}); gravar(K_CAD, S.cad); render(); const el = document.getElementById('nome-' + (js.length-1)); if(el){ el.focus(); el.select(); } },
+  remover(v){ if(S.cad.jogadores.length <= 2) return; S.cad.jogadores.splice(+v, 1); sugerirMesa(); gravar(K_CAD, S.cad); render(); },
+  addJog(){ const js = S.cad.jogadores; if(js.length >= MAX_JOG) return; js.push({nome:'Jogador ' + (js.length+1), cor:COR_IDS.find(c => !js.some(p => p.cor === c))}); sugerirMesa(); gravar(K_CAD, S.cad); render(); const el = document.getElementById('nome-' + (js.length-1)); if(el){ el.focus(); el.select(); } },
   abrirConfig(){ T.rasc = clone(S.tela === 'jogo' ? S.config : S.cad.config); T.modal = 'config'; render(); },
   abrirBanco(){ T.modal = 'banco'; T.msgBanco = null; T.colar = false; render(); },
   fecharModal(){ T.modal = null; T.rasc = null; render(); },
@@ -1619,7 +1796,7 @@ const acoes = {
   rToggle(v){ T.rasc[v] = !T.rasc[v]; render(); },
   salvarConfig(){
     if(S.tela === 'jogo'){ const t = S.config.trilha; S.config = {...T.rasc, trilha:t}; S.cad.config = {...S.cad.config, ...T.rasc, trilha:S.cad.config.trilha}; salvarPartida(); }
-    else S.cad.config = clone(T.rasc);
+    else S.cad.config = {...clone(T.rasc), manual:true};
     gravar(K_CAD, S.cad); T.modal = null; T.rasc = null; render();
   },
   colar(){ T.colar = !T.colar; render(); },
@@ -1644,6 +1821,7 @@ const acoes = {
   proximo(){ if(['resultado','tempo_esgotado','congelado'].includes(S.fase) && !T.ocupado) proximoTurno(); },
   desfazer(){ desfazer(); },
   pausa(){ togglePausa(); },
+  som(){ SOM.mudo = !SOM.mudo; try { localStorage.setItem(K_SOM, SOM.mudo ? 'mudo' : 'ligado'); } catch(e){} if(!SOM.mudo) som('vez'); render(); },
   desistir(){ desistir(); },
   pularFx(){ if(T.pular) T.pular(); },
   sair(){ T.pausado = false; acoes.irInicio(); }
@@ -1680,6 +1858,7 @@ document.addEventListener('keydown', e => {
   if(T.modal) return;
   if(S.tela === 'ordem' && (k === ' ' || k === 'Enter')){ e.preventDefault(); comecarJogo(); return; }
   if(S.tela !== 'jogo') return;
+  if((k === 'm' || k === 'M') && !e.ctrlKey && !e.metaKey){ e.preventDefault(); acoes.som(); return; }
   if(k === 'Escape'){ e.preventDefault(); togglePausa(); return; }
   if(T.pausado) return;
   if(T.especial && (k === ' ' || k === 'Enter')){ e.preventDefault(); if(T.pular) T.pular(); return; }

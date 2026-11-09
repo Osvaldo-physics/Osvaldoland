@@ -14,13 +14,18 @@ Vence quem chegar primeiro ao fim da trilha.
 4. A pergunta aparece com 90 segundos. Quem falar primeiro responde; o juiz clica no nome dele.
 5. A resposta certa é revelada e o juiz confirma se está correta.
 6. Sem resposta no tempo, a vez passa direto. Se ninguém souber, **Ninguém sabe** (tecla P) encerra a pergunta na hora.
-7. Rebote (opcional): se quem respondeu errar, o outro responde a **mesma pergunta** com o tempo que sobrou. Na conferência, os jogadores não olham para a tela.
+7. Rebote (opcional): se quem respondeu errar, o outro responde a **mesma pergunta** com o tempo que sobrou, ainda na tela do duelo. Na conferência, os jogadores não olham para a tela. A punição de quem errou é aplicada quando a rodada termina.
+8. Na conferência vale resposta sem o nome completo ou com erro de grafia, se identificar a resposta sem ambiguidade; na dúvida, quem confere decide.
+
+Com 6 ou mais jogadores, a partida sugere trilha de 24 casas com Vento a favor e Reta final ligados (dá para mudar em Ajustar).
+O jogo tem sons gerados pelo navegador (vez, tique-taque nos 10 s finais, acerto, erro, tempo esgotado, vitória); a tecla M liga e desliga.
 
 ## Casas especiais
 
 Atalho (+2), Escorregão (−2), Escudo, Todos contra todos, Congelado e Troca.
 Cada casa especial vale **uma vez por jogador**: cair de novo na mesma casa não faz nada.
 Se o Escudo anulou o efeito, a próxima queda ali vale como a primeira.
+Na vez de cada jogador, as casas especiais que ele já usou aparecem escurecidas com um ✓ na cor dele.
 O Escudo anula o próximo efeito negativo: Escorregão, Congelado, a punição por erro ou ser trocado para trás por alguém que caiu na Troca.
 
 ## 8 categorias
