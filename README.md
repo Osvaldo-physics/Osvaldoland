@@ -23,6 +23,8 @@ O jogo tem sons gerados pelo navegador (vez, tique-taque nos 10 s finais, acerto
 ## Casas especiais
 
 Atalho (+2), Escorregão (−2), Escudo, Todos contra todos, Congelado e Troca.
+A trilha se divide em três trechos pelos checkpoints. No início há mais ajuda (Atalho, Escudo, casas Livres); no meio, o bom e o ruim se alternam; no trecho final não há Atalho, Escudo nem casa Livre, só Escorregão, Congelado, Troca e Todos contra todos, para a disputa ficar aberta até a chegada.
+
 Cada casa especial vale **uma vez por jogador**: cair de novo na mesma casa não faz nada.
 Se o Escudo anulou o efeito, a próxima queda ali vale como a primeira.
 Na vez de cada jogador, as casas especiais que ele já usou aparecem escurecidas com um ✓ na cor dele.

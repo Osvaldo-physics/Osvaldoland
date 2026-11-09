@@ -584,31 +584,54 @@ const ativos = () => S.ordem.map(jog).filter(j => j.ativo);
 const proximoJogador = () => jog(S.ordem[(S.vez + 1) % S.ordem.length]);
 
 /* =============================== TABULEIRO: GERAÇÃO =============================== */
+/* Distribuição das casas por trilha. A trilha se divide em 3 trechos pelos checkpoints (34% e 69%):
+   - Início: mais ajuda (atalho, escudo, casa livre) para todo mundo sair do lugar.
+   - Meio: equilibrado, bom e ruim alternados.
+   - Final: quase nada que empurre para a frente. Só tensão (escorregão, congelado) e casas de recuperação
+     (Troca e Todos contra todos), que ajudam quem está atrás e mantêm a disputa aberta até a chegada.
+   Dentro de cada trecho, as casas são espalhadas por igual e alternam o bom e o ruim. */
+const PLANO_TABULEIRO = {
+  24: [['livre','atalho','escorregao','escudo'], ['atalho','escorregao','todos','congelado','livre'], ['troca','escorregao','todos']],
+  32: [['livre','atalho','escorregao','escudo','livre'], ['atalho','escorregao','todos','congelado','escudo','livre'], ['escorregao','troca','congelado','todos']],
+  48: [['livre','atalho','escorregao','escudo','todos','atalho','livre'], ['atalho','escorregao','livre','congelado','escudo','todos','escorregao','troca'], ['escorregao','troca','congelado','todos','escorregao']],
+};
+const BOAS = new Set(['livre','atalho','escudo']), RUINS = new Set(['escorregao','congelado']);
 function gerarTabuleiro(N, seed){
-  const f = N/32;
-  const qtd = {atalho:Math.round(3*f), escorregao:Math.round(3*f), escudo:Math.max(1,Math.round(2*f)), todos:Math.max(1,Math.round(2*f)), congelado:Math.max(1,Math.round(f)), troca:Math.max(1,Math.round(f))};
-  const nLivres = Math.round(4*f), cps = [Math.round(N*.34), Math.round(N*.69)];
+  const cps = [Math.round(N*.34), Math.round(N*.69)];
+  const plano = PLANO_TABULEIRO[N] || PLANO_TABULEIRO[32];
+  const trechos = [[2, cps[0] - 1], [cps[0] + 1, cps[1] - 1], [cps[1] + 1, N - 1]];
   const MOV = ['atalho','escorregao','troca'];
-  for(let t=0;t<400;t++){
-    const rnd = mulberry32(seed + t*7919);
+  for(let t = 0; t < 400; t++){
+    const rnd = mulberry32(seed + t*7919), jit = t < 300 ? 1 : 0;
     const casas = Array.from({length:N+1}, (_,i) => ({i, tipo:'normal', cat:null, efeito:null, checkpoint:false}));
     casas[0].tipo = 'largada'; casas[N].tipo = 'chegada';
     cps.forEach(i => { casas[i].checkpoint = true; casas[i].cat = 'livre'; });
-    for(let k=1;k<=nLivres;k++){ let i = Math.round(k*N/(nLivres+1)); while(casas[i].checkpoint) i++; casas[i].cat = 'livre'; }
     let ok = true;
-    for(const ef of embaralhar(Object.entries(qtd).flatMap(([e,n]) => Array(n).fill(e)), rnd)){
-      const cand = [];
-      for(let i=4;i<N;i++){
-        const c = casas[i];
-        if(c.cat || c.efeito) continue;
-        if(ef === 'atalho' && i > N-4) continue;
-        if(ef === 'troca' && i <= N/2) continue;
-        if(MOV.includes(ef) && casas.some(o => o.efeito && MOV.includes(o.efeito) && Math.abs(o.i-i) < 3)) continue;
-        cand.push(i);
-      }
-      if(!cand.length){ ok = false; break; }
-      casas[cand[Math.floor(rnd()*cand.length)]].efeito = ef;
-    }
+    plano.forEach((lista, z) => {
+      if(!ok) return;
+      /* alterna bom/ruim: no início começa por uma boa, no final por uma ruim */
+      const boas = embaralhar(lista.filter(e => BOAS.has(e)), rnd), ruins = embaralhar(lista.filter(e => RUINS.has(e)), rnd), neutras = embaralhar(lista.filter(e => !BOAS.has(e) && !RUINS.has(e)), rnd);
+      const ordem = [], fila = z === 2 ? [ruins, neutras, boas] : [boas, ruins, neutras];
+      while(ordem.length < lista.length){ for(const f of fila) if(f.length) ordem.push(f.shift()); }
+      const [ini, fim] = trechos[z], m = fim - ini + 1, k = ordem.length;
+      ordem.forEach((ef, j) => {
+        if(!ok) return;
+        const ideal = Math.round(ini + (j + .5)*m/k - .5);
+        const tentativas = [0, -1, 1, -2, 2].map(d => ideal + d + (jit ? Math.floor(rnd()*3) - 1 : 0));
+        const i = tentativas.find(i => {
+          if(i < ini || i > fim) return false;
+          const c = casas[i]; if(c.cat || c.efeito || c.checkpoint) return false;
+          const viz = [casas[i-1], casas[i+1]].filter(Boolean);
+          if(ef === 'livre' ? viz.some(o => o.cat === 'livre') : viz.some(o => o.efeito)) return false;
+          if(ef === 'atalho' && i > N - 4) return false;
+          if(ef === 'troca' && i <= N/2) return false;
+          if(MOV.includes(ef) && casas.some(o => o.efeito && MOV.includes(o.efeito) && Math.abs(o.i - i) < 3)) return false;
+          return true;
+        });
+        if(i == null){ ok = false; return; }
+        if(ef === 'livre') casas[i].cat = 'livre'; else casas[i].efeito = ef;
+      });
+    });
     if(!ok) continue;
     const vazias = casas.filter(c => c.tipo === 'normal' && !c.cat && !c.efeito);
     let pool = []; while(pool.length < vazias.length) pool = pool.concat(embaralhar(CAT_IDS, rnd));
