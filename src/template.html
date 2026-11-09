@@ -582,11 +582,12 @@ const proximoJogador = () => jog(S.ordem[(S.vez + 1) % S.ordem.length]);
    - Início: mais ajuda (atalho, escudo, casa livre) para todo mundo sair do lugar.
    - Meio: equilibrado, bom e ruim alternados.
    - Final: quase nada que empurre para a frente. Só tensão (escorregão, congelado) e casas de recuperação
-     (Troca e Todos contra todos), que ajudam quem está atrás e mantêm a disputa aberta até a chegada.
+     (Todos contra todos), que ajuda quem está atrás e mantém a disputa aberta até a chegada.
+   A Troca fica no fim do trecho do meio (e, na trilha 48, também no começo do final): nunca nas últimas 6 casas.
    Dentro de cada trecho, as casas são espalhadas por igual e alternam o bom e o ruim. */
 const PLANO_TABULEIRO = {
-  24: [['livre','atalho','escorregao','escudo'], ['atalho','escorregao','todos','congelado','livre'], ['troca','escorregao','todos']],
-  32: [['livre','atalho','escorregao','escudo','livre'], ['atalho','escorregao','todos','congelado','escudo','livre'], ['escorregao','troca','congelado','todos']],
+  24: [['livre','atalho','escorregao','escudo'], ['atalho','escorregao','todos','troca','livre'], ['escorregao','congelado','todos']],
+  32: [['livre','atalho','escorregao','escudo','livre'], ['atalho','escorregao','todos','escudo','troca','livre'], ['escorregao','congelado','todos']],
   48: [['livre','atalho','escorregao','escudo','todos','atalho','livre'], ['atalho','escorregao','livre','congelado','escudo','todos','escorregao','troca'], ['escorregao','troca','congelado','todos','escorregao']],
 };
 const BOAS = new Set(['livre','atalho','escudo']), RUINS = new Set(['escorregao','congelado']);
@@ -607,6 +608,7 @@ function gerarTabuleiro(N, seed){
       const boas = embaralhar(lista.filter(e => BOAS.has(e)), rnd), ruins = embaralhar(lista.filter(e => RUINS.has(e)), rnd), neutras = embaralhar(lista.filter(e => !BOAS.has(e) && !RUINS.has(e)), rnd);
       const ordem = [], fila = z === 2 ? [ruins, neutras, boas] : [boas, ruins, neutras];
       while(ordem.length < lista.length){ for(const f of fila) if(f.length) ordem.push(f.shift()); }
+      const it = ordem.indexOf('troca'); if(it > -1){ ordem.splice(it, 1); if(z === 2) ordem.unshift('troca'); else ordem.push('troca'); }
       const [ini, fim] = trechos[z], m = fim - ini + 1, k = ordem.length;
       ordem.forEach((ef, j) => {
         if(!ok) return;
@@ -618,7 +620,7 @@ function gerarTabuleiro(N, seed){
           const viz = [casas[i-1], casas[i+1]].filter(Boolean);
           if(ef === 'livre' ? viz.some(o => o.cat === 'livre') : viz.some(o => o.efeito)) return false;
           if(ef === 'atalho' && i > N - 4) return false;
-          if(ef === 'troca' && i <= N/2) return false;
+          if(ef === 'troca' && (i <= N/2 || i > N - 7)) return false;
           if(MOV.includes(ef) && casas.some(o => o.efeito && MOV.includes(o.efeito) && Math.abs(o.i - i) < 3)) return false;
           return true;
         });
