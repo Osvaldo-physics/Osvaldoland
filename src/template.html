@@ -390,10 +390,13 @@ input[type=range].faixa::-moz-range-thumb{width:48px; height:48px; border-radius
   .vit .cf,.vit .fw-raio,.vit .fw-nucleo,.vit .bp,.vit .holofote,.vit .flash{display:none}
 }
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.01ms!important; animation-iteration-count:1!important; transition:none!important}}
+/*__TEMA_CSS__*/
 </style>
 
 <div id="moldura"><div id="palco" role="application" aria-label="OsvaldoLand"><div id="tela"><div id="l-fundo" class="abs" style="inset:0"></div><div id="l-tab" class="abs" style="left:28px;top:144px"></div><div id="l-frente" class="abs" style="inset:0"></div></div><div id="fx"></div><div id="sobre"></div></div></div>
 
+<script>/*__MUSICA_JS__*/</script>
+<script>/*__TEMA_JS__*/</script>
 <script>
 /* =============================== DADOS =============================== */
 const BANCO_PADRAO = __BANCO__.map(q => ({id:q[0], categoria:q[1], dificuldade:q[2], enunciado:q[3], resposta:q[4]}));
@@ -469,9 +472,12 @@ const ico = (n, s, st='') => `<span class="ms" aria-hidden="true" style="font-si
 const estrelas = (n, s) => `<span class="estrelas" style="display:inline-flex">${[1,2,3].map(k => ico('star', s, (k > n ? 'opacity:.28;' : '') + 'margin-right:-4px;animation-delay:' + (k*0.12) + 's')).join('')}</span>`;
 const plural = (n, s, p) => Math.abs(n) === 1 ? s : p;
 const segs = ms => Math.max(0, Math.ceil(ms/1000));
+/* Tema comemorativo (src/theme-halloween.*): só visual. Desligado, nada abaixo muda. */
+const TEMA = window.HW || null, hw = () => !!(TEMA && TEMA.on);
 
 /* =============================== COMPONENTES =============================== */
 function peao(cor, num, h, o = {}){
+  if(hw()) return TEMA.peao(cor, num, h, o);
   const [c, d] = PC[cor] || PC.vermelho; const w = Math.round(h*100/130);
   const filt = o.esm ? 'grayscale(.75)' : o.brilho ? `drop-shadow(0 0 ${Math.round(h*.14)}px ${c})` : 'none';
   return `<span class="peao ${o.cls||''}" style="width:${w}px;height:${h}px;opacity:${o.esm ? .45 : 1};filter:${filt};--c:${c};${o.st||''}"><svg viewBox="0 0 100 130" aria-hidden="true">
@@ -508,7 +514,7 @@ function casa(tipo, base, dest, anim, espelho){
     if(tipo === 'escudo' || tipo === 'checkpoint' || tipo === 'chegada') dentro += '<span class="ca__v"><b></b></span>';
   }
   const anel = dest ? anelCasa(tipo, s, dest) : '';
-  return `<span class="casa" style="width:${s}px;height:${s}px${espelho ? ';transform:scaleX(-1)' : ''}">${anel}<span class="casa-f${an ? ' ca ca--' + tipo : ''}" style="${an ? `--s:${base}px;--c:${d.cor};--c-esc:${d.esc};` : ''}border-radius:${rad};background:${d.cor};background:${bg};border:${bw}px solid ${tipo === 'chegada' ? '#FACC15' : '#fff'};box-shadow:0 ${Math.max(2,Math.round(s*.07))}px 0 ${d.esc}, 0 ${Math.round(s*.13)}px ${Math.round(s*.2)}px rgba(10,8,40,.38)${glow}">${dentro}</span></span>`;
+  return `<span class="casa" style="width:${s}px;height:${s}px${espelho ? ';transform:scaleX(-1)' : ''}">${anel}<span class="casa-f${an ? ' ca ca--' + tipo : ''}" data-k="${d.esp ? 'esp' : d.grande ? 'fim' : 'cat'}" style="${an ? `--s:${base}px;--c:${d.cor};--c-esc:${d.esc};` : ''}border-radius:${rad};background:${d.cor};background:${bg};border:${bw}px solid ${tipo === 'chegada' ? '#FACC15' : '#fff'};box-shadow:0 ${Math.max(2,Math.round(s*.07))}px 0 ${d.esc}, 0 ${Math.round(s*.13)}px ${Math.round(s*.2)}px rgba(10,8,40,.38)${glow}">${dentro}</span>${hw() ? TEMA.extra(tipo, s) : ''}</span>`;
 }
 function anelCasa(tipo, s, cor){ const esp = (TILES[tipo] || TILES.N).esp; return `<span class="casa-d" style="inset:${-Math.round(s*.17)}px;border-radius:${esp ? '50%' : Math.round(s*.36)+'px'};border:${Math.max(4,Math.round(s*.06))}px solid ${cor};box-shadow:0 0 26px ${cor}, inset 0 0 14px ${cor}"></span>`; }
 function crono(seg, total, estado, T, id){
@@ -525,6 +531,7 @@ function crono(seg, total, estado, T, id){
 }
 const CACHE_FUNDO = new Map();
 function fundo(modo = 'discreto', semente = 7){
+  if(hw()) return TEMA.fundo(modo, semente);
   const ck = modo + '|' + semente; if(CACHE_FUNDO.has(ck)) return CACHE_FUNDO.get(ck);
   let seed = semente*9973 + 1;
   const rnd = () => { seed = (seed*16807) % 2147483647; return (seed-1)/2147483646; };
@@ -698,7 +705,7 @@ function marcasTab(){
 function movValido(){ const mv = T.mov; if(!mv) return null; const cur = T.vis[mv.id] ?? mv.de; return (cur - mv.de)*mv.dir < 0 ? null : mv; }
 /* Casas desenhadas uma vez por partida (as animações não reiniciam); os anéis de destaque ficam numa camada própria. */
 function htmlCasas(anim = true){
-  const cs = tamCasa(); let h = DECOR;
+  const cs = tamCasa(); let h = hw() ? TEMA.decor() : DECOR;
   S.casas.forEach(c => {
     const p = pos(c.i), t = tipoCasa(c.i), box = (t === 'largada' || t === 'chegada') ? Math.round(cs*1.25) : cs;
     h += `<div class="abs" data-i="${c.i}" style="left:${Math.round(p.x-box/2)}px;top:${Math.round(p.y-box/2)}px" title="Casa ${c.i}">${casa(t, cs, null, anim, espelhaCasa(t, c.i))}</div>`;
@@ -786,6 +793,8 @@ function renderTab(){
         el.style.zIndex = Math.round(y)*20 + idx + (j === dest ? 10 : 0);
       }
       if(vez && j.id === vez.id) R.setaXY = [x, bola ? y - Bg/2 : y + 24*k - PH];
+      el.classList.toggle('vez', !!vez && j.id === vez.id);
+      if(hw() && S.fase === 'resultado' && S.duelo && T.res && T.res.certo && T.res.id === j.id && el._hwRes !== T.res){ el._hwRes = T.res; const pe = el.querySelector('.peao'); if(pe){ pe.classList.add('hw-vence'); setTimeout(() => pe.classList.remove('hw-vence'), 1400); } }
       const pul = T.pulando.has(j.id), alvo = el.firstElementChild;
       alvo.style.filter = pul ? `drop-shadow(0 0 ${Math.round(PH*.14)}px ${PC[j.cor][0]})` : 'none';
       const gelo = j.congelado || (S.fase === 'congelado' && atual().id === j.id), est = (j.escudo ? 'e' : '') + (gelo ? 'g' : '');
@@ -1056,7 +1065,7 @@ async function esperar(ms){
 async function animar(id, de, ate){
   if(de === ate) return;
   const p = ate > de ? 1 : -1;
-  for(let x = de; x !== ate; x += p){ T.vis[id] = x + p; T.pulando.add(id); renderTab(); pularPeca(id); await esperar(REDUZ ? 60 : 230); }
+  for(let x = de; x !== ate; x += p){ T.vis[id] = x + p; T.pulando.add(id); renderTab(); pularPeca(id); if(hw()) TEMA.passo(); await esperar(REDUZ ? 60 : 230); }
   T.pulando.delete(id); renderTab();
 }
 async function mover(j, delta){
@@ -1226,8 +1235,18 @@ const SONS = {
   vez: (c, t) => { nota(c, t, 783.99, .25, {vol:.18}); nota(c, t + .13, 1174.66, .6, {vol:.16}); },
   vitoria: (c, t) => [523.25, 659.25, 783.99, 659.25, 783.99, 1046.5].forEach((f, i) => nota(c, t + [0, .12, .24, .42, .54, .66][i], f, i === 5 ? 1 : .15, {tipo:'triangle', vol:.22})),
 };
-function som(nome){ const c = audio(); if(c && SONS[nome]) try { SONS[nome](c, c.currentTime + .01); } catch(e){} }
-document.addEventListener('pointerdown', () => { if(!SOM.ctx) audio(); }, {passive:true});
+function som(nome){ const c = audio(); if(c && SONS[nome]) try { SONS[nome](c, c.currentTime + .01); } catch(e){} if(hw()) TEMA.somExtra(nome); }
+/* Trilha de fundo (src/musica.js): toca em todas as telas menos a vitória; segue o mudo (tecla M); reforça o tic-tac do relógio nas perguntas e duelos. */
+function musicaSync(){
+  const MU = window.MUSICA; if(!MU) return;
+  const quer = !SOM.mudo && S.tela !== 'vitoria' && !T.pausado;
+  if(!quer){ MU.parar(); return; }
+  const c = SOM.ctx; if(!c) return;
+  MU.tensao(S.tela === 'jogo' && (S.fase === 'pergunta' || S.fase === 'resposta' || FASES_DUELO.includes(S.fase)));
+  MU.tocar(c);
+}
+document.addEventListener('pointerdown', () => { if(!SOM.ctx) audio(); musicaSync(); }, {passive:true});
+document.addEventListener('keydown', () => { if(!SOM.ctx) audio(); setTimeout(musicaSync, 0); });
 function btnSom(h, vidro){
   const t = Math.round(h*.5), svg = `<svg width="${t}" height="${t}" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3z" fill="currentColor"/>${SOM.mudo ? '<path d="M16 9.5l5 5M21 9.5l-5 5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>' : '<path d="M15.5 8.8a4.6 4.6 0 0 1 0 6.4M18.3 6a8.6 8.6 0 0 1 0 12" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round"/>'}</svg>`;
   return `<button class="b3d${vidro ? '' : ' branco'}" data-a="som" aria-label="${SOM.mudo ? 'Ligar o som' : 'Desligar o som'} (tecla M)" title="${SOM.mudo ? 'Som desligado' : 'Som ligado'} (tecla M)" style="width:${h}px;height:${h}px;padding:0;flex:none;border-radius:22px;${vidro ? 'background:#fff;color:#312E81;box-shadow:0 6px 0 rgba(0,0,0,.25)' : 'box-shadow:0 7px 0 var(--lilas),0 12px 20px rgba(10,8,40,.3)'};${SOM.mudo ? 'opacity:.75' : ''}">${svg}</button>`;
@@ -1288,6 +1307,7 @@ function telaAbertura(){
       <div class="abs" style="left:14px;top:14px;right:14px;bottom:14px;border-radius:22px;border:4px dashed rgba(253,224,71,.7)"></div>
       ${ico('star', 64, 'color:#FDE047')}<span class="bal" style="font-size:150px;color:#fff;text-shadow:0 8px 0 #701A75;padding-top:22px;letter-spacing:4px">LAND</span>${ico('star', 64, 'color:#FDE047')}</div>
     <div style="display:flex;gap:300px;margin-top:-2px"><div style="width:22px;height:46px;background:#A16207;border-radius:0 0 6px 6px"></div><div style="width:22px;height:46px;background:#A16207;border-radius:0 0 6px 6px"></div></div></div>
+  ${hw() ? TEMA.selo('abertura') : ''}${TEMA ? TEMA.chaves(1) : ''}
   <div class="abs" style="left:50%;top:${save ? 686 : 720}px;transform:translateX(-50%);width:620px;display:flex;flex-direction:column;gap:22px">
     <button class="b3d amarelo" data-a="irCadastro" style="height:112px;border:6px solid #fff;border-radius:30px;background:linear-gradient(180deg,#FFE066,#FFD23F 60%);font-size:56px;box-shadow:0 11px 0 #C99A00,0 0 50px rgba(255,210,63,.5)">${ico('play_arrow', 60)}Nova partida</button>
     ${save ? `<button class="b3d branco" data-a="continuar" style="height:88px;border-radius:26px;font-size:38px">${ico('history', 44)}Continuar partida salva</button>` : ''}
@@ -1309,7 +1329,7 @@ function resumoConfig(cfg){
 function seletorCor(p, i, usadas, t){
   return `<div style="display:grid;grid-template-columns:repeat(6,${t}px);gap:${Math.round(t*.16)}px;flex:none" role="radiogroup" aria-label="Cor do jogador ${i+1}">${COR_IDS.map(c => {
     const sel = p.cor === c, usada = !sel && usadas.includes(c), [hx, ex, tn] = PC[c];
-    return `<button class="bolinha" data-a="cor" data-v="${i}|${c}" ${usada ? 'disabled' : ''} role="radio" aria-checked="${sel}" aria-label="${NOME_COR[c]}${usada ? ' (já escolhida)' : ''}" title="${NOME_COR[c]}" style="width:${t}px;height:${t}px;border-width:${t > 34 ? 4 : 3}px;background:${hx};opacity:${usada ? .3 : 1};box-shadow:${sel ? `0 0 0 ${t > 34 ? 5 : 4}px ${hx}, 0 0 14px ${hx}` : `0 3px 0 ${ex}`}">${sel ? ico('check', Math.round(t*.62), `color:${tn}`) : ''}${usada ? '<span class="risco" style="height:5px;margin-top:-2.5px"></span>' : ''}</button>`;
+    return `<button class="bolinha" data-a="cor" data-v="${i}|${c}" ${usada ? 'disabled' : ''} role="radio" aria-checked="${sel}" aria-label="${NOME_COR[c]}${usada ? ' (já escolhida)' : ''}" title="${NOME_COR[c]}${hw() ? ' — ' + TEMA.nome(c) : ''}" style="width:${t}px;height:${t}px;border-width:${t > 34 ? 4 : 3}px;background:${hx};opacity:${usada ? .3 : 1};box-shadow:${sel ? `0 0 0 ${t > 34 ? 5 : 4}px ${hx}, 0 0 14px ${hx}` : `0 3px 0 ${ex}`}">${sel ? ico('check', Math.round(t*.62), `color:${tn}`) : ''}${usada ? '<span class="risco" style="height:5px;margin-top:-2.5px"></span>' : ''}</button>`;
   }).join('')}</div>`;
 }
 function telaCadastro(){
@@ -1318,7 +1338,7 @@ function telaCadastro(){
   const larg = duas ? 1300 : 1150, hL = duas ? 84 : comp ? 100 : 124, gap = duas ? 10 : comp ? 12 : 18, tp = duas ? 66 : comp ? 82 : 100, bol = duas ? 30 : comp ? 38 : 40;
   const linha = (p, i) => `<div class="jog-linha" style="height:${hL}px;border:${duas ? 4 : 5}px solid ${PC[p.cor][0]};gap:${duas ? 12 : 20}px;padding:0 ${duas ? 12 : 22}px 0 ${duas ? 10 : 18}px;animation-delay:${Math.min(i,6)*.03}s">
       <div style="margin-top:-6px;flex:none" id="pv-${i}">${peao(p.cor, i+1, tp)}</div>
-      <label class="nome-caixa" style="flex:1;width:auto;min-width:0;height:${duas ? 60 : comp ? 72 : 80}px;padding:0 ${duas ? 12 : 18}px"><input id="nome-${i}" data-nome="${i}" maxlength="12" value="${esc(p.nome)}" aria-label="Nome do jogador ${i+1}" placeholder="Nome" autocomplete="off" spellcheck="false" style="font-size:${duas ? 32 : 44}px">${duas ? '' : `<span id="cont-${i}" style="font-weight:800;font-size:28px;color:var(--tinta-3)">${p.nome.length}/12</span>`}</label>
+      <label class="nome-caixa" style="flex:1;width:auto;min-width:0;height:${duas ? 60 : comp ? 72 : 80}px;padding:0 ${duas ? 12 : 18}px"><input id="nome-${i}" data-nome="${i}" maxlength="12" value="${esc(p.nome)}" aria-label="Nome do jogador ${i+1}" placeholder="Nome" autocomplete="off" spellcheck="false" style="font-size:${duas ? 32 : 44}px">${duas ? '' : `<span id="cont-${i}" style="font-weight:800;font-size:28px;color:var(--tinta-3)">${p.nome.length}/12</span>`}${hw() && !duas ? TEMA.pill(p.cor) : ''}</label>
       ${seletorCor(p, i, usadas, bol)}
       ${n > 2 ? `<button class="x-btn" data-a="remover" data-v="${i}" aria-label="Remover ${esc(p.nome || 'jogador')}" style="width:${duas ? 52 : 72}px;height:${duas ? 52 : 72}px">${ico('close', duas ? 32 : 40)}</button>` : `<span style="width:${duas ? 52 : 72}px;flex:none"></span>`}</div>`;
   const add = n < MAX_JOG ? `<button data-a="addJog" class="bal" style="height:${duas ? hL : comp ? 96 : 110}px;box-sizing:border-box;border-radius:24px;background:rgba(255,255,255,.08);border:5px dashed rgba(255,255,255,.55);color:#fff;display:flex;align-items:center;justify-content:center;gap:10px">${ico('add', duas ? 40 : 48)}<span style="font-size:${duas ? 34 : 42}px">Adicionar jogador</span></button>` : '';
@@ -1328,6 +1348,7 @@ function telaCadastro(){
     <button data-a="irInicio" aria-label="Voltar" style="width:80px;height:80px;border-radius:24px;background:rgba(255,255,255,.14);color:#fff;display:flex;align-items:center;justify-content:center">${ico('arrow_back', 48)}</button>
     <div class="bal" style="font-size:84px;color:#fff;text-shadow:0 6px 0 #0F0C3A;padding-top:8px">Quem vai jogar?</div>
     <div style="height:56px;padding:0 22px;border-radius:999px;background:rgba(255,255,255,.14);display:flex;align-items:center;font-weight:800;font-size:28px;color:#E0E7FF">${n} de ${MAX_JOG} jogadores</div></div>
+  ${TEMA ? TEMA.chaves() : ''}
   <div class="abs" style="left:80px;top:190px;width:${larg}px;display:grid;grid-template-columns:${duas ? 'repeat(2,minmax(0,1fr))' : 'minmax(0,1fr)'};gap:${gap}px ${duas ? 20 : 0}px">${js.map(linha).join('')}${add}</div>
   <div class="abs" style="left:${cfgX}px;top:190px;width:${cfgW}px;box-sizing:border-box;border-radius:28px;background:rgba(255,255,255,.96);border:5px solid #FACC15;box-shadow:0 10px 0 rgba(10,8,40,.35);padding:${duas ? '24px 26px 28px' : '30px 34px 34px'};display:flex;flex-direction:column;gap:${duas ? 12 : 16}px">
     <div class="linha" style="gap:12px">${ico('tune', duas ? 40 : 48, 'color:var(--indigo)')}<span class="bal" style="font-size:${duas ? 40 : 48}px;padding-top:4px">Configurações</span></div>
@@ -1583,7 +1604,7 @@ function telaMesa(){
     case 'categoria': painel = painelInicio(j); break;
     case 'categoria_imposta': painel = painelCategoria(j); break;
     case 'dificuldade': painel = painelDificuldade(j); break;
-    case 'movendo': painel = `<div class="painel" style="--b:#fff;align-items:center;justify-content:center;gap:20px"><div style="position:relative;display:flex;justify-content:center;width:280px"><div class="abs brilho-pulsa" style="left:0;right:0;bottom:-12px;height:60px;border-radius:50%;background:radial-gradient(ellipse, ${PC[jog(T.res.id).cor][0]}80, transparent 70%)"></div>${peaoJ(jog(T.res.id), 180, {brilho:true})}</div><div class="bal" style="font-size:56px">${T.res.certo ? 'Andando…' : 'Conferindo…'}</div></div>`; break;
+    case 'movendo': painel = `<div class="painel" style="--b:#fff;align-items:center;justify-content:center;gap:20px"><div style="position:relative;display:flex;justify-content:center;width:280px"><div class="abs brilho-pulsa" style="left:0;right:0;bottom:-12px;height:60px;border-radius:50%;background:radial-gradient(ellipse, ${PC[jog(T.res.id).cor][0]}80, transparent 70%)"></div>${peaoJ(jog(T.res.id), 180, {brilho:true, cls:T.res.certo ? 'hw-vence' : ''})}</div><div class="bal" style="font-size:56px">${T.res.certo ? 'Andando…' : 'Conferindo…'}</div></div>`; break;
     case 'resultado': painel = T.res && T.res.certo ? painelAcerto() : painelErro(); break;
     case 'erro_rebote': painel = painelErro(); break;
   }
@@ -1670,7 +1691,7 @@ function telaDuelo(){
   }
   return `
   <div class="abs" style="inset:0;background:rgba(20,17,60,.55)"></div>
-  <div class="abs" style="left:60px;top:52px;width:1800px;height:976px;box-sizing:border-box;border-radius:36px;background:rgba(255,255,255,.97);border:8px solid ${borda};box-shadow:0 0 0 6px rgba(255,255,255,.25),0 30px 80px rgba(8,6,35,.6);overflow:hidden;display:flex;flex-direction:column;${nova ? 'animation:mola .3s both' : ''}">
+  <div class="abs duelo-caixa" style="left:60px;top:52px;width:1800px;height:976px;box-sizing:border-box;border-radius:36px;background:rgba(255,255,255,.97);border:8px solid ${borda};box-shadow:0 0 0 6px rgba(255,255,255,.25),0 30px 80px rgba(8,6,35,.6);overflow:hidden;display:flex;flex-direction:column;${nova ? 'animation:mola .3s both' : ''}">
     <div class="linha" style="height:124px;flex:none;background:${faixa};gap:22px;padding:0 30px 0 26px;box-shadow:inset 0 -8px 0 rgba(0,0,0,.14)">
       ${casa(todos ? 'todos' : d.categoria, 84)}
       <div class="bal" style="font-size:60px;color:${tF};padding-top:6px">${todos ? 'Todos contra todos!' : `${SIGLA[d.categoria]} · ${k.nome}`}</div><div class="flex1"></div>
@@ -1740,7 +1761,7 @@ function telaVitoria(){
       <div class="rank-entra" style="width:100%;margin-top:4px;display:grid;grid-template-columns:repeat(${colunas},minmax(0,1fr));gap:${linhas > 2 ? 8 : 12}px" aria-label="Classificação">
         ${lista.map((j, i) => `<div class="linha" style="gap:${estreito ? 8 : 12}px;height:${hR}px;padding:0 ${estreito ? 12 : 16}px;border-radius:${linhas > 2 ? 16 : 20}px;background:rgba(255,255,255,${i ? .94 : .99});border:4px solid ${i ? 'rgba(255,255,255,.4)' : '#FACC15'};min-width:0">
           ${peaoJ(j, hR - (linhas > 2 ? 16 : 30))}<div style="display:flex;flex-direction:column;min-width:0;gap:${linhas > 2 ? 0 : 2}px"><span class="bal" style="font-size:${linhas > 2 ? 26 : estreito ? 28 : 32}px;color:#1E1B4B;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-top:4px">${esc(j.nome)}</span><span style="font-weight:800;font-size:${linhas > 2 ? 18 : 20}px;color:#4A477A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${i+1}º · ${j.st.acertos}/${j.st.acertos + j.st.erros} ${plural(j.st.acertos, 'acerto', 'acertos')}</span></div></div>`).join('')}</div>
-    </div></div><div class="flash"></div></div>`;
+    </div>${hw() ? TEMA.selo('vitoria') : ''}</div><div class="flash"></div></div>`;
 }
 
 /* =============================== PAUSA =============================== */
@@ -1769,6 +1790,8 @@ function render(){
   else if(S.tela === 'ordem'){ h = telaOrdem(); if(T.sort && T.sort.pronto) fk = 'festa|7'; }
   else if(S.tela === 'jogo'){ tab = true; desf = FASES_DUELO.includes(S.fase); if(desf) T.big = null; h = desf ? telaDuelo() : telaMesa(); }
   else if(S.tela === 'vitoria') h = R.vit === S.vencedor ? null : telaVitoria();
+  if(hw()) fk += '|hw';
+  $('#palco').classList.toggle('tema-halloween', hw());
   if(fk !== R.fundo){ R.fundo = fk; const [m, sm] = fk.split('|'); $('#l-fundo').innerHTML = fundo(m, +sm); }
   const lt = $('#l-tab');
   if(!tab){ if(R.casas){ lt.innerHTML = ''; R.casas = null; R.pecas = {}; } }
@@ -1785,6 +1808,7 @@ function render(){
   $('#sobre').innerHTML = sobre;
   renderFx(); acordar();
   if(foco){ const el = document.getElementById(foco); if(el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA')) el.focus(); }
+  musicaSync();
 }
 function ajustar(){
   const cs = getComputedStyle(document.body);
@@ -1804,7 +1828,7 @@ const acoes = {
   jogarDeNovo(){ const cad = S.cad; S = {tela:'cadastro', cad}; novaPartida(); },
   resortear(){ iniciarSorteio(); },
   comecar(){ comecarJogo(); },
-  cor(v){ const [i, c] = v.split('|'), js = S.cad.jogadores; if(js.some((p,k) => k != i && p.cor === c)) return; js[i].cor = c; gravar(K_CAD, S.cad); render(); const pv = document.getElementById('pv-' + i); if(pv) pv.firstElementChild.style.animation = 'pulo .35s'; },
+  cor(v){ const [i, c] = v.split('|'), js = S.cad.jogadores; if(js.some((p,k) => k != i && p.cor === c)) return; js[i].cor = c; gravar(K_CAD, S.cad); render(); const pv = document.getElementById('pv-' + i); if(pv) pv.firstElementChild.style.animation = 'pulo .35s'; if(hw()) TEMA.previa(c, +i + 1); },
   remover(v){ if(S.cad.jogadores.length <= 2) return; S.cad.jogadores.splice(+v, 1); sugerirMesa(); gravar(K_CAD, S.cad); render(); },
   addJog(){ const js = S.cad.jogadores; if(js.length >= MAX_JOG) return; js.push({nome:'Jogador ' + (js.length+1), cor:COR_IDS.find(c => !js.some(p => p.cor === c))}); sugerirMesa(); gravar(K_CAD, S.cad); render(); const el = document.getElementById('nome-' + (js.length-1)); if(el){ el.focus(); el.select(); } },
   abrirConfig(){ T.rasc = clone(S.tela === 'jogo' ? S.config : S.cad.config); T.modal = 'config'; render(); },
@@ -1840,6 +1864,8 @@ const acoes = {
   proximo(){ if(['resultado','tempo_esgotado','congelado'].includes(S.fase) && !T.ocupado) proximoTurno(); },
   desfazer(){ desfazer(); },
   pausa(){ togglePausa(); },
+  halloween(){ if(TEMA){ TEMA.alternar(); render(); } },
+  hwSom(){ if(TEMA){ TEMA.alternarSom(); if(TEMA.somOn) TEMA.somExtra('vez'); render(); } },
   som(){ SOM.mudo = !SOM.mudo; try { localStorage.setItem(K_SOM, SOM.mudo ? 'mudo' : 'ligado'); } catch(e){} if(!SOM.mudo) som('vez'); render(); },
   desistir(){ desistir(); },
   pularFx(){ if(T.pular) T.pular(); },

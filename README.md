@@ -20,6 +20,11 @@ Vence quem chegar primeiro ao fim da trilha.
 Com 6 ou mais jogadores, a partida sugere trilha de 24 casas com Vento a favor e Reta final ligados (dá para mudar em Ajustar).
 O jogo tem sons gerados pelo navegador (vez, tique-taque nos 10 s finais, acerto, erro, tempo esgotado, vitória); a tecla M liga e desliga.
 
+## Edição Halloween e trilha sonora
+
+A chave **🎃 Modo Halloween** (início e cadastro) troca só o visual: personagens por cor, tabuleiro e fundos assustadores. Regras, banco e sorteio não mudam. Sem escolha salva, liga sozinho de 25/10 a 02/11. Os sons extras do tema têm chave própria, desligada por padrão.
+Há também uma música de fundo sintetizada pelo navegador (sem arquivos) em todas as telas menos a vitória; ela segue o mudo (tecla M).
+
 ## Casas especiais
 
 Atalho (+2), Escorregão (−2), Escudo, Todos contra todos, Congelado e Troca.
@@ -72,6 +77,8 @@ python3 src/build.py
 | `perguntas.json` | banco oficial de perguntas |
 | `src/template.html` | código-fonte do jogo |
 | `src/icones.woff2` | fonte com os 44 ícones usados |
+| `src/theme-halloween.css`, `src/theme-halloween.js` | tema de Halloween (só visual) |
+| `src/musica.js` | trilha sonora sintetizada |
 | `src/build.py` | junta tudo e gera o `index.html` |
 
 A partida salva, os jogadores cadastrados e o banco importado ficam guardados no navegador de quem joga.
