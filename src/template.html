@@ -970,8 +970,10 @@ function lancarPergunta(mesma){
 }
 function marcar(id){
   const d = S.duelo; if(S.fase !== 'pergunta' || !d || !d.elegiveis.includes(id)) return;
-  d.respondeuId = id; d.ativo = false; S.fase = 'resposta'; render();
+  /* Quem marcou tem 10 s para dizer a resposta; depois ela é revelada sozinha (não basta ser o mais rápido no botão). */
+  d.respondeuId = id; d.ativo = false; d.fala = FALA_MS; T.ultFala = null; S.fase = 'resposta'; render();
 }
+const FALA_MS = 10000;
 function voltarMarcacao(){
   if(!['resposta','validacao'].includes(S.fase)) return;
   const d = S.duelo; d.respondeuId = null; d.ativo = true; S.fase = 'pergunta'; render();
@@ -1277,7 +1279,7 @@ function agendarAuto(ms, fn){ T.auto = {restante:ms, total:ms, fn}; acordar(); }
 /* O laço só roda quando há cronômetro ou autoavanço contando. Um requestAnimationFrame permanente forçaria um
    quadro no thread principal a cada 16 ms, e a cada quadro o navegador recalcula o estilo de todas as casas animadas. */
 let ultimo = performance.now(), rodando = false;
-function precisaLoop(){ return S.tela === 'jogo' && !T.pausado && !T.modal && !!(T.auto || (S.duelo && S.duelo.ativo && S.fase === 'pergunta')); }
+function precisaLoop(){ return S.tela === 'jogo' && !T.pausado && !T.modal && !!(T.auto || (S.duelo && ((S.duelo.ativo && S.fase === 'pergunta') || (S.fase === 'resposta' && S.duelo.fala > 0)))); }
 function acordar(){ if(!rodando && precisaLoop()){ rodando = true; ultimo = performance.now(); requestAnimationFrame(loop); } }
 function loop(t){
   const dt = Math.max(0, t - ultimo); ultimo = t;
@@ -1295,6 +1297,17 @@ function loop(t){
       }
       if(!T.alerta && d.restante <= 10000){ T.alerta = true; render(); }
       if(d.restante <= 0){ d.restante = 0; tempoEsgotado(); }
+    }
+    if(d && S.fase === 'resposta' && d.fala > 0){
+      d.fala -= dt;
+      const sf = segs(d.fala);
+      if(sf !== T.ultFala){
+        if(T.ultFala != null && sf > 0 && sf <= 3) som('tic');
+        T.ultFala = sf;
+        const n = document.getElementById('fala-n'); if(n) n.textContent = sf;
+      }
+      const b = document.getElementById('fala-b'); if(b) b.style.transform = `scaleX(${Math.max(0, d.fala/FALA_MS).toFixed(3)})`;
+      if(d.fala <= 0){ d.fala = 0; revelar(); }
     }
     if(T.auto){
       T.auto.restante -= dt;
@@ -1654,6 +1667,7 @@ function corpoRebote(d, enun){
       <button class="b3d branco" data-a="pularRebote" style="height:120px;border-radius:30px;font-size:42px;box-shadow:0 0 0 3px var(--linha),0 10px 0 var(--lilas)">Pular rebote</button></div>
     <div style="text-align:center;font-weight:800;font-size:24px;color:var(--tinta-3);margin-top:14px">Espaço = responder · Backspace = pular</div>`;
 }
+function falaMsg(j){ return `${esc(j.nome)}, fale a resposta: ela aparece sozinha em <span id="fala-n" class="bal" style="display:inline-flex;align-items:center;justify-content:center;min-width:56px;height:56px;margin:0 4px;border-radius:50%;background:#312E81;color:#FDE047;font-size:36px;padding-top:4px;vertical-align:middle">${segs(S.duelo.fala ?? FALA_MS)}</span> s`; }
 function telaDuelo(){
   const d = S.duelo, k = CATS[d.categoria], todos = d.tipo === 'todos', reg = S.fase === 'resposta', val = S.fase === 'validacao';
   const alerta = S.fase === 'pergunta' && d.restante <= 10000, s = segs(d.restante);
@@ -1674,18 +1688,21 @@ function telaDuelo(){
     corpo += `<div class="flex1"></div>`;
     if(!todos){
       const quem = reg ? jog(d.respondeuId) : null;
-      corpo += `<div class="linha" style="justify-content:center;gap:14px;margin-bottom:22px">${ico(reg ? 'check_circle' : 'touch_app', 40, 'color:var(--indigo)')}<span style="font-weight:900;font-size:34px;color:#312E81">${reg ? `${esc(quem.nome)} respondeu primeiro — confira a resposta` : d.emRebote ? `Rebote: só ${esc(jog(d.elegiveis[0]).nome)} pode responder` : 'Clique em quem respondeu primeiro'}</span></div>
+      corpo += `<div class="linha" style="justify-content:center;gap:14px;margin-bottom:22px">${ico(reg ? 'check_circle' : 'touch_app', 40, 'color:var(--indigo)')}<span style="font-weight:900;font-size:34px;color:#312E81">${reg ? falaMsg(quem) : d.emRebote ? `Rebote: só ${esc(jog(d.elegiveis[0]).nome)} pode responder` : 'Clique em quem respondeu primeiro'}</span></div>
       <div style="display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:end;gap:28px">
         ${podio(d.desafiante, 'Desafiante', false, 1)}
         <div class="bal" style="width:110px;height:110px;box-sizing:border-box;border-radius:50%;background:var(--tinta);border:6px solid #fff;box-shadow:0 6px 0 #0F0C3A;display:flex;align-items:center;justify-content:center;font-size:44px;color:#FDE047;margin-bottom:${reg ? 30 : 46}px;padding-top:4px">VS</div>
         ${podio(d.desafiado, 'Desafiado', true, 2)}</div>`;
     } else {
       const lista = ativos(), nn = lista.length;
-      corpo += `<div class="linha" style="justify-content:center;gap:14px;margin-bottom:22px">${ico(reg ? 'check_circle' : 'bolt', 40, `color:${reg ? 'var(--indigo)' : '#CA8A04'}`)}<span style="font-weight:900;font-size:34px;color:#312E81">${reg ? `${esc(jog(d.respondeuId).nome)} respondeu primeiro — confira a resposta` : 'Quem responder primeiro e acertar avança 1'}</span></div>
+      corpo += `<div class="linha" style="justify-content:center;gap:14px;margin-bottom:22px">${ico(reg ? 'check_circle' : 'bolt', 40, `color:${reg ? 'var(--indigo)' : '#CA8A04'}`)}<span style="font-weight:900;font-size:34px;color:#312E81">${reg ? falaMsg(jog(d.respondeuId)) : 'Quem responder primeiro e acertar avança 1'}</span></div>
       <div style="display:grid;grid-template-columns:repeat(${nn > 6 ? Math.ceil(nn/2) : nn},minmax(0,1fr));gap:${nn > 6 ? 14 : nn > 4 ? 16 : 26}px">${lista.map((x, i) => { const [hx, ex] = PC[x.cor], ok = d.elegiveis.includes(x.id), marc = reg && d.respondeuId === x.id, dl = nn > 6;
         return `<button class="todos-card" data-a="marcar" data-v="${x.id}" ${!ok || reg ? 'disabled' : ''} style="height:${dl ? (reg ? 104 : 124) : reg ? 200 : 250}px;${dl ? 'gap:2px;padding-bottom:10px;border-radius:22px;' : ''}border:${dl ? 5 : 6}px solid ${hx};box-shadow:0 0 30px ${hx}66,0 10px 0 ${ex};animation-delay:${-i*.3}s;${marc ? `opacity:1;filter:none;background:${hx};transform:scale(1.04)` : ''}" aria-label="${esc(x.nome)} respondeu (tecla ${i+1})">${peaoJ(x, dl ? (reg ? 62 : 76) : reg ? 110 : 140, {brilho:marc})}<div class="bal" style="font-size:${dl ? 28 : nn > 4 ? 40 : 56}px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:${marc ? PC[x.cor][2] : 'var(--tinta)'}">${esc(x.nome)}</div></button>`; }).join('')}</div>`;
     }
-    if(reg) corpo += `<div class="linha" style="justify-content:center;gap:28px;margin-top:30px"><button class="b3d amarelo" data-a="revelar" style="height:100px;padding:0 56px;border-radius:26px;font-size:46px">${ico('visibility', 52)}Revelar resposta</button><button class="link" data-a="voltarMarcacao">${ico('undo', 32)}Marcou errado? Voltar</button></div>`;
+    if(reg){ const sf = segs(d.fala ?? FALA_MS);
+      corpo += `<div style="display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:18px">
+        <div style="width:760px;height:14px;border-radius:999px;background:#E0E7FF;overflow:hidden"><div id="fala-b" style="height:100%;border-radius:999px;background:#4F46E5;transform-origin:left;transform:scaleX(${Math.max(0, (d.fala ?? FALA_MS)/FALA_MS).toFixed(3)})"></div></div>
+        <div class="linha" style="justify-content:center;gap:28px"><button class="b3d amarelo" data-a="revelar" style="height:92px;padding:0 48px;border-radius:26px;font-size:42px">${ico('visibility', 48)}Revelar agora</button><button class="link" data-a="voltarMarcacao">${ico('undo', 32)}Marcou errado? Voltar</button></div></div>`; }
   } else {
     const r = jog(d.respondeuId), [hx, , tn] = PC[r.cor], resp = d.pergunta.resposta, jz = juiz();
     corpo = `<div class="linha" style="gap:28px"><div class="flex1 bal" style="font-weight:700;font-size:36px;line-height:1.15;color:var(--tinta-2)">${esc(enun)}</div>
