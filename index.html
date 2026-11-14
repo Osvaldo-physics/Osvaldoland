@@ -1611,12 +1611,14 @@ function renderFx(){
 /* =============================== SOM =============================== */
 /* Sons sintetizados pelo navegador (Web Audio): nenhum arquivo. O mudo fica guardado neste navegador (tecla M). */
 const K_SOM = 'osvaldoland-som', SOM = {ctx:null, mudo:false};
+/* iPhone/iPad: sem isto o Web Audio respeita a chave de silencioso do aparelho */
+try { if(navigator.audioSession) navigator.audioSession.type = 'playback'; } catch(e){}
 try { SOM.mudo = localStorage.getItem(K_SOM) === 'mudo'; } catch(e){}
 function audio(){
   if(SOM.mudo) return null;
   try {
     if(!SOM.ctx){ const AC = window.AudioContext || window.webkitAudioContext; if(!AC) return null; SOM.ctx = new AC(); }
-    if(SOM.ctx.state === 'suspended') SOM.ctx.resume();
+    if(SOM.ctx.state !== 'running' && SOM.ctx.state !== 'closed') SOM.ctx.resume().catch(() => {});
     return SOM.ctx;
   } catch(e){ return null; }
 }
@@ -1645,8 +1647,19 @@ function musicaSync(){
   MU.tensao(S.tela === 'jogo' && (S.fase === 'pergunta' || S.fase === 'resposta' || FASES_DUELO.includes(S.fase)));
   MU.tocar(c);
 }
-document.addEventListener('pointerdown', () => { if(!SOM.ctx) audio(); musicaSync(); }, {passive:true});
-document.addEventListener('keydown', () => { if(!SOM.ctx) audio(); setTimeout(musicaSync, 0); });
+/* Desbloqueio do áudio: os navegadores só deixam tocar depois de um gesto, e cada um conta um evento diferente
+   (Chrome com toque só no pointerup/touchend, Safari no touchend/click). A cada gesto: cria ou retoma o contexto,
+   toca um buffer mudo uma vez (exigência do Safari/iOS) e religa a música. */
+function destravarAudio(){
+  if(SOM.mudo) return;
+  const c = audio(); if(!c) return;
+  if(!SOM.destravado){
+    try { const bf = c.createBuffer(1, 1, 22050), src = c.createBufferSource(); src.buffer = bf; src.connect(c.destination); src.start(0); SOM.destravado = true; } catch(e){}
+    c.onstatechange = () => musicaSync();
+  }
+  setTimeout(musicaSync, 0);
+}
+['pointerdown', 'pointerup', 'touchend', 'click', 'keydown'].forEach(ev => document.addEventListener(ev, destravarAudio, {passive:true, capture:true}));
 function btnSom(h, vidro){
   const t = Math.round(h*.5), svg = `<svg width="${t}" height="${t}" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3z" fill="currentColor"/>${SOM.mudo ? '<path d="M16 9.5l5 5M21 9.5l-5 5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>' : '<path d="M15.5 8.8a4.6 4.6 0 0 1 0 6.4M18.3 6a8.6 8.6 0 0 1 0 12" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round"/>'}</svg>`;
   return `<button class="b3d${vidro ? '' : ' branco'}" data-a="som" aria-label="${SOM.mudo ? 'Ligar o som' : 'Desligar o som'} (tecla M)" title="${SOM.mudo ? 'Som desligado' : 'Som ligado'} (tecla M)" style="width:${h}px;height:${h}px;padding:0;flex:none;border-radius:22px;${vidro ? 'background:#fff;color:#312E81;box-shadow:0 6px 0 rgba(0,0,0,.25)' : 'box-shadow:0 7px 0 var(--lilas),0 12px 20px rgba(10,8,40,.3)'};${SOM.mudo ? 'opacity:.75' : ''}">${svg}</button>`;
