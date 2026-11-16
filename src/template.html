@@ -1014,7 +1014,8 @@ async function validar(certo){
     T.res.valor = casas;
     if(casas){ mostrarBig(`+${casas} ${plural(casas,'casa','casas')}!`, 'acerto'); await mover(r, casas); }
     if(S.vencedor){ T.ocupado = false; return; }
-    if(d.tipo === 'normal'){
+    /* a casa onde a pessoa para vale também na pergunta para todos (+1) — antes só valia no duelo */
+    if(d.tipo === 'normal' || (d.tipo === 'todos' && casas)){
       const r2 = await efeitoCasa(r);
       if(S.vencedor){ T.ocupado = false; return; }
       if(r2 === 'todos'){ T.ocupado = false; return; }
