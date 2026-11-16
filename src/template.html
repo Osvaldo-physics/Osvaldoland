@@ -89,7 +89,7 @@ button[disabled]{cursor:not-allowed}
 /* casas especiais que o jogador da vez já usou */
 .usada{position:absolute; pointer-events:none}
 .usada i{position:absolute; inset:0; border-radius:50%; background:rgba(30,27,75,.55)}
-.usada b{position:absolute; right:-10px; top:-10px; width:36px; height:36px; box-sizing:border-box; border-radius:50%; border:3px solid #fff; display:flex; align-items:center; justify-content:center; box-shadow:0 3px 0 rgba(10,8,40,.4)}
+.usada b{position:absolute; right:-12px; top:-12px; width:44px; height:44px; box-sizing:border-box; border-radius:50%; border:3px solid #fff; display:flex; align-items:center; justify-content:center; box-shadow:0 3px 0 rgba(10,8,40,.4)}
 /* faixa "Vez de…" no começo de cada turno */
 .anuncio{position:absolute; left:0; right:0; top:400px; height:280px; display:flex; align-items:center; pointer-events:none; animation:anuncio 1.8s cubic-bezier(.3,1.2,.5,1) both}
 .anuncio > div{width:100%; height:240px; box-sizing:border-box; border-top:8px solid #fff; border-bottom:8px solid #fff; display:flex; align-items:center; justify-content:center; gap:34px}
@@ -415,12 +415,14 @@ const CAT_IDS = Object.keys(CATS);
 const SIGLA = {N:'N',H:'H',G:'G',A:'A',E:'E',C:'C',P:'P',S:'★'};
 /* cor: [principal, escura, tinta sobre a cor, texto sobre branco] */
 const PC = {
-  vermelho:['#EF4444','#B91C1C','#FFFFFF','#DC2626'], azul:['#3B82F6','#1D4ED8','#FFFFFF','#2563EB'],
-  verde:['#22C55E','#15803D','#052E16','#15803D'],   amarelo:['#FACC15','#CA8A04','#422006','#A16207'],
-  roxo:['#8B5CF6','#6D28D9','#FFFFFF','#7C3AED'],    laranja:['#F97316','#C2410C','#431407','#C2410C'],
-  rosa:['#EC4899','#BE185D','#FFFFFF','#DB2777'],    ciano:['#06B6D4','#0E7490','#083344','#0E7490'],
-  lima:['#A3E635','#4D7C0F','#1A2E05','#4D7C0F'],    marrom:['#A16A3B','#5C3A1E','#FFFFFF','#7C4A22'],
-  cinza:['#94A3B8','#475569','#0F172A','#475569'],   preto:['#3F3F46','#09090B','#FFFFFF','#27272A']
+  /* Tons escolhidos para continuarem distinguíveis com deuteranopia e protanopia (claridade bem diferente entre
+     os pares azul/ciano, amarelo/laranja, vermelho/laranja/marrom e rosa/lima). */
+  vermelho:['#B91C1C','#7F1D1D','#FFFFFF','#B91C1C'], azul:['#2563EB','#1E3A8A','#FFFFFF','#1D4ED8'],
+  verde:['#22C55E','#15803D','#052E16','#15803D'],   amarelo:['#FDE047','#CA8A04','#422006','#A16207'],
+  roxo:['#7C3AED','#5B21B6','#FFFFFF','#6D28D9'],    laranja:['#EA580C','#9A3412','#FFFFFF','#C2410C'],
+  rosa:['#DB2777','#9D174D','#FFFFFF','#BE185D'],    ciano:['#67E8F9','#0891B2','#083344','#0E7490'],
+  lima:['#BEF264','#4D7C0F','#1A2E05','#4D7C0F'],    marrom:['#6B4423','#3E2612','#FFFFFF','#6B4423'],
+  cinza:['#94A3B8','#475569','#0F172A','#475569'],   preto:['#27272A','#09090B','#FFFFFF','#27272A']
 };
 const NOME_COR = {vermelho:'Vermelho', azul:'Azul', verde:'Verde', amarelo:'Amarelo', roxo:'Roxo', laranja:'Laranja', rosa:'Rosa', ciano:'Ciano', lima:'Lima', marrom:'Marrom', cinza:'Cinza', preto:'Preto'};
 const MAX_JOG = 12;
@@ -761,7 +763,7 @@ function renderTab(){
   if(us !== R.usadas){
     R.usadas = us;
     $('#tab-usadas').innerHTML = vez ? (vez.marcas || []).map(i => { const q = pos(i), [hx, , tn] = PC[vez.cor];
-      return `<div class="usada" style="left:${Math.round(q.x - cs/2)}px;top:${Math.round(q.y - cs/2)}px;width:${cs}px;height:${cs}px"><i></i><b style="background:${hx}">${ico('check', 22, `color:${tn};font-variation-settings:'FILL' 1,'wght' 800`)}</b></div>`; }).join('') : '';
+      return `<div class="usada" style="left:${Math.round(q.x - cs/2)}px;top:${Math.round(q.y - cs/2)}px;width:${cs}px;height:${cs}px"><i></i><b style="background:${hx}">${ico('check', 30, `color:${tn};font-variation-settings:'FILL' 1,'wght' 800`)}</b></div>`; }).join('') : '';
   }
   const grupos = {}, camada = $('#tab-pecas'), vivos = new Set();
   ativos().forEach(j => { const p = T.vis[j.id] ?? j.posicao; (grupos[p] = grupos[p] || []).push(j); });
@@ -1365,7 +1367,7 @@ function seletorCor(p, i, usadas, t){
 function telaCadastro(){
   const js = S.cad.jogadores, n = js.length, duas = n > 5, comp = n > 4;
   const usadas = js.map(p => p.cor), pode = n >= 2 && js.every(p => p.nome.trim());
-  const larg = duas ? 1300 : 1150, hL = duas ? 84 : comp ? 100 : 124, gap = duas ? 10 : comp ? 12 : 18, tp = duas ? 66 : comp ? 82 : 100, bol = duas ? 30 : comp ? 38 : 40;
+  const larg = duas ? 1300 : 1150, hL = duas ? 84 : comp ? 100 : 124, gap = duas ? 10 : comp ? 12 : 18, tp = duas ? 66 : comp ? 82 : 100, bol = duas ? 34 : comp ? 42 : 46;
   const linha = (p, i) => `<div class="jog-linha" style="height:${hL}px;border:${duas ? 4 : 5}px solid ${PC[p.cor][0]};gap:${duas ? 12 : 20}px;padding:0 ${duas ? 12 : 22}px 0 ${duas ? 10 : 18}px;animation-delay:${Math.min(i,6)*.03}s">
       <div style="margin-top:-6px;flex:none" id="pv-${i}">${peao(p.cor, i+1, tp)}</div>
       <label class="nome-caixa" style="flex:1;width:auto;min-width:0;height:${duas ? 60 : comp ? 72 : 80}px;padding:0 ${duas ? 12 : 18}px"><input id="nome-${i}" data-nome="${i}" maxlength="12" value="${esc(p.nome)}" aria-label="Nome do jogador ${i+1}" placeholder="Nome" autocomplete="off" spellcheck="false" style="font-size:${duas ? 32 : 44}px">${duas ? '' : `<span id="cont-${i}" style="font-weight:800;font-size:28px;color:var(--tinta-3)">${p.nome.length}/12</span>`}${hw() && !duas ? TEMA.pill(p.cor) : ''}</label>
@@ -1383,7 +1385,7 @@ function telaCadastro(){
   <div class="abs" style="left:${cfgX}px;top:190px;width:${cfgW}px;box-sizing:border-box;border-radius:28px;background:rgba(255,255,255,.96);border:5px solid #FACC15;box-shadow:0 10px 0 rgba(10,8,40,.35);padding:${duas ? '24px 26px 28px' : '30px 34px 34px'};display:flex;flex-direction:column;gap:${duas ? 12 : 16}px">
     <div class="linha" style="gap:12px">${ico('tune', duas ? 40 : 48, 'color:var(--indigo)')}<span class="bal" style="font-size:${duas ? 40 : 48}px;padding-top:4px">Configurações</span></div>
     ${resumoConfig(S.cad.config).map(([k,v]) => `<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding-bottom:${duas ? 10 : 12}px;border-bottom:3px solid var(--suave-2);font-size:${cfgFs}px"><span style="font-weight:700;color:var(--tinta-2);white-space:nowrap">${k}</span><span style="font-weight:900;text-align:right">${v}</span></div>`).join('')}
-    ${n >= MESA_GRANDE && !S.cad.config.manual ? `<div class="linha" style="gap:10px;align-items:flex-start;padding:10px 14px;border-radius:16px;background:#EEF2FF;color:#3730A3;font-weight:800;font-size:${duas ? 21 : 24}px;line-height:1.25">${ico('info', 28)}<span>Mesa grande: trilha menor, Vento a favor e Reta final ligados para a partida andar.</span></div>` : ''}
+    ${n >= MESA_GRANDE && !S.cad.config.manual ? `<div class="linha" style="gap:10px;align-items:flex-start;padding:10px 14px;border-radius:16px;background:#EEF2FF;color:#3730A3;font-weight:800;font-size:${duas ? 24 : 26}px;line-height:1.25">${ico('info', 28)}<span>Mesa grande: trilha menor, Vento a favor e Reta final ligados para a partida andar.</span></div>` : ''}
     <button class="b3d roxo" data-a="abrirConfig" style="height:${duas ? 72 : 80}px;font-size:${duas ? 34 : 38}px;margin-top:6px">${ico('edit', 42)}Ajustar</button></div>
   <div class="abs" style="left:0;right:0;bottom:44px;display:flex;justify-content:center">
     <button class="b3d verde" id="btnComecar" data-a="novaPartida" ${pode ? '' : 'disabled'} style="width:760px;height:124px;border:6px solid #fff;border-radius:34px;font-size:60px">Começar partida${ico('arrow_forward', 66)}</button></div>`;
@@ -1400,7 +1402,7 @@ function modalConfig(){
         </div>
       <div style="display:flex;flex-direction:column;gap:6px"><div style="display:flex;justify-content:space-between;align-items:baseline"><label for="r-tempo" style="font-weight:900;font-size:32px">Tempo por pergunta</label><span class="bal" style="font-size:44px;color:var(--indigo)"><span id="r-tempo-v">${r.tempo}</span> s</span></div>
         <input id="r-tempo" class="faixa" type="range" min="30" max="120" step="10" value="${r.tempo}" style="--p:${pct}%">
-        <div style="display:flex;justify-content:space-between;font-weight:800;font-size:24px;color:var(--tinta-2);margin-top:-6px"><span>30 s</span><span>120 s</span></div></div></div>
+        <div style="display:flex;justify-content:space-between;font-weight:800;font-size:26px;color:var(--tinta-2);margin-top:-6px"><span>30 s</span><span>120 s</span></div></div></div>
     <div style="display:flex;flex-direction:column;gap:12px"><div style="font-weight:900;font-size:32px">Punição por erro</div>
       <div style="display:flex;flex-wrap:wrap;gap:14px">${Object.entries(PUNICOES).map(([k,v]) => `<button class="chip${r.punicao === k ? ' on' : ''}" data-a="rPunicao" data-v="${k}" aria-pressed="${r.punicao === k}">${r.punicao === k ? ico('check', 34, "font-variation-settings:'FILL' 1,'wght' 800") : ''}${v}</button>`).join('')}</div></div>
     <div style="display:flex;flex-direction:column;border-radius:24px;background:#F6F5FD;padding:6px 28px">${tgs.map(([k, ic, nome, desc], i) => `<div class="linha" style="gap:22px;padding:12px 0;border-bottom:${i < 2 ? '3px solid #E4E2F3' : 'none'}">${ico(ic, 44, 'color:var(--indigo)')}<div class="flex1" style="display:flex;flex-direction:column;gap:2px"><span style="font-weight:900;font-size:32px">${nome}</span><span style="font-weight:700;font-size:28px;color:var(--tinta-2)">${desc}</span></div>
@@ -1453,7 +1455,7 @@ function telaOrdem(){
   <div class="abs" style="left:1545px;top:325px;border-top:22px solid transparent;border-bottom:22px solid transparent;border-right:30px solid #FACC15"></div>
   ${pronto ? `<div class="abs" style="left:260px;top:560px;width:1400px;height:480px;display:flex;align-items:flex-end;justify-content:center;gap:${n > 8 ? 8 : 16}px">${S.ordem.map((id, i) => { const j = jog(id);
     return `<div style="width:${cw}px;display:flex;flex-direction:column;align-items:center;min-width:0;animation:entra .4s ${i*.12}s both">${peaoJ(j, Math.round(TP[i]*(n > 4 ? .8 : 1)), {brilho:i === 0})}
-      <div class="bal" style="font-size:${n > 8 ? 24 : n > 4 ? 38 : 48}px;color:#fff;text-shadow:0 4px 0 #0F0C3A;margin:${n > 8 ? '6px 0 8px' : '10px 0 14px'};max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(j.nome)}</div>
+      <div class="bal" style="font-size:${n > 8 ? 26 : n > 4 ? 38 : 48}px;color:#fff;text-shadow:0 4px 0 #0F0C3A;margin:${n > 8 ? '6px 0 8px' : '10px 0 14px'};max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(j.nome)}</div>
       <div class="degrau" style="width:100%;height:${H[i]}px;box-sizing:border-box;border-radius:24px 24px 0 0;background:linear-gradient(180deg,#fff,#E4E2F3);border:6px solid ${PC[j.cor][0]};border-bottom:none;box-shadow:inset 0 -14px 0 rgba(30,27,75,.08);display:flex;justify-content:center;padding-top:16px;animation-delay:${i*.12}s"><span class="bal" style="font-size:${FS[i]}px">${i+1}º</span></div></div>`; }).join('')}</div>` : ''}`;
 }
 
@@ -1468,19 +1470,19 @@ function cartao(j, idx, n){
     ${peaoJ(j, comp ? 92 : 118, {brilho:ativo})}
     <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:10px">
       <div class="bal" style="font-size:${comp ? 36 : 46}px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-top:4px">${esc(j.nome)}</div>
-      <div class="linha" style="gap:10px">${casa(tipoCasa(j.posicao), comp ? 34 : 40)}<span style="font-weight:800;font-size:${comp ? 24 : 28}px;color:var(--tinta-2);white-space:nowrap">${comp ? '' : 'Casa '}${j.posicao}</span></div></div>
-    <div class="abs" style="top:10px;right:16px;font-weight:900;font-size:${comp ? 24 : 28}px;color:var(--tinta-3)">${idx+1}º</div>
+      <div class="linha" style="gap:10px">${casa(tipoCasa(j.posicao), comp ? 34 : 40)}<span style="font-weight:800;font-size:${comp ? 26 : 28}px;color:var(--tinta-2);white-space:nowrap">${comp ? '' : 'Casa '}${j.posicao}</span></div></div>
+    <div class="abs" style="top:10px;right:16px;font-weight:900;font-size:${comp ? 26 : 28}px;color:var(--tinta-3)">${idx+1}º</div>
     <div class="abs" style="right:14px;bottom:14px;display:flex;gap:8px">${sel.map(([ic,bg,e,t]) => `<div style="width:${comp ? 46 : 56}px;height:${comp ? 46 : 56}px;box-sizing:border-box;border-radius:50%;background:${bg};border:4px solid #fff;box-shadow:0 4px 0 ${e},0 0 0 2px ${e};display:flex;align-items:center;justify-content:center">${ico(ic, comp ? 26 : 32, `color:${t}`)}</div>`).join('')}</div></div>`;
 }
 function cartaoMini(j, idx, ativo, sel){
   const [hex, escu, tinta] = PC[j.cor];
   return `<div class="cartao" style="height:82px;border-radius:18px;gap:10px;padding:0 10px;border:5px solid ${ativo ? hex : 'rgba(255,255,255,0)'};box-shadow:${ativo ? `0 0 0 3px #fff, 0 0 30px ${hex}, 0 8px 0 ${escu}` : '0 6px 0 rgba(10,8,40,.35)'}">
-    ${ativo ? `<div class="abs bal" style="top:-15px;left:10px;height:28px;padding:0 10px 0 4px;box-sizing:border-box;border-radius:999px;background:${hex};border:3px solid #fff;color:${tinta};font-size:18px;display:flex;align-items:center;gap:2px">${ico('play_arrow', 20)}VEZ</div>` : ''}
+    ${ativo ? `<div class="abs bal" style="top:-20px;left:8px;height:34px;padding:0 12px 0 6px;box-sizing:border-box;border-radius:999px;background:${hex};border:3px solid #fff;color:${tinta};font-size:22px;display:flex;align-items:center;gap:2px">${ico('play_arrow', 24)}VEZ</div>` : ''}
     ${peaoJ(j, 62, {brilho:ativo})}
     <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px">
       <div class="bal" style="font-size:28px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-top:4px">${esc(j.nome)}</div>
-      <div class="linha" style="gap:6px">${casa(tipoCasa(j.posicao), 24)}<span style="font-weight:800;font-size:20px;color:var(--tinta-2)">${j.posicao}</span>${sel.map(([ic,bg,e,t]) => `<span style="width:28px;height:28px;box-sizing:border-box;border-radius:50%;background:${bg};border:3px solid #fff;box-shadow:0 0 0 2px ${e};display:inline-flex;align-items:center;justify-content:center">${ico(ic, 16, `color:${t}`)}</span>`).join('')}</div></div>
-    <div class="abs" style="top:6px;right:10px;font-weight:900;font-size:18px;color:var(--tinta-3)">${idx+1}º</div></div>`;
+      <div class="linha" style="gap:6px">${casa(tipoCasa(j.posicao), 26)}<span style="font-weight:800;font-size:24px;color:var(--tinta-2)">${j.posicao}</span>${sel.map(([ic,bg,e,t]) => `<span style="width:28px;height:28px;box-sizing:border-box;border-radius:50%;background:${bg};border:3px solid #fff;box-shadow:0 0 0 2px ${e};display:inline-flex;align-items:center;justify-content:center">${ico(ic, 18, `color:${t}`)}</span>`).join('')}</div></div>
+    <div class="abs" style="top:5px;right:10px;font-weight:900;font-size:22px;color:var(--tinta-3)">${idx+1}º</div></div>`;
 }
 function vezPill(j, grande){
   const [hex, escu, tinta] = PC[j.cor];
@@ -1493,15 +1495,14 @@ function painelInicio(j){
   const [hex, , , txt] = PC[j.cor], fs = Math.min(92, Math.floor(600/((7 + j.nome.length)*.5)));
   const so1 = outrosAtivos(j).length === 1;
   return `<div class="painel" style="--b:${hex};--g:${hex}59;padding:30px 36px 34px;align-items:center;text-align:center">
-    <div class="rotulo">INÍCIO DO TURNO</div>
     <div style="position:relative;width:300px;height:220px;display:flex;align-items:flex-end;justify-content:center">
       <div class="abs brilho-pulsa" style="left:10px;right:10px;bottom:-10px;height:70px;border-radius:50%;background:radial-gradient(ellipse, ${hex}80, transparent 70%)"></div>
       ${peaoJ(j, 210, {brilho:true})}</div>
     <div class="bal" style="font-size:${fs}px;color:${txt};max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-top:8px">Vez de ${esc(j.nome)}</div>
     <div class="linha" style="gap:12px;font-weight:800;font-size:30px;color:var(--tinta-2)">${casa(tipoCasa(j.posicao), 52)}<span>${descCasa(j.posicao)}</span></div>
-    ${(j.marcas || []).length ? `<div class="linha" style="gap:10px;font-weight:800;font-size:24px;color:var(--tinta-2)"><span style="width:34px;height:34px;flex:none;box-sizing:border-box;border-radius:50%;background:${hex};border:3px solid #fff;box-shadow:0 0 0 2px ${hex};display:inline-flex;align-items:center;justify-content:center">${ico('check', 22, `color:${PC[j.cor][2]}`)}</span><span>Casas marcadas: você já usou, não valem de novo</span></div>` : ''}
+    ${(j.marcas || []).length ? `<div class="linha" style="gap:10px;font-weight:800;font-size:26px;color:var(--tinta-2)"><span style="width:36px;height:36px;flex:none;box-sizing:border-box;border-radius:50%;background:${hex};border:3px solid #fff;box-shadow:0 0 0 2px ${hex};display:inline-flex;align-items:center;justify-content:center">${ico('check', 22, `color:${PC[j.cor][2]}`)}</span><span>Casas marcadas: você já usou, não valem de novo</span></div>` : ''}
     <div class="flex1"></div>
-    <div class="bal" style="font-size:46px;line-height:1.1">${so1 ? `Desafie ${esc(jog(outrosAtivos(j)[0]).nome)}` : 'Escolha quem desafiar'}</div>
+    <div style="font-weight:800;font-size:32px;line-height:1.2;color:var(--tinta-2)">${so1 ? `Desafie ${esc(jog(outrosAtivos(j)[0]).nome)}` : 'Escolha quem desafiar'}</div>
     ${btnAmarelo('irOponente', so1 ? 'Começar duelo' : 'Escolher oponente')}</div>`;
 }
 function painelOponente(j){
@@ -1516,7 +1517,7 @@ function painelOponente(j){
     ${lista.map((o, k) => { const ok = val.includes(o.id), [hex, escu, tinta] = PC[o.cor];
       if(!ok){ const motivo = o.id === j.rotacao.ultimoDesafiado && ci.feitos === 0 ? 'foi o último desafiado' : 'volta no próximo ciclo';
         return `<div class="op-linha" style="height:${h}px;background:var(--suave-2);border:5px dashed #B9B6D3" aria-disabled="true">${peaoJ(o, tp, {esm:true})}<div class="flex1" style="display:flex;flex-direction:column;gap:4px;min-width:0"><div class="bal" style="font-size:${fs}px;color:var(--tinta-3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(o.nome)}</div><div class="linha" style="gap:6px;font-weight:800;font-size:${Math.min(28,fs*.6)}px;color:var(--tinta-2)">${ico('lock', 32)}${motivo}</div></div></div>`; }
-      return `<button class="op-linha" data-a="oponente" data-v="${o.id}" style="height:${h}px;background:#fff;border:5px solid ${hex};box-shadow:0 0 28px ${hex}88, 0 8px 0 ${escu}" aria-label="Desafiar ${esc(o.nome)} (tecla ${k+1})">${peaoJ(o, tp, {brilho:true})}<div class="flex1" style="display:flex;flex-direction:column;gap:4px;min-width:0"><div class="bal" style="font-size:${fs}px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(o.nome)}</div><div style="font-weight:800;font-size:${Math.min(28,fs*.6)}px;color:var(--tinta-2)">Casa ${o.posicao}</div></div><div class="bal" style="height:62px;padding:0 18px 0 22px;border-radius:999px;background:${hex};color:${tinta};font-size:32px;display:flex;align-items:center;gap:6px;box-shadow:0 4px 0 ${escu}">Desafiar${ico('arrow_forward', 34)}</div></button>`;
+      return `<button class="op-linha" data-a="oponente" data-v="${o.id}" style="height:${h}px;background:#fff;border:5px solid ${hex};box-shadow:0 0 28px ${hex}88, 0 8px 0 ${escu}" aria-label="Desafiar ${esc(o.nome)} (tecla ${k+1})">${peaoJ(o, tp, {brilho:true})}<div class="flex1" style="display:flex;flex-direction:column;gap:4px;min-width:0"><div class="bal" style="font-size:${fs}px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(o.nome)}</div><div style="font-weight:800;font-size:${Math.max(26, Math.min(30,fs*.6))}px;color:var(--tinta-2)">Casa ${o.posicao}</div></div><div class="bal" style="height:62px;padding:0 18px 0 22px;border-radius:999px;background:${hex};color:${tinta};font-size:32px;display:flex;align-items:center;gap:6px;box-shadow:0 4px 0 ${escu}">Desafiar${ico('arrow_forward', 34)}</div></button>`;
     }).join('')}</div>`;
 }
 function cabecaOponente(j, ci){
@@ -1529,7 +1530,7 @@ function painelOponenteGrade(j, val, ci, lista){
   const linhas = Math.ceil(lista.length/2), h = Math.min(100, Math.floor(470/linhas - 12)), tp = Math.round(h*.78);
   return `<div class="painel" style="--b:${PC[j.cor][0]};gap:14px">${cabecaOponente(j, ci)}
     <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px">${lista.map((o, k) => { const ok = val.includes(o.id), [hex, escu] = PC[o.cor];
-      const corpo = `${peaoJ(o, tp, ok ? {} : {esm:true})}<div style="display:flex;flex-direction:column;gap:2px;min-width:0;flex:1"><div class="bal" style="font-size:${Math.min(34, Math.round(h*.42))}px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-top:4px;color:${ok ? 'var(--tinta)' : 'var(--tinta-3)'}">${esc(o.nome)}</div><div class="linha" style="gap:4px;font-weight:800;font-size:${Math.min(22, Math.round(h*.28))}px;color:var(--tinta-2);white-space:nowrap">${ok ? `Casa ${o.posicao}` : ico('lock', 22) + 'próximo ciclo'}</div></div>`;
+      const corpo = `${peaoJ(o, tp, ok ? {} : {esm:true})}<div style="display:flex;flex-direction:column;gap:2px;min-width:0;flex:1"><div class="bal" style="font-size:${Math.min(34, Math.round(h*.42))}px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-top:4px;color:${ok ? 'var(--tinta)' : 'var(--tinta-3)'}">${esc(o.nome)}</div><div class="linha" style="gap:4px;font-weight:800;font-size:${Math.max(24, Math.min(28, Math.round(h*.3)))}px;color:var(--tinta-2);white-space:nowrap">${ok ? `Casa ${o.posicao}` : ico('lock', 22) + 'próximo ciclo'}</div></div>`;
       return ok ? `<button class="op-linha" data-a="oponente" data-v="${o.id}" style="height:${h}px;gap:10px;padding:0 10px;border-radius:20px;background:#fff;border:4px solid ${hex};box-shadow:0 0 18px ${hex}77, 0 6px 0 ${escu}" aria-label="Desafiar ${esc(o.nome)}${k < 10 ? ` (tecla ${(k+1) % 10})` : ''}">${corpo}</button>`
         : `<div class="op-linha" style="height:${h}px;gap:10px;padding:0 10px;border-radius:20px;background:var(--suave-2);border:4px dashed #B9B6D3" aria-disabled="true">${corpo}</div>`;
     }).join('')}</div></div>`;
@@ -1556,25 +1557,34 @@ function painelDificuldade(j){
       <div class="flex1" style="display:flex;flex-direction:column;align-items:flex-start;gap:2px"><span class="bal" style="font-size:58px;${n === 3 ? 'text-shadow:0 3px 0 rgba(0,0,0,.2)' : ''}">${D.nome}</span>${estrelas(n, 40)}</div>
       <div class="bal" style="width:108px;height:108px;box-sizing:border-box;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:58px;color:${D.num};padding-top:6px;box-shadow:inset 0 -6px 0 rgba(0,0,0,.08)">+${n}</div></button>`; }).join('')}
     <div class="flex1"></div>
-    <div class="linha" style="gap:14px;background:#FFF7D6;border:3px solid #FDE68A;border-radius:20px;padding:12px 18px"><div style="width:54px;height:54px;border-radius:50%;background:#FACC15;display:flex;align-items:center;justify-content:center;flex:none">${ico('emoji_events', 34, 'color:#422006')}</div><span style="font-weight:900;font-size:30px">Quem acertar leva as casas</span></div></div>`;
+    <div class="linha" style="gap:14px;background:#FFF7D6;border:3px solid #FDE68A;border-radius:20px;padding:12px 18px"><div style="width:54px;height:54px;border-radius:50%;background:#FACC15;display:flex;align-items:center;justify-content:center;flex:none">${ico('emoji_events', 34, 'color:#422006')}</div><div style="display:flex;flex-direction:column;gap:2px;text-align:left"><span style="font-weight:900;font-size:30px">Quem acertar leva as casas</span><span style="font-weight:800;font-size:26px;color:#9A3412">${custoErro()}</span></div></div></div>`;
+}
+function custoErro(){ const p = S.config.punicao; return p === 'nenhuma' ? 'Errar não tem punição' : p === 'perdeTurno' ? 'Errou: perde a próxima vez' : p === 'voltaValor' ? 'Errou: volta as casas da dificuldade' : 'Errou: volta 1 casa'; }
+/* "+2 pergunta · +2 atalho": de onde veio o total, quando a casa especial mexeu no resultado */
+function contaMovimento(r){
+  if(!r.certo || r.valor == null) return '';
+  const total = r.ate - r.de, resto = total - r.valor; if(!resto) return '';
+  const c = S.casas[Math.min(S.N, r.de + r.valor)], ef = c && c.efeito ? EFEITOS[c.efeito].nome.toLowerCase() : 'casa especial';
+  return `+${r.valor} pergunta · ${resto > 0 ? '+' : '−'}${Math.abs(resto)} ${ef}`;
 }
 function caixaMovimento(r, corDelta, rotulo){
+  rotulo = rotulo || contaMovimento(r);
   const delta = r.ate - r.de;
   return `<div class="linha" style="background:var(--suave);border-radius:22px;padding:12px 22px;gap:16px;flex:none">
-    <div style="display:flex;flex-direction:column;align-items:center;gap:6px">${casa(tipoCasa(r.de), 52)}<span style="font-weight:800;font-size:24px;color:var(--tinta-2)">Casa ${r.de}</span></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:6px">${casa(tipoCasa(r.de), 52)}<span style="font-weight:800;font-size:26px;color:var(--tinta-2);white-space:nowrap">Casa ${r.de}</span></div>
     ${ico('arrow_forward', 48, `color:${corDelta}`)}
-    <div style="display:flex;flex-direction:column;align-items:center;gap:6px">${casa(tipoCasa(r.ate), 52)}<span style="font-weight:800;font-size:24px;color:var(--tinta-2)">Casa ${r.ate}</span></div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:6px">${casa(tipoCasa(r.ate), 52)}<span style="font-weight:800;font-size:26px;color:var(--tinta-2);white-space:nowrap">Casa ${r.ate}</span></div>
     <div class="flex1"></div>
-    <div style="text-align:right">${rotulo ? `<div style="font-weight:800;font-size:26px;color:var(--tinta-2)">${rotulo}</div>` : ''}<div class="bal" style="font-size:${rotulo ? 64 : 76}px;color:${corDelta}">${delta > 0 ? '+' : delta < 0 ? '−' : ''}${Math.abs(delta)}</div></div></div>`;
+    <div style="text-align:right">${rotulo ? `<div style="font-weight:900;font-size:27px;color:var(--tinta-2);white-space:nowrap">${rotulo}</div>` : ''}<div class="bal" style="font-size:${rotulo ? 64 : 76}px;color:${corDelta}">${delta > 0 ? '+' : delta < 0 ? '−' : ''}${Math.abs(delta)}</div></div></div>`;
 }
-function extrasHTML(r){ return r.extras.length ? `<div style="display:flex;flex-direction:column;gap:4px;flex:none">${r.extras.slice(-3).map(x => `<div class="linha" style="gap:8px;font-weight:800;font-size:23px;line-height:1.15;color:var(--tinta-2)">${ico('info', 28, 'color:var(--indigo)')}<span>${esc(x)}</span></div>`).join('')}</div>` : ''; }
+function extrasHTML(r){ return r.extras.length ? `<div style="display:flex;flex-direction:column;gap:4px;flex:none">${r.extras.slice(-3).map(x => `<div class="linha" style="gap:8px;font-weight:800;font-size:27px;line-height:1.15;color:var(--tinta-2)">${ico('info', 30, 'color:var(--indigo)')}<span>${esc(x)}</span></div>`).join('')}</div>` : ''; }
 function proximaVez(){ const p = proximoJogador(); return `<div class="linha" style="gap:14px;flex:none"><span style="font-weight:800;font-size:28px;color:var(--tinta-2)">Próxima vez:</span>${peaoJ(p, 56)}<span class="bal" style="font-size:42px;color:${PC[p.cor][3]};white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-top:4px">${esc(p.nome)}</span></div>`; }
 const linkDesfazer = () => T.snapshot ? `<button class="link" data-a="desfazer" style="margin-left:auto;font-size:26px">${ico('undo', 30)}Desfazer</button>` : '';
 function painelAcerto(){
   const r = T.res, j = jog(r.id), k = CATS[r.categoria];
   return `<div class="painel" style="--b:#22C55E;--g:rgba(34,197,94,.45);padding:24px 30px 26px;gap:14px">
     <div class="linha" style="gap:18px"><div style="width:72px;height:72px;flex:none;box-sizing:border-box;border-radius:50%;background:#22C55E;border:5px solid #fff;box-shadow:0 0 0 3px #22C55E,0 6px 0 #15803D;display:flex;align-items:center;justify-content:center;animation:mola .4s both">${ico('check', 50, "color:#052E16;font-variation-settings:'FILL' 1,'wght' 800")}</div><div class="bal" style="font-size:66px;color:#15803D;padding-top:6px">Acertou!</div>${linkDesfazer()}</div>
-    <div style="background:${k.claro};border:4px solid ${k.cor};border-radius:22px;padding:10px 22px;flex:none"><div style="font-weight:800;font-size:24px;color:${k.texto}">Resposta de ${esc(j.nome)}</div><div class="bal" style="font-size:${r.resposta.length > 50 ? 30 : r.resposta.length > 26 ? 38 : 52}px;line-height:1.05;padding-top:4px">${esc(r.resposta)}</div></div>
+    <div style="background:${k.claro};border:4px solid ${k.cor};border-radius:22px;padding:10px 22px;flex:none"><div style="font-weight:800;font-size:26px;color:${k.texto}">Resposta de ${esc(j.nome)}</div><div class="bal" style="font-size:${r.resposta.length > 50 ? 30 : r.resposta.length > 26 ? 38 : 52}px;line-height:1.05;padding-top:4px">${esc(r.resposta)}</div></div>
     ${caixaMovimento(r, PC[j.cor][3])}
     ${extrasHTML(r)}
     <div class="flex1"></div>${r.extras.length < 2 ? proximaVez() : ''}${btnAmarelo('proximo', r.extras.length < 2 ? 'Próximo turno' : `Vez de ${esc(proximoJogador().nome)}`)}</div>`;
@@ -1594,7 +1604,7 @@ function painelErro(){
     <div class="linha" style="gap:18px"><div style="width:72px;height:72px;flex:none;box-sizing:border-box;border-radius:50%;background:#EF4444;border:5px solid #fff;box-shadow:0 0 0 3px #EF4444,0 6px 0 #B91C1C;display:flex;align-items:center;justify-content:center;animation:mola .4s both">${ico('close', 50, "color:#fff;font-variation-settings:'FILL' 1,'wght' 800")}</div><div class="bal" style="font-size:${titulo.length > 8 ? 54 : 66}px;color:#B91C1C;padding-top:6px">${titulo}</div>${linkDesfazer()}</div>
     ${moveu ? caixaMovimento(r, '#B91C1C', `${esc(j.nome)} volta`) : `<div class="linha" style="background:var(--suave);border-radius:22px;padding:12px 22px;gap:14px;font-weight:800;font-size:26px;line-height:1.2;color:var(--tinta-2);flex:none">${peaoJ(j, 52)}<span>${esc(r.penal || (r.tipo === 'todos' ? 'Na pergunta para todos, errar não tem punição.' : r.emRebote ? 'Errar o rebote não tem punição.' : `${j.nome} fica onde está.`))}</span></div>`}
     ${extrasHTML(r)}
-    ${rebote ? reb : `<div style="flex:none;border-radius:22px;background:#F6F5FD;border:3px solid var(--linha);padding:10px 22px"><div class="rotulo" style="font-size:22px">RESPOSTA CERTA</div><div class="bal" style="font-size:${r.resposta.length > 50 ? 30 : r.resposta.length > 26 ? 36 : 48}px;line-height:1.05;margin-top:4px">${esc(r.resposta)}</div></div>`}
+    ${rebote ? reb : `<div style="flex:none;border-radius:22px;background:#F6F5FD;border:3px solid var(--linha);padding:10px 22px"><div class="rotulo" style="font-size:26px">RESPOSTA CERTA</div><div class="bal" style="font-size:${r.resposta.length > 50 ? 30 : r.resposta.length > 26 ? 36 : 48}px;line-height:1.05;margin-top:4px">${esc(r.resposta)}</div></div>`}
     <div class="flex1"></div>
     ${rebote ? `<div style="display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:16px"><button class="b3d amarelo" data-a="rebote" style="height:92px;font-size:34px">${ico('play_arrow', 42)}${d.elegiveis.length === 1 ? esc(jog(d.elegiveis[0]).nome) + ' responde' : 'Valendo!'}</button><button class="b3d branco" data-a="pularRebote" style="height:92px;font-size:34px;box-shadow:0 0 0 3px var(--linha),0 8px 0 var(--lilas)">Pular rebote</button></div>`
       : (r.extras.length < 2 ? proximaVez() : '') + btnAmarelo('proximo', r.extras.length < 2 ? 'Próximo turno' : `Vez de ${esc(proximoJogador().nome)}`)}</div>`;
@@ -1669,7 +1679,7 @@ function corpoRebote(d, enun){
     <div style="display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:26px">
       <button class="b3d amarelo" data-a="rebote" style="height:120px;border-radius:30px;font-size:48px">${ico('play_arrow', 58)}${um ? `${esc(el[0].nome)} responde` : 'Valendo!'}</button>
       <button class="b3d branco" data-a="pularRebote" style="height:120px;border-radius:30px;font-size:42px;box-shadow:0 0 0 3px var(--linha),0 10px 0 var(--lilas)">Pular rebote</button></div>
-    <div style="text-align:center;font-weight:800;font-size:24px;color:var(--tinta-3);margin-top:14px">Espaço = responder · Backspace = pular</div>`;
+    <div style="text-align:center;font-weight:800;font-size:26px;color:var(--tinta-3);margin-top:14px">Espaço = responder · Backspace = pular</div>`;
 }
 function falaMsg(j){ return `${esc(j.nome)}, fale a resposta: ela aparece sozinha em <span id="fala-n" class="bal" style="display:inline-flex;align-items:center;justify-content:center;min-width:56px;height:56px;margin:0 4px;border-radius:50%;background:#312E81;color:#FDE047;font-size:36px;padding-top:4px;vertical-align:middle">${segs(S.duelo.fala ?? FALA_MS)}</span> s`; }
 function telaDuelo(){
@@ -1681,7 +1691,7 @@ function telaDuelo(){
   const nova = T.cartaKey !== d.pergunta.id + d.emRebote; T.cartaKey = d.pergunta.id + d.emRebote;
   const D = DIFS[d.dificuldade];
   const enun = d.pergunta.enunciado, L = enun.length;
-  const fsP = reg ? (L > 80 ? 44 : 52) : (L > 90 ? 52 : L > 60 ? 58 : 62);
+  const fsP = reg ? (L > 80 ? 48 : 56) : (L > 100 ? 58 : L > 70 ? 64 : 72);
   let corpo = '';
   if(S.fase === 'erro_rebote') corpo = corpoRebote(d, enun);
   else if(!val){
@@ -1718,7 +1728,7 @@ function telaDuelo(){
     <div class="flex1"></div>
     <div class="bal" style="font-size:64px;text-align:center;margin-bottom:10px">A resposta está correta?</div>
     <div style="text-align:center;font-weight:800;font-size:28px;color:var(--tinta-2);margin-bottom:10px">Quem confere: ${jz ? `<b style="color:${PC[jz.cor][3]}">${esc(jz.nome)}</b>` : 'os jogadores, em consenso'}</div>
-    <div class="linha" style="justify-content:center;gap:10px;font-weight:700;font-size:25px;color:var(--tinta-2);margin-bottom:22px">${ico('info', 30, 'color:var(--indigo)')}<span>Vale sem o nome completo ou com erro de grafia, se identificar a resposta sem ambiguidade. Na dúvida, quem confere decide.</span></div>
+    <div class="linha" style="justify-content:center;gap:10px;font-weight:700;font-size:26px;color:var(--tinta-2);margin-bottom:22px">${ico('info', 30, 'color:var(--indigo)')}<span>Vale sem o nome completo ou com erro de grafia, se identificar a resposta sem ambiguidade. Na dúvida, quem confere decide.</span></div>
     <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px">
       <button class="simnao" data-a="validar" data-v="1" style="background:linear-gradient(180deg,#4ADE80,#22C55E 60%);box-shadow:0 0 0 4px #22C55E,0 12px 0 #15803D,0 22px 36px rgba(10,8,40,.25);color:#052E16">${ico('check', 110, "font-variation-settings:'FILL' 1,'wght' 800")}SIM</button>
       <button class="simnao" data-a="validar" data-v="0" style="background:linear-gradient(180deg,#F87171,#DC2626 60%);box-shadow:0 0 0 4px #DC2626,0 12px 0 #991B1B,0 22px 36px rgba(10,8,40,.25);color:#fff">${ico('close', 110, "font-variation-settings:'FILL' 1,'wght' 800")}NÃO</button></div>`;
