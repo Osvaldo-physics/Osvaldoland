@@ -2228,6 +2228,16 @@ function telaPausa(){
 
 /* =============================== RENDER =============================== */
 const FASES_DUELO = ['pergunta','resposta','validacao','erro_rebote'];
+/* Rede de segurança: se um painel lateral não couber (nomes longos + vários avisos + resposta longa),
+   aperta os espaços e, se ainda faltar, reduz o conteúdo até caber — nada fica cortado. */
+function caberPaineis(){
+  document.querySelectorAll('#tela .painel').forEach(el => {
+    if(el.scrollHeight <= el.clientHeight + 2) return;
+    el.style.gap = '8px'; el.style.paddingTop = '18px'; el.style.paddingBottom = '20px';
+    const filhos = [...el.children];
+    for(let z = .96; z >= .7 && el.scrollHeight > el.clientHeight + 2; z -= .04) filhos.forEach(c => c.style.zoom = z.toFixed(2));
+  });
+}
 function render(){
   let h = '', fk = 'discreto|7', tab = false, desf = false;
   if(S.tela === 'inicio') h = telaAbertura();
@@ -2251,7 +2261,7 @@ function render(){
   if(T.modal === 'config') sobre += modalConfig();
   if(T.modal === 'banco') sobre += modalBanco();
   $('#sobre').innerHTML = sobre;
-  renderFx(); acordar();
+  renderFx(); acordar(); caberPaineis();
   if(foco){ const el = document.getElementById(foco); if(el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA')) el.focus(); }
   musicaSync();
 }
