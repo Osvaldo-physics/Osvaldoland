@@ -28,7 +28,8 @@ Há também uma música de fundo sintetizada pelo navegador (sem arquivos) em to
 ## Casas especiais
 
 Atalho (+2), Escorregão (−2), Escudo, Todos contra todos, Congelado e Troca.
-A trilha se divide em três trechos pelos checkpoints. No início há mais ajuda (Atalho, Escudo, casas Livres); no meio, o bom e o ruim se alternam; no trecho final não há Atalho, Escudo nem casa Livre, só Escorregão, Congelado e Todos contra todos, para a disputa ficar aberta até a chegada. A Troca fica no fim do trecho do meio, nunca nas últimas 6 casas.
+A trilha se divide em três trechos pelos checkpoints. No início só há ajuda (Atalho, Escudo, casas Livres, Todos contra todos); no meio, o bom e o ruim se alternam; no trecho final não há Atalho, Escudo nem casa Livre, só Escorregão, Congelado e Todos contra todos, para a disputa ficar aberta até a chegada. A Troca fica no meio da trilha, longe do 2º checkpoint (para sempre haver alguém trocável) e nunca nas últimas 6 casas.
+A distribuição foi ajustada com `ferramentas/simulacao-jogadores.js`: 3.000 jogadores sintéticos de 8 a 65+ anos em mesas de 2 a 12 (modelo heurístico, não pesquisa com pessoas reais).
 
 Cada casa especial vale **uma vez por jogador**: cair de novo na mesma casa não faz nada.
 Se o Escudo anulou o efeito, a próxima queda ali vale como a primeira.
